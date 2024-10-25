@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success - SavvyAI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='success.css') }}">
+</head>
+<body class="dark-mode">
+    {% include 'header.html' %}
+
+    <!-- Hidden element to store user data -->
+    <div id="user-data" style="display: none;">{{ user | tojson | safe }}</div>
+
+    <section class="main-content">
+        <div class="success-message">
+            <h1>Aptitude Questions Successfully Added!</h1>
+            <p>Your preferences have been recorded, and the aptitude questions have been successfully generated.</p>
+            <a href="/chatbot" class="btn">Go back to Chatbot</a>
+        </div>
+    </section>
+
+    <script src="../static/header.js"></script>
+</body>
+</html>
