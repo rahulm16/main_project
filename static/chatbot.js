@@ -194,7 +194,7 @@ function handleContinueButtonClick() {
     })
     .then(response => {
         if (response.ok) {
-            window.location.href = '/success'; // Redirect to success page on success
+            window.location.href = '/questions'; // Redirect to the new questions page
         } else {
             console.error('Failed to save data');
             alert('Failed to save data. Please try again.');
@@ -211,3 +211,4 @@ function handleContinueButtonClick() {
         modalContent.textContent = 'Press continue to begin analysis...'; // Reset paragraph text
     });
 }
+

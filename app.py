@@ -32,10 +32,6 @@ def chatbot():
 def choices():
     return render_template('choices.html', user=session.get('user')) 
 
-@app.route('/success')
-def success():
-    return render_template('success.html', user=session.get('user'))
-
 @app.route('/api/signup', methods=['POST'])
 def signup():
     user_data = request.json
@@ -132,6 +128,17 @@ def generate_questions(career_preferences):
         return "Failed to generate questions.", 500
 
     return "Aptitude questions successfully added to the database."
+
+@app.route('/questions', methods=['GET'])
+def get_questions():
+    questions = mongo.db.questions.find()  # Adjust 'questions' to your collection name
+    questions_list = []
+    for question in questions:
+        questions_list.append({
+            'question': question['question'],
+            'options': question['options']  # Assuming 'options' is a list
+        })
+    return jsonify(questions_list)
 
 if __name__ == "__main__":
     app.run(debug=True)
