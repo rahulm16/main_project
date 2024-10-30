@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Guidance Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <form id="careerForm">
+                <div class="step" id="step1">
+                    <h2>Basic Information</h2>
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Your Age</label>
+                        <input type="range" id="age" name="age" min="15" max="80" value="20">
+                        <span id="ageValue">20</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Your Current Status</label>
+                        <div class="radio-group">
+                            <input type="radio" id="student" name="status" value="student" required>
+                            <label for="student">Student</label>
+                        </div>
+                        <div class="radio-group">
+                            <input type="radio" id="professional" name="status" value="professional" required>
+                            <label for="professional">Working Professional</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step" id="step2">
+                    <h2>Education and Skills</h2>
+                    <div class="form-group">
+                        <label for="educationLevel">Highest Level of Education</label>
+                        <select id="educationLevel" name="educationLevel" required>
+                            <option value="">Select education level</option>
+                            <option value="high_school">High School</option>
+                            <option value="bachelors">Bachelor's Degree</option>
+                            <option value="masters">Master's Degree</option>
+                            <option value="phd">Ph.D.</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="skills">Key Skills</label>
+                        <textarea id="skills" name="skills" placeholder="List your key skills, separated by commas" required></textarea>
+                    </div>
+                </div>
+
+                <div class="step" id="step3">
+                    <h2>Work Experience</h2>
+                    <div class="form-group">
+                        <label for="workExperience">Professional Experience</label>
+                        <textarea id="workExperience" name="workExperience" placeholder="Briefly describe your work experience"></textarea>
+                    </div>
+                </div>
+
+                <div class="step" id="step4">
+                    <h2>Personality Traits</h2>
+                    <p>Rate yourself on the following scales:</p>
+                    <div class="form-group">
+                        <label for="extroversion">Extroversion (Introverted - Extroverted)</label>
+                        <input type="range" id="extroversion" name="extroversion" min="0" max="100" value="50">
+                        <div class="range-labels">
+                            <span>Introverted</span>
+                            <span>Extroverted</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="openness">Openness to Experience</label>
+                        <input type="range" id="openness" name="openness" min="0" max="100" value="50">
+                        <div class="range-labels">
+                            <span>Conservative</span>
+                            <span>Inventive</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="conscientiousness">Conscientiousness</label>
+                        <input type="range" id="conscientiousness" name="conscientiousness" min="0" max="100" value="50">
+                        <div class="range-labels">
+                            <span>Easy-going</span>
+                            <span>Efficient</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step" id="summary">
+                    <h2>All Done!</h2>
+                    <div id="summaryContent"></div>
+                </div>
+
+                <div class="form-navigation">
+                    <button type="button" id="prevBtn" class="btn">Previous</button>
+                    <button type="button" id="nextBtn" class="btn">Next</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
