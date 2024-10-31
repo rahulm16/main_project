@@ -1,11 +1,44 @@
 /* Header Styles */
+:root {
+  --primary-color: #303134;
+  --secondary-color: #8ab4f8;
+  --tertiary-color: #FF416C;
+  --card-text-color: yellow;
+  --text-color: #eaeaea;
+  --bg-color: linear-gradient(135deg, #181818 0%, #333 100%);
+  --card-bg-color: #303134;
+  --autofill-bg: #3c4043;
+  --input-bg-color: #333;
+  --border-color: #555555;
+  --secondary-color-rgb: 138, 180, 248;
+  --transition-default: 0.3s ease;
+  --chat-user: #9c9c9c;
+  --suggestion-hover: #9c9c9c;
+}
+
+body.light-mode {
+  --primary-color: #ffffff;
+  --secondary-color: #1a73e8;
+  --tertiary-color: #d93025;
+  --card-text-color: black;
+  --text-color: #202124;
+  --bg-color: linear-gradient(135deg, #f8f9fa 0%, #dbe0e4 100%);
+  --card-bg-color: #ffffff;
+  --autofill-bg: #DBE2EF;
+  --input-bg-color: #f1f3f4;
+  --border-color: #dadce0;
+  --secondary-color-rgb: 26, 115, 232;
+  --chat-user: #3F72AF;
+  --suggestion-hover: #8EACCD
+}
+
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 40px;
   padding: 10px 20px;
-  background-color: var(--primary-color);
+  background-color: transparent;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -77,36 +110,4 @@ body:not(.light-mode) .dark-mode-emoji {
   justify-content: center;
   cursor: pointer;
   transition: background-color var(--transition-default);
-}
-:root {
-  --primary-color: #303134;
-  --secondary-color: #8ab4f8;
-  --tertiary-color: #FF416C;
-  --card-text-color: yellow;
-  --text-color: #eaeaea;
-  --bg-color: linear-gradient(135deg, #181818 0%, #333 100%);
-  --card-bg-color: #303134;
-  --autofill-bg: #3c4043;
-  --input-bg-color: #333;
-  --border-color: #555555;
-  --secondary-color-rgb: 138, 180, 248;
-  --transition-default: 0.3s ease;
-  --chat-user: #9c9c9c;
-  --suggestion-hover: #9c9c9c;
-}
-
-body.light-mode {
-  --primary-color: #ffffff;
-  --secondary-color: #1a73e8;
-  --tertiary-color: #d93025;
-  --card-text-color: black;
-  --text-color: #202124;
-  --bg-color: linear-gradient(135deg, #f8f9fa 0%, #dbe0e4 100%);
-  --card-bg-color: #ffffff;
-  --autofill-bg: #DBE2EF;
-  --input-bg-color: #f1f3f4;
-  --border-color: #dadce0;
-  --secondary-color-rgb: 26, 115, 232;
-  --chat-user: #3F72AF;
-  --suggestion-hover: #8EACCD
 }
