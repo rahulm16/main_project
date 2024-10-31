@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const profileIcon = document.getElementById("profile-icon");
         
         if (profileIcon.style.display === 'block') {
-            window.location.href = "/chatbot";
+            window.location.href = "/profile";
         } else {
             window.headerUtils.showAlert('Please log in to explore the chatbot.', 'error');
         }

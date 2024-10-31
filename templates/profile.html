@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - SavvyAI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+</head>
+<body class="dark-mode">
+    {% include 'header.html' %}
+
+    <!-- Hidden element to store user data -->
+    <div id="user-data" style="display: none;">{{ user | tojson | safe }}</div>
+
+    <section class="main-content">
+        <div class="greeting" role="heading" aria-level="2">Hello, <span class="gradient-text">{{ user.fullName if user else 'Guest' }}</span></div>
+        <div class="question" role="heading" aria-level="3">Let's begin</div>
+
+        <div class="submit-section">
+            <button id="submit-button" onclick="window.location.href='/chatbot'" class="btn">Submit</button>
+        </div>
+    </section>
+
+    <script src="../static/header.js"></script>
+</body>
+</html>

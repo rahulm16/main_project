@@ -1,4 +1,3 @@
-#app.py
 from flask import Flask, redirect, render_template, request, jsonify, session
 from flask_pymongo import PyMongo
 from mistralai import Mistral
@@ -27,6 +26,10 @@ def index():
 @app.route('/chatbot')
 def chatbot():
     return render_template('chatbot.html', user=session.get('user'))
+
+@app.route('/profile')
+def profile():
+    return render_template('profile.html', user=session.get('user'))
 
 @app.route('/choices')
 def choices():
