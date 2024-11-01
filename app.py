@@ -4,7 +4,7 @@ from mistralai import Mistral
 from flask_bcrypt import Bcrypt
 import json
 import logging
-#imports
+
 app = Flask(__name__)
 app.secret_key = "your_secret_key"  # Change this to a strong secret key
 app.config["MONGO_URI"] = "mongodb://localhost:27017/aicareer"  # Your MongoDB URI
