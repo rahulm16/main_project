@@ -51,9 +51,10 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 40px;
     padding: 10px 20px;
-    background-color: transparent;
+    height: 40px;
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .header-buttons {
