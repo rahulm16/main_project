@@ -6,6 +6,7 @@
     <title>Profile - SavvyAI</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
 </head>
 <body class="dark-mode">
     {% include 'header.html' %}
@@ -15,7 +16,7 @@
 
     <section class="main-content">
         <div class="greeting" role="heading" aria-level="2">Hello, <span class="gradient-text">{{ user.fullName if user else 'Guest' }}</span></div>
-        <div class="question" role="heading" aria-level="3">sapna dekna achi bat hai!!</div>
+        <div class="question" role="heading" aria-level="3">Tell us more about yourself!!</div>
         <div class="user_info">
         <div class="container">
             <form id="multi-step-form">

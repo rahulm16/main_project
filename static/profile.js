@@ -69,23 +69,22 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Submission of form data
-    submitBtn.addEventListener("click", () => {
+    submitBtn.addEventListener("click", (e) => {
+        e.preventDefault(); // Prevent default form submission
         const formData = {
             current_status: document.querySelector('input[name="status"]:checked')?.value,
             age: parseInt(document.getElementById("age").value, 10),
             highest_level_of_education: document.getElementById("education").value,
             current_field_of_study_or_work: document.getElementById("fieldOfStudy").value,
-            key_skills: document.getElementById("skills").value.split(',').map(skill => skill.trim()),  // Convert skills to an array
+            key_skills: document.getElementById("skills").value.split(',').map(skill => skill.trim()),
             work_experience: currentStep === 2 ? document.getElementById("workExperience").value : "N/A",
-            personality_traits: {  // Personality traits as an object
+            personality_traits: {
                 extroversion: parseInt(document.getElementById("extroversion").value, 10),
                 openness_to_work: parseInt(document.getElementById("openness").value, 10),
                 meticulousness: parseInt(document.getElementById("meticulousness").value, 10),
             }
         };
-
-        // Send the data to the server
+    
         fetch("/api/save_user_data", {
             method: "POST",
             headers: {
@@ -95,8 +94,9 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then(response => response.json())
         .then(data => {
-            console.log('Data saved:', data);
-            window.location.href = "/chatbot";  // Redirect on success
+            if(data.status === 'success') {
+                window.location.href = "/chatbot";  // Redirect immediately after successful save
+            }
         })
         .catch(error => console.error('Error:', error));
     });
