@@ -92,6 +92,23 @@ def save_data():
 
     return jsonify({'status': 'success', 'message': result}), 200
 
+@app.route('/api/save_user_data', methods=['POST'])
+def save_user_data():
+    user_data = request.json  # Get data from the request
+    
+    # Validate the incoming data
+    required_fields = ["current_status", "age", "highest_level_of_education", 
+                       "current_field_of_study_or_work", "key_skills", "personality_traits"]
+    missing_fields = [field for field in required_fields if field not in user_data]
+    if missing_fields:
+        return jsonify({'status': 'error', 'message': f'Missing fields: {", ".join(missing_fields)}'}), 400
+
+    # Insert data into MongoDB collection 'user_data'
+    mongo.db.user_data.insert_one(user_data)
+
+    return jsonify({'status': 'success', 'message': 'User data successfully saved.'}), 200
+
+
 def generate_questions(career_preferences):
     """ Generate aptitude questions using Mistral API. """
     messages = [

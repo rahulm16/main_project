@@ -46,71 +46,7 @@ body, html {
     padding: 0 20px;
 }
 
-/* Header Styles */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    height: 40px;
-    background-color: var(--primary-color);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
 
-.header-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.savvy {
-    font-weight: bold;
-    color: var(--secondary-color);
-    font-family: "Lucida Console", "Courier New", monospace;
-}
-
-.ai {
-    font-weight: bold;
-    font-family: "Monaco", "Courier New", monospace;
-    color: var(--tertiary-color);
-}
-
-/* Mode Toggle Button */
-.mode-toggle {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    transition: background-color var(--transition-default);
-}
-
-.mode-toggle:hover {
-    background-color: rgba(var(--secondary-color-rgb), 0.1);
-}
-
-.light-mode-emoji,
-.dark-mode-emoji {
-    position: absolute;
-    transition: opacity var(--transition-default), transform var(--transition-default);
-}
-
-body:not(.light-mode) .light-mode-emoji,
-body.light-mode .dark-mode-emoji {
-    opacity: 1;
-    transform: scale(1);
-}
-
-body.light-mode .light-mode-emoji,
-body:not(.light-mode) .dark-mode-emoji {
-    opacity: 0;
-    transform: scale(0.5);
-}
 
 /* Hero Section */
 .hero {

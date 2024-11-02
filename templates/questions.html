@@ -6,6 +6,7 @@
     <title>Questions - SavvyAI</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='questions.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
 </head>
 <body class="dark-mode">
     <script id="user-data" type="application/json">
@@ -18,7 +19,8 @@
         <div class="page-wrapper">
             <div class="questions-container" id="questions-container">
                 <div id="question-box">
-                    <h2 id="question-text">{{ current_index + 1 }}. {{ questions[current_index].question }}</h2>
+                    <div class="question-number" id="question-number">Question 1 of {{ questions|length }}</div>
+                    <h2 id="question-text">{{ questions[current_index].question }}</h2>
                     <ul id="options-list">
                         {% for option in questions[current_index].options %}
                         <li>
@@ -28,11 +30,10 @@
                         {% endfor %}
                     </ul>
                 </div>
-                <!-- Controls -->
                 <div class="controls">
                     <button id="previous-btn">Previous</button>
-                    <button id="preview-btn" style="display: none;">Preview</button>
                     <button id="next-btn">Next</button>
+                    <button id="preview-btn" style="display: none;">Preview</button>
                 </div>
             </div>
             <!-- Preview Section -->

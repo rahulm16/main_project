@@ -14,27 +14,69 @@ document.addEventListener('DOMContentLoaded', () => {
     const questionsContainer = document.querySelector('.questions-container');
     const previewContainer = document.querySelector('.preview-container');
 
+    function showAlert(message, type = 'success') {
+        const existingAlert = document.querySelector('.alert-modal');
+        if (existingAlert) {
+            existingAlert.remove();
+        }
+        
+        const alertModal = document.createElement('div');
+        alertModal.className = `alert-modal ${type}`;
+        
+        const alertContent = document.createElement('div');
+        alertContent.className = 'alert-modal-content';
+        
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'alert-modal-message';
+        messageDiv.textContent = message;
+        
+        const closeButton = document.createElement('button');
+        closeButton.className = 'alert-modal-close';
+        closeButton.innerHTML = '×';
+        closeButton.onclick = () => {
+            alertModal.style.animation = 'slideOut 0.3s ease-out';
+            setTimeout(() => alertModal.remove(), 300);
+        };
+        
+        alertContent.appendChild(messageDiv);
+        alertContent.appendChild(closeButton);
+        alertModal.appendChild(alertContent);
+        document.body.appendChild(alertModal);
+        
+        alertModal.style.display = 'block';
+        
+        setTimeout(() => {
+            if (alertModal.parentNode) {
+                alertModal.style.animation = 'slideOut 0.3s ease-out';
+                setTimeout(() => alertModal.remove(), 300);
+            }
+        }, 3000);
+    }
+
     function showQuestions() {
         questionsContainer.style.display = 'block';
         previewContainer.style.display = 'none';
-        document.body.classList.add('questions-layout'); // Add class here
+        document.body.classList.add('questions-layout');
     }
 
     function showPreview() {
         questionsContainer.style.display = 'none';
         previewContainer.style.display = 'block';
-        document.body.classList.remove('questions-layout'); // Remove class here
+        document.body.classList.remove('questions-layout');
     }
 
-    // Display the current question
     function displayQuestion() {
         const questionTitle = document.getElementById('question-text');
         const optionsList = document.getElementById('options-list');
+        const questionNumber = document.getElementById('question-number'); // Added question number update
+
         optionsList.innerHTML = '';
 
         if (questions.length > 0) {
             const currentQuestion = questions[currentQuestionIndex];
+            
             questionTitle.textContent = `${currentQuestionIndex + 1}. ${currentQuestion.question}`;
+            questionNumber.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`; // Update question number
 
             currentQuestion.options.forEach((option, index) => {
                 const optionItem = document.createElement('li');
@@ -85,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('next-btn').addEventListener('click', () => {
         if (!isOptionSelected()) {
-            alert("Please select an option before proceeding to the next question.");
+            showAlert("Please select an option before proceeding to the next question.", "error");
             return;
         }
 

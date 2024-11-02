@@ -42,70 +42,6 @@ body, html {
     flex-direction: column;
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    height: 40px;
-    background-color: var(--primary-color);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.header-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-button.mode-toggle {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-button.mode-toggle:hover {
-    background-color: rgba(var(--secondary-color-rgb), 0.1);
-}
-
-.light-mode-emoji, .dark-mode-emoji {
-    position: absolute;
-    transition: opacity var(--transition-default), transform var(--transition-default);
-}
-
-body:not(.light-mode) .light-mode-emoji,
-body.light-mode .dark-mode-emoji {
-    opacity: 1;
-    transform: scale(1);
-}
-
-body.light-mode .light-mode-emoji,
-body:not(.light-mode) .dark-mode-emoji {
-    opacity: 0;
-    transform: scale(0.5);
-}
-
-.user-logo {
-    background-color: var(--tertiary-color);
-    color: var(--bg-color);
-    font-size: 24px;
-    width: 40px;
-    height: 40px;
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background-color var(--transition-default);
-}
 
 .main-content {
     flex-grow: 1;
@@ -235,4 +171,99 @@ body:not(.light-mode) .dark-mode-emoji {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color var(--transition-default);
+}
+
+/* Container Styling */
+.container {
+    background: var(--card-bg-color); /* Dark, subtle background */
+    padding: 50px; /* Generous padding */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    width: 100%; /* Responsive width */
+    max-width: 550px; /* Fixed max width */
+    margin: 0 auto 50px auto; /* Centered */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between form steps */
+}
+
+/* Form Step Layout */
+.form-step {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-step.active {
+    display: flex;
+}
+
+/* Form Input Fields */
+input[type="text"],
+select,
+input[type="range"] {
+    width: 100%; /* Consistent width */
+    padding: 14px 18px; /* Comfortable padding */
+    background-color: var(--input-bg-color); /* Darker background */
+    color: var(--text-color);
+    border: 1px solid var(--border-color); /* Subtle border */
+    border-radius: 8px; /* Rounded corners */
+    font-size: 16px;
+    transition: all 0.2s ease;
+    box-sizing: border-box; /* Ensure consistent padding */
+}
+
+/* Range Slider */
+input[type="range"] {
+    height: 5px; /* Thin line */
+    background: var(--border-color);
+    border-radius: 5px;
+    margin-top: 8px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Buttons Container */
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Primary Button Styles */
+button {
+    padding: 12px 20px; /* Balanced padding */
+    border: none;
+    border-radius: 8px;
+    background: var(--secondary-color);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%; /* Ensure button takes full width within container */
+    text-align: center;
+    transition: background 0.3s ease;
+    flex: 1; /* Equal width for buttons */
+}
+
+button:hover{
+    background: var(--tertiary-color);
+}
+
+button:disabled {
+    background: #555;
+    cursor: not-allowed;
+}
+
+/* Responsive Button Alignment */
+.buttons button:first-child {
+    margin-right: 10px;
 }
