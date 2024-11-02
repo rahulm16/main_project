@@ -13,14 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const questionsContainer = document.querySelector('.questions-container');
     const previewContainer = document.querySelector('.preview-container');
+
     function showAlert(message, type = 'success') {
-        // Remove any existing alert
         const existingAlert = document.querySelector('.alert-modal');
         if (existingAlert) {
             existingAlert.remove();
         }
-    
-        // Create alert elements
+        
         const alertModal = document.createElement('div');
         alertModal.className = `alert-modal ${type}`;
         
@@ -39,16 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => alertModal.remove(), 300);
         };
         
-        // Assemble the alert
         alertContent.appendChild(messageDiv);
         alertContent.appendChild(closeButton);
         alertModal.appendChild(alertContent);
         document.body.appendChild(alertModal);
         
-        // Show the alert
         alertModal.style.display = 'block';
         
-        // Set timeout to remove the alert
         setTimeout(() => {
             if (alertModal.parentNode) {
                 alertModal.style.animation = 'slideOut 0.3s ease-out';
@@ -56,27 +52,31 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, 3000);
     }
+
     function showQuestions() {
         questionsContainer.style.display = 'block';
         previewContainer.style.display = 'none';
-        document.body.classList.add('questions-layout'); // Add class here
+        document.body.classList.add('questions-layout');
     }
 
     function showPreview() {
         questionsContainer.style.display = 'none';
         previewContainer.style.display = 'block';
-        document.body.classList.remove('questions-layout'); // Remove class here
+        document.body.classList.remove('questions-layout');
     }
 
-    // Display the current question
     function displayQuestion() {
         const questionTitle = document.getElementById('question-text');
         const optionsList = document.getElementById('options-list');
+        const questionNumber = document.getElementById('question-number'); // Added question number update
+
         optionsList.innerHTML = '';
 
         if (questions.length > 0) {
             const currentQuestion = questions[currentQuestionIndex];
+            
             questionTitle.textContent = `${currentQuestionIndex + 1}. ${currentQuestion.question}`;
+            questionNumber.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`; // Update question number
 
             currentQuestion.options.forEach((option, index) => {
                 const optionItem = document.createElement('li');

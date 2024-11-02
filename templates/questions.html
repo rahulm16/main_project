@@ -19,7 +19,7 @@
         <div class="page-wrapper">
             <div class="questions-container" id="questions-container">
                 <div id="question-box">
-                    <div class="question-number">Question {{ current_index + 1 }} of {{ questions|length }}</div>
+                    <div class="question-number" id="question-number">Question 1 of {{ questions|length }}</div>
                     <h2 id="question-text">{{ questions[current_index].question }}</h2>
                     <ul id="options-list">
                         {% for option in questions[current_index].options %}
