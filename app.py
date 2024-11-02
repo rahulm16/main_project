@@ -92,6 +92,20 @@ def save_data():
 
     return jsonify({'status': 'success', 'message': result}), 200
 
+@app.route('/api/save_user_data', methods=['POST'])
+def save_user_data():
+    user_data = request.json  # Get data from the request
+    
+    # Validate the incoming data (optional)
+    if not isinstance(user_data, dict):
+        return jsonify({'status': 'error', 'message': 'Invalid data format. Expected a dictionary.'}), 400
+
+    # Insert data into MongoDB collection 'user_data'
+    mongo.db.user_data.insert_one(user_data)
+
+    return jsonify({'status': 'success', 'message': 'User data successfully saved.'}), 200
+
+
 def generate_questions(career_preferences):
     """ Generate aptitude questions using Mistral API. """
     messages = [
