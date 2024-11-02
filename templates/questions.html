@@ -6,38 +6,52 @@
     <title>Questions - SavvyAI</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='questions.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
 </head>
 <body class="dark-mode">
+    <script id="user-data" type="application/json">
+        {{ user | tojson }}
+    </script>
+
     {% include 'header.html' %}
 
     <section class="main-content">
-        <div class="questions-container" id="questions-container">
-            <!-- Questions will be dynamically injected here -->
+        <div class="page-wrapper">
+            <div class="questions-container" id="questions-container">
+                <div id="question-box">
+                    <div class="question-number" id="question-number">Question 1 of {{ questions|length }}</div>
+                    <h2 id="question-text">{{ questions[current_index].question }}</h2>
+                    <ul id="options-list">
+                        {% for option in questions[current_index].options %}
+                        <li>
+                            <input type="radio" name="option" id="option{{ loop.index }}" value="{{ option }}">
+                            <label for="option{{ loop.index }}">{{ option }}</label>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="controls">
+                    <button id="previous-btn">Previous</button>
+                    <button id="next-btn">Next</button>
+                    <button id="preview-btn" style="display: none;">Preview</button>
+                </div>
+            </div>
+            <!-- Preview Section -->
+            <div class="preview-container" id="preview-container" style="display: none;">
+                <h2>Preview of Your Test:</h2>
+                <div id="preview-content"></div>
+                <div class="controls">
+                    <button id="edit-btn">Edit</button>
+                    <button id="submit-btn">Submit</button>
+                </div>
+            </div>
         </div>
+    
+        <!-- Hidden element to hold questions data -->
+        <script type="application/json" id="questions-data">{{ questions | tojson }}</script>
     </section>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            fetch('/api/questions')
-                .then(response => response.json())
-                .then(data => {
-                    const questionsContainer = document.getElementById('questions-container');
-                    data.forEach(item => {
-                        const questionElement = document.createElement('div');
-                        questionElement.classList.add('question');
-                        questionElement.innerHTML = `
-                            <h2>${item.question}</h2>
-                            <ul>
-                                ${item.options.map(option => `<li>${option}</li>`).join('')}
-                            </ul>
-                        `;
-                        questionsContainer.appendChild(questionElement);
-                    });
-                })
-                .catch(error => {
-                    console.error('Error fetching questions:', error);
-                });
-        });
-    </script>
+    
+    <script src="../static/header.js"></script>
+    <script src="../static/questions.js"></script>
 </body>
 </html>

@@ -92,6 +92,23 @@ def save_data():
 
     return jsonify({'status': 'success', 'message': result}), 200
 
+@app.route('/api/save_user_data', methods=['POST'])
+def save_user_data():
+    user_data = request.json  # Get data from the request
+    
+    # Validate the incoming data
+    required_fields = ["current_status", "age", "highest_level_of_education", 
+                       "current_field_of_study_or_work", "key_skills", "personality_traits"]
+    missing_fields = [field for field in required_fields if field not in user_data]
+    if missing_fields:
+        return jsonify({'status': 'error', 'message': f'Missing fields: {", ".join(missing_fields)}'}), 400
+
+    # Insert data into MongoDB collection 'user_data'
+    mongo.db.user_data.insert_one(user_data)
+
+    return jsonify({'status': 'success', 'message': 'User data successfully saved.'}), 200
+
+
 def generate_questions(career_preferences):
     """ Generate aptitude questions using Mistral API. """
     messages = [
@@ -134,14 +151,69 @@ def generate_questions(career_preferences):
 
 @app.route('/questions', methods=['GET'])
 def get_questions():
-    questions = mongo.db.questions.find()  # Adjust 'questions' to your collection name
-    questions_list = []
-    for question in questions:
-        questions_list.append({
-            'question': question['question'],
-            'options': question['options']  # Assuming 'options' is a list
-        })
-    return jsonify(questions_list)
+    # Fetch questions from MongoDB
+    questions_data = mongo.db.questions.find()
+    
+    # Convert MongoDB cursor to a list
+    questions = list(questions_data)
+
+    # Format questions as a list of dictionaries
+    formatted_questions = [
+        {
+            "question": q['question'],
+            "options": q['options']
+        }
+        for q in questions
+    ]
+
+    # Initialize current question index in the session if not already set
+    if 'current_index' not in session:
+        session['current_index'] = 0
+
+    # Get current index
+    current_index = session['current_index']
+
+    # Render the questions.html template with questions data and current index
+    return render_template('questions.html', user=session.get('user'), questions=formatted_questions, current_index=current_index)
+
+@app.route('/api/save-answers', methods=['POST'])
+def save_answers():
+    answers = request.json  # Get the answers from the request
+
+    if not isinstance(answers, list):
+        return jsonify({'status': 'error', 'message': 'Invalid data format. Expected a list.'}), 400
+
+    results = []  # To store the results for insertion
+
+    for answer in answers:
+        # Find the corresponding question in the 'questions' collection
+        question_data = mongo.db.questions.find_one({"question": answer['question']})
+
+        if question_data:
+            correct_answer = question_data.get("correct_answer")
+            # Compare the user's answer with the correct answer
+            correct_or_wrong = 'correct' if answer['answered'] == correct_answer else 'wrong'
+
+            # Append the result for this answer
+            results.append({
+                "question": answer['question'],
+                "answered": answer['answered'],
+                "correct_or_wrong": correct_or_wrong,
+            })
+        else:
+            # If the question is not found, we might want to handle this case as well
+            results.append({
+                "question": answer['question'],
+                "answered": answer['answered'],
+                "correct_or_wrong": 'question not found',  # Or handle accordingly
+            })
+
+    # Insert the results into the 'answered' collection
+    mongo.db.answered.insert_many(results)
+
+    return jsonify({'status': 'success', 'message': 'Answers saved successfully.'}), 201
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
