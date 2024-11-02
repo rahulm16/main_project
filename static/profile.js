@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const opennessInput = document.getElementById("openness");
     const meticulousnessInput = document.getElementById("meticulousness");
 
+    // Update display of age/personality values as they are adjusted
     ageInput.addEventListener("input", () => {
         document.getElementById("age-value").textContent = ageInput.value;
     });
@@ -26,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("meticulousness-value").textContent = meticulousnessInput.value;
     });
 
-    // Function to show the current step
+    // Show the current step in the form
     function showStep(step) {
         steps.forEach((s, index) => {
             s.classList.toggle("active", index === step);
@@ -35,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
         nextBtns.forEach(btn => btn.textContent = step === steps.length - 1 ? "Finish" : "Next");
     }
 
+    // Event listeners for the next buttons
     nextBtns.forEach((btn, index) => {
         btn.addEventListener("click", () => {
             if (index === 0) {
@@ -53,41 +55,36 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // Event listeners for the previous buttons
     prevBtns.forEach((btn, index) => {
         btn.addEventListener("click", () => {
-            if (currentStep === 0) {
-                // Do nothing, already on Step 1
-                return;
-            } else if (currentStep === 1) {
-                currentStep = 0; // Go back to Step 1
-            } else if (currentStep === 2) {
-                currentStep = 1; // Go back to Step 2
-            } else if (currentStep === 3) {
-                // If coming from Step 4, check status and go back accordingly
+            if (currentStep === 0) return; // Already on Step 1
+            else if (currentStep === 1) currentStep = 0; // Go back to Step 1
+            else if (currentStep === 2) currentStep = 1; // Go back to Step 2
+            else if (currentStep === 3) {
                 const status = document.querySelector('input[name="status"]:checked');
-                if (status && status.value === "professional") {
-                    currentStep = 2; // Go back to Step 3
-                } else {
-                    currentStep = 1; // Go back to Step 2 directly
-                }
+                currentStep = (status && status.value === "professional") ? 2 : 1;
             }
             showStep(currentStep);
         });
     });
 
+    // Submission of form data
     submitBtn.addEventListener("click", () => {
         const formData = {
-            status: document.querySelector('input[name="status"]:checked')?.value,
-            age: document.getElementById("age").value,
-            education: document.getElementById("education").value,
-            fieldOfStudy: document.getElementById("fieldOfStudy").value,
-            skills: document.getElementById("skills").value,
-            workExperience: currentStep === 2 ? document.getElementById("workExperience").value : "N/A",
-            extroversion: document.getElementById("extroversion").value,
-            openness: document.getElementById("openness").value,
-            meticulousness: document.getElementById("meticulousness").value,
+            current_status: document.querySelector('input[name="status"]:checked')?.value,
+            age: parseInt(document.getElementById("age").value, 10),
+            highest_level_of_education: document.getElementById("education").value,
+            current_field_of_study_or_work: document.getElementById("fieldOfStudy").value,
+            key_skills: document.getElementById("skills").value.split(',').map(skill => skill.trim()),  // Convert skills to an array
+            work_experience: currentStep === 2 ? document.getElementById("workExperience").value : "N/A",
+            personality_traits: {  // Personality traits as an object
+                extroversion: parseInt(document.getElementById("extroversion").value, 10),
+                openness_to_work: parseInt(document.getElementById("openness").value, 10),
+                meticulousness: parseInt(document.getElementById("meticulousness").value, 10),
+            }
         };
-        
+
         // Send the data to the server
         fetch("/api/save_user_data", {
             method: "POST",
@@ -99,8 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {
             console.log('Data saved:', data);
-            // Redirect to the chatbot page on successful submission
-            window.location.href = "/chatbot";
+            window.location.href = "/chatbot";  // Redirect on success
         })
         .catch(error => console.error('Error:', error));
     });

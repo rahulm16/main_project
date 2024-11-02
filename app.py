@@ -4,7 +4,7 @@ from mistralai import Mistral
 from flask_bcrypt import Bcrypt
 import json
 import logging
-#hi
+
 app = Flask(__name__)
 app.secret_key = "your_secret_key"  # Change this to a strong secret key
 app.config["MONGO_URI"] = "mongodb://localhost:27017/aicareer"  # Your MongoDB URI
@@ -96,9 +96,12 @@ def save_data():
 def save_user_data():
     user_data = request.json  # Get data from the request
     
-    # Validate the incoming data (optional)
-    if not isinstance(user_data, dict):
-        return jsonify({'status': 'error', 'message': 'Invalid data format. Expected a dictionary.'}), 400
+    # Validate the incoming data
+    required_fields = ["current_status", "age", "highest_level_of_education", 
+                       "current_field_of_study_or_work", "key_skills", "personality_traits"]
+    missing_fields = [field for field in required_fields if field not in user_data]
+    if missing_fields:
+        return jsonify({'status': 'error', 'message': f'Missing fields: {", ".join(missing_fields)}'}), 400
 
     # Insert data into MongoDB collection 'user_data'
     mongo.db.user_data.insert_one(user_data)
