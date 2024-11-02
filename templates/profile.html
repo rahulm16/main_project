@@ -15,13 +15,82 @@
 
     <section class="main-content">
         <div class="greeting" role="heading" aria-level="2">Hello, <span class="gradient-text">{{ user.fullName if user else 'Guest' }}</span></div>
+        <div class="question" role="heading" aria-level="3">sapna dekna achi bat hai!!</div>
+        <div class="user_info">
+        <div class="container">
+            <form id="multi-step-form">
+                <div class="form-step active" id="step-1">
+                    <h2>Basic Information</h2>
+                    <label>
+                        <input type="radio" name="status" value="student" required>
+                        Student
+                    </label>
+                    <label>
+                        <input type="radio" name="status" value="professional">
+                        Working Professional
+                    </label>
+                    <div>
+                        <label for="age">Age: <span id="age-value">25</span></label>
+                        <input type="range" id="age" min="1" max="100" value="25">
+                    </div>
+                    <div class="buttons">
+                        <button type="button" id="next-btn">Next</button>
+                    </div>
+                </div>
+    
+                <div class="form-step" id="step-2">
+                    <h2>Education and Skills</h2>
+                    <label for="education">Highest Level of Education</label>
+                    <select id="education" required>
+                        <option value="" disabled selected>Select education level</option>
+                        <option value="highschool">High School</option>
+                        <option value="bachelor">Bachelor's Degree</option>
+                        <option value="master">Master's Degree</option>
+                        <option value="phd">Ph.D.</option>
+                    </select>
+                    <label for="fieldOfStudy">Current Field of Study/Work</label>
+                    <input type="text" id="fieldOfStudy" required>
+                    <label for="skills">Key Skills</label>
+                    <input type="text" id="skills" required>
+                    <div class="buttons">
+                        <button type="button" id="prev-btn">Back</button>
+                        <button type="button" id="next-btn">Next</button>
+                    </div>
+                </div>
+    
+                <div class="form-step" id="step-3">
+                    <h2>Work Experience</h2>
+                    <label for="workExperience">Work Experience</label>
+                    <input type="text" id="workExperience">
+                    <div class="buttons">
+                        <button type="button" id="prev-btn">Back</button>
+                        <button type="button" id="next-btn">Next</button>
+                    </div>
+                </div>
+    
+                <div class="form-step" id="step-4">
+                    <h2>Personality Traits</h2>
+                    <label for="extroversion">Extroversion: <span id="extroversion-value">50</span></label>
+                    <input type="range" id="extroversion" min="0" max="100" value="50">
+                    <label for="openness">Openness to Experience: <span id="openness-value">50</span></label>
+                    <input type="range" id="openness" min="0" max="100" value="50">
+                    <label for="meticulousness">Meticulousness: <span id="meticulousness-value">50</span></label>
+                    <input type="range" id="meticulousness" min="0" max="100" value="50">
+                    <div class="buttons">
+                        <button type="button" id="prev-btn">Back</button>
+                        <button type="submit" id="submit-btn">Finish</button>
+                    </div>
+                </div>
+            </form>
         <div class="question" role="heading" aria-level="3">Tell us more about yourself!!</div>
 
         <div class="submit-section">
             <button id="submit-button" onclick="window.location.href='/chatbot'" class="btn">Submit</button>
         </div>
+    </div>
     </section>
 
     <script src="../static/header.js"></script>
+    <script src="../static/profile.js"></script>
 </body>
 </html>

@@ -42,70 +42,6 @@ body, html {
     flex-direction: column;
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    height: 40px;
-    background-color: var(--primary-color);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.header-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-button.mode-toggle {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-button.mode-toggle:hover {
-    background-color: rgba(var(--secondary-color-rgb), 0.1);
-}
-
-.light-mode-emoji, .dark-mode-emoji {
-    position: absolute;
-    transition: opacity var(--transition-default), transform var(--transition-default);
-}
-
-body:not(.light-mode) .light-mode-emoji,
-body.light-mode .dark-mode-emoji {
-    opacity: 1;
-    transform: scale(1);
-}
-
-body.light-mode .light-mode-emoji,
-body:not(.light-mode) .dark-mode-emoji {
-    opacity: 0;
-    transform: scale(0.5);
-}
-
-.user-logo {
-    background-color: var(--tertiary-color);
-    color: var(--bg-color);
-    font-size: 24px;
-    width: 40px;
-    height: 40px;
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background-color var(--transition-default);
-}
 
 .main-content {
     flex-grow: 1;
@@ -235,4 +171,75 @@ body:not(.light-mode) .dark-mode-emoji {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color var(--transition-default);
+}
+
+.container {
+    background: #ffffff; /* White background for the container */
+    padding: 30px; /* Slightly increased padding */
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Deeper shadow for more depth */
+    width: 450px; /* Adjusted width for a slightly larger container */
+  }
+  
+  .form-step {
+    display: none; /* Hidden by default */
+  }
+  
+  .form-step.active {
+    display: block; /* Show active step */
+  }
+  
+  h2 {
+    margin-bottom: 20px; /* Increased margin for headings */
+    color: #333; /* Darker color for better readability */
+  }
+  
+  label {
+    margin-top: 20px; /* Space above labels */
+    color: #555; /* Lighter color for labels */
+  }
+  
+  input[type="text"],
+  input[type="range"],
+  select {
+    width: 100%; /* Full width for inputs */
+    padding: 12px; /* Increased padding for comfort */
+    margin-top: 5px; /* Space above inputs */
+    border: 1px solid #ccc; /* Light border for inputs */
+    border-radius: 6px; /* Slightly rounded corners */
+    font-size: 16px; /* Larger font size for better readability */
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px; /* Increased margin for buttons */
+  }
+  
+  button {
+    padding: 10px 20px; /* Padding for buttons */
+    border: none;
+    border-radius: 6px; /* Rounded corners for buttons */
+    background-color: #4CAF50; /* Green background for buttons */
+    color: white; /* White text color */
+    font-size: 16px; /* Consistent font size */
+    cursor: pointer; /* Pointer cursor for buttons */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  input[type="range"] {
+    width: 100%; /* Full width for range inputs */
+  }
+
+.user_info{
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0; /* Remove default margin */
 }
