@@ -13,7 +13,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const questionsContainer = document.querySelector('.questions-container');
     const previewContainer = document.querySelector('.preview-container');
-
+    function showAlert(message, type = 'success') {
+        // Remove any existing alert
+        const existingAlert = document.querySelector('.alert-modal');
+        if (existingAlert) {
+            existingAlert.remove();
+        }
+    
+        // Create alert elements
+        const alertModal = document.createElement('div');
+        alertModal.className = `alert-modal ${type}`;
+        
+        const alertContent = document.createElement('div');
+        alertContent.className = 'alert-modal-content';
+        
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'alert-modal-message';
+        messageDiv.textContent = message;
+        
+        const closeButton = document.createElement('button');
+        closeButton.className = 'alert-modal-close';
+        closeButton.innerHTML = '×';
+        closeButton.onclick = () => {
+            alertModal.style.animation = 'slideOut 0.3s ease-out';
+            setTimeout(() => alertModal.remove(), 300);
+        };
+        
+        // Assemble the alert
+        alertContent.appendChild(messageDiv);
+        alertContent.appendChild(closeButton);
+        alertModal.appendChild(alertContent);
+        document.body.appendChild(alertModal);
+        
+        // Show the alert
+        alertModal.style.display = 'block';
+        
+        // Set timeout to remove the alert
+        setTimeout(() => {
+            if (alertModal.parentNode) {
+                alertModal.style.animation = 'slideOut 0.3s ease-out';
+                setTimeout(() => alertModal.remove(), 300);
+            }
+        }, 3000);
+    }
     function showQuestions() {
         questionsContainer.style.display = 'block';
         previewContainer.style.display = 'none';
@@ -85,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('next-btn').addEventListener('click', () => {
         if (!isOptionSelected()) {
-            alert("Please select an option before proceeding to the next question.");
+            showAlert("Please select an option before proceeding to the next question.", "error");
             return;
         }
 

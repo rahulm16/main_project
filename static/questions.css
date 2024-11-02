@@ -31,6 +31,7 @@ body.light-mode {
 /* Default styles for body and html */
 body, html {
     font-family: 'Poppins', Arial, sans-serif;
+    height: 100%;
     background: var(--bg-color);
     color: var(--text-color);
     margin: 0;
@@ -204,78 +205,125 @@ body:not(.light-mode) .dark-mode-emoji {
     padding: 30px 0; /* Add top and bottom padding */
 }
 
+/* Update the questions-container styling */
 .questions-container {
     background-color: var(--card-bg-color);
-    border-radius: 8px;
-    padding: 30px;
-    min-width: 600px;
-    max-width: 900px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    margin: 20px auto;
-    color: var(--text-color);
-
+    border-radius: 12px;
+    padding: 40px;
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Update question title styling */
 #question-box h2 {
-    font-size: 35px; /* Increased font size */
-    color: var(--secondary-color);
-    margin-bottom: 30px;
-    margin-top: 15px;
-    text-align: center;
-}
-
-#options-list {
-    list-style-type: none;
-    padding: 0;
-    margin-bottom: 20px;
+    font-size: 24px;
+    color: var(--text-color);
+    margin-bottom: 24px;
     font-weight: 600;
 }
 
-#options-list li {
-    background-color: var(--input-bg-color);
+/* Question number styling */
+.question-number {
+    font-size: 28px;
     color: var(--text-color);
+    margin-bottom: 16px;
+    font-weight: bold;
+}
+
+/* Update options list styling */
+#options-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 24px 0;
+}
+
+/* Individual option styling */
+#options-list li {
+    background-color: var(--card-bg-color);
     border: 1px solid var(--border-color);
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    border-radius: 8px;
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
     display: flex;
     align-items: center;
-    cursor: pointer;
-    transition: background-color 0.3s;
 }
 
-/* Hover state with light blue background */
 #options-list li:hover {
-    background-color: rgba(0, 4, 7, 0.1); /* Light blue hover effect */
-    border: 1px solid #ccc; /* Light border for unselected items */
+    border-color: var(--secondary-color);
 }
 
-/* Selected option style */
 #options-list li.selected {
-    border: 2px solid steelblue; /* Steel blue border for selected option */
-    background-color: rgba(70, 130, 180, 0.15); /* Slightly deeper blue background */
+    border-color: var(--secondary-color);
+    background-color: rgba(var(--secondary-color-rgb), 0.1);
 }
 
-input[type="radio"] {
-    /* Set the default color using CSS variable */
-    accent-color: var(--tertiary-color); /* Change to use your CSS variable */
+/* Hide radio buttons visually but keep them accessible */
+#options-list input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
-
-label {
-    font-size: 1.3rem;
-    margin-left: 10px;
+/* Option label styling */
+#options-list label {
+    font-size: 16px;
+    color: var(--text-color);
     width: 100%;
-    color: inherit; /* Inherit color from #options-list li */
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
 }
 
+/* Controls styling */
 .controls {
     display: flex;
     justify-content: space-between;
-    gap: 10px; /* Space between buttons */
-    margin-top: 30px; 
+    margin-top: 32px;
+    padding: 0 8px;
 }
 
+/* Button styling */
+.controls button {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    min-width: 100px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.controls button:hover:not(:disabled) {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    #options-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .questions-container {
+        margin: 20px;
+        padding: 24px;
+    }
+}
 
 .preview-container {
     background-color: var(--card-bg-color);
@@ -341,5 +389,81 @@ h2 {
     button {
         padding: 8px 12px;
         font-size: 0.9rem;
+    }
+}
+
+/* Add these styles to your existing CSS */
+
+.alert-modal {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    max-width: 400px;
+    background-color: var(--card-bg-color);
+    border-radius: 8px;
+    padding: 16px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    animation: slideIn 0.3s ease-out;
+    border-left: 4px solid;
+}
+
+.alert-modal.success {
+    border-color: #4CAF50;
+}
+
+.alert-modal.error {
+    border-color: var(--tertiary-color);
+}
+
+.alert-modal-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.alert-modal-message {
+    color: var(--text-color);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.alert-modal-close {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 4px;
+    font-size: 18px;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.alert-modal-close:hover {
+    opacity: 1;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
     }
 }
