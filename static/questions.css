@@ -45,20 +45,6 @@ html.questions-layout {
     flex-direction: column;
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    height: 40px;
-    background-color: var(--primary-color);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.header-buttons {
-    display: flex;
-    gap: 10px;
-}
 
 button.mode-toggle {
     background: none;
