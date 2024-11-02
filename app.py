@@ -1,9 +1,10 @@
-from flask import Flask, redirect, render_template, request, jsonify, session
+from flask import Flask, redirect, render_template, request, jsonify, session, url_for
 from flask_pymongo import PyMongo
 from mistralai import Mistral
 from flask_bcrypt import Bcrypt
 import json
 import logging
+import os
 
 app = Flask(__name__)
 app.secret_key = "your_secret_key"  # Change this to a strong secret key
@@ -33,7 +34,7 @@ def profile():
 
 @app.route('/choices')
 def choices():
-    return render_template('choices.html', user=session.get('user')) 
+    return render_template('choices.html', user=session.get('user'))
 
 @app.route('/api/signup', methods=['POST'])
 def signup():
@@ -161,7 +162,8 @@ def get_questions():
     formatted_questions = [
         {
             "question": q['question'],
-            "options": q['options']
+            "options": q['options'],
+            "correct_answer": q.get("correct_answer")  # Include correct answer if needed
         }
         for q in questions
     ]
@@ -186,34 +188,212 @@ def save_answers():
     results = []  # To store the results for insertion
 
     for answer in answers:
-        # Find the corresponding question in the 'questions' collection
         question_data = mongo.db.questions.find_one({"question": answer['question']})
 
         if question_data:
             correct_answer = question_data.get("correct_answer")
-            # Compare the user's answer with the correct answer
             correct_or_wrong = 'correct' if answer['answered'] == correct_answer else 'wrong'
 
-            # Append the result for this answer
             results.append({
                 "question": answer['question'],
                 "answered": answer['answered'],
                 "correct_or_wrong": correct_or_wrong,
             })
         else:
-            # If the question is not found, we might want to handle this case as well
             results.append({
                 "question": answer['question'],
                 "answered": answer['answered'],
-                "correct_or_wrong": 'question not found',  # Or handle accordingly
+                "correct_or_wrong": 'question not found',
             })
 
-    # Insert the results into the 'answered' collection
     mongo.db.answered.insert_many(results)
+    
+    # Return status with redirect URL
+    return jsonify({'status': 'success', 'message': 'Answers saved.', 'url': url_for('results')}), 200
 
-    return jsonify({'status': 'success', 'message': 'Answers saved successfully.'}), 201
+@app.route('/results', methods=['GET'])
+def results():
+    # Fetch answered questions and their details from MongoDB
+    answered_data = list(mongo.db.answered.find())
+    
+    # Get the original questions with correct answers
+    questions_data = {}
+    for answer in answered_data:
+        question = mongo.db.questions.find_one({"question": answer['question']})
+        if question:
+            questions_data[answer['question']] = {
+                'correct_answer': question['correct_answer'],
+                'options': question['options']
+            }
 
+    # Calculate statistics
+    total_questions = len(answered_data)
+    correct_answers = sum(1 for answer in answered_data if answer['correct_or_wrong'] == 'correct')
+    wrong_answers = total_questions - correct_answers
+    score_percentage = (correct_answers / total_questions) * 100 if total_questions > 0 else 0
 
+    # Create detailed results list
+    detailed_results = []
+    for answer in answered_data:
+        question_info = questions_data.get(answer['question'])
+        if question_info:
+            detailed_results.append({
+                'question': answer['question'],
+                'selected_answer': answer['answered'],
+                'correct_answer': question_info['correct_answer'],
+                'options': question_info['options'],
+                'is_correct': answer['correct_or_wrong'] == 'correct'
+            })
+     # Prepare the results data for MongoDB
+    results_data = {
+        "total_questions": total_questions,
+        "correct_answers": correct_answers,
+        "wrong_answers": wrong_answers,
+        "score_percentage": score_percentage
+    }
+
+    # Save results to the 'aptitude_result' collection
+    mongo.db.aptitude_result.insert_one(results_data)  # Add this line to save to aptitude_result
+    return render_template(
+        'results.html',
+        user=session.get('user'),
+        total_questions=total_questions,
+        correct_answers=correct_answers,
+        wrong_answers=wrong_answers,
+        score_percentage=score_percentage,
+        detailed_results=detailed_results
+    )
+
+@app.route('/fetch_suggestions', methods=['GET'])
+def fetch_suggestions():
+    # Fetch 15 documents from the 'answered' collection
+    documents = mongo.db.answered.find().limit(15)
+    documents2 = list(mongo.db.user_data.find().limit(1))
+    documents3 = list(mongo.db.user_responses.find().limit(1))
+
+    # Check for user_data
+    if not documents2:
+        logging.warning("No user info found in the 'user_data' collection.")
+        return jsonify({'success': False, 'message': 'No user info available.'}), 404
+
+    doc1 = documents2[0]  # Get the first document from user_data
+
+    # Check for user_responses
+    if not documents3:
+        logging.warning("No user responses found in the 'user_responses' collection.")
+        return jsonify({'success': False, 'message': 'No user responses available.'}), 404
+
+    doc2 = documents3[0]  # Get the first document from user_responses
+
+    # Prepare data for Mistral API
+    questions = [{"question": doc["question"], "answer": doc["answered"]} for doc in documents if "question" in doc and "answered" in doc]
+
+    user_data = {
+        "current status": doc1["current_status"],
+        "age": doc1["age"],
+        "Education pursuing": doc1["highest_level_of_education"],
+        "Current field of study or work": doc1["current_field_of_study_or_work"],
+        "Key skills": doc1["key_skills"],
+        "Work experience": doc1["work_experience"],
+        "Extroversion personality trait": doc1["personality_traits"]["extroversion"],
+        "Openness to work personality trait": doc1["personality_traits"]["openness_to_work"],
+        "Meticulousness personality trait": doc1["personality_traits"]["meticulousness"]
+    }
+
+    user_responses = {
+        "First priority": doc2["careerPreferences"]["first"],
+        "Second priority": doc2["careerPreferences"]["second"],
+        "Third priority": doc2["careerPreferences"]["third"]
+    }
+
+    if not questions:
+        logging.warning("No questions found in the 'answered' collection.")
+        return jsonify({'success': False, 'message': 'No questions available for suggestions.'}), 404
+
+    # Prepare the content for the API request
+    content = (f"This is the brief information about user {json.dumps(user_data)} "
+               f"These are the user preferences in priority order {json.dumps(user_responses)} "
+               f"Questions and Answers: {json.dumps(questions)} "
+               f"Based on the user details, user preferences and questions and answers given by the user, "
+               f"suggest 5 career paths along with 5 roadmap points for each in JSON format. "
+               f"Also provide 1 Udemy search query related to each career path (just the query, not the full URL). "
+               f"Also provide 1 YouTube search query related to each career path (just the query, not the full URL). "
+               f"Also provide 1 Coursera search query related to each career path (just the query, not the full URL). "
+               f"Also provide 1 UpGrad search query related to each career path (just the query, not the full URL). "
+               f"Please format the response as a JSON array like this: "
+               f"[{{\"career\": \"Career Name\", \"roadmap\": [\"Step 1\", \"Step 2\", \"Step 3\", \"Step 4\", \"Step 5\"], "
+               f"\"udemy_query\": \"Search query for Udemy\", "
+               f"\"youtube_query\": \"Search query for YouTube\", "
+               f"\"coursera_query\": \"Search query for Coursera\", "
+               f"\"upgrad_query\": \"Search query for UpGrad\"}}].")
+
+    # Write the content to a text file
+    request_file_path = 'mistral_request_content.txt'  # Specify your file path
+    with open(request_file_path, 'w') as file:
+        file.write(content)  # Write the content string to the file
+
+    logging.info(f"Written Mistral request content to {request_file_path}.")
+
+    # Call Mistral API to get career suggestions in JSON format
+    try:
+        chat_response = client.chat.complete(
+            model=model,
+            messages=[{
+                "role": "user",
+                "content": content  # Use the content prepared above
+            }]
+        )
+
+        # Extract the response content
+        raw_response = chat_response.choices[0].message.content
+        logging.debug(f"Raw API response: {raw_response}")
+
+        # Extracting JSON data from the response
+        lines = raw_response.splitlines()
+        if lines[0] == "```" and lines[-1] == "```":
+            json_data = "\n".join(lines[1:-1])  # Extract between the second and last line
+        elif lines[0] == "```json" and lines[-1] == "```":
+            json_data = "\n".join(lines[1:-1])  # Extract between the second and last line
+        else:
+            json_data = raw_response.strip()
+
+        # Parse JSON data
+        suggestions = json.loads(json_data)
+
+        # Check if the suggestions are in the expected format
+        if not isinstance(suggestions, list):
+            logging.error("Invalid format for suggestions; expected a list.")
+            return jsonify({'success': False, 'message': 'Invalid format in API response'}), 500
+
+        # Construct full URLs and clean up the suggestions
+        for suggestion in suggestions:
+            suggestion['youtube_link'] = f"https://www.youtube.com/results?search_query={suggestion['youtube_query']}"
+            suggestion['udemy_link'] = f"https://www.udemy.com/courses/search/?q={suggestion['udemy_query']}"
+            suggestion['coursera_link'] = f"https://www.coursera.org/courses?query={suggestion['coursera_query']}"
+            suggestion['upgrad_link'] = f"https://www.upgrad.com/search/?q={suggestion['upgrad_query']}"
+            
+
+        # Save to MongoDB
+        mongo.db.career_suggestions.insert_many(suggestions)
+
+        logging.info(f"Inserted {len(suggestions)} suggestions into MongoDB.")
+
+        # Return a redirect response
+        return redirect(url_for('show_suggestions'))
+
+    except json.JSONDecodeError as e:
+        logging.error(f"Error decoding JSON response: {e}")
+        return jsonify({'success': False, 'message': 'Invalid JSON in API response'}), 500
+    except Exception as e:
+        logging.error(f"Error while fetching suggestions: {e}")
+        return jsonify({'success': False, 'message': 'Failed to fetch suggestions'}), 500
+
+@app.route('/suggestions', methods=['GET'])
+def show_suggestions():
+    # Retrieve suggestions from MongoDB
+    suggestions = mongo.db.career_suggestions.find()
+    suggestions_list = list(suggestions)  # Convert cursor to list
+    return render_template('suggestions.html', suggestions=suggestions_list)
 
 if __name__ == "__main__":
     app.run(debug=True)
