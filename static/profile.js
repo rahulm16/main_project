@@ -99,7 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {
             console.log('Data saved:', data);
-            alert(data.message);
+            // Redirect to the chatbot page on successful submission
+            window.location.href = "/chatbot";
         })
         .catch(error => console.error('Error:', error));
     });
