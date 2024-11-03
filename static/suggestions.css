@@ -96,7 +96,8 @@ body {
 }
 
 .roadmap-list li:before {
-    content: '→';
+    content: '➤';
+    font-size: 12px;
     position: absolute;
     left: 0;
     color: var(--tertiary-color);
@@ -129,7 +130,7 @@ body {
     width: 90%;
     max-width: 540px;
     border-radius: 20px;
-    padding: 0;
+    padding: 8px;
     position: relative;
     transform: translateY(-20px);
     transition: transform 0.3s ease;
@@ -255,4 +256,22 @@ body {
     .course-grid {
         grid-template-columns: 1fr;
     }
+}
+
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 1%;
+    right: 0;
+    height: 4px;
+    width: 98%;
+    background: linear-gradient(90deg, 
+        var(--secondary-color) 0%, 
+        var(--tertiary-color) 50%, 
+        var(--secondary-color) 100%);
+    background-size: 200% 100%;
+    animation: gradientSlide 3s linear infinite;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
