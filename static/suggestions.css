@@ -6,6 +6,7 @@
     --text-color: #eaeaea;
     --bg-color: linear-gradient(135deg, #181818 0%, #333 100%);
     --card-bg-color: #303134;
+    --course-bg-color: #555555;
     --autofill-bg: #3c4043;
     --input-bg-color: #333;
     --border-color: #555555;
@@ -22,6 +23,7 @@ body.light-mode {
     --card-bg-color: #ffffff;
     --autofill-bg: #eaeaea;
     --input-bg-color: #f1f3f4;
+    --course-bg-color: #dadce0;
     --border-color: #dadce0;
     --secondary-color-rgb: 26, 115, 232;
 }
@@ -31,7 +33,6 @@ body {
     background: var(--bg-color);
     color: var(--text-color);
     margin: 0;
-    padding: 20px;
 }
 
 .container {
@@ -101,7 +102,7 @@ body {
     color: var(--tertiary-color);
 }
 
-/* Modal Styles */
+/* Modal base */
 .modal {
     display: none;
     position: fixed;
@@ -113,6 +114,8 @@ body {
     z-index: 1000;
     opacity: 0;
     transition: opacity 0.3s ease;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal.active {
@@ -120,77 +123,127 @@ body {
     opacity: 1;
 }
 
+/* Modal content container */
 .modal-content {
     background: var(--card-bg-color);
     width: 90%;
-    max-width: 600px;
-    margin: auto;
-    border-radius: 15px;
+    max-width: 540px;
+    border-radius: 20px;
+    padding: 0;
     position: relative;
-    transform: translateY(-50px);
+    transform: translateY(-20px);
     transition: transform 0.3s ease;
-    padding: 30px;
+    align-items: center;
 }
 
 .modal.active .modal-content {
     transform: translateY(0);
 }
 
-.course-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin-top: 20px;
+/* Modal header and title */
+.modal-content h2 {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    padding: 24px 32px;
+    margin: 0;
+    border-bottom: 1px solid var(--border-color);
 }
 
-.course-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.course-item {
-    text-align: center;
-    border-radius: 10px; /* Optional: Add rounded corners */
-    overflow: hidden; /* Ensures the image stays within bounds */
-}
-
-.course-image {
-    width: 100%; /* Makes the image responsive */
-    max-height: 15px; /* Set a maximum height for the image */
-    height: auto; /* Maintains aspect ratio */
-    object-fit: cover; /* Ensures the image covers the container without distortion */
-}
-
-.course-link {
-    display: block; /* Makes the entire area clickable */
-    padding: 10px; /* Optional: Add some padding */
-    text-decoration: none; /* Removes underline from links */
-    color: inherit; /* Inherits color from parent */
-}
-
-h3 {
-    margin: 10px 0; /* Adds margin above and below the heading */
-    padding-bottom: 5px; /* Adds space below the title */
-    border-bottom: 1px solid var(--border-color); /* Adds border below title */
-    color: var(--text-color); /* Adjust text color if necessary */
-}
-
+/* Close button */
 .close-modal {
     position: absolute;
-    right: 20px;
-    top: 20px;
+    right: 24px;
+    top: 24px;
     background: none;
     border: none;
     color: var(--text-color);
     font-size: 24px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
     cursor: pointer;
-    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+    padding: 0;
+    line-height: 1;
 }
 
 .close-modal:hover {
-    color: var(--tertiary-color);
+    background-color: var(--border-color);
+}
+
+/* Course grid layout */
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    padding: 32px;
+    justify-items: center;  /* Centers items horizontally */
+    align-items: center;    /* Centers items vertically */
+}
+
+/* Course items */
+.course-item {
+    background: var(--course-bg-color);
+    border-radius: 12px;
+    overflow: hidden;
+    width: 200px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.course-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Course links */
+.course-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+    text-decoration: none;
+    color: var(--text-color);
+    gap: 16px;
+}
+
+/* Course images */
+.course-link img {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    object-fit: contain;
+}
+
+/* Course titles */
+.course-link h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--secondary-color);
+    border: none;
+    padding: 0;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+    .course-grid {
+        grid-template-columns: 1fr;
+        padding: 24px;
+        gap: 16px;
+    }
+    
+    .modal-content h2 {
+        font-size: 1.25rem;
+        padding: 20px 24px;
+    }
+    
+    .close-modal {
+        right: 16px;
+        top: 16px;
+    }
 }
 
 @keyframes gradientSlide {
