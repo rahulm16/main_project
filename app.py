@@ -327,12 +327,12 @@ def fetch_suggestions():
                f"\"coursera_query\": \"Search query for Coursera\", "
                f"\"upgrad_query\": \"Search query for UpGrad\"}}].")
 
-    # Write the content to a text file
-    request_file_path = 'mistral_request_content.txt'  # Specify your file path
-    with open(request_file_path, 'w') as file:
-        file.write(content)  # Write the content string to the file
+    # # Write the content to a text file
+    # request_file_path = 'mistral_request_content.txt'  # Specify your file path
+    # with open(request_file_path, 'w') as file:
+    #     file.write(content)  # Write the content string to the file
 
-    logging.info(f"Written Mistral request content to {request_file_path}.")
+    # logging.info(f"Written Mistral request content to {request_file_path}.")
 
     # Call Mistral API to get career suggestions in JSON format
     try:
@@ -393,7 +393,7 @@ def show_suggestions():
     # Retrieve suggestions from MongoDB
     suggestions = mongo.db.career_suggestions.find()
     suggestions_list = list(suggestions)  # Convert cursor to list
-    return render_template('suggestions.html', suggestions=suggestions_list)
+    return render_template('suggestions.html', suggestions=suggestions_list, user=session.get('user'))
 
 if __name__ == "__main__":
     app.run(debug=True)

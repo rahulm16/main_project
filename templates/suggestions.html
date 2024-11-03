@@ -4,73 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Career Suggestions</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        h1 {
-            color: #343a40;
-            font-family: 'Arial', sans-serif;
-        }
-        .table {
-            background-color: #ffffff;
-            border-radius: 0.5rem;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        }
-        th {
-            background-color: #007bff;
-            color: white;
-            text-align: center;
-            font-size: 1.1em;
-        }
-        td {
-            text-align: center;
-        }
-        td.roadmap {
-            text-align: left;
-        }
-        .btn {
-            margin-top: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='suggestions.css') }}">
 </head>
 <body>
-    <div class="container mt-5">
+    <script id="user-data" type="application/json">
+        {{ user | tojson }}
+    </script>
+    {% include 'header.html' %}
+    <div class="container">
         <h1>Explore Your Career Options</h1>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">🎓 Career Path</th>
-                    <th scope="col">📋 Roadmap Steps</th>
-                    <th scope="col">📚 Recommended Courses</th>
-                    <th scope="col">🎥 YouTube Learning</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for suggestion in suggestions %}
-                    <tr>
-                        <td>{{ suggestion.career }}</td>
-                        <td class="roadmap">
-                            <ul>
-                                {% for step in suggestion.roadmap %}
-                                    <li>{{ step }}</li>
-                                {% endfor %}
-                            </ul>
-                        </td>
-                        <td>
-                            <a href="{{ suggestion.udemy_link }}" target="_blank">Udemy Course</a><br>
-                            <a href="{{ suggestion.coursera_link }}" target="_blank">Coursera Course</a><br>
-                            <a href="{{ suggestion.upgrad_link }}" target="_blank">UpGrad Course</a>
-                        </td>
-                        <td>
-                            <a href="{{ suggestion.youtube_link }}" target="_blank">Watch Now</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <a href="/" class="btn btn-primary">🔙 Go Back</a>
+        <div class="career-grid">
+            {% for suggestion in suggestions %}
+            <div class="career-card" onclick="openModal('{{ loop.index }}')">
+                <h2 class="career-title">{{ suggestion.career }}</h2>
+                <ul class="roadmap-list">
+                    {% for step in suggestion.roadmap %}
+                    <li>{{ step }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div id="modal-{{ loop.index }}" class="modal">
+                <div class="modal-content">
+                    <button class="close-modal" onclick="closeModal('{{ loop.index }}')">&times;</button>
+                    <h2>Learning Resources for {{ suggestion.career }}</h2>
+                    <div class="course-grid">
+                        <div class="course-item">
+                            <a href="{{ suggestion.udemy_link }}" class="course-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/udemy.png') }}">
+                                <h3>Udemy Course</h3>
+                            </a>
+                        </div>
+                        <div class="course-item">
+                            <a href="{{ suggestion.coursera_link }}" class="course-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/coursera.png') }}">
+                                <h3>Coursera Course</h3>
+                            </a>
+                        </div>
+                        <div class="course-item">
+                            <a href="{{ suggestion.upgrad_link }}" class="course-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/upgrad.png') }}">
+                                <h3>UpGrad Course</h3>
+                            </a>
+                        </div>
+                        <div class="course-item">
+                            <a href="{{ suggestion.youtube_link }}" class="course-link" target="_blank">
+                                <img src="{{ url_for('static', filename='images/youtube.png') }}">
+                                <h3>YouTube Learning</h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
+    <script src="{{ url_for('static', filename='header.js') }}"></script>
+    <script src="{{ url_for('static', filename='suggestions.js') }}"></script>
 </body>
 </html>
