@@ -81,21 +81,6 @@ body:not(.light-mode) .dark-mode-emoji {
     transform: scale(0.5);
 }
 
-.user-logo {
-    background-color: var(--tertiary-color);
-    color: var(--bg-color);
-    font-size: 24px;
-    width: 40px;
-    height: 40px;
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background-color var(--transition-default);
-}
-
 #submission-modal {
     position: fixed;
     top: 0;
@@ -151,52 +136,6 @@ body:not(.light-mode) .dark-mode-emoji {
     font-weight: bold;
     font-family: "Monaco", "Courier New", monospace;
     color: var(--tertiary-color);
-}
-
-/* Profile Styles */
-.profile-container {
-    position: relative;
-    display: block;
-}
-
-.profile-icon {
-    width: 40px;
-    height: 40px;
-    background-color: var(--tertiary-color);
-    color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 24px;
-}
-
-.profile-modal {
-    color: var(--text-color);
-    background: var(--bg-color);
-    width: 200px;
-    height: 120px;
-    border-radius: 8px;
-    border: 2px solid var(--border-color);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    position: absolute;
-    text-align: center;
-    top: 55px;
-    right: 30px;
-    z-index: 1000;
-    display: none;
-}
-
-.logout-btn {
-    padding: 8px 16px;
-    background-color: var(--tertiary-color);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color var(--transition-default);
 }
 
 /* Container Styles */
@@ -528,7 +467,7 @@ body.light-mode .preview-container {
 #preview-content p:nth-child(5) { animation-delay: 0.5s; }
 
 /* Button styles */
-button {
+.buttons {
     background-color: var(--secondary-color);
     color: var(--text-color);
     font-family: 'Poppins', Arial, sans-serif;

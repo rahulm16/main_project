@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - SavvyAI</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/profile.css') }}">
 </head>
 <body class="dark-mode">
     {% include 'header.html' %}
@@ -35,7 +34,7 @@
                         <input type="range" id="age" min="18" max="100" value="20">
                     </div>
                     <div class="buttons">
-                        <button type="button" id="next-btn">Next</button>
+                        <button type="button" class="next-btn" id="next-btn">Next</button>
                     </div>
                 </div>
     
@@ -54,8 +53,8 @@
                     <label for="skills">Key Skills</label>
                     <input type="text" id="skills" required>
                     <div class="buttons">
-                        <button type="button" id="prev-btn">Back</button>
-                        <button type="button" id="next-btn">Next</button>
+                        <button type="button" class="prev-btn" id="prev-btn">Back</button>
+                        <button type="button" class="next-btn" id="next-btn">Next</button>
                     </div>
                 </div>
     
@@ -64,8 +63,8 @@
                     <label for="workExperience">Work Experience</label>
                     <input type="text" id="workExperience">
                     <div class="buttons">
-                        <button type="button" id="prev-btn">Back</button>
-                        <button type="button" id="next-btn">Next</button>
+                        <button type="button" class="prev-btn" id="prev-btn">Back</button>
+                        <button type="button" class="next-btn" id="next-btn">Next</button>
                     </div>
                 </div>
     
@@ -78,8 +77,8 @@
                     <label for="meticulousness">Meticulousness: <span id="meticulousness-value">50</span></label>
                     <input type="range" id="meticulousness" min="0" max="100" value="50">
                     <div class="buttons">
-                        <button type="button" id="prev-btn">Back</button>
-                        <button type="submit" id="submit-btn">Finish</button>
+                        <button type="button" class="prev-btn" id="prev-btn">Back</button>
+                        <button type="submit" class="submit-btn" id="submit-btn">Finish</button>
                     </div>
                 </div>
             </form>
@@ -87,7 +86,7 @@
     </div>
     </section>
 
-    <script src="../static/header.js"></script>
-    <script src="../static/profile.js"></script>
+    <script src="../static/scripts/header.js"></script>
+    <script src="../static/scripts/profile.js"></script>
 </body>
 </html>

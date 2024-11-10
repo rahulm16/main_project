@@ -135,6 +135,7 @@ body {
     transform: translateY(-20px);
     transition: transform 0.3s ease;
     align-items: center;
+    overflow: hidden;
 }
 
 .modal.active .modal-content {
@@ -262,10 +263,10 @@ body {
     content: '';
     position: absolute;
     top: 0;
-    left: 1%;
+    left: 0;
     right: 0;
     height: 4px;
-    width: 98%;
+    width: 100%;
     background: linear-gradient(90deg, 
         var(--secondary-color) 0%, 
         var(--tertiary-color) 50%, 
@@ -275,3 +276,4 @@ body {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
+

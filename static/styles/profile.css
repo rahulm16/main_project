@@ -124,54 +124,6 @@ body, html {
     color: var(--tertiary-color);
 }
 
-/* Profile Container */
-.profile-container {
-    position: relative;
-    display: block;
-}
-
-/* Profile Icon */
-.profile-icon {
-    width: 40px;
-    height: 40px;
-    background-color: var(--tertiary-color);
-    color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 24px;
-}
-
-/* Profile Modal */
-.profile-modal {
-    color: var(--text-color);
-    background: var(--bg-color);
-    width: 200px;
-    height: 120px;
-    border-radius: 8px;
-    border: 2px solid var(--border-color);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    position: absolute;
-    text-align: center;
-    top: 55px; /* Adjust this according to your header height */
-    right: 30px; /* Adjust to match the header's alignment */
-    z-index: 1000;
-    display: none; /* Initially hidden */
-}
-
-.logout-btn {
-    padding: 8px 16px;
-    background-color: var(--tertiary-color);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color var(--transition-default);
-}
-
 /* Container Styling */
 .container {
     background: var(--card-bg-color); /* Dark, subtle background */
@@ -184,6 +136,7 @@ body, html {
     display: flex;
     position: relative;
     flex-direction: column;
+    overflow: hidden;
     gap: 20px; /* Space between form steps */
 }
 
@@ -192,10 +145,10 @@ body, html {
     content: '';
     position: absolute;
     top: 0;
-    left: 1%;
+    left: 0;
     right: 0;
     height: 4px;
-    width: 98%;
+    width: 100%;
     background: linear-gradient(90deg, 
         var(--secondary-color) 0%, 
         var(--tertiary-color) 50%, 
@@ -253,7 +206,7 @@ input[type="text"],
 select,
 input[type="range"] {
     width: 100%; /* Consistent width */
-    padding: 14px 1px; /* Comfortable padding */
+    padding: 14px 20px; /* Comfortable padding */
     background-color: var(--input-bg-color); /* Darker background */
     color: var(--text-color);
     border: 1px solid var(--border-color); /* Subtle border */
@@ -266,6 +219,7 @@ input[type="range"] {
 /* Range Slider */
 input[type="range"] {
     height: 5px; /* Thin line */
+    padding: 0px;
     background: var(--border-color);
     border-radius: 5px;
     margin-top: 8px;
@@ -334,7 +288,7 @@ input[type="radio"]:hover {
 }
 
 /* Primary Button Styles */
-button {
+.next-btn, .prev-btn, .submit-btn {
     padding: 12px 20px; /* Balanced padding */
     border: none;
     border-radius: 8px;
@@ -351,14 +305,4 @@ button {
 
 button:hover{
     background: var(--tertiary-color);
-}
-
-button:disabled {
-    background: #555;
-    cursor: not-allowed;
-}
-
-/* Responsive Button Alignment */
-.buttons button:first-child {
-    margin-right: 10px;
 }
