@@ -26,9 +26,11 @@ GAQ_Collection = {
     "hard": "hard"  # Hard questions collection
 }
 
-
 # Initialize logging
 logging.basicConfig(level=logging.DEBUG)
+logging.getLogger("httpx").setLevel(logging.WARNING)
+logging.getLogger("pymongo").setLevel(logging.WARNING)
+
 
 # Initialize Mistral client
 api_key = "TAwCGc5pL1RjWdb45bqKQkfXAZEs9npP"
@@ -50,9 +52,6 @@ def profile():
 @app.route('/choices')
 def choices():
     return render_template('choices.html', user=session.get('user'))
-
-
-
 
 @app.route('/aptitude', methods=['GET', 'POST'])
 def aptitude():
