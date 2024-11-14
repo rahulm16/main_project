@@ -5,67 +5,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aptitude Results</title>
-    <!-- Fonts and CSS files -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='results.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/results.css') }}">
 </head>
 
 <body class="dark-mode">
-    <!-- Embedded user data for potential JavaScript use -->
     <script id="user-data" type="application/json">
         {{ user | tojson }}
     </script>
 
-    <!-- Include the header -->
     {% include 'header.html' %}
 
-    <!-- Main content of the results page -->
     <section class="main-content">
         <div class="container">
             <div class="heading1">Aptitude Quiz Results</div>
-
-            <!-- Display user's name if available -->
             {% if user %}
                 <div class="heading2">Well done, {{ user.fullName }}!</div>
             {% endif %}
-
-            <!-- Display score percentage -->
             <div class="score">{{ score_percentage | round(2) }}%</div>
-
-            <!-- Summary of the quiz results -->
             <div class="details">
                 <p>Total Questions: {{ total_questions }}</p>
                 <p>Correct Answers: {{ correct_answers }}</p>
                 <p>Wrong Answers: {{ wrong_answers }}</p>
             </div>
-
-            <!-- Detailed analysis section -->
             <div class="detailed-results">
                 <h2>Detailed Analysis</h2>
-
-                <!-- Iterate through each question and display detailed analysis -->
                 {% for result in detailed_results %}
                     <div class="question-card {% if result.is_correct %}correct{% else %}incorrect{% endif %}">
                         <h3>Question {{ loop.index }}</h3>
                         <p class="question-text">{{ result.question }}</p>
-
-                        <!-- Options display with highlighting of selected and correct answers -->
                         <div class="options">
                             {% for option in result.options %}
                                 <div class="option 
                                     {% if option == result.selected_answer %}selected{% endif %}
                                     {% if option == result.correct_answer %}correct{% endif %}">
-                                    
-                                    <!-- Display the option -->
-                                    {{ option }}
 
-                                    <!-- Indicator if it's the user's selected answer -->
+                                    {{ option }}
                                     {% if option == result.selected_answer %}
                                         <span class="marker selected">Your Answer</span>
                                     {% endif %}
-
-                                    <!-- Indicator if it's the correct answer -->
                                     {% if option == result.correct_answer %}
                                         <span class="marker correct">Correct Answer</span>
                                     {% endif %}
@@ -83,9 +61,8 @@
         </div>
     </section>
 
-    <!-- JavaScript files -->
-    <script src="{{ url_for('static', filename='aptitude_results.js') }}"></script>
-    <script src="{{ url_for('static', filename='header.js') }}"></script>
+    <script src="../static/scripts/aptitude_results.js"></script>
+    <script src="../static/scripts/header.js"></script>
 </body>
 
 </html>
