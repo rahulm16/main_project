@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {
             if(data.status === 'success') {
-                window.location.href = "/chatbot";  // Redirect immediately after successful save
+                window.location.href = "/aptitude";  // Redirect immediately after successful save
             }
         })
         .catch(error => console.error('Error:', error));
