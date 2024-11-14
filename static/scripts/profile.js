@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
-                window.location.href = "/chatbot";
+                window.location.href = "/aptitude";
             }
         })
         .catch(error => console.error('Error:', error));
