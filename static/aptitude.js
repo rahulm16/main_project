@@ -159,7 +159,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('preview-btn').addEventListener('click', () => {
         const selectedOption = document.querySelector('input[name="option"]:checked');
         if (!selectedOption) {
-            alert("Please select an option before previewing your test.");
+            if (!selectedOption) {
+                showAlert("Please select an option before previewing your test.", "error");
+                return;
+            }
+            
             return;
         }
 
@@ -178,6 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showPreview();
     });
 
+
     document.getElementById('edit-btn').addEventListener('click', () => {
         currentQuestionIndex = 0;
         displayQuestion();
@@ -187,36 +192,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('submit-btn').addEventListener('click', async () => {
         const answers = [];
-
+    
+        // Prepare answers with their correctness and difficulty level
         for (let i = 0; i < questions.length; i++) {
             const question = questions[i];
             const answered = selectedAnswers[i] || 'Not answered';
             const correctAnswer = question.correct_answer;
-
+            
+            // Ensure the question has a difficulty level and that it's included in the sent data
+            const difficultyLevel = question.difficulty_level || 'easy'; // Default to 'easy' if not provided
+            
             answers.push({
                 question: question.question,
                 answered: answered,
-                correct_or_wrong: (answered === correctAnswer) ? 'correct' : 'wrong',
+                difficulty_level: difficultyLevel,  // Ensure difficulty level is added
             });
         }
-
-        const response = await fetch('/api/save-answers', {
+    
+        // Send answers to backend for saving in the MongoDB database
+        const response = await fetch('/api/save-aptitude-answers', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(answers),
+            body: JSON.stringify({ answers }) // Send answers to the backend API
         });
 
+        
+    
         if (response.ok) {
-            console.log('Submission successful'); // Debugging line
+            console.log('Submission successful');
             showSubmitModal();
         } else {
-            console.log('Submission failed', response.status); // Debugging line
+            console.log('Submission failed', response.status);
             alert("An error occurred while submitting your answers.");
         }
     });
-
+    
     function showSubmitModal() {
         let modal = document.getElementById('submission-modal');
         if (modal) {
@@ -235,13 +247,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
         document.body.appendChild(modal);
     
-        document.getElementById('go-to-results').addEventListener('click', function() {
-            window.location.href = '/aptitude_results';
+        document.getElementById('go-to-results').addEventListener('click', function () {
+            window.location.href = '/aptitude_results'; // Redirect to results page
         });
     }
     
-
+    
     function isOptionSelected() {
         return document.querySelector('input[name="option"]:checked') !== null;
     }
-});
+});    

@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aptitude Test - SavvyAI</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='aptitude.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='questions.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='header.css') }}">
 </head>
 <body class="dark-mode">
-    <script type="application/json" id="questions-data">
-        {{ questions | tojson | objectid_to_str }}
-    </script>    
+    <script id="user-data" type="application/json">
+        {{ user | tojson }}
+    </script>
+    
 
     {% include 'header.html' %}
 
@@ -49,6 +50,7 @@
     
         <!-- Hidden element to hold questions data -->
         <script type="application/json" id="questions-data">{{ questions | tojson }}</script>
+
    
     <script src="{{ url_for('static', filename='header.js') }}"></script>
     <script src="{{ url_for('static', filename='aptitude.js') }}"></script>
