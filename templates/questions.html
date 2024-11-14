@@ -31,9 +31,9 @@
                     </ul>
                 </div>
                 <div class="controls">
-                    <button id="previous-btn">Previous</button>
-                    <button id="next-btn">Next</button>
-                    <button id="preview-btn" style="display: none;">Preview</button>
+                    <button id="previous-btn" aria-label="Previous question">Previous</button>
+                    <button id="next-btn" aria-label="Next question">Next</button>
+                    <button id="preview-btn" style="display: none;" aria-label="Preview your answers">Preview</button>
                 </div>
             </div>
             <!-- Preview Section -->
@@ -49,9 +49,8 @@
     
         <!-- Hidden element to hold questions data -->
         <script type="application/json" id="questions-data">{{ questions | tojson }}</script>
-    </section>
-    
-    <script src="../static/header.js"></script>
-    <script src="../static/questions.js"></script>
+   
+    <script src="{{ url_for('static', filename='header.js') }}"></script>
+    <script src="{{ url_for('static', filename='questions.js') }}"></script>
 </body>
 </html>

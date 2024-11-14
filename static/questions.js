@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayQuestion() {
         const questionTitle = document.getElementById('question-text');
         const optionsList = document.getElementById('options-list');
-        const questionNumber = document.getElementById('question-number'); // Added question number update
+        const questionNumber = document.getElementById('question-number');
 
         optionsList.innerHTML = '';
 
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentQuestion = questions[currentQuestionIndex];
             
             questionTitle.textContent = `${currentQuestionIndex + 1}. ${currentQuestion.question}`;
-            questionNumber.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`; // Update question number
+            questionNumber.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
 
             currentQuestion.options.forEach((option, index) => {
                 const optionItem = document.createElement('li');
@@ -209,11 +209,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (response.ok) {
-            alert("Your answers have been submitted successfully!");
+            console.log('Submission successful'); // Debugging line
+            showSubmitModal();
         } else {
+            console.log('Submission failed', response.status); // Debugging line
             alert("An error occurred while submitting your answers.");
         }
     });
+
+    function showSubmitModal() {
+        let modal = document.getElementById('submission-modal');
+        if (modal) {
+            modal.remove();
+        }
+    
+        modal = document.createElement('div');
+        modal.id = 'submission-modal';
+        modal.className = 'modal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <p>Your answers have been submitted successfully!</p>
+                <button id="go-to-results" class="modal-button">Go to Results</button>
+            </div>
+        `;
+    
+        document.body.appendChild(modal);
+    
+        // Add event listener here after the button is created
+        document.getElementById('go-to-results').addEventListener('click', function() {
+            window.location.href = '/results';
+        });
+    }
+    
 
     function isOptionSelected() {
         return document.querySelector('input[name="option"]:checked') !== null;
