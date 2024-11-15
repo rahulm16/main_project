@@ -109,7 +109,7 @@ def aptitude():
         return redirect(url_for('aptitude'))
 
     # Pass user data to the template along with selected questions
-    return render_template('aptitude.html', user=user, questions=selected_questions, current_index=current_index)
+    return render_template('aptitude.html', user=session.get('user'), questions=selected_questions, current_index=current_index)
 
 @app.route('/api/save-aptitude-answers', methods=['POST'])
 def save_aptitude_answers():
