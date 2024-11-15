@@ -76,9 +76,6 @@ def aptitude():
     # Fetch questions from the GAQ database
     questions_collection = gaq_db[collection_name]
     all_questions = list(questions_collection.find())
-
-    if not all_questions:
-        return render_template('error.html', message=f"No questions found in {collection_name} collection.")
     
     # Convert ObjectId to string for each question
     for question in all_questions:
