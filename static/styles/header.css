@@ -156,3 +156,25 @@ body:not(.light-mode) .dark-mode-emoji {
   cursor: pointer;
   transition: background-color var(--transition-default);
 }
+
+/* Create the gradient border */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        var(--secondary-color) 0%, 
+        var(--tertiary-color) 50%, 
+        var(--secondary-color) 100%);
+    background-size: 200% 100%;
+    animation: gradientSlide 3s linear infinite;
+}
+
+/* Animation keyframes */
+@keyframes gradientSlide {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+}

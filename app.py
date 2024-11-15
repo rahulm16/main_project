@@ -1,7 +1,11 @@
 from flask import Flask, redirect, render_template, request, jsonify, session, url_for
 from flask_pymongo import PyMongo
+from pymongo import MongoClient
+from bson import ObjectId
+from bson.json_util import dumps
 from mistralai import Mistral
 from flask_bcrypt import Bcrypt
+import random
 import json
 import logging
 import os
@@ -12,8 +16,21 @@ app.config["MONGO_URI"] = "mongodb://localhost:27017/aicareer"  # Your MongoDB U
 mongo = PyMongo(app)
 bcrypt = Bcrypt(app)  # Initialize Bcrypt
 
+client = MongoClient("mongodb://localhost:27017/")  # Connecting to MongoDB (if on localhost)
+gaq_db = client.GAQ 
+
+# GAQ collections for Easy, Medium, and Hard questions
+GAQ_Collection = {
+    "easy": "easy",  # Easy questions collection
+    "medium": "medium",  # Medium questions collection
+    "hard": "hard"  # Hard questions collection
+}
+
 # Initialize logging
 logging.basicConfig(level=logging.DEBUG)
+logging.getLogger("httpx").setLevel(logging.WARNING)
+logging.getLogger("pymongo").setLevel(logging.WARNING)
+
 
 # Initialize Mistral client
 api_key = "TAwCGc5pL1RjWdb45bqKQkfXAZEs9npP"
@@ -35,6 +52,196 @@ def profile():
 @app.route('/choices')
 def choices():
     return render_template('choices.html', user=session.get('user'))
+
+@app.route('/aptitude', methods=['GET', 'POST'])
+def aptitude():
+    # Fetch user data
+    user = mongo.db.user_data.find_one()
+    if not user:
+        return redirect(url_for('index'))
+
+    # Convert ObjectId in user data to string
+    user['_id'] = str(user['_id'])  # Make sure the user ID is serializable
+
+    user_age = user.get('age', 0)
+
+    # Determine difficulty level based on age
+    if user_age <= 18:
+        collection_name = "Easy"
+    elif 18 < user_age <= 25:
+        collection_name = "Medium"
+    else:
+        collection_name = "Hard"
+    
+    # Fetch questions from the GAQ database
+    questions_collection = gaq_db[collection_name]
+    all_questions = list(questions_collection.find())
+    
+    # Convert ObjectId to string for each question
+    for question in all_questions:
+        question['_id'] = str(question['_id'])  # Convert ObjectId to string
+
+    # Filtering questions by type
+    logic_questions = [q for q in all_questions if q.get('Type') == 'Logic']
+    math_questions = [q for q in all_questions if q.get('Type') == 'Mathematical']
+    verbal_questions = [q for q in all_questions if q.get('Type') == 'Verbal']
+
+    # Randomly select questions from each category
+    selected_logic = random.sample(logic_questions, 5) if len(logic_questions) >= 5 else logic_questions
+    selected_math = random.sample(math_questions, 5) if len(math_questions) >= 5 else math_questions
+    selected_verbal = random.sample(verbal_questions, 5) if len(verbal_questions) >= 5 else verbal_questions
+
+    # Combine selected questions
+    selected_questions = selected_logic + selected_math + selected_verbal
+
+    if 'current_index' not in session:
+        session['current_index'] = 0
+
+    current_index = session['current_index']
+
+    if request.method == 'POST':
+        answers = request.form.getlist('answers')
+
+        session['current_index'] += 1
+        if session['current_index'] >= len(selected_questions):
+            session['current_index'] = len(selected_questions) - 1
+        
+        return redirect(url_for('aptitude'))
+
+    # Pass user data to the template along with selected questions
+    return render_template('aptitude.html', user=user, questions=selected_questions, current_index=current_index)
+
+@app.route('/api/save-aptitude-answers', methods=['POST'])
+def save_aptitude_answers():
+    # Fetch the user data from the database
+    user = mongo.db.user_data.find_one()
+
+    if not user:
+        return jsonify({'status': 'error', 'message': 'User not found.'}), 404
+
+    # Get answers and user details from the request
+    answers = request.json.get('answers')  # List of answers provided by the user
+    user_age = user.get('age', 0)  # Get user's age from the user data
+
+    # Ensure that the answers are in a list format
+    if not isinstance(answers, list):
+        return jsonify({'status': 'error', 'message': 'Invalid data format. Expected a list of answers.'}), 400
+
+    answered_results = []
+
+    # Determine the difficulty based on user age
+    if user_age <= 18:
+        difficulty_level = 'easy'
+        collection_name = "Easy"
+    elif 18 < user_age <= 25:
+        difficulty_level = 'medium'
+        collection_name = "Medium"
+    else:
+        difficulty_level = 'hard'
+        collection_name = "Hard"
+
+    # Access the correct collection based on the difficulty level
+    questions_collection = gaq_db[collection_name]
+
+    # Process each answer
+    for answer in answers:
+        question_text = answer['question']
+        selected_answer = answer['answered']
+        
+        # Fetch the question from the determined difficulty level collection
+        question_data = questions_collection.find_one({"question": question_text})
+
+        if question_data:
+            correct_answer = question_data.get("correct_answer")
+            correct_or_wrong = 'correct' if selected_answer == correct_answer else 'wrong'
+
+            answered_results.append({
+                "question": question_text,
+                "answered": selected_answer,
+                "correct_or_wrong": correct_or_wrong,
+                "difficulty_level": difficulty_level
+            })
+        else:
+            answered_results.append({
+                "question": question_text,
+                "answered": selected_answer,
+                "correct_or_wrong": 'question not found',
+                "difficulty_level": difficulty_level
+            })
+
+    # Insert answers into `gaq_answered` collection in the `aicareer` database
+    mongo.db.gaq_answered.insert_many(answered_results)
+
+    return jsonify({'status': 'success', 'message': 'Answers saved successfully.'})
+
+
+@app.route('/aptitude_results', methods=['GET'])
+def aptitude_results():
+    # Fetch data from `gaq_answered` collection
+    answered_data = list(mongo.db.gaq_answered.find())  
+
+    total_questions = len(answered_data)
+    correct_answers = sum(1 for answer in answered_data if answer['correct_or_wrong'] == 'correct')
+    wrong_answers = total_questions - correct_answers
+    score_percentage = (correct_answers / total_questions) * 100 if total_questions > 0 else 0
+
+    detailed_results = []
+    
+    for answer in answered_data:
+        difficulty_level = answer.get('difficulty_level')
+        question_data = None
+        
+        # Determine the correct collection based on the difficulty level
+        if difficulty_level == 'easy':
+            collection_name = "Easy"
+        elif difficulty_level == 'medium':
+            collection_name = "Medium"
+        elif difficulty_level == 'hard':
+            collection_name = "Hard"
+        else:
+            collection_name = None  # Fallback in case the level is not recognized
+        
+        if collection_name:
+            # Access the correct collection based on the difficulty level
+            questions_collection = gaq_db[collection_name]
+
+            # Fetch the question from the determined difficulty level collection
+            question_data = questions_collection.find_one({"question": answer['question']})
+
+        if question_data:
+            detailed_results.append({
+                'question': answer['question'],
+                'selected_answer': answer['answered'],
+                'correct_answer': question_data['correct_answer'],
+                'options': question_data['options'],
+                'is_correct': answer['correct_or_wrong'] == 'correct',
+                'difficulty_level': difficulty_level
+            })
+
+    # Create aptitude results data
+    aptitude_results_data = {
+        "total_questions": total_questions,
+        "correct_answers": correct_answers,
+        "wrong_answers": wrong_answers,
+        "score_percentage": score_percentage,
+        "detailed_results": detailed_results,
+        "user": session.get('user')
+    }
+
+    # Insert the aptitude results data into `gaq_aptitude_results` collection in `aicareer` database
+    mongo.db.gaq_aptitude_results.insert_one(aptitude_results_data)
+
+    # Render the results on the results page
+    return render_template(
+        'aptitude_results.html',
+        user=session.get('user'),
+        total_questions=total_questions,
+        correct_answers=correct_answers,
+        wrong_answers=wrong_answers,
+        score_percentage=score_percentage,
+        detailed_results=detailed_results
+    )
+
 
 @app.route('/api/signup', methods=['POST'])
 def signup():

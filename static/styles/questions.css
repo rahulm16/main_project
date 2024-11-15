@@ -189,6 +189,7 @@ body:not(.light-mode) .dark-mode-emoji {
     display: none;
 }
 
+
 .logout-btn {
     padding: 8px 16px;
     background-color: var(--tertiary-color);

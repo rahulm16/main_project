@@ -32,7 +32,6 @@ body {
     color: var(--text-color);
     margin: 0;
     padding: 0;
-    line-height: 1.6;
 }
 
 .main-content {
@@ -46,7 +45,9 @@ body {
     border-radius: 12px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     padding: 2rem;
+    position: relative;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 .heading1, .heading2 {
@@ -306,4 +307,26 @@ body {
         padding: 0.8rem 1.5rem;
         font-size: 1rem;
     }
+}
+
+/* Create the gradient border */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        var(--secondary-color) 0%, 
+        var(--tertiary-color) 50%, 
+        var(--secondary-color) 100%);
+    background-size: 200% 100%;
+    animation: gradientSlide 3s linear infinite;
+}
+
+/* Animation keyframes */
+@keyframes gradientSlide {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
 }
