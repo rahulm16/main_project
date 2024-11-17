@@ -5,6 +5,8 @@ from bson import ObjectId
 from bson.json_util import dumps
 from mistralai import Mistral
 from flask_bcrypt import Bcrypt
+from datetime import datetime
+from bson import ObjectId
 import random
 import json
 import logging
@@ -602,5 +604,44 @@ def show_suggestions():
     suggestions_list = list(suggestions)  # Convert cursor to list
     return render_template('suggestions.html', suggestions=suggestions_list, user=session.get('user'))
 
+#feedback
+@app.route('/feedback')
+def feedback_page():
+    """Render the feedback page"""
+    if 'user' not in session:
+        return redirect(url_for('login'))
+    return render_template('feedback.html', user=session.get('user'))
+
+@app.route('/api/submit-feedback', methods=['POST'])
+def submit_feedback():
+    """Handle feedback form submission"""
+    try:
+        # Get feedback data from request
+        feedback_data = request.json
+        
+        # Add user info and timestamp
+        feedback_data.update({
+            'submitted_at': datetime.utcnow(),
+            'user_email': session['user'].get('email')
+        })
+
+        # Insert into MongoDB
+        result = mongo.db.feedback.insert_one(feedback_data)
+
+        if result.inserted_id:
+            return jsonify({
+                'success': True,
+                'message': 'Feedback submitted successfully'
+            }), 201
+            
+        else:
+            raise Exception("Failed to insert feedback")
+
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'message': 'An error occurred while submitting feedback'
+        }), 500
+        
 if __name__ == "__main__":
     app.run(debug=True)
