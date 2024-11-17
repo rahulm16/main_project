@@ -188,3 +188,45 @@ h1.learning-container {
         font-size: 1.4rem;
     }
 }
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.modal-dialog {
+    max-width: 800px;
+    margin: 100px auto;
+    background-color: var(--card-bg-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+}
+
+.modal-header, .modal-body, .modal-footer {
+    padding: 15px;
+}
+
+.modal-title {
+    color: var(--secondary-color);
+}
+
+.modal-body p {
+    color: var(--text-color);
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal.show {
+    display: block;
+}

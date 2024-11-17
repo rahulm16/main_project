@@ -529,21 +529,17 @@ def fetch_suggestions():
                f"Also provide 1 YouTube search query related to each career path (just the query, not the full URL). "
                f"Also provide 1 Coursera search query related to each career path (just the query, not the full URL). "
                f"Also provide 1 UpGrad search query related to each career path (just the query, not the full URL). "
+               f"For each career path, please also give 5 high accurate keywords that can be used to search on the NPTEL website."
+               f"These should be keywords that are relevant to courses available on NPTEL (e.g., topics, course names, subjects). "
+               f"Please provide 5 keywords, separated by commas. "
                f"Please format the response as a JSON array like this: "
                f"[{{\"career\": \"Career Name\", \"roadmap\": [\"Step 1\", \"Step 2\", \"Step 3\", \"Step 4\", \"Step 5\"], "
                f"\"udemy_query\": \"Search query for Udemy\", "
                f"\"youtube_query\": \"Search query for YouTube\", "
                f"\"coursera_query\": \"Search query for Coursera\", "
-               f"\"upgrad_query\": \"Search query for UpGrad\"}}].")
+               f"\"upgrad_query\": \"Search query for UpGrad\", "
+               f"\"nptel_keywords\": [\"keyword1\", \"keyword2\", \"keyword3\", \"keyword4\", \"keyword5\"]}}].")
 
-    # # Write the content to a text file
-    # request_file_path = 'mistral_request_content.txt'  # Specify your file path
-    # with open(request_file_path, 'w') as file:
-    #     file.write(content)  # Write the content string to the file
-
-    # logging.info(f"Written Mistral request content to {request_file_path}.")
-
-    # Call Mistral API to get career suggestions in JSON format
     try:
         chat_response = client.chat.complete(
             model=model,
@@ -580,9 +576,12 @@ def fetch_suggestions():
             suggestion['udemy_link'] = f"https://www.udemy.com/courses/search/?q={suggestion['udemy_query']}"
             suggestion['coursera_link'] = f"https://www.coursera.org/courses?query={suggestion['coursera_query']}"
             suggestion['upgrad_link'] = f"https://www.upgrad.com/search/?q={suggestion['upgrad_query']}"
-            
 
-        # Save to MongoDB
+            # Ensure NPTEL keywords are included from API response
+            nptel_keywords = suggestion.get('nptel_keywords', [])
+            suggestion['nptel_keywords'] = nptel_keywords  # Add the NPTEL keywords
+
+        # Update the 'career_suggestions' collection with the new data
         mongo.db.career_suggestions.insert_many(suggestions)
 
         logging.info(f"Inserted {len(suggestions)} suggestions into MongoDB.")
@@ -604,49 +603,96 @@ def show_suggestions():
     suggestions_list = list(suggestions)  # Convert cursor to list
     return render_template('suggestions.html', suggestions=suggestions_list, user=session.get('user'))
 
+# Import the course finder function
+from course_finder import find_relevant_courses  # Assuming the previous code is in course_finder.py
+
+@app.route('/update-nptel-courses')
+def update_nptel_courses():
+    """
+    Administrative route to update NPTEL course matches
+    This should be called periodically or when new courses are added
+    """
+    try:
+        # MongoDB connection settings
+        mongo_uri = "mongodb://localhost:27017/"
+        nptel_db_name = "sample"
+        nptel_collection_name = "scraped_data"
+        career_db_name = "aicareer"
+        career_collection_name = "career_suggestions"
+        
+        # Call the function to find relevant courses
+        find_relevant_courses(
+            mongo_uri, 
+            nptel_db_name, 
+            nptel_collection_name, 
+            career_db_name, 
+            career_collection_name,
+            save_to_db=True  # Add this parameter to your original function
+        )
+        
+        return jsonify({"status": "success", "message": "NPTEL courses updated successfully"})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)})
+
 @app.route('/learning')
 def learning():
-    # Fetch all career suggestions from MongoDB using PyMongo
-    career_data = list(mongo.db.career_suggestions.find())  # 'career_suggestions' is the collection name
-    
-    # Organize the data by career
-    careers_courses = {}
-    youtube_resources = []
-    
-    for career in career_data:
-        # Create a dictionary for each career's courses
-        careers_courses[career['career']] = {
-            'udemy': {
-                'title': f"Udemy Courses for {career['career']}",
-                'description': f"Learn {career['career']} skills with comprehensive Udemy courses",
-                'link': career.get('udemy_link')
-            },
-            'coursera': {
-                'title': f"Coursera Programs for {career['career']}",
-                'description': f"Professional {career['career']} certifications and courses",
-                'link': career.get('coursera_link')
-            },
-            'upgrad': {
-                'title': f"Upgrad Programs for {career['career']}",
-                'description': f"Professional {career['career']} degree and certification programs",
-                'link': career.get('upgrad_link')
-            }
-        }
-        
-        # YouTube resources
-        youtube_resources.append({
-            'career': career['career'],
-            'title': f"YouTube Tutorials for {career['career']}",
-            'description': f"Free {career['career']} tutorials and courses",
-            'link': career.get('youtube_link')
-        })
-    
-    return render_template('learning.html', 
-                           careers_courses=careers_courses,
-                           youtube_resources=youtube_resources, user=session.get('user'))
+    try:
+        # Trigger the update of NPTEL courses before rendering the page
+        update_nptel_courses()
 
-if __name__ == '__main__':
-    app.run(debug=True)                          
+        # Fetch all career suggestions from MongoDB
+        career_data = list(mongo.db.career_suggestions.find())
+
+        # Initialize dictionaries for our data
+        careers_courses = {}
+        youtube_resources = []
+        nptel_courses = {}
+
+        # Process each career
+        for career in career_data:
+            career_name = career['career']
+
+
+            # Fetch the saved NPTEL courses for this career from the 'nptel_matches' collection
+            saved_nptel_courses = list(mongo.db.nptel_matches.find({"career": career_name}))
+            nptel_courses[career_name] = saved_nptel_courses  # Store courses for each career
+
+            # Process other learning resources
+            careers_courses[career_name] = {
+                'udemy': {
+                    'title': f"Udemy Courses for {career_name}",
+                    'description': f"Learn {career_name} skills with comprehensive Udemy courses",
+                    'link': career.get('udemy_link')
+                },
+                'coursera': {
+                    'title': f"Coursera Programs for {career_name}",
+                    'description': f"Professional {career_name} certifications and courses",
+                    'link': career.get('coursera_link')
+                },
+                'upgrad': {
+                    'title': f"Upgrad Programs for {career_name}",
+                    'description': f"Professional {career_name} degree and certification programs",
+                    'link': career.get('upgrad_link')
+                }
+            }
+
+            youtube_resources.append({
+                'career': career_name,
+                'title': f"YouTube Tutorials for {career_name}",
+                'description': f"Free {career_name} tutorials and courses",
+                'link': career.get('youtube_link')
+            })
+
+        return render_template('learning.html',
+                               careers_courses=careers_courses,
+                               youtube_resources=youtube_resources,
+                               nptel_courses=nptel_courses,  # Pass the NPTEL courses
+                               user=session.get('user'))
+
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)})
+
+
 #feedback
 @app.route('/feedback')
 def feedback_page():

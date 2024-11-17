@@ -14,23 +14,42 @@
     <h1 class="learning-container">Learning Resources</h1>
     <div class="container" id="container">
         <div class="learning-resources">
-        
+
             <!-- NPTEL Section -->
             <div class="resource-section">
-                <h3>NPTEL</h3>
-                <div class="resource-grid">
-                    <div class="resource-card">
-                        <h4>Data Structures and Algorithms</h4>
-                        <p>Master fundamental DSA concepts with NPTEL's comprehensive course.</p>
-                        <a href="https://nptel.ac.in/courses/106/106/106106127/" target="_blank" rel="noopener noreferrer">Explore Course</a>
+                <h3>NPTEL Courses</h3>
+                {% for career_name, courses in nptel_courses.items() %}
+                    <div class="career-section">
+                        <h4 class="career-title">{{ career_name }}</h4>
+                        <div class="resource-grid">
+                            {% for course in courses %}
+                                <div class="resource-card">
+                                    <h4>{{ course.name }}</h4>
+                                    <p>{{ course.discipline }}</p>
+                                    <div class="course-info">
+                                        <p><strong>Instructor:</strong> {{ course.instructor }}</p>
+                                        <p><strong>Institute:</strong> {{ course.institute }}</p>
+                                        <p><strong>Duration:</strong> {{ course.duration }}</p>
+                                        <p class="course-dates">{{ course.start_date }} - {{ course.end_date }}</p>
+                                        {% if course.content %}
+                                            <p class="course-description">{{ course.content }}</p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="button-group">
+                                        {% if course.course_link %}
+                                            <a href="{{ course.course_link }}" target="_blank" rel="noopener noreferrer">Explore Course</a>
+                                        {% endif %}
+                                        {% if course.nptel_url %}
+                                            <a href="{{ course.nptel_url }}" target="_blank" rel="noopener noreferrer">NPTEL Page</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
                     </div>
-                    <div class="resource-card">
-                        <h4>Programming and Data Science</h4>
-                        <p>Learn programming basics and data science fundamentals.</p>
-                        <a href="https://nptel.ac.in/courses/106/106/106106182/" target="_blank" rel="noopener noreferrer">Visit Course</a>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
+
         
             <!-- Online Courses Section -->
             <div class="resource-section">
