@@ -17,15 +17,15 @@
     <section class="feedback">
         <main>
             <h1>Career Guidance System Feedback</h1>
-            <form id="feedbackForm">
+            <form id="feedbackForm" >
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name"  >
+                <input type="text" id="name" name="name" required>
 
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email"  >
+                <input type="email" id="email" name="email" required>
 
                 <label for="userType">I am a:</label>
-                <select id="userType" name="userType"  >
+                <select id="userType" name="userType" required>
                     <option value="">Select an option</option>
                     <option value="student">Student</option>
                     <option value="professional">Professional</option>
@@ -34,8 +34,8 @@
                 </select>
 
                 <label>How would you rate your overall experience with SavvyAI Career Guidance System?</label>
-                <div class="rating">
-                    <input type="radio" id="star5" name="rating" value="5"  >
+                <div class="rating" required>
+                    <input type="radio" id="star5" name="rating" value="5">
                     <label for="star5" title="Excellent"></label>
                     <input type="radio" id="star4" name="rating" value="4">
                     <label for="star4" title="Very Good"></label>
@@ -48,7 +48,7 @@
                 </div>
 
                 <label for="helpfulness">How helpful were the career recommendations?</label>
-                <select id="helpfulness" name="helpfulness"  >
+                <select id="helpfulness" name="helpfulness"  required>
                     <option value="">Select an option</option>
                     <option value="very_helpful">Very Helpful</option>
                     <option value="somewhat_helpful">Somewhat Helpful</option>
@@ -56,7 +56,7 @@
                 </select>
 
                 <label for="accuracy">How accurate did you find the aptitude assessment?</label>
-                <select id="accuracy" name="accuracy"  >
+                <select id="accuracy" name="accuracy"  required>
                     <option value="">Select an option</option>
                     <option value="very_accurate">Very Accurate</option>
                     <option value="somewhat_accurate">Somewhat Accurate</option>
@@ -64,7 +64,7 @@
                 </select>
 
                 <label for="nptelUsefulness">How useful were the NPTEL course recommendations?</label>
-                <select id="nptelUsefulness" name="nptelUsefulness"  >
+                <select id="nptelUsefulness" name="nptelUsefulness"  required>
                     <option value="">Select an option</option>
                     <option value="very_useful">Very Useful</option>
                     <option value="somewhat_useful">Somewhat Useful</option>
