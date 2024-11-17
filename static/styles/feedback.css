@@ -31,7 +31,6 @@ body, html {
     color: var(--text-color);
     margin: 0;
     padding: 0;
-    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -144,6 +143,10 @@ body, html {
     transform: translateY(-2px);
 }
 
+.feedback{
+    min-height: 70vh;
+}
+
 #thankYouMessage {
     display: none;
     text-align: center;
@@ -154,14 +157,11 @@ body, html {
     margin-top: 2rem;
 }
 
-/* Footer Styling */
-.footer {
+footer {
     text-align: center;
-    padding: 1rem;
+    padding: 18px;
     color: var(--text-color);
-    margin-top: 2rem;
-    border-top: 1px solid var(--border-color);
-    border-radius: 0 0 12px 12px;
+    margin-top: auto;
 }
 
 @media (max-width: 768px) {

@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/header.css') }}">
 </head>
 <body>
+    <script id="user-data" type="application/json">
+        {{ user | tojson }}
+    </script>
     {% include 'header.html' %}
 
     <section class="feedback">
@@ -16,13 +19,13 @@
             <h1>Career Guidance System Feedback</h1>
             <form id="feedbackForm">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name"  >
 
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email"  >
 
                 <label for="userType">I am a:</label>
-                <select id="userType" name="userType" required>
+                <select id="userType" name="userType"  >
                     <option value="">Select an option</option>
                     <option value="student">Student</option>
                     <option value="professional">Professional</option>
@@ -32,7 +35,7 @@
 
                 <label>How would you rate your overall experience with SavvyAI Career Guidance System?</label>
                 <div class="rating">
-                    <input type="radio" id="star5" name="rating" value="5" required>
+                    <input type="radio" id="star5" name="rating" value="5"  >
                     <label for="star5" title="Excellent"></label>
                     <input type="radio" id="star4" name="rating" value="4">
                     <label for="star4" title="Very Good"></label>
@@ -45,7 +48,7 @@
                 </div>
 
                 <label for="helpfulness">How helpful were the career recommendations?</label>
-                <select id="helpfulness" name="helpfulness" required>
+                <select id="helpfulness" name="helpfulness"  >
                     <option value="">Select an option</option>
                     <option value="very_helpful">Very Helpful</option>
                     <option value="somewhat_helpful">Somewhat Helpful</option>
@@ -53,7 +56,7 @@
                 </select>
 
                 <label for="accuracy">How accurate did you find the aptitude assessment?</label>
-                <select id="accuracy" name="accuracy" required>
+                <select id="accuracy" name="accuracy"  >
                     <option value="">Select an option</option>
                     <option value="very_accurate">Very Accurate</option>
                     <option value="somewhat_accurate">Somewhat Accurate</option>
@@ -61,7 +64,7 @@
                 </select>
 
                 <label for="nptelUsefulness">How useful were the NPTEL course recommendations?</label>
-                <select id="nptelUsefulness" name="nptelUsefulness" required>
+                <select id="nptelUsefulness" name="nptelUsefulness"  >
                     <option value="">Select an option</option>
                     <option value="very_useful">Very Useful</option>
                     <option value="somewhat_useful">Somewhat Useful</option>
@@ -75,7 +78,7 @@
                 <button type="submit" class="submit">Submit Feedback</button>
             </form>
 
-            <div id="thankYouMessage">
+            <div id="thankYouMessage" style="display: none">
                 Thank you for your feedback! It will help us improve our SavvyAI Career Guidance System.
             </div>
         </main>   

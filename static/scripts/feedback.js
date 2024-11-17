@@ -46,11 +46,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (data.success) {
                 feedbackForm.style.display = 'none';
-                thankYouMessage.style.display = 'block';
-                
+                thankYouMessage.style.display = 'flex';
                 // Redirect after 3 seconds
                 setTimeout(() => {
-                    window.location.href = '/homepage';
+                    window.location.href = '/';
                 }, 3000);
             } else {
                 throw new Error(data.message || 'Failed to submit feedback');
