@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Path Resources</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/learning.css') }}">
+</head>
+<body>
+    <script id="user-data" type="application/json">
+        {{ user | tojson }}
+    </script>
+    {% include 'header.html' %}
+    <h1 class="learning-container">Learning Resources</h1>
+    <div class="container" id="container">
+        <div class="learning-resources">
+        
+            <!-- NPTEL Section -->
+            <div class="resource-section">
+                <h3>NPTEL</h3>
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <h4>Data Structures and Algorithms</h4>
+                        <p>Master fundamental DSA concepts with NPTEL's comprehensive course.</p>
+                        <a href="https://nptel.ac.in/courses/106/106/106106127/" target="_blank" rel="noopener noreferrer">Explore Course</a>
+                    </div>
+                    <div class="resource-card">
+                        <h4>Programming and Data Science</h4>
+                        <p>Learn programming basics and data science fundamentals.</p>
+                        <a href="https://nptel.ac.in/courses/106/106/106106182/" target="_blank" rel="noopener noreferrer">Visit Course</a>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Online Courses Section -->
+            <div class="resource-section">
+                <h3>Online Courses</h3>
+                {% for career_name, courses in careers_courses.items() %}
+                    <div class="career-section">
+                        <h4 class="career-title">{{ career_name }}</h4>
+                        <div class="resource-grid">
+                            <div class="resource-card">
+                                <h4>{{ courses.udemy.title }}</h4>
+                                <p>{{ courses.udemy.description }}</p>
+                                <a href="{{ courses.udemy.link }}" target="_blank" rel="noopener noreferrer">Explore Udemy</a>
+                            </div>
+                            <div class="resource-card">
+                                <h4>{{ courses.coursera.title }}</h4>
+                                <p>{{ courses.coursera.description }}</p>
+                                <a href="{{ courses.coursera.link }}" target="_blank" rel="noopener noreferrer">Explore Coursera</a>
+                            </div>
+                            <div class="resource-card">
+                                <h4>{{ courses.upgrad.title }}</h4>
+                                <p>{{ courses.upgrad.description }}</p>
+                                <a href="{{ courses.upgrad.link }}" target="_blank" rel="noopener noreferrer">Explore Upgrad</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        
+            <!-- YouTube Channels Section -->
+            <div class="resource-section">
+                <h3>YouTube Resources</h3>
+                <div class="resource-grid">
+                    {% for resource in youtube_resources %}
+                        <div class="resource-card">
+                            <h4>{{ resource.title }}</h4>
+                            <p>{{ resource.description }}</p>
+                            <a href="{{ resource.link }}" target="_blank" rel="noopener noreferrer">Watch Tutorials</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>      
+    </div>
+    <script src="{{ url_for('static', filename='scripts/header.js') }}"></script>
+</body>
+</html>

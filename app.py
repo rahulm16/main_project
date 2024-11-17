@@ -604,6 +604,49 @@ def show_suggestions():
     suggestions_list = list(suggestions)  # Convert cursor to list
     return render_template('suggestions.html', suggestions=suggestions_list, user=session.get('user'))
 
+@app.route('/learning')
+def learning():
+    # Fetch all career suggestions from MongoDB using PyMongo
+    career_data = list(mongo.db.career_suggestions.find())  # 'career_suggestions' is the collection name
+    
+    # Organize the data by career
+    careers_courses = {}
+    youtube_resources = []
+    
+    for career in career_data:
+        # Create a dictionary for each career's courses
+        careers_courses[career['career']] = {
+            'udemy': {
+                'title': f"Udemy Courses for {career['career']}",
+                'description': f"Learn {career['career']} skills with comprehensive Udemy courses",
+                'link': career.get('udemy_link')
+            },
+            'coursera': {
+                'title': f"Coursera Programs for {career['career']}",
+                'description': f"Professional {career['career']} certifications and courses",
+                'link': career.get('coursera_link')
+            },
+            'upgrad': {
+                'title': f"Upgrad Programs for {career['career']}",
+                'description': f"Professional {career['career']} degree and certification programs",
+                'link': career.get('upgrad_link')
+            }
+        }
+        
+        # YouTube resources
+        youtube_resources.append({
+            'career': career['career'],
+            'title': f"YouTube Tutorials for {career['career']}",
+            'description': f"Free {career['career']} tutorials and courses",
+            'link': career.get('youtube_link')
+        })
+    
+    return render_template('learning.html', 
+                           careers_courses=careers_courses,
+                           youtube_resources=youtube_resources, user=session.get('user'))
+
+if __name__ == '__main__':
+    app.run(debug=True)                          
 #feedback
 @app.route('/feedback')
 def feedback_page():

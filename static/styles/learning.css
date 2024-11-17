@@ -1,0 +1,190 @@
+/* Learning Resources Styles with Dark/Light Mode Support */
+:root {
+    --primary-color: #303134;
+    --secondary-color: #8ab4f8;
+    --tertiary-color: #FF416C;
+    --text-color: #eaeaea;
+    --bg-color: linear-gradient(135deg, #181818 0%, #333 100%);
+    --card-bg-color: #303134;
+    --border-color: #555555;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+    --hover-color: rgba(138, 180, 248, 0.1);
+    --transition-speed: 0.3s;
+    --border-radius: 12px;
+}
+
+body.light-mode {
+    --primary-color: #ffffff;
+    --secondary-color: #1a73e8;
+    --tertiary-color: #d93025;
+    --text-color: #202124;
+    --bg-color: linear-gradient(135deg, #f8f9fa 0%, #dbe0e4 100%);
+    --card-bg-color: #ffffff;
+    --border-color: #dadce0;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --hover-color: rgba(26, 115, 232, 0.1);
+}
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+}
+
+.learning-resources{
+    font-family: 'Poppins', Arial, sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    padding: 20px;
+}
+
+h1.learning-container {
+    background: linear-gradient(90deg, var(--secondary-color), var(--tertiary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.learning-resources {
+    background: var(--card-bg-color);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.resource-section {
+    margin-top: 40px;
+    padding: 20px;
+}
+
+.resource-section h3 {
+    color: var(--secondary-color);
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--tertiary-color);
+}
+
+.resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.resource-card {
+    background: var(--card-bg-color);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-speed) ease;
+    border: 1px solid var(--border-color);
+}
+
+.resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    background: var(--hover-color);
+}
+
+.resource-card h4 {
+    color: var(--secondary-color);
+    margin: 0 0 15px 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.resource-card p {
+    color: var(--text-color);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.resource-card a {
+    display: inline-block;
+    color: var(--tertiary-color);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 0;
+    position: relative;
+}
+
+.resource-card a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--tertiary-color);
+    transition: width var(--transition-speed) ease;
+}
+
+.resource-card a:hover::after {
+    width: 100%;
+}
+
+.career-section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background: var(--card-bg-color);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+.career-section:last-child {
+    margin-bottom: 0;
+}
+
+.career-title {
+    color: var(--secondary-color);
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--tertiary-color);
+    font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    .learning-container {
+        padding: 10px;
+    }
+
+    .learning-resources {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .learning-container h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .resource-card {
+        padding: 20px;
+    }
+
+    .resource-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .resource-section h3 {
+        font-size: 1.5rem;
+    }
+
+    .career-title {
+        font-size: 1.4rem;
+    }
+}
