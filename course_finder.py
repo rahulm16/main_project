@@ -95,8 +95,8 @@ if __name__ == "__main__":
     mongo_uri = "mongodb://localhost:27017/"
     
     # Database and collection names
-    nptel_db_name = "sample"
-    nptel_collection_name = "scraped_data"
+    nptel_db_name = "NPTEL_Course_details"
+    nptel_collection_name = "2024_WA"
     
     career_db_name = "aicareer"
     career_collection_name = "career_suggestions"
