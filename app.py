@@ -1,4 +1,5 @@
 from flask import Flask, redirect, render_template, request, jsonify, session, url_for
+from course_finder import find_relevant_courses  # Assuming the previous code is in course_finder.py
 from flask_pymongo import PyMongo
 from pymongo import MongoClient
 from bson import ObjectId
@@ -12,6 +13,7 @@ import json
 import logging
 import os
 import time
+
 app = Flask(__name__)
 app.secret_key = "your_secret_key"  # Change this to a strong secret key
 app.config["MONGO_URI"] = "mongodb://localhost:27017/aicareer"  # Your MongoDB URI
@@ -731,15 +733,39 @@ def show_suggestions():
     suggestions_list = list(suggestions)  # Convert cursor to list
     return render_template('suggestions.html', suggestions=suggestions_list, user=session.get('user'))
 
-# Import the course finder function
-from course_finder import find_relevant_courses  # Assuming the previous code is in course_finder.py
-
+@app.route('/update-nptel-courses')
+def update_nptel_courses():
+    """
+    Administrative route to update NPTEL course matches
+    This should be called periodically or when new courses are added
+    """
+    try:
+        # MongoDB connection settings
+        mongo_uri = "mongodb://localhost:27017/"
+        nptel_db_name = "NPTEL_Course_details"
+        nptel_collection_name = "2024_WA"
+        career_db_name = "aicareer"
+        career_collection_name = "career_suggestions"
+        
+        # Call the function to find relevant courses
+        find_relevant_courses(
+            mongo_uri, 
+            nptel_db_name, 
+            nptel_collection_name, 
+            career_db_name, 
+            career_collection_name,
+            save_to_db=True  # Add this parameter to your original function
+        )
+        
+        return jsonify({"status": "success", "message": "NPTEL courses updated successfully"})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)})
 
 @app.route('/learning')
 def learning():
     try:
         # Trigger the update of NPTEL courses before rendering the page
-        
+        update_nptel_courses()
 
         # Fetch all career suggestions from MongoDB
         career_data = list(mongo.db.career_suggestions.find())
@@ -789,8 +815,6 @@ def learning():
                 'link': career.get('youtube_link')
             })
 
-        update_nptel_courses()
-
         return render_template('learning.html',
                            careers_courses=careers_courses,
                            youtube_resources=youtube_resources,
@@ -800,33 +824,6 @@ def learning():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)})
 
-@app.route('/update-nptel-courses')
-def update_nptel_courses():
-    """
-    Administrative route to update NPTEL course matches
-    This should be called periodically or when new courses are added
-    """
-    try:
-        # MongoDB connection settings
-        mongo_uri = "mongodb://localhost:27017/"
-        nptel_db_name = "NPTEL_Course_details"
-        nptel_collection_name = "2024_WA"
-        career_db_name = "aicareer"
-        career_collection_name = "career_suggestions"
-        
-        # Call the function to find relevant courses
-        find_relevant_courses(
-            mongo_uri, 
-            nptel_db_name, 
-            nptel_collection_name, 
-            career_db_name, 
-            career_collection_name,
-            save_to_db=True  # Add this parameter to your original function
-        )
-        
-        return jsonify({"status": "success", "message": "NPTEL courses updated successfully"})
-    except Exception as e:
-        return jsonify({"status": "error", "message": str(e)})
 
 
 #feedback
