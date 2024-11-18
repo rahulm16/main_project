@@ -19,7 +19,7 @@ mongo = PyMongo(app)
 bcrypt = Bcrypt(app)  # Initialize Bcrypt
 
 client = MongoClient("mongodb://localhost:27017/")  # Connecting to MongoDB (if on localhost)
-gaq_db = client.General_Aptitude_questions
+gaq_db = client.GAQ
 
 # GAQ collections for Easy, Medium, and Hard questions
 GAQ_Collection = {
