@@ -11,7 +11,7 @@ import random
 import json
 import logging
 import os
-
+import time
 app = Flask(__name__)
 app.secret_key = "your_secret_key"  # Change this to a strong secret key
 app.config["MONGO_URI"] = "mongodb://localhost:27017/aicareer"  # Your MongoDB URI
@@ -520,10 +520,7 @@ def fetch_suggestions():
         return jsonify({'success': False, 'message': 'No questions available for suggestions.'}), 404
 
     # Prepare the content for the API request
-    content = (f"This is the brief information about user {json.dumps(user_data)} "
-               f"These are the user preferences in priority order {json.dumps(user_responses)} "
-               f"Questions and Answers: {json.dumps(questions)} "
-               f"Based on the user details, user preferences and questions and answers given by the user, "
+    content = (f"Based on the user details, user preferences and questions and answers given by the user, "
                f"suggest 5 career paths along with 5 roadmap points for each in JSON format. "
                f"Also provide 1 Udemy search query related to each career path (just the query, not the full URL). "
                f"Also provide 1 YouTube search query related to each career path (just the query, not the full URL). "
@@ -539,26 +536,26 @@ def fetch_suggestions():
                f"\"coursera_query\": \"Search query for Coursera\", "
                f"\"upgrad_query\": \"Search query for UpGrad\", "
                f"\"nptel_keywords\": [\"keyword1\", \"keyword2\", \"keyword3\", \"keyword4\", \"keyword5\"]}}].")
-
+                
     try:
         chat_response = client.chat.complete(
             model=model,
             messages=[{
                 "role": "user",
-                "content": content  # Use the content prepared above
+                "content": content
             }]
         )
 
         # Extract the response content
         raw_response = chat_response.choices[0].message.content
-        logging.debug(f"Raw API response: {raw_response}")
+        #logging.debug(f"Raw API response: {raw_response}")
 
         # Extracting JSON data from the response
         lines = raw_response.splitlines()
         if lines[0] == "```" and lines[-1] == "```":
-            json_data = "\n".join(lines[1:-1])  # Extract between the second and last line
+            json_data = "\n".join(lines[1:-1])
         elif lines[0] == "```json" and lines[-1] == "```":
-            json_data = "\n".join(lines[1:-1])  # Extract between the second and last line
+            json_data = "\n".join(lines[1:-1])
         else:
             json_data = raw_response.strip()
 
@@ -579,7 +576,7 @@ def fetch_suggestions():
 
             # Ensure NPTEL keywords are included from API response
             nptel_keywords = suggestion.get('nptel_keywords', [])
-            suggestion['nptel_keywords'] = nptel_keywords  # Add the NPTEL keywords
+            suggestion['nptel_keywords'] = nptel_keywords
 
         # Update the 'career_suggestions' collection with the new data
         mongo.db.career_suggestions.insert_many(suggestions)
@@ -596,6 +593,137 @@ def fetch_suggestions():
         logging.error(f"Error while fetching suggestions: {e}")
         return jsonify({'success': False, 'message': 'Failed to fetch suggestions'}), 500
 
+@app.route('/fetch_detailed_layout', methods=['GET'])
+def fetch_detailed_layout():
+    try:
+        # Get all career suggestions
+        career_suggestions = list(mongo.db.career_suggestions.find())
+        
+        if not career_suggestions:
+            logging.error("No career suggestions found")
+            return jsonify({'success': False, 'message': 'No career suggestions found'}), 404
+            
+        layout_data_list = []
+        
+        # Process each career suggestion
+        for career in career_suggestions:
+            # Define the expected JSON format for each career
+            json_format = {
+                "heading": "string",
+                "container": {
+                    "leftColumn": [{
+                        "id": "string",
+                        "title": "string",
+                        "matches": ["string", "string"],
+                        "content": ["string", "string", "string"]
+                    }],
+                    "middleColumn": [{
+                        "id": "string",
+                        "title": "string",
+                        "tooltip": "string"
+                    }],
+                    "rightColumn": [{
+                        "id": "string",
+                        "title": "string",
+                        "matches": ["string", "string"],
+                        "content": ["string", "string", "string"]
+                    }]
+                }
+            }
+
+            # Prepare the API request content for each career
+            content = (f"For the career path: {career['career']}, "
+                      f"Please generate a JSON structure for a web page layout or content presentation. The JSON should include the following components:"
+                      f"Heading: A title or heading of the page or content section."
+                      f"Container: A main container divided into sections (e.g., columns, blocks, or regions):"
+                      f"Left Column: An array of items or cards with the following structure:"
+                      f"id: A unique identifier for each item/card."
+                      f"title: The title or name of the item/card."
+                      f"matches: A list of related item IDs or references."
+                      f"content: A list of text content or descriptions for each item (e.g., bullet points or key information). There should be minimum 3 points of 15 words"
+                      f"Middle Column: An array of items (e.g., flowchart, timeline, steps) this should be headings to pursue that career with the following structure:"
+                      f"id: A unique identifier for each item."
+                      f"title: A title or label for the item. Minimum of 6 titles"
+                      f"tooltip: A description or additional info about the item."
+                      f"Right Column: An array of items or cards with the same structure as the left column:"
+                      f"id: A unique identifier for each item/card."
+                      f"title: The title or name of the item/card."
+                      f"matches: A list of related item IDs or references. The matches array in left column and right column matches to the id in middle column"
+                      f"content: A list of text content or descriptions for each item (e.g., bullet points or key information). There should be minimum 3 points of 15 words"
+                      f"Format: The JSON output should be structured as follows: {json_format}"
+                      f"In the structure:"
+                      f"heading: The main title or header for the page."
+                      f"container: Contains three sections:"
+                      f"leftColumn: A list of cards or blocks for content or information. the string values of id should be l1, l2, l3 like that"
+                      f"middleColumn: A list of items such as a flowchart, steps, or milestones with descriptive tooltips. the string values of id should be m1, m2, m3 like that"
+                      f"rightColumn: Another list of cards or blocks for related content or career options. the string values of id should be r1, r2, r3 like that"
+                      f"there should be minimum 5 cards in both left and right column"
+                      f"The structure should be flexible and generic enough to accommodate different types of web content layouts, such as educational paths, career advice, product info, etc.")
+
+            try:
+                # Make API request for each career
+                chat_response = client.chat.complete(
+                    model=model,
+                    messages=[{
+                        "role": "user",
+                        "content": content
+                    }]
+                )
+
+                # Extract and clean response
+                raw_response = chat_response.choices[0].message.content
+                #logging.debug(f"Raw API response for layout: {raw_response}")
+
+                # Clean and parse JSON response
+                json_str = raw_response.strip()
+                
+                # Handle code block formatting
+                if "```json" in json_str:
+                    json_str = json_str.split("```json")[1].split("```")[0]
+                elif "```" in json_str:
+                    json_str = json_str.split("```")[1].split("```")[0]
+
+                # Parse and validate JSON
+                layout_data = json.loads(json_str.strip())
+                
+                # Add career identifier to layout data
+                layout_data['career_id'] = str(career['_id'])
+                layout_data['career_name'] = career['career']
+                
+                layout_data_list.append(layout_data)
+                
+            except Exception as e:
+                logging.error(f"Error processing career {career['career']}: {e}")
+                continue
+
+        # Save all layouts to MongoDB after processing all careers
+        if layout_data_list:
+            try:
+                mongo.db.page_layout.insert_many(layout_data_list)
+                #logging.info(f"Successfully saved {len(layout_data_list)} detailed layout data to MongoDB")
+                return jsonify({
+                    'success': True, 
+                    'message': f'Successfully generated and saved {len(layout_data_list)} layouts'
+                }), 200
+            except Exception as e:
+                logging.error(f"Error saving layouts to MongoDB: {e}")
+                return jsonify({
+                    'success': False, 
+                    'message': 'Error saving layouts to database'
+                }), 500
+        else:
+            return jsonify({
+                'success': False, 
+                'message': 'No layouts were generated successfully'
+            }), 500
+
+    except Exception as e:
+        logging.error(f"Error in fetch_detailed_layout: {e}")
+        return jsonify({
+            'success': False, 
+            'message': f'Failed to fetch detailed layout: {str(e)}'
+        }), 500
+    
 @app.route('/suggestions', methods=['GET'])
 def show_suggestions():
     # Retrieve suggestions from MongoDB
