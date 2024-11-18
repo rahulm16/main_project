@@ -652,10 +652,15 @@ def learning():
         for career in career_data:
             career_name = career['career']
 
-
-            # Fetch the saved NPTEL courses for this career from the 'nptel_matches' collection
+            # Fetch the saved NPTEL courses for this career
             saved_nptel_courses = list(mongo.db.nptel_matches.find({"career": career_name}))
-            nptel_courses[career_name] = saved_nptel_courses  # Store courses for each career
+            
+            # Convert ObjectId to string for each course
+            for course in saved_nptel_courses:
+                if '_id' in course:
+                    course['_id'] = str(course['_id'])
+            
+            nptel_courses[career_name] = saved_nptel_courses
 
             # Process other learning resources
             careers_courses[career_name] = {
@@ -684,14 +689,13 @@ def learning():
             })
 
         return render_template('learning.html',
-                               careers_courses=careers_courses,
-                               youtube_resources=youtube_resources,
-                               nptel_courses=nptel_courses,  # Pass the NPTEL courses
-                               user=session.get('user'))
+                           careers_courses=careers_courses,
+                           youtube_resources=youtube_resources,
+                           nptel_courses=nptel_courses,
+                           user=session.get('user'))
 
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)})
-
 
 #feedback
 @app.route('/feedback')
