@@ -10,11 +10,32 @@ function closeModal(id) {
     document.body.style.overflow = 'auto';
 }
 
-// Close modal when clicking outside
+// Close modal when clicking outside and trigger the OK button behavior
 window.onclick = function(event) {
-    if (event.target.classList.contains('modal')) {
-        event.target.classList.remove('active');
+    const introModal = document.getElementById('intro-modal');
+    const okButton = document.getElementById('ok-button');
+
+    if (event.target.classList.contains('modal') || event.target === introModal) {
+        // Trigger OK button behavior
+        introModal.classList.remove('active');
         document.body.style.overflow = 'auto';
+
+        // Call the Flask route
+        fetch('/fetch_detailed_layout', {
+            method: 'GET',
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Successfully fetched detailed layout:', data);
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
     }
 }
 
