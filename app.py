@@ -35,7 +35,6 @@ logging.basicConfig(level=logging.DEBUG)
 logging.getLogger("httpx").setLevel(logging.WARNING)
 logging.getLogger("pymongo").setLevel(logging.WARNING)
 
-
 # Initialize Mistral client
 api_key = "TAwCGc5pL1RjWdb45bqKQkfXAZEs9npP"
 model = "mistral-large-latest"
@@ -320,7 +319,6 @@ def save_user_data():
 
     return jsonify({'status': 'success', 'message': 'User data successfully saved.'}), 200
 
-
 def generate_questions(career_preferences):
     """ Generate aptitude questions using Mistral API. """
     messages = [
@@ -594,6 +592,104 @@ def fetch_suggestions():
     except Exception as e:
         logging.error(f"Error while fetching suggestions: {e}")
         return jsonify({'success': False, 'message': 'Failed to fetch suggestions'}), 500
+  
+@app.route('/suggestions', methods=['GET'])
+def show_suggestions():
+    # Retrieve suggestions from MongoDB
+    suggestions = mongo.db.career_suggestions.find()
+    suggestions_list = list(suggestions)  # Convert cursor to list
+    return render_template('suggestions.html', suggestions=suggestions_list, user=session.get('user'))
+
+@app.route('/update-nptel-courses')
+def update_nptel_courses():
+    """
+    Administrative route to update NPTEL course matches
+    This should be called periodically or when new courses are added
+    """
+    try:
+        # MongoDB connection settings
+        mongo_uri = "mongodb://localhost:27017/"
+        nptel_db_name = "NPTEL_Course_details"
+        nptel_collection_name = "2024_WA"
+        career_db_name = "aicareer"
+        career_collection_name = "career_suggestions"
+        
+        # Call the function to find relevant courses
+        find_relevant_courses(
+            mongo_uri, 
+            nptel_db_name, 
+            nptel_collection_name, 
+            career_db_name, 
+            career_collection_name,
+            save_to_db=True  # Add this parameter to your original function
+        )
+        
+        return jsonify({"status": "success", "message": "NPTEL courses updated successfully"})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)})
+
+@app.route('/learning')
+def learning():
+    try:
+        # Trigger the update of NPTEL courses before rendering the page
+        update_nptel_courses()
+
+        # Fetch all career suggestions from MongoDB
+        career_data = list(mongo.db.career_suggestions.find())
+
+        # Initialize dictionaries for our data
+        careers_courses = {}
+        youtube_resources = []
+        nptel_courses = {}
+
+        # Process each career
+        for career in career_data:
+            career_name = career['career']
+
+            # Fetch the saved NPTEL courses for this career
+            saved_nptel_courses = list(mongo.db.nptel_matches.find({"career": career_name}))
+            
+            # Convert ObjectId to string for each course
+            for course in saved_nptel_courses:
+                if '_id' in course:
+                    course['_id'] = str(course['_id'])
+            
+            nptel_courses[career_name] = saved_nptel_courses
+
+            # Process other learning resources
+            careers_courses[career_name] = {
+                'udemy': {
+                    'title': f"Udemy Courses for {career_name}",
+                    'description': f"Learn {career_name} skills with comprehensive Udemy courses",
+                    'link': career.get('udemy_link')
+                },
+                'coursera': {
+                    'title': f"Coursera Programs for {career_name}",
+                    'description': f"Professional {career_name} certifications and courses",
+                    'link': career.get('coursera_link')
+                },
+                'upgrad': {
+                    'title': f"Upgrad Programs for {career_name}",
+                    'description': f"Professional {career_name} degree and certification programs",
+                    'link': career.get('upgrad_link')
+                }
+            }
+
+            youtube_resources.append({
+                'career': career_name,
+                'title': f"YouTube Tutorials for {career_name}",
+                'description': f"Free {career_name} tutorials and courses",
+                'link': career.get('youtube_link')
+            })
+
+        return render_template('learning.html',
+                           careers_courses=careers_courses,
+                           youtube_resources=youtube_resources,
+                           nptel_courses=nptel_courses,
+                           user=session.get('user'))
+
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)})
 
 @app.route('/fetch_detailed_layout', methods=['GET'])
 def fetch_detailed_layout():
@@ -725,106 +821,49 @@ def fetch_detailed_layout():
             'success': False, 
             'message': f'Failed to fetch detailed layout: {str(e)}'
         }), 500
-    
-@app.route('/suggestions', methods=['GET'])
-def show_suggestions():
-    # Retrieve suggestions from MongoDB
-    suggestions = mongo.db.career_suggestions.find()
-    suggestions_list = list(suggestions)  # Convert cursor to list
-    return render_template('suggestions.html', suggestions=suggestions_list, user=session.get('user'))
 
-@app.route('/update-nptel-courses')
-def update_nptel_courses():
+#functions related to detailed pathway
+@app.route('/roadmap')
+def roadmap():
+    client = MongoClient("mongodb://localhost:27017/")
+    db = client['aicareer']
+    career_collection = db['career_suggestions']
+    # Fetch all careers from career_suggestions collection
+    careers = list(career_collection.find({}, {'career': 1, 'roadmap': 1}))
+    return render_template('roadmap.html', careers=careers)
+
+def json_serialize(data):
     """
-    Administrative route to update NPTEL course matches
-    This should be called periodically or when new courses are added
+    Convert MongoDB ObjectId and other non-serializable types into a serializable format
     """
-    try:
-        # MongoDB connection settings
-        mongo_uri = "mongodb://localhost:27017/"
-        nptel_db_name = "NPTEL_Course_details"
-        nptel_collection_name = "2024_WA"
-        career_db_name = "aicareer"
-        career_collection_name = "career_suggestions"
-        
-        # Call the function to find relevant courses
-        find_relevant_courses(
-            mongo_uri, 
-            nptel_db_name, 
-            nptel_collection_name, 
-            career_db_name, 
-            career_collection_name,
-            save_to_db=True  # Add this parameter to your original function
-        )
-        
-        return jsonify({"status": "success", "message": "NPTEL courses updated successfully"})
-    except Exception as e:
-        return jsonify({"status": "error", "message": str(e)})
+    if isinstance(data, ObjectId):
+        return str(data)
+    elif isinstance(data, dict):
+        return {key: json_serialize(value) for key, value in data.items()}
+    elif isinstance(data, list):
+        return [json_serialize(item) for item in data]
+    else:
+        return data
 
-@app.route('/learning')
-def learning():
-    try:
-        # Trigger the update of NPTEL courses before rendering the page
-        update_nptel_courses()
+@app.route('/api/layout/<career_id>')
+def get_layout(career_id):
+    client = MongoClient("mongodb://localhost:27017/")
+    db = client['aicareer']
+    layout_collection = db['page_layout']
+    # Fetch the layout document for the specific career
+    layout = layout_collection.find_one({'career_id': career_id})
+    if layout:
+        return jsonify(json_serialize(layout))
+    return jsonify({'error': 'Layout not found'}), 404
 
-        # Fetch all career suggestions from MongoDB
-        career_data = list(mongo.db.career_suggestions.find())
-
-        # Initialize dictionaries for our data
-        careers_courses = {}
-        youtube_resources = []
-        nptel_courses = {}
-
-        # Process each career
-        for career in career_data:
-            career_name = career['career']
-
-            # Fetch the saved NPTEL courses for this career
-            saved_nptel_courses = list(mongo.db.nptel_matches.find({"career": career_name}))
-            
-            # Convert ObjectId to string for each course
-            for course in saved_nptel_courses:
-                if '_id' in course:
-                    course['_id'] = str(course['_id'])
-            
-            nptel_courses[career_name] = saved_nptel_courses
-
-            # Process other learning resources
-            careers_courses[career_name] = {
-                'udemy': {
-                    'title': f"Udemy Courses for {career_name}",
-                    'description': f"Learn {career_name} skills with comprehensive Udemy courses",
-                    'link': career.get('udemy_link')
-                },
-                'coursera': {
-                    'title': f"Coursera Programs for {career_name}",
-                    'description': f"Professional {career_name} certifications and courses",
-                    'link': career.get('coursera_link')
-                },
-                'upgrad': {
-                    'title': f"Upgrad Programs for {career_name}",
-                    'description': f"Professional {career_name} degree and certification programs",
-                    'link': career.get('upgrad_link')
-                }
-            }
-
-            youtube_resources.append({
-                'career': career_name,
-                'title': f"YouTube Tutorials for {career_name}",
-                'description': f"Free {career_name} tutorials and courses",
-                'link': career.get('youtube_link')
-            })
-
-        return render_template('learning.html',
-                           careers_courses=careers_courses,
-                           youtube_resources=youtube_resources,
-                           nptel_courses=nptel_courses,
-                           user=session.get('user'))
-
-    except Exception as e:
-        return jsonify({"status": "error", "message": str(e)})
-
-
+@app.route('/api/careers')
+def get_careers():
+    client = MongoClient("mongodb://localhost:27017/")
+    db = client['aicareer']
+    career_collection = db['career_suggestions']
+    # Fetch all careers with their roadmaps
+    careers = list(career_collection.find({}, {'career': 1, 'roadmap': 1}))
+    return jsonify(json_serialize(careers))
 
 #feedback
 @app.route('/feedback')
