@@ -68,16 +68,24 @@ document.addEventListener('DOMContentLoaded', function () {
         try {
             const response = await fetch(`/api/layout/${careerId}`);
             const data = await response.json();
-
+    
             if (data.error) {
                 console.error('Error loading layout:', data.error);
                 return;
             }
-
+    
+            // Get career name from the clicked card
+            const careerCard = document.querySelector(`.career-card[data-id="${careerId}"]`);
+            const careerName = careerCard.querySelector('h2').textContent;
+    
+            // Set the career name in the modal
+            const modalTitle = modal.querySelector('.career-title');
+            modalTitle.textContent = "Roadmap for "+careerName;
+    
             // Show modal
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
-
+    
             // Render the flowchart
             renderColumns(data.container);
             attachFlowchartEvents();
@@ -98,7 +106,8 @@ document.addEventListener('DOMContentLoaded', function () {
     closeBtn.addEventListener('click', () => {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
-
+        // Clear the career title
+        modal.querySelector('.career-title').textContent = '';
         // Clear the flowchart
         document.querySelector('.left-column').innerHTML = '';
         document.querySelector('.middle-column').innerHTML = '';
