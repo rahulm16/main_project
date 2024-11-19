@@ -696,7 +696,7 @@ def fetch_detailed_layout():
     try:
         # Get all career suggestions
         career_suggestions = list(mongo.db.career_suggestions.find())
-        
+        logging.debug("Fetching detailed layout for the career suggestions")
         if not career_suggestions:
             logging.error("No career suggestions found")
             return jsonify({'success': False, 'message': 'No career suggestions found'}), 404
@@ -770,7 +770,7 @@ def fetch_detailed_layout():
 
                 # Extract and clean response
                 raw_response = chat_response.choices[0].message.content
-                #logging.debug(f"Raw API response for layout: {raw_response}")
+                logging.debug(f"Raw API response for layout: {raw_response}")
 
                 # Clean and parse JSON response
                 json_str = raw_response.strip()
@@ -830,7 +830,7 @@ def roadmap():
     career_collection = db['career_suggestions']
     # Fetch all careers from career_suggestions collection
     careers = list(career_collection.find({}, {'career': 1, 'roadmap': 1}))
-    return render_template('roadmap.html', careers=careers)
+    return render_template('roadmap.html', careers=careers, user=session.get('user'))
 
 def json_serialize(data):
     """
