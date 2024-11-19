@@ -124,8 +124,11 @@ body {
     opacity: 1;
 }
 
-/* Modal content container */
 .modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center the content */
+    align-items: center; /* Horizontally center the content */
     background: var(--card-bg-color);
     width: 90%;
     max-width: 540px;
@@ -191,7 +194,7 @@ body {
     background: var(--course-bg-color);
     border-radius: 12px;
     overflow: hidden;
-    width: 200px;
+    width: 220px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -277,3 +280,21 @@ body {
     border-top-right-radius: 20px;
 }
 
+/* Center the OK button in the modal */
+.modal-content .btn {
+    margin-top: 20px;  /* Optional: Add some spacing from other content */
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.modal-content .btn:hover {
+    background-color: var(--tertiary-color);
+}
+
+.modal-content p {
+margin-left: 10px;
+}
