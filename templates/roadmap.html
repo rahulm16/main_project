@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Roadmaps</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/roadmap.css') }}">
+</head>
+<body>
+    <div class="main-container">
+        <h1>Detailed Roadmap</h1>
+        <div class="career-grid">
+            {% for career in careers %}
+            <div class="career-card" data-id="{{ career._id }}">
+                <h2>{{ career.career }}</h2>
+                <ul>
+                    {% for step in career.roadmap %}
+                    <li>{{ step }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="flowchartModal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="container">
+                <div class="left-column"></div>
+                <div class="middle-column"></div>
+                <div class="right-column"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='scripts/roadmap.js') }}"></script>
+</body>
+</html>
