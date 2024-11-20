@@ -1,7 +1,43 @@
-/* Add these styles at the beginning of your community.css file */
+:root {
+    --primary-color: #303134;
+    --secondary-color: #8ab4f8;
+    --tertiary-color: #FF416C;
+    --text-color: #eaeaea;
+    --bg-color: linear-gradient(135deg, #181818 0%, #333 100%);
+    --card-bg-color: #303134;
+    --input-bg-color: #333;
+    --border-color: #555555;
+    --success-color: #4CAF50;
+    --error-color: #f44336;
+    --secondary-color-rgb: 138, 180, 248;
+    --star-color: #888888;
+}
+
+body.light-mode {
+    --primary-color: #ffffff;
+    --secondary-color: #1a73e8;
+    --tertiary-color: #d93025;
+    --text-color: #202124;
+    --bg-color: linear-gradient(135deg, #f8f9fa 0%, #dbe0e4 100%);
+    --card-bg-color: #ffffff;
+    --input-bg-color: #f1f3f4;
+    --border-color: #dadce0;
+    --star-color: #bbbbbb;
+}
+
+body, html {
+    font-family: 'Poppins', Arial, sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
 .navbar {
-    background-color: var(--primary);
-    color: var(--primary-foreground);
+    background-color: var(--primary-color);
+    color: var(--text-color);
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
@@ -21,7 +57,7 @@
 }
 
 .nav-links a {
-    color: var(--primary-foreground);
+    color: var(--text-color);
     text-decoration: none;
     transition: opacity 0.3s;
 }
@@ -39,26 +75,6 @@
     padding: 0.25rem 0.5rem;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 0.25rem;
-}
-
-:root {
-    --primary: #3b82f6;
-    --primary-foreground: #ffffff;
-    --background: #ffffff;
-    --foreground: #020817;
-    --muted: #f1f5f9;
-    --muted-foreground: #64748b;
-    --border: #e2e8f0;
-    --input: #e2e8f0;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background-color: var(--background);
-    color: var(--foreground);
-    line-height: 1.5;
-    margin: 0;
-    padding: 0;
 }
 
 .container {
@@ -81,7 +97,7 @@ body {
 
 .search-input, .sort-select, .input, .textarea, .select {
     padding: 0.5rem;
-    border: 1px solid var(--input);
+    border: 1px solid var(--input-bg-color);
     border-radius: 0.25rem;
     font-size: 1rem;
 }
@@ -91,8 +107,8 @@ body {
 }
 
 .button {
-    background-color: var(--primary);
-    color: var(--primary-foreground);
+    background-color: var(--secondary-color);
+    color: var(--text-color);
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
@@ -106,8 +122,8 @@ body {
 
 .button-outline {
     background-color: transparent;
-    color: var(--primary);
-    border: 1px solid var(--primary);
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
 }
 
 .tabs {
@@ -122,12 +138,12 @@ body {
     padding: 0.5rem 1rem;
     cursor: pointer;
     font-size: 1rem;
-    color: var(--muted-foreground);
+    color: var(--text-color);
 }
 
 .tab-button.active {
-    color: var(--primary);
-    border-bottom: 2px solid var(--primary);
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
 }
 
 .posts-container {
@@ -137,8 +153,8 @@ body {
 }
 
 .post-card {
-    background-color: var(--background);
-    border: 1px solid var(--border);
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
     border-radius: 0.5rem;
     padding: 1rem;
 }
@@ -158,7 +174,7 @@ body {
 
 .post-community {
     font-size: 0.875rem;
-    color: var(--muted-foreground);
+    color: var(--text-color);
 }
 
 .post-author {
@@ -186,8 +202,8 @@ body {
 }
 
 .tag {
-    background-color: var(--muted);
-    color: var(--muted-foreground);
+    background-color: var(--secondary-color);
+    color: var(--text-color);
     padding: 0.25rem 0.5rem;
     border-radius: 0.25rem;
     font-size: 0.875rem;
@@ -211,7 +227,7 @@ body {
     display: flex;
     align-items: center;
     gap: 0.25rem;
-    color: var(--muted-foreground);
+    color: var(--text-color);
 }
 
 .modal {
@@ -226,10 +242,10 @@ body {
 }
 
 .modal-content {
-    background-color: var(--background);
+    background-color: var(--card-bg-color);
     margin: 15% auto;
     padding: 2rem;
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-color);
     border-radius: 0.5rem;
     width: 80%;
     max-width: 600px;
@@ -253,5 +269,17 @@ body {
 @media (max-width: 768px) {
     .search-bar {
         flex-direction: column;
+    }
+
+    .feedback {
+        padding: 1rem;
+    }
+
+    .feedback main {
+        padding: 1.5rem;
+    }
+
+    .feedback h1 {
+        font-size: 1.5rem;
     }
 }
