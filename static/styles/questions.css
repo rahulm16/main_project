@@ -28,7 +28,7 @@ body.light-mode {
 }
 
 /* General Styling */
-body, html {
+body {
     font-family: 'Poppins', Arial, sans-serif;
     height: 100%;
     background: var(--bg-color);
@@ -36,6 +36,15 @@ body, html {
     overflow: auto;
     margin: 0;
     padding: 0;
+}
+
+html{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
 }
 
 body.questions-layout,

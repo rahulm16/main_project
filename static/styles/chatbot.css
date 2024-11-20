@@ -31,7 +31,7 @@ body.light-mode {
     --suggestion-hover: #8EACCD
 }
 
-body, html {
+body {
     font-family: 'Poppins', Arial, sans-serif;
     background: var(--bg-color);
     color: var(--text-color);
@@ -42,7 +42,13 @@ body, html {
     flex-direction: column;
 }
 
-
+html{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
 
 .main-content {
     flex-grow: 1;

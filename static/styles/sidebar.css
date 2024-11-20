@@ -1,9 +1,11 @@
+/* Variables for Light and Dark Modes */
 :root {
     --primary-color: #303134; /* Dark primary color */
     --secondary-color: #8ab4f8; /* Dark secondary color */
     --tertiary-color: #FF416C; /* Dark tertiary color */
     --text-color: #eaeaea; /* Dark text color */
     --bg-color: linear-gradient(135deg, #181818 0%, #333 100%); /* Dark background gradient */
+    --dark-bg-color: rgba(28, 28, 28, 1);
     --border-color: #555555; /* Dark border color */
     --slider-bg-color: #181818; /* Dark slider background */
     --slider-thumb-color: #8ab4f8; /* Dark slider thumb color */
@@ -15,31 +17,26 @@ body.light-mode {
     --tertiary-color: #d93025; /* Light tertiary color */
     --text-color: #202124; /* Light text color */
     --bg-color: linear-gradient(135deg, #f8f9fa 0%, #dbe0e4 100%); /* Light background gradient */
+    --dark-bg-color: rgba(248, 249, 250, 1);
     --border-color: #ffffff; /* Light border color */
     --slider-bg-color: #f1f3f4; /* Light slider background */
     --slider-thumb-color: #1a73e8; /* Light slider thumb color */
 }
-/* Universal Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-}
 
-/* Sidebar Styling */
 .sidebar {
     position: fixed;
     left: 0;
-    top: 60px; /* Sidebar starts right below the header (height = 60px) */
-    height: calc(100vh - 60px); /* Full height minus the header's height */  /* Sidebar height adjusted to account for the header */
+    top: 60px;
+    height: calc(100vh - 60px);
     width: 78px;
+    background: var(--dark-bg-color);
     color: var(--text-color);
-    background: var(--primary-color);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     padding: 6px 14px;
     z-index: 1000;
     transition: all 0.5s ease;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
 .sidebar.open {
@@ -54,9 +51,9 @@ body.light-mode {
 }
 
 .sidebar .logo-details .logo_name {
-    color: #fff;
     font-size: 20px;
     font-weight: 600;
+    color: var(--text-color);
     opacity: 0;
     transition: all 0.5s ease;
 }
@@ -65,7 +62,6 @@ body.light-mode {
     opacity: 1;
 }
 
-
 .sidebar .logo-details #btn {
     font-size: 22px;
     cursor: pointer;
@@ -73,7 +69,7 @@ body.light-mode {
 }
 
 .sidebar i {
-    color: #fff;
+    color: var(--text-color);
     height: 60px;
     min-width: 50px;
     font-size: 28px;
@@ -82,7 +78,8 @@ body.light-mode {
 }
 
 .sidebar .nav-list {
-    margin-top: 20px;
+    margin: 0px;
+    padding: 0px;
 }
 
 .sidebar li {
@@ -106,7 +103,7 @@ body.light-mode {
     border-radius: 12px;
     text-decoration: none;
     color: var(--text-color);
-    background: var(--primary-color);
+
     transition: all 0.4s ease;
 }
 
@@ -115,16 +112,14 @@ body.light-mode {
 }
 
 .sidebar li a .links_name {
-    opacity: 0; /* Hidden when sidebar is collapsed */
+    opacity: 0;
     white-space: nowrap;
     transition: 0.4s;
 }
 
 .sidebar.open li a .links_name {
-    opacity: 1; /* Visible when sidebar is expanded */
+    opacity: 1;
 }
-
-
 
 .sidebar li .tooltip {
     position: absolute;
@@ -147,10 +142,9 @@ body.light-mode {
 }
 
 .sidebar.open li .tooltip {
-    display: none; /* Hide tooltips when sidebar is expanded */
+    display: none;
 }
 
-/* Sidebar Profile Section */
 .sidebar li.profile {
     position: fixed;
     bottom: 0;
@@ -179,7 +173,7 @@ body.light-mode {
 
 .sidebar li.profile .name,
 .sidebar li.profile .job {
-    color: #fff;
+    color: var(--text-color);
     font-size: 15px;
 }
 
@@ -201,57 +195,9 @@ body.light-mode {
     background: none;
 }
 
-/* Home Section */
-.home-section {
-    position: relative;
-    background: #e4e9f7;
-    min-height: 100vh;
-    top: 60px; /* Content starts below the header */
-    left: 78px;
-    width: calc(100% - 78px);
-    transition: all 0.5s ease;
-}
-
 .sidebar.open ~ .home-section {
     left: 250px; /* Adjust content margin when sidebar is open */
     width: calc(100% - 250px);
-}
-
-
-.home-section .text {
-    font-size: 25px;
-    font-weight: 500;
-    color: #11101D;
-    margin: 18px;
-    position: relative;
-    background: #e4e9f7;
-    min-height: 100vh; /* Ensure full height */
-    margin-left: 78px; /* Adjust margin for sidebar */
-    padding-top: 60px; /* Ensure content starts below header */
-    transition: margin-left 0.5s ease;
-}
-
-/* Header Styling */
-/* Header Styling */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: var(--primary-color);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 100;
-    height: 60px; /* Adjust the header height if needed */
-}
-
-.header-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.header-container {
-    display: flex;
-    align-items: center;
 }
 
 #hamburger-menu {
@@ -262,3 +208,7 @@ header {
     transition: all 0.5s ease;
 }
 
+.header-container {
+    display: flex;
+    align-items: center;
+}

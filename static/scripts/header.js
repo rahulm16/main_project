@@ -94,6 +94,17 @@ document.addEventListener('DOMContentLoaded', () => {
         checkSessionData
     };
 
+
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 0) {  // If the page is scrolled
+            header.classList.add('scrolled'); // Add the 'scrolled' class to the header
+        } else {
+            header.classList.remove('scrolled'); // Remove the 'scrolled' class when at the top
+        }
+    });
+    
+
     // Call checkSessionData on page load
     checkSessionData();
 });

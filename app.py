@@ -598,7 +598,7 @@ def show_suggestions():
     # Retrieve suggestions from MongoDB
     suggestions = mongo.db.career_suggestions.find()
     suggestions_list = list(suggestions)  # Convert cursor to list
-    return render_template('suggestions.html', suggestions=suggestions_list, user=session.get('user'))
+    return render_template('suggestions.html', show_hamburger_menu=True, suggestions=suggestions_list, user=session.get('user'))
 
 @app.route('/update-nptel-courses')
 def update_nptel_courses():
@@ -683,6 +683,7 @@ def learning():
             })
 
         return render_template('learning.html',
+                           show_hamburger_menu=True,
                            careers_courses=careers_courses,
                            youtube_resources=youtube_resources,
                            nptel_courses=nptel_courses,
@@ -830,7 +831,7 @@ def roadmap():
     career_collection = db['career_suggestions']
     # Fetch all careers from career_suggestions collection
     careers = list(career_collection.find({}, {'career': 1, 'roadmap': 1}))
-    return render_template('roadmap.html', careers=careers, user=session.get('user'))
+    return render_template('roadmap.html', show_hamburger_menu=True, careers=careers, user=session.get('user'))
 
 def json_serialize(data):
     """
@@ -871,7 +872,7 @@ def feedback_page():
     """Render the feedback page"""
     if 'user' not in session:
         return redirect(url_for('login'))
-    return render_template('feedback.html', user=session.get('user'))
+    return render_template('feedback.html', show_hamburger_menu=True, user=session.get('user'))
 
 @app.route('/api/submit-feedback', methods=['POST'])
 def submit_feedback():
