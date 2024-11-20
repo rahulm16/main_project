@@ -112,6 +112,8 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('.left-column').innerHTML = '';
         document.querySelector('.middle-column').innerHTML = '';
         document.querySelector('.right-column').innerHTML = '';
+        // Remove all arrows
+        document.querySelectorAll('.arrow').forEach(arrow => arrow.remove());
     });
 
     // Close modal if clicking outside
@@ -119,6 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.target === modal) {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
+            document.querySelectorAll('.arrow').forEach(arrow => arrow.remove());
         }
     });
 
