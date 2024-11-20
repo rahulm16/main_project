@@ -924,7 +924,7 @@ def community():
     for post in posts:
         post['_id'] = str(post['_id'])
     
-    return render_template('community.html', user=session.get('user'), posts=posts)
+    return render_template('community.html', show_hamburger_menu=True, user=session.get('user'), posts=posts)
 
 @app.route('/api/posts', methods=['GET', 'POST'])
 def handle_posts():

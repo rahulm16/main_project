@@ -14,7 +14,7 @@
         {{ user | tojson }}
     </script>
     {% include 'header.html' %}
-
+    {% include 'sidebar.html' %}
     <section class="community">
         <!-- Your community page content here -->
         <div class="container">
@@ -68,5 +68,6 @@
     
     <script src="{{ url_for('static', filename='scripts/community.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/header.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/sidebar.js') }}"></script>
 </body>
 </html>

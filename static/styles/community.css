@@ -25,7 +25,7 @@ body.light-mode {
     --star-color: #bbbbbb;
 }
 
-body, html {
+body {
     font-family: 'Poppins', Arial, sans-serif;
     background: var(--bg-color);
     color: var(--text-color);
@@ -35,7 +35,14 @@ body, html {
     display: flex;
     flex-direction: column;
 }
-
+html{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
 .navbar {
     background-color: var(--primary-color);
     color: var(--text-color);
