@@ -10,10 +10,7 @@ const newPostCommunity = document.getElementById('newPostCommunity');
 const newPostTitle = document.getElementById('newPostTitle');
 const newPostContent = document.getElementById('newPostContent');
 const tabButtons = document.querySelectorAll('.tab-button');
-const modeToggle = document.getElementById('mode-toggle');
 const body = document.body;
-const profileIcon = document.getElementById("profile-icon");
-const profileModal = document.getElementById("profile-modal");
 const welcomeMessage = document.getElementById("welcome-message");
 
 let activeTab = 'all';
@@ -32,16 +29,6 @@ tabButtons.forEach(button => button.addEventListener('click', () => {
     button.classList.add('active');
     updatePosts();
 }));
-
-// Light/Dark mode toggle functionality
-modeToggle.addEventListener('click', () => {
-    body.classList.toggle('light-mode');
-    updateToggleButtonAriaLabel();
-});
-
-function updateToggleButtonAriaLabel() {
-    modeToggle.setAttribute('aria-label', body.classList.contains('light-mode') ? 'Switch to dark mode' : 'Switch to light mode');
-}
 
 // Functions
 async function updatePosts() {
@@ -184,20 +171,6 @@ window.onclick = function(event) {
     if (event.target === newPostModal) {
         newPostModal.style.display = "none";
     }
-}
-
-// Profile management functions
-function updateProfileIcon(user) {
-    profileIcon.textContent = user.fullName.charAt(0).toUpperCase();
-    profileIcon.style.display = 'block';
-    welcomeMessage.textContent = `Hi, ${user.fullName}`;
-
-    profileIcon.addEventListener("click", () => {
-        profileModal.style.display = profileModal.style.display === "block" ? "none" : "block";
-    });
-
-    const logoutButton = document.getElementById("logout-btn");
-    logoutButton.addEventListener("click", handleLogout);
 }
 
 function handleLogout() {
