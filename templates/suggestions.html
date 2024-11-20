@@ -6,12 +6,37 @@
     <title>Career Suggestions</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/suggestions.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/header.css') }}">
 </head>
 <body class="dark-mode">
     <script id="user-data" type="application/json">
         {{ user | tojson }}
     </script>
-    {% include 'header.html' %}
+<!-- header.html -->
+<header>
+    <div class="header-container">
+        <i class='bx bx-menu' id="hamburger-menu"></i>
+        <a class="logo-link">
+            <h1><span class="savvy">Savvy</span><span class="ai">AI</span></h1>
+        </a>
+    </div>
+
+    <div class="header-buttons">
+        <button id="mode-toggle" class="mode-toggle" aria-label="Switch to light mode">
+            <span class="light-mode-emoji">☀️</span>
+            <span class="dark-mode-emoji">🌙</span>
+        </button>
+        <div id="profile-icon" class="profile-icon" style="display: none;"></div> <!-- Profile icon -->
+        <div id="profile-modal" class="profile-modal" style="display: none;">
+            <p id="welcome-message"></p>
+            <button class="logout-btn" id="logout-btn">Logout</button>  
+        </div>
+    </div>
+</header>
+
+
+    {% include 'sidebar.html' %}
+
 <!-- Introductory Modal -->
 <div id="intro-modal" class="modal active">
     <div class="modal-content">
@@ -70,6 +95,7 @@
         </div>
     </div>
     <script src="{{ url_for('static', filename='scripts/header.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/sidebar.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/suggestions.js') }}"></script>
 </body>
 </html>
