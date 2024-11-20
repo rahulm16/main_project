@@ -226,9 +226,7 @@ def aptitude_results():
         "total_questions": total_questions,
         "correct_answers": correct_answers,
         "wrong_answers": wrong_answers,
-        "score_percentage": score_percentage,
-        "detailed_results": detailed_results,
-        "user": session.get('user')
+        "score_percentage": score_percentage
     }
 
     # Insert the aptitude results data into `gaq_aptitude_results` collection in `aicareer` database
@@ -491,7 +489,7 @@ def fetch_suggestions():
     if not documents3:
         logging.warning("No user responses found in the 'user_responses' collection.")
         return jsonify({'success': False, 'message': 'No user responses available.'}), 404
-
+ 
     doc2 = documents3[0]  # Get the first document from user_responses
 
     # Prepare data for Mistral API
@@ -520,7 +518,11 @@ def fetch_suggestions():
         return jsonify({'success': False, 'message': 'No questions available for suggestions.'}), 404
 
     # Prepare the content for the API request
-    content = (f"Based on the user details, user preferences and questions and answers given by the user, "
+    content = (f"You are an AI model which is good at giving career suggestions for people, I want you to use your creativity and perform these tasks"
+               f"Based on the user details, {json.dumps(user_data)}"
+               f"User preferences {json.dumps(user_responses)}"
+               f"And I had conducted a quiz based on the user preferences this is how he/she as answered, {json.dumps(questions)}"
+               f"I want you to give career suggestions based on for which career related questions they have answered properly"
                f"suggest 5 career paths along with 5 roadmap points for each in JSON format. "
                f"Also provide 1 Udemy search query related to each career path (just the query, not the full URL). "
                f"Also provide 1 YouTube search query related to each career path (just the query, not the full URL). "
