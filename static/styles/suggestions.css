@@ -158,7 +158,7 @@ body {
 .close-modal {
     position: absolute;
     right: 24px;
-    top: 24px;
+    top: 10px;
     background: none;
     border: none;
     color: var(--text-color);
@@ -282,11 +282,12 @@ body {
 
 /* Center the OK button in the modal */
 .modal-content .btn {
-    margin-top: 20px;  /* Optional: Add some spacing from other content */
+    margin-bottom: 10px;  /* Optional: Add some spacing from other content */
     padding: 10px 20px;
     background-color: var(--secondary-color);
     color: var(--text-color);
     border: none;
+    font-size: 16px;
     border-radius: 4px;
     cursor: pointer;
 }

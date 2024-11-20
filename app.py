@@ -7,13 +7,14 @@ from bson.json_util import dumps
 from mistralai import Mistral
 from flask_bcrypt import Bcrypt
 from datetime import datetime
-from bson import ObjectId, json_util  # Add this import at the top
+from bson import ObjectId
+from dotenv import load_dotenv
 import random
 import json
 import logging
 import os
-import time
 
+load_dotenv()
 app = Flask(__name__)
 app.secret_key = "your_secret_key"  # Change this to a strong secret key
 app.config["MONGO_URI"] = "mongodb://localhost:27017/aicareer"  # Your MongoDB URI
@@ -36,7 +37,7 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 logging.getLogger("pymongo").setLevel(logging.WARNING)
 
 # Initialize Mistral client
-api_key = "TAwCGc5pL1RjWdb45bqKQkfXAZEs9npP"
+api_key = os.getenv("API_KEY")
 model = "mistral-large-latest"
 client = Mistral(api_key=api_key)
 

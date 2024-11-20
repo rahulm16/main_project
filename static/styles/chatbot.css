@@ -193,6 +193,11 @@ body, html {
     color: var(--text-color);
 }
 
+#chat-input:focus{
+    outline: none;
+    border: none;
+}
+
 #send-button {
     background: var(--secondary-color);
     border: none;
