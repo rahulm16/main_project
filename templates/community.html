@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SavvyAI Community</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/community.css') }}">
+</head>
+<body>
+    <!-- Simple navigation bar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="{{ url_for('index') }}" style="text-decoration: none; color: inherit;">SavvyAI</a>
+        </div>
+        <div class="nav-links">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('community') }}" class="active">Community</a>
+            {% if session.get('user') %}
+                <span class="user-name">{{ session.get('user').get('fullName', '') }}</span>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="title">SavvyAI Community</h1>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search discussions..." class="search-input">
+            <select id="sortSelect" class="sort-select">
+                <option value="recent">Most Recent</option>
+                <option value="popular">Most Popular</option>
+            </select>
+            {% if session.get('user') %}
+                <button id="newPostBtn" class="button">Start a New Discussion</button>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="button">Login to Post</a>
+            {% endif %}
+        </div>
+        <div class="tabs">
+            <button class="tab-button active" data-tab="all">All Communities</button>
+            <button class="tab-button" data-tab="frontend">Frontend Developers</button>
+            <button class="tab-button" data-tab="backend">Backend Developers</button>
+            <button class="tab-button" data-tab="hackerspace">Hackerspaces</button>
+            <button class="tab-button" data-tab="ai">AI & Machine Learning</button>
+            <button class="tab-button" data-tab="cloud">Cloud Computing</button>
+        </div>
+        <div class="posts-container" id="postsContainer"></div>
+    </div>
+
+    <div id="newPostModal" class="modal">
+        <div class="modal-content">
+            <h2>Create a New Post</h2>
+            <p>Share your thoughts, questions, or insights with the community.</p>
+            <select id="newPostCommunity" class="select">
+                <option value="">Select a community</option>
+                <option value="frontend">Frontend Developers</option>
+                <option value="backend">Backend Developers</option>
+                <option value="hackerspace">Hackerspaces</option>
+                <option value="ai">AI & Machine Learning</option>
+                <option value="cloud">Cloud Computing</option>
+            </select>
+            <input type="text" id="newPostTitle" placeholder="Title" class="input">
+            <textarea id="newPostContent" placeholder="Content" class="textarea"></textarea>
+            <button id="submitPostBtn" class="button">Post</button>
+            <button id="closeModalBtn" class="button button-outline">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        // Add these variables for Flask integration
+        const currentUser = {
+            name: "{{ session.get('user', {}).get('fullName', '') }}",
+            email: "{{ session.get('user', {}).get('email', '') }}",
+            avatar: "https://api.dicebear.com/6.x/avataaars/svg?seed={{ session.get('user', {}).get('email', '') }}"
+        };
+    </script>
+    <script src="{{ url_for('static', filename='scripts/community.js') }}"></script>
+</body>
+</html>

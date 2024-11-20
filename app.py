@@ -904,5 +904,110 @@ def submit_feedback():
             'message': 'An error occurred while submitting feedback'
         }), 500
         
+@app.route('/community')
+def community():
+    if 'user' not in session:
+        return redirect(url_for('login'))
+    
+    # Initialize the community collection if it doesn't exist
+    if 'community_posts' not in mongo.db.list_collection_names():
+        mongo.db.create_collection('community_posts')
+    
+    # Fetch all posts from MongoDB
+    posts = list(mongo.db.community_posts.find().sort('created_at', -1))
+    
+    # Convert ObjectId to string for JSON serialization
+    for post in posts:
+        post['_id'] = str(post['_id'])
+    
+    return render_template('community.html', user=session.get('user'), posts=posts)
+
+@app.route('/api/posts', methods=['GET', 'POST'])
+def handle_posts():
+    if 'user' not in session:
+        return jsonify({'error': 'Unauthorized'}), 401
+    
+    if request.method == 'POST':
+        data = request.json
+        post = {
+            'community': data.get('community'),
+            'title': data.get('title'),
+            'content': data.get('content'),
+            'author': session['user'].get('fullName', 'Anonymous'),
+            'author_email': session['user'].get('email'),
+            'created_at': datetime.utcnow(),
+            'likes': 0,
+            'comments': 0,
+            'shares': 0,
+            'saved': False,
+            'tags': data.get('tags', []),
+            'authorAvatar': f"https://api.dicebear.com/6.x/avataaars/svg?seed={session['user'].get('email')}"
+        }
+        
+        result = mongo.db.community_posts.insert_one(post)
+        post['_id'] = str(result.inserted_id)
+        return jsonify(post), 201
+    
+    # GET method
+    community = request.args.get('community', 'all')
+    search = request.args.get('search', '')
+    sort = request.args.get('sort', 'recent')
+    
+    query = {}
+    if community != 'all':
+        query['community'] = community
+    if search:
+        query['$or'] = [
+            {'title': {'$regex': search, '$options': 'i'}},
+            {'content': {'$regex': search, '$options': 'i'}},
+            {'tags': {'$regex': search, '$options': 'i'}}
+        ]
+    
+    sort_query = [('created_at', -1)] if sort == 'recent' else [('likes', -1)]
+    
+    posts = list(mongo.db.community_posts.find(query).sort(sort_query))
+    for post in posts:
+        post['_id'] = str(post['_id'])
+    
+    return jsonify(posts)
+
+@app.route('/api/posts/<post_id>/like', methods=['POST'])
+def like_post(post_id):
+    if 'user' not in session:
+        return jsonify({'error': 'Unauthorized'}), 401
+    
+    result = mongo.db.community_posts.update_one(
+        {'_id': ObjectId(post_id)},
+        {'$inc': {'likes': 1}}
+    )
+    
+    if result.modified_count:
+        return jsonify({'success': True})
+    return jsonify({'error': 'Post not found'}), 404
+
+@app.route('/api/posts/<post_id>/save', methods=['POST'])
+def save_post(post_id):
+    if 'user' not in session:
+        return jsonify({'error': 'Unauthorized'}), 401
+    
+    user_email = session['user'].get('email')
+    post = mongo.db.community_posts.find_one({'_id': ObjectId(post_id)})
+    
+    if not post:
+        return jsonify({'error': 'Post not found'}), 404
+    
+    saved_by = post.get('saved_by', [])
+    if user_email in saved_by:
+        saved_by.remove(user_email)
+    else:
+        saved_by.append(user_email)
+    
+    mongo.db.community_posts.update_one(
+        {'_id': ObjectId(post_id)},
+        {'$set': {'saved_by': saved_by}}
+    )
+    
+    return jsonify({'saved': user_email in saved_by})
+        
 if __name__ == "__main__":
     app.run(debug=True)
