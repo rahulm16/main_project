@@ -25,7 +25,7 @@ body.light-mode {
     --star-color: #bbbbbb;
 }
 
-body, html {
+body {
     font-family: 'Poppins', Arial, sans-serif;
     background: var(--bg-color);
     color: var(--text-color);

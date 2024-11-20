@@ -11,7 +11,10 @@
     <script id="user-data" type="application/json">
         {{ user | tojson }}
     </script>
+
     {% include 'header.html' %}
+    {% include 'sidebar.html' %}
+
     <h1 class="learning-container">Learning Resources</h1>
     <div class="container" id="container">
         <div class="learning-resources">
@@ -130,6 +133,7 @@
         </div>      
     </div>
     <script src="{{ url_for('static', filename='scripts/header.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/sidebar.js') }}"></script>
     <script>
         function showCourseDetails(courseData) {
     const course = typeof courseData === 'string' ? JSON.parse(courseData) : courseData;
