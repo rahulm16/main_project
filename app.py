@@ -2,7 +2,6 @@ from flask import Flask, redirect, render_template, request, jsonify, session, u
 from course_finder import find_relevant_courses  # Assuming the previous code is in course_finder.py
 from flask_pymongo import PyMongo
 from pymongo import MongoClient
-from bson import ObjectId
 from bson.json_util import dumps
 from mistralai import Mistral
 from flask_bcrypt import Bcrypt
@@ -509,9 +508,9 @@ def fetch_suggestions():
     }
 
     user_responses = {
-        "First priority": doc2["careerPreferences"]["first"],
-        "Second priority": doc2["careerPreferences"]["second"],
-        "Third priority": doc2["careerPreferences"]["third"]
+        "Hi, I am SavvyAI! I'm here to help you choose a career. Can you share what you've always dreamed of becoming?": doc2["careerPreferences"]["first"],
+        "That's great, Is there something you're passionate about or find fascinating that you'd like to explore?": doc2["careerPreferences"]["second"],
+        "What other interests or skills would you like to develop into a career?": doc2["careerPreferences"]["third"]
     }
 
     if not questions:
@@ -540,6 +539,7 @@ def fetch_suggestions():
                f"\"upgrad_query\": \"Search query for UpGrad\", "
                f"\"nptel_keywords\": [\"keyword1\", \"keyword2\", \"keyword3\", \"keyword4\", \"keyword5\"]}}].")
                 
+    logging.debug(f"What are we sending to API:\n{content}\n\n\t\t----------------------------");
     try:
         chat_response = client.chat.complete(
             model=model,

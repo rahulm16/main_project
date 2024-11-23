@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         body.classList.toggle('dark-mode');
         updateToggleButtonAriaLabel();
     });
-
+    
     const randomSuggestions = getRandomSuggestions(10);
     const suggestionsContainer = document.querySelector('.suggestions');
     suggestionsContainer.innerHTML = ''; // Clear any existing suggestions
