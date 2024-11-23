@@ -1,8 +1,8 @@
 //chatbot.js
 const predefinedQuestions = [
-    { question: 'What is your first career preference?' },
-    { question: 'What is your second career preference?' },
-    { question: 'What is your third career preference?' }
+    { question: "Hi, I am SavvyAI! I'm here to help you choose a career. Can you share what you've always dreamed of becoming?" },
+    { question: "That's great, Is there something you're passionate about or find fascinating that you'd like to explore?" },
+    { question: 'What other interests or skills would you like to develop into a career?' }
 ];
 
 let currentQuestionIndex = 0;
@@ -13,21 +13,21 @@ let userResponses = {
 };
 
 const allSuggestions = [
-    { text: "I would like to be an author", icon: "📚" },
-    { text: "I would like to be a neurosurgeon", icon: "🧠" },
-    { text: "I would like to be a footballer", icon: "⚽" },
-    { text: "I would like to be a product manager", icon: "📊" },
-    { text: "I would like to be an artist", icon: "🎨" },
-    { text: "I want to explore space", icon: "🚀" },
-    { text: "I would like to be a chef", icon: "🍳" },
-    { text: "I want to start a business", icon: "💼" },
-    { text: "I want to work in tech", icon: "💻" },
-    { text: "I would like to be a musician", icon: "🎶" },
-    { text: "I want to help animals", icon: "🐾" },
-    { text: "I would like to be an environmentalist", icon: "🌍" },
-    { text: "I want to be a teacher", icon: "📚" },
-    { text: "I aspire to be a scientist", icon: "🔬" },
-    { text: "I would like to be an architect", icon: "🏛️" }
+    { "text": "Dreaming of a career in Software Engineering", "icon": "💻" },
+    { "text": "Aspiring to become a Mechanical Engineer", "icon": "⚙️" },
+    { "text": "Pursuing a path in Electrical Engineering", "icon": "🔌" },
+    { "text": "Setting sights on Civil Engineering", "icon": "🏗️" },
+    { "text": "Aiming for Aerospace Engineering", "icon": "🚀" },
+    { "text": "Passionate about Robotics Engineering", "icon": "🤖" },
+    { "text": "Exploring Chemical Engineering", "icon": "🧪" },
+    { "text": "Targeting a career in Data Engineering", "icon": "📊" },
+    { "text": "Committed to Biomedical Engineering", "icon": "🩺" },
+    { "text": "Focused on Computer Network Engineering", "icon": "🌐" },
+    { "text": "Dedicated to Environmental Engineering", "icon": "🌍" },
+    { "text": "Diving into AI/Machine Learning Engineering", "icon": "🧠" },
+    { "text": "Investigating Nuclear Engineering", "icon": "☢️" },
+    { "text": "Venturing into Petroleum Engineering", "icon": "⛽" },
+    { "text": "Advancing in Telecommunications Engineering", "icon": "📡" }
 ];
 
 // Function to get four random suggestions
