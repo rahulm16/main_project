@@ -31,6 +31,18 @@ tabButtons.forEach(button => button.addEventListener('click', () => {
 }));
 
 // Functions
+async function handleLike(postId) {
+    try {
+        const response = await fetch(`/api/posts/${postId}/like`, {
+            method: 'POST'
+        });
+        if (!response.ok) throw new Error('Failed to like post');
+        updatePosts();
+    } catch (error) {
+        console.error('Error liking post:', error);
+    }
+}
+
 async function updatePosts() {
     searchTerm = searchInput.value.toLowerCase();
     sortBy = sortSelect.value;
