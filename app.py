@@ -39,7 +39,7 @@ logging.getLogger("pymongo").setLevel(logging.WARNING)
 # Initialize Mistral client
 api_key = os.getenv("API_KEY")
 model = "mistral-large-latest"
-client = Mistral(api_key=api_key)
+mistral_client = Mistral(api_key=api_key)
 
 @app.route('/')
 def index():
@@ -331,7 +331,7 @@ def generate_questions(career_preferences):
         }
     ]
 
-    chat_response = client.chat.complete(
+    chat_response = mistral_client.chat.complete(
         model=model,
         messages=messages
     )
@@ -541,7 +541,7 @@ def fetch_suggestions():
                f"\"nptel_keywords\": [\"keyword1\", \"keyword2\", \"keyword3\", \"keyword4\", \"keyword5\"]}}].")
                 
     try:
-        chat_response = client.chat.complete(
+        chat_response = mistral_client.chat.complete(
             model=model,
             messages=[{
                 "role": "user",
@@ -601,7 +601,7 @@ def show_suggestions():
     # Retrieve suggestions from MongoDB
     suggestions = mongo.db.career_suggestions.find()
     suggestions_list = list(suggestions)  # Convert cursor to list
-    return render_template('suggestions.html', suggestions=suggestions_list, user=session.get('user'))
+    return render_template('suggestions.html', show_hamburger_menu=True, suggestions=suggestions_list, user=session.get('user'))
 
 @app.route('/update-nptel-courses')
 def update_nptel_courses():
@@ -686,6 +686,7 @@ def learning():
             })
 
         return render_template('learning.html',
+                           show_hamburger_menu=True,
                            careers_courses=careers_courses,
                            youtube_resources=youtube_resources,
                            nptel_courses=nptel_courses,
@@ -763,7 +764,7 @@ def fetch_detailed_layout():
 
             try:
                 # Make API request for each career
-                chat_response = client.chat.complete(
+                chat_response = mistral_client.chat.complete(
                     model=model,
                     messages=[{
                         "role": "user",
@@ -833,7 +834,7 @@ def roadmap():
     career_collection = db['career_suggestions']
     # Fetch all careers from career_suggestions collection
     careers = list(career_collection.find({}, {'career': 1, 'roadmap': 1}))
-    return render_template('roadmap.html', careers=careers, user=session.get('user'))
+    return render_template('roadmap.html', show_hamburger_menu=True, careers=careers, user=session.get('user'))
 
 def json_serialize(data):
     """
@@ -874,7 +875,7 @@ def feedback_page():
     """Render the feedback page"""
     if 'user' not in session:
         return redirect(url_for('login'))
-    return render_template('feedback.html', user=session.get('user'))
+    return render_template('feedback.html', show_hamburger_menu=True, user=session.get('user'))
 
 @app.route('/api/submit-feedback', methods=['POST'])
 def submit_feedback():
@@ -906,24 +907,24 @@ def submit_feedback():
             'success': False,
             'message': 'An error occurred while submitting feedback'
         }), 500
-        
+
+client = MongoClient("mongodb://localhost:27017/")  # Connecting to MongoDB (if on localhost)
+community_db = client.Community_Savvyai
+community_posts_collection = community_db.Posts
+
 @app.route('/community')
 def community():
     if 'user' not in session:
         return redirect(url_for('login'))
     
-    # Initialize the community collection if it doesn't exist
-    if 'community_posts' not in mongo.db.list_collection_names():
-        mongo.db.create_collection('community_posts')
-    
     # Fetch all posts from MongoDB
-    posts = list(mongo.db.community_posts.find().sort('created_at', -1))
+    posts = list(community_posts_collection.find().sort('created_at', -1))
     
     # Convert ObjectId to string for JSON serialization
     for post in posts:
         post['_id'] = str(post['_id'])
     
-    return render_template('community.html', user=session.get('user'), posts=posts)
+    return render_template('community.html', show_hamburger_menu=True, user=session.get('user'), posts=posts)
 
 @app.route('/api/posts', methods=['GET', 'POST'])
 def handle_posts():
@@ -947,7 +948,7 @@ def handle_posts():
             'authorAvatar': f"https://api.dicebear.com/6.x/avataaars/svg?seed={session['user'].get('email')}"
         }
         
-        result = mongo.db.community_posts.insert_one(post)
+        result = community_posts_collection.insert_one(post)
         post['_id'] = str(result.inserted_id)
         return jsonify(post), 201
     
@@ -968,7 +969,7 @@ def handle_posts():
     
     sort_query = [('created_at', -1)] if sort == 'recent' else [('likes', -1)]
     
-    posts = list(mongo.db.community_posts.find(query).sort(sort_query))
+    posts = list(community_posts_collection.find(query).sort(sort_query))
     for post in posts:
         post['_id'] = str(post['_id'])
     
@@ -979,38 +980,24 @@ def like_post(post_id):
     if 'user' not in session:
         return jsonify({'error': 'Unauthorized'}), 401
     
-    result = mongo.db.community_posts.update_one(
-        {'_id': ObjectId(post_id)},
-        {'$inc': {'likes': 1}}
-    )
-    
-    if result.modified_count:
-        return jsonify({'success': True})
-    return jsonify({'error': 'Post not found'}), 404
-
-@app.route('/api/posts/<post_id>/save', methods=['POST'])
-def save_post(post_id):
-    if 'user' not in session:
-        return jsonify({'error': 'Unauthorized'}), 401
-    
     user_email = session['user'].get('email')
-    post = mongo.db.community_posts.find_one({'_id': ObjectId(post_id)})
+    post = community_posts_collection.find_one({'_id': ObjectId(post_id)})
     
     if not post:
         return jsonify({'error': 'Post not found'}), 404
     
-    saved_by = post.get('saved_by', [])
-    if user_email in saved_by:
-        saved_by.remove(user_email)
+    likes_by = post.get('likes_by', [])
+    if user_email in likes_by:
+        likes_by.remove(user_email)
     else:
-        saved_by.append(user_email)
+        likes_by.append(user_email)
     
-    mongo.db.community_posts.update_one(
+    community_posts_collection.update_one(
         {'_id': ObjectId(post_id)},
-        {'$set': {'saved_by': saved_by}}
+        {'$set': {'likes_by': likes_by, 'likes': len(likes_by)}}
     )
     
-    return jsonify({'saved': user_email in saved_by})
+    return jsonify({'liked': user_email in likes_by})
         
 if __name__ == "__main__":
     app.run(debug=True)

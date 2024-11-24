@@ -7,13 +7,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/community.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/header.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body>
     <script id="user-data" type="application/json">
         {{ user | tojson }}
     </script>
     {% include 'header.html' %}
-
+    {% include 'sidebar.html' %}
     <section class="community">
         <!-- Your community page content here -->
         <div class="container">
@@ -67,5 +68,6 @@
     
     <script src="{{ url_for('static', filename='scripts/community.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/header.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/sidebar.js') }}"></script>
 </body>
 </html>

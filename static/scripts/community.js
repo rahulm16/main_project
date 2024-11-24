@@ -31,6 +31,18 @@ tabButtons.forEach(button => button.addEventListener('click', () => {
 }));
 
 // Functions
+async function handleLike(postId) {
+    try {
+        const response = await fetch(`/api/posts/${postId}/like`, {
+            method: 'POST'
+        });
+        if (!response.ok) throw new Error('Failed to like post');
+        updatePosts();
+    } catch (error) {
+        console.error('Error liking post:', error);
+    }
+}
+
 async function updatePosts() {
     searchTerm = searchInput.value.toLowerCase();
     sortBy = sortSelect.value;
@@ -66,13 +78,13 @@ function renderPosts(posts) {
             <div class="post-actions">
                 <div class="action-buttons">
                     <button class="action-button like-button" data-id="${post._id}">
-                        👍 ${post.likes || 0}
+                        <i class='bx bx-like' style="font-size: 20px"></i> ${post.likes || 0}
                     </button>
                     <button class="action-button">
-                        💬 ${post.comments || 0}
+                        <i class='bx bx-comment' style="font-size: 20px"></i> ${post.comments || 0}
                     </button>
                     <button class="action-button">
-                        🔗 ${post.shares || 0}
+                        <i class='bx bx-link' style="font-size: 20px"></i> ${post.shares || 0}
                     </button>
                     <button class="action-button save-button" data-id="${post._id}">
                         ${post.saved_by && post.saved_by.includes(currentUser.email) ? '🔖' : '🔖'}
