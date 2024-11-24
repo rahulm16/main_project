@@ -125,7 +125,7 @@ async function handleUserInput() {
         }
 
         currentQuestionIndex++; // Move to the next question
-        chatInput.value = ''; // Clear input field after sending the message
+        chatInput.value = '';
         await loadNextQuestion(); // Load the next question
     }
 }

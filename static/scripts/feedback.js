@@ -1,4 +1,3 @@
-// static/scripts/feedback.js
 document.addEventListener('DOMContentLoaded', function() {
     const feedbackForm = document.getElementById('feedbackForm');
     const thankYouMessage = document.getElementById('thankYouMessage');
@@ -47,10 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (data.success) {
                 feedbackForm.style.display = 'none';
                 thankYouMessage.style.display = 'flex';
-                // Redirect after 3 seconds
-                setTimeout(() => {
-                    window.location.href = '/';
-                }, 3000);
+                // Removed the redirect code, so it will stay on the thank you message
             } else {
                 throw new Error(data.message || 'Failed to submit feedback');
             }
