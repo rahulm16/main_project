@@ -9,6 +9,7 @@ from flask_bcrypt import Bcrypt
 from datetime import datetime
 from bson import ObjectId
 from dotenv import load_dotenv
+from threading import Thread
 import random
 import json
 import logging
@@ -598,10 +599,16 @@ def fetch_suggestions():
   
 @app.route('/suggestions', methods=['GET'])
 def show_suggestions():
+    async_fetch_detailed_layout()
     # Retrieve suggestions from MongoDB
     suggestions = mongo.db.career_suggestions.find()
     suggestions_list = list(suggestions)  # Convert cursor to list
     return render_template('suggestions.html', show_hamburger_menu=True, suggestions=suggestions_list, user=session.get('user'))
+
+def async_fetch_detailed_layout():
+    thread = Thread(target=fetch_detailed_layout)
+    thread.daemon = True  # This ensures the thread will be terminated when the main program exits
+    thread.start()
 
 @app.route('/update-nptel-courses')
 def update_nptel_courses():
@@ -695,7 +702,6 @@ def learning():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)})
 
-@app.route('/fetch_detailed_layout', methods=['GET'])
 def fetch_detailed_layout():
     try:
         # Get all career suggestions
