@@ -1,14 +1,15 @@
 from flask import Flask, redirect, render_template, request, jsonify, session, url_for
 from course_finder import find_relevant_courses  # Assuming the previous code is in course_finder.py
 from flask_pymongo import PyMongo
+from flask_cors import CORS
 from pymongo import MongoClient
 from bson import ObjectId
 from bson.json_util import dumps
 from mistralai import Mistral
 from flask_bcrypt import Bcrypt
 from datetime import datetime
-from bson import ObjectId
 from dotenv import load_dotenv
+from bson import ObjectId, json_util
 from threading import Thread
 import random
 import json
@@ -21,6 +22,7 @@ app.secret_key = "your_secret_key"  # Change this to a strong secret key
 app.config["MONGO_URI"] = "mongodb://localhost:27017/aicareer"  # Your MongoDB URI
 mongo = PyMongo(app)
 bcrypt = Bcrypt(app)  # Initialize Bcrypt
+CORS(app)
 
 client = MongoClient("mongodb://localhost:27017/")  # Connecting to MongoDB (if on localhost)
 gaq_db = client.GAQ
@@ -1005,5 +1007,165 @@ def like_post(post_id):
     
     return jsonify({'liked': user_email in likes_by})
         
+@app.route('/profile_overview')
+def profile_overview():
+    return render_template('profile_overview.html', show_hamburger_menu=True, user=session.get('user'))
+
+def parse_json(data):
+    """Convert MongoDB BSON to JSON."""
+    return json.loads(json_util.dumps(data))
+
+@app.route('/api/update-profile', methods=['POST'])
+def update_profile():
+    client = MongoClient('mongodb://localhost:27017/')
+    db = client['aicareer']
+    try:
+        data = request.json
+        user_email = data.get("email")
+        
+        if not user_email:
+            return jsonify({'error': 'Email is required'}), 400
+
+        logging.info(f"Starting profile update for email: {user_email}")
+        
+        # Update users collection - takes first document
+        new_user_doc = {
+            "email": user_email,
+            "fullName": data["name"]
+        }
+        users_result = db.users.replace_one(
+            {},  # Empty filter to get first document
+            new_user_doc,
+            upsert=True
+        )
+
+        # Update user_data collection - takes first document
+        new_user_data_doc = {
+            "current_status": data.get("currentStatus"),
+            "age": int(data.get("age")) if data.get("age") else None,
+            "highest_level_of_education": data.get("education"),
+            "current_field_of_study_or_work": data.get("currentField"),
+            "work_experience": data.get("workExperience"),
+            "key_skills": data.get("keySkills", []),
+            "personality_traits": {
+                "extroversion": 100,  # Default values as per existing document
+                "openness_to_work": 100,
+                "meticulousness": 100
+            },
+            "education_details": {
+                "syllabus": data.get("educationDetails", {}).get("syllabus", ""),
+                "specialization": data.get("educationDetails", {}).get("specialization", ""),
+                "course": data.get("educationDetails", {}).get("course", "")
+            }
+        }
+        
+        user_data_result = db.user_data.replace_one(
+            {},  # Empty filter to get first document
+            new_user_data_doc,
+            upsert=True
+        )
+
+        return jsonify({
+            'message': 'Profile updated successfully!',
+            'updates': {
+                'users': bool(users_result.acknowledged),
+                'user_data': bool(user_data_result.acknowledged),
+            }
+        }), 200
+
+    except Exception as e:
+        logging.error(f"Error in update_profile: {str(e)}")
+        return jsonify({
+            'error': 'Internal server error',
+            'details': str(e)
+        }), 500
+
+@app.route('/api/profile-data')
+def get_profile_data():
+    client = MongoClient('mongodb://localhost:27017/')
+    db = client['aicareer']
+    try:
+        # Get first document from each collection
+        user = db.users.find_one()
+        if not user:
+            return jsonify({'error': 'User not found'}), 404
+        
+        user_data = db.user_data.find_one()
+        if not user_data:
+            return jsonify({'error': 'User data not found'}), 404
+
+        # Get career suggestions (first 5)
+        career_suggestions = list(db.career_suggestions.find().limit(5))
+        
+        # Get user responses
+        user_responses = db.user_responses.find_one()
+        
+        # Get aptitude scores (first document from each)
+        technical_aptitude = db.aptitude_result.find_one()
+        general_aptitude = db.gaq_aptitude_results.find_one()
+
+        # Prepare response data matching frontend structure
+        profile_data = {
+            'user': {
+                'name': user.get('fullName', ''),
+                'email': user.get('email', '')
+            },
+            'userData': {
+                'currentStatus': user_data.get('current_status', ''),
+                'age': user_data.get('age', ''),
+                'education': user_data.get('highest_level_of_education', ''),
+                'currentField': user_data.get('current_field_of_study_or_work', ''),
+                'keySkills': user_data.get('key_skills', []),
+                'workExperience': user_data.get('work_experience', ''),
+                'personalityTraits': user_data.get('personality_traits', {}),
+                'educationDetails': {
+                    'syllabus': user_data.get('education_details', {}).get('syllabus', ''),
+                    'specialization': user_data.get('education_details', {}).get('specialization', ''),
+                    'course': user_data.get('education_details', {}).get('course', '')
+                }
+            },
+            'careerSuggestions': [
+                {
+                    'title': career.get('career', ''),
+                    'match': 85,  # Default match percentage
+                    'roadmap': career.get('roadmap', []),
+                    'resources': {
+                        'udemy': career.get('udemy_link', ''),
+                        'youtube': career.get('youtube_link', ''),
+                        'coursera': career.get('coursera_link', ''),
+                        'upgrad': career.get('upgrad_link', ''),
+                        'nptel_keywords': career.get('nptel_keywords', [])
+                    }
+                } for career in career_suggestions
+            ],
+            'aptitudeScores': [
+                {
+                    'name': 'Technical',
+                    'score': technical_aptitude.get('score_percentage', 0) if technical_aptitude else 0,
+                    'details': {
+                        'total': technical_aptitude.get('total_questions', 0) if technical_aptitude else 0,
+                        'correct': technical_aptitude.get('correct_answers', 0) if technical_aptitude else 0,
+                        'wrong': technical_aptitude.get('wrong_answers', 0) if technical_aptitude else 0
+                    }
+                },
+                {
+                    'name': 'General',
+                    'score': general_aptitude.get('score_percentage', 0) if general_aptitude else 0,
+                    'details': {
+                        'total': general_aptitude.get('total_questions', 0) if general_aptitude else 0,
+                        'correct': general_aptitude.get('correct_answers', 0) if general_aptitude else 0,
+                        'wrong': general_aptitude.get('wrong_answers', 0) if general_aptitude else 0
+                    }
+                }
+            ],
+            'careerPreferences': user_responses.get('careerPreferences', {}) if user_responses else {}
+        }
+
+        return jsonify(parse_json(profile_data))
+
+    except Exception as e:
+        logging.error(f"Error fetching profile data: {str(e)}")
+        return jsonify({'error': str(e)}), 500
+
 if __name__ == "__main__":
     app.run(debug=True)
