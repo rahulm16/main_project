@@ -110,6 +110,8 @@ function initializeForm() {
     document.getElementById('currentStatus').value = userData.userData.currentStatus;
     document.getElementById('education').value = userData.userData.education;
     document.getElementById('currentField').value = userData.userData.currentField;
+    document.getElementById('githubLink').value = userData.userData.githubLink || '';
+    document.getElementById('linkedinLink').value = userData.userData.linkedinLink || '';
     document.getElementById('workExperience').value = userData.userData.workExperience;
     document.getElementById('skills').value = userData.userData.keySkills.join(', ');
     document.getElementById('specialization').value = userData.userData.educationDetails.specialization;
@@ -186,6 +188,8 @@ document.getElementById('profile-form').addEventListener('submit', async (e) => 
         currentStatus: document.getElementById('currentStatus').value,
         education: document.getElementById('education').value,
         currentField: document.getElementById('currentField').value,
+        githubLink: document.getElementById('githubLink').value,
+        linkedinLink: document.getElementById('linkedinLink').value,
         workExperience: document.getElementById('workExperience').value,
         keySkills: document.getElementById('skills').value.split(',').map(skill => skill.trim()),
         educationDetails: {
@@ -223,24 +227,23 @@ const modal = document.getElementById('full-profile-modal');
 const modalClose = modal.querySelector('.close');
 const viewFullProfileBtn = document.getElementById('view-full-profile');
 
-viewFullProfileBtn.addEventListener('click', () => {
-    const modalName = document.getElementById('modal-name');
-    const modalEmail = document.getElementById('modal-email');
+viewFullProfileBtn.addEventListener('click', async () => {
     const modalContent = document.getElementById('modal-content');
-    
-    modalName.textContent = userData.user.name;
-    modalEmail.textContent = userData.user.email;
+    // Generate QR code image path (assuming images stored in /static/profile_cards/)
+    const qrCodePath = `/static/profile_cards/qrcode.png`;
     
     modalContent.innerHTML = `
-        <h3>Education</h3>
-        <p><strong>Highest Level:</strong> ${userData.userData.education}</p>
-        <p><strong>Specialization:</strong> ${userData.userData.educationDetails.specialization}</p>
-        <p><strong>Course:</strong> ${userData.userData.educationDetails.course}</p>
-        
-        <h3>Professional Information</h3>
-        <p><strong>Current Status:</strong> ${userData.userData.currentStatus}</p>
-        <p><strong>Current Field:</strong> ${userData.userData.currentField}</p>
-        <p><strong>Work Experience:</strong> ${userData.userData.workExperience}</p>
+        <div class="profile-card">
+            <img src="${qrCodePath}" alt="QR Code" class="qr-code">
+            <div class="profile-details">
+                <p class="profile-text">
+                    <b>${userData.user.name.toUpperCase()}</b> ,
+                    ${userData.userData.educationDetails.specialization.toUpperCase()}, 
+                    ${userData.userData.educationDetails.course.toUpperCase()}<br>
+                    <a href="mailto:${userData.user.email}">${userData.user.email}</a>
+                </p>
+            </div>
+        </div>
     `;
     
     modal.style.display = 'block';

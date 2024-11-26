@@ -35,7 +35,7 @@
                         <h3>Skills</h3>
                         <div id="skills-container" class="skills-container"></div>
                     </div>
-                    <button id="view-full-profile" class="btn btn-primary">View Full Profile</button>
+                    <button id="view-full-profile" class="btn btn-primary">View Profile Card</button>
                 </div>
             </div>
         </div>
@@ -79,6 +79,14 @@
                                 <div class="form-group">
                                     <label for="currentField">Current Field</label>
                                     <input type="text" id="currentField" name="currentField">
+                                </div>
+                                <div class="form-group">
+                                    <label for="githubLink">GitHub Link</label>
+                                    <input type="url" id="githubLink" name="githubLink">
+                                </div>
+                                <div class="form-group">
+                                    <label for="linkedinLink">LinkedIn Link</label>
+                                    <input type="url" id="linkedinLink" name="linkedinLink">
                                 </div>
                                 <div class="form-group">
                                     <label for="workExperience">Work Experience</label>
@@ -133,8 +141,6 @@
     <div id="full-profile-modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2 id="modal-name"></h2>
-            <p id="modal-email"></p>
             <div id="modal-content"></div>
         </div>
     </div>

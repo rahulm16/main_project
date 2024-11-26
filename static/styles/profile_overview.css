@@ -198,7 +198,7 @@ input, textarea {
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
@@ -213,7 +213,7 @@ input, textarea {
     padding: 20px;
     border: 1px solid var(--border-color);
     width: 80%;
-    max-width: 600px;
+    max-width: 280px;
     border-radius: 8px;
 }
 
@@ -349,4 +349,32 @@ input, textarea {
         transform: translateX(100%);
         opacity: 0;
     }
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 240px;
+    gap: 15px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+}
+
+.profile-card .qr-code{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.profile-card .profile-details {
+    text-align: center;
+    color: #000;
+    font-size: 14px;
+}
+
+.profile-card .profile-text {
+    line-height: 1.5;
 }

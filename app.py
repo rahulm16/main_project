@@ -1064,12 +1064,21 @@ def update_profile():
             new_user_data_doc,
             upsert=True
         )
-
+        social_links_doc = {
+            "github_link": data.get("githubLink"),
+            "linkedin_link": data.get("linkedinLink")
+        }
+        
+        social_links_result = db.social_links.replace_one(
+            social_links_doc,
+            upsert=True
+        )
         return jsonify({
             'message': 'Profile updated successfully!',
             'updates': {
                 'users': bool(users_result.acknowledged),
                 'user_data': bool(user_data_result.acknowledged),
+                'social_links': bool(social_links_result.acknowledged)
             }
         }), 200
 
