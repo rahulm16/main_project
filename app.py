@@ -1,5 +1,6 @@
 from flask import Flask, redirect, render_template, request, jsonify, session, url_for
-from course_finder import find_relevant_courses  # Assuming the previous code is in course_finder.py
+from course_finder import find_relevant_courses  
+from qr_generator import generate_qr_code
 from flask_pymongo import PyMongo
 from flask_cors import CORS
 from pymongo import MongoClient
@@ -10,7 +11,6 @@ from flask_bcrypt import Bcrypt
 from datetime import datetime
 from dotenv import load_dotenv
 from bson import ObjectId, json_util
-from threading import Thread
 import random
 import json
 import logging
@@ -493,7 +493,7 @@ def fetch_suggestions():
     if not documents3:
         logging.warning("No user responses found in the 'user_responses' collection.")
         return jsonify({'success': False, 'message': 'No user responses available.'}), 404
- 
+
     doc2 = documents3[0]  # Get the first document from user_responses
 
     # Prepare data for Mistral API
@@ -522,11 +522,7 @@ def fetch_suggestions():
         return jsonify({'success': False, 'message': 'No questions available for suggestions.'}), 404
 
     # Prepare the content for the API request
-    content = (f"You are an AI model which is good at giving career suggestions for people, I want you to use your creativity and perform these tasks"
-               f"Based on the user details, {json.dumps(user_data)}"
-               f"User preferences {json.dumps(user_responses)}"
-               f"And I had conducted a quiz based on the user preferences this is how he/she as answered, {json.dumps(questions)}"
-               f"I want you to give career suggestions based on for which career related questions they have answered properly"
+    content = (f"Based on the user details, user preferences and questions and answers given by the user, "
                f"suggest 5 career paths along with 5 roadmap points for each in JSON format. "
                f"Also provide 1 Udemy search query related to each career path (just the query, not the full URL). "
                f"Also provide 1 YouTube search query related to each career path (just the query, not the full URL). "
@@ -601,16 +597,10 @@ def fetch_suggestions():
   
 @app.route('/suggestions', methods=['GET'])
 def show_suggestions():
-    async_fetch_detailed_layout()
     # Retrieve suggestions from MongoDB
     suggestions = mongo.db.career_suggestions.find()
     suggestions_list = list(suggestions)  # Convert cursor to list
-    return render_template('suggestions.html', show_hamburger_menu=True, suggestions=suggestions_list, user=session.get('user'))
-
-def async_fetch_detailed_layout():
-    thread = Thread(target=fetch_detailed_layout)
-    thread.daemon = True  # This ensures the thread will be terminated when the main program exits
-    thread.start()
+    return render_template('suggestions.html', suggestions=suggestions_list, user=session.get('user'))
 
 @app.route('/update-nptel-courses')
 def update_nptel_courses():
@@ -704,6 +694,7 @@ def learning():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)})
 
+@app.route('/fetch_detailed_layout', methods=['GET'])
 def fetch_detailed_layout():
     try:
         # Get all career suggestions
@@ -1065,11 +1056,13 @@ def update_profile():
             upsert=True
         )
         social_links_doc = {
+            "email": user_email,  # Add user identifier
             "github_link": data.get("githubLink"),
             "linkedin_link": data.get("linkedinLink")
         }
-        
+
         social_links_result = db.social_links.replace_one(
+            {"email": user_email},  # Filter by user email
             social_links_doc,
             upsert=True
         )
@@ -1169,7 +1162,13 @@ def get_profile_data():
             ],
             'careerPreferences': user_responses.get('careerPreferences', {}) if user_responses else {}
         }
-
+        social_links = db.social_links.find_one()
+        
+        # Add social links to userData
+        profile_data['userData']['githubLink'] = social_links.get('github_link', '') if social_links else ''
+        profile_data['userData']['linkedinLink'] = social_links.get('linkedin_link', '') if social_links else ''
+        output_file_path = "static/profile_cards/qrcode.png"
+        generate_qr_code(profile_data['userData']['linkedinLink'], output_file_path)
         return jsonify(parse_json(profile_data))
 
     except Exception as e:
