@@ -5,14 +5,29 @@ document.addEventListener('DOMContentLoaded', function () {
     const careerCards = document.querySelectorAll('.career-card');
 
     // Fetch suggestion data from Flask backend
-    fetch('/api/suggestions')
-        .then(response => response.json())
+    fetch('/fetch_detailed_layout')
+        .then(response => {
+            if (!response.ok) {
+                if (response.status === 404) {
+                    console.error('Suggestion data not found. Please ensure the page_layout collection is created.');
+                    alert('Suggestion data not found. Please ensure the page_layout collection is created.');
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            }
+            return response.json();
+        })
         .then(data => {
-            const suggestion = data; // Store the fetched data
+            if (data.success) {
+                const suggestion = data; // Store the fetched data
 
-            // Render the flowchart and side columns dynamically
-            renderColumns(suggestion.container);
-            attachFlowchartEvents(); // Ensure events are attached after dynamic content is rendered
+                // Render the flowchart and side columns dynamically
+                renderColumns(suggestion.container);
+                attachFlowchartEvents(); // Ensure events are attached after dynamic content is rendered
+            } else {
+                console.error('Error fetching suggestion data:', data.message);
+                alert('Error fetching suggestion data: ' + data.message);
+            }
         })
         .catch(err => console.error('Error fetching suggestion data:', err));
 
@@ -68,24 +83,24 @@ document.addEventListener('DOMContentLoaded', function () {
         try {
             const response = await fetch(`/api/layout/${careerId}`);
             const data = await response.json();
-    
+
             if (data.error) {
                 console.error('Error loading layout:', data.error);
                 return;
             }
-    
+
             // Get career name from the clicked card
             const careerCard = document.querySelector(`.career-card[data-id="${careerId}"]`);
             const careerName = careerCard.querySelector('h2').textContent;
-    
+
             // Set the career name in the modal
             const modalTitle = modal.querySelector('.career-title');
-            modalTitle.textContent = "Roadmap for "+careerName;
-    
+            modalTitle.textContent = "Roadmap for " + careerName;
+
             // Show modal
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
-    
+
             // Render the flowchart
             renderColumns(data.container);
             attachFlowchartEvents();
