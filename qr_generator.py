@@ -26,7 +26,3 @@ def generate_qr_code(data, output_file):
     # Save the image to a file
     img.save(output_file)
     print(f"QR code saved to {output_file}")
-
-data_to_encode = "https://www.linkedin.com/in/rahul-m-16b329255/"  # Replace with your data
-output_file_path = "static/profile_cards/qrcode.png"
-generate_qr_code(data_to_encode, output_file_path)
