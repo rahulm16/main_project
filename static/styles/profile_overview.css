@@ -195,6 +195,7 @@ input, textarea {
     color: var(--text-color);
 }
 
+/* Update the modal styles in the profile_overview.css file */
 .modal {
     display: none;
     position: fixed;
@@ -203,18 +204,61 @@ input, textarea {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
     background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;  /* Prevent scrolling */
 }
 
 .modal-content {
-    background-color: var(--card-bg-color);
-    margin: 15% auto;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 0;
+    border: none;
+    max-width: 300px;
+    border-radius: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 280px;
+    gap: 15px;
     padding: 20px;
-    border: 1px solid var(--border-color);
-    width: 80%;
-    max-width: 280px;
-    border-radius: 8px;
+    background-color: var(--card-bg-color);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.profile-card .qr-code {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.profile-card .profile-details {
+    text-align: center;
+    color: var(--text-color);
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.profile-card .profile-text {
+    line-height: 1.5;
+}
+
+.profile-card #download-profile-card {
+    width: 100%;
+    margin-top: 10px;
 }
 
 .close {
