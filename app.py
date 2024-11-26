@@ -541,8 +541,7 @@ def fetch_suggestions():
                f"\"youtube_query\": \"Search query for YouTube\", "
                f"\"coursera_query\": \"Search query for Coursera\", "
                f"\"upgrad_query\": \"Search query for UpGrad\", "
-               f"\"nptel_keywords\": [\"keyword1\", \"keyword2\", \"keyword3\", \"keyword4\", \"keyword5\"]}}].")
-                
+               f"\"nptel_keywords\": [\"keyword1\", \"keyword2\", \"keyword3\", \"keyword4\", \"keyword5\"]}}].")            
     try:
         chat_response = mistral_client.chat.complete(
             model=model,
@@ -707,9 +706,9 @@ def fetch_detailed_layout():
         if not career_suggestions:
             logging.error("No career suggestions found")
             return jsonify({'success': False, 'message': 'No career suggestions found'}), 404
-            
+
         layout_data_list = []
-        
+
         # Process each career suggestion
         for career in career_suggestions:
             # Define the expected JSON format for each career
@@ -766,7 +765,6 @@ def fetch_detailed_layout():
                       f"The structure should be flexible and generic enough to accommodate different types of web content layouts, such as educational paths, career advice, product info, etc.")
 
             try:
-                # Make API request for each career
                 chat_response = mistral_client.chat.complete(
                     model=model,
                     messages=[{
@@ -781,22 +779,22 @@ def fetch_detailed_layout():
 
                 # Clean and parse JSON response
                 json_str = raw_response.strip()
-                
+
                 # Handle code block formatting
                 if "```json" in json_str:
                     json_str = json_str.split("```json")[1].split("```")[0]
                 elif "```" in json_str:
                     json_str = json_str.split("```")[1].split("```")[0]
 
-                # Parse and validate JSON
+                # Parse JSON
                 layout_data = json.loads(json_str.strip())
-                
+
                 # Add career identifier to layout data
                 layout_data['career_id'] = str(career['_id'])
                 layout_data['career_name'] = career['career']
-                
+
                 layout_data_list.append(layout_data)
-                
+
             except Exception as e:
                 logging.error(f"Error processing career {career['career']}: {e}")
                 continue
@@ -805,27 +803,27 @@ def fetch_detailed_layout():
         if layout_data_list:
             try:
                 mongo.db.page_layout.insert_many(layout_data_list)
-                #logging.info(f"Successfully saved {len(layout_data_list)} detailed layout data to MongoDB")
+                logging.info(f"Successfully saved {len(layout_data_list)} detailed layout data to MongoDB")
                 return jsonify({
-                    'success': True, 
+                    'success': True,
                     'message': f'Successfully generated and saved {len(layout_data_list)} layouts'
                 }), 200
             except Exception as e:
                 logging.error(f"Error saving layouts to MongoDB: {e}")
                 return jsonify({
-                    'success': False, 
+                    'success': False,
                     'message': 'Error saving layouts to database'
                 }), 500
         else:
             return jsonify({
-                'success': False, 
+                'success': False,
                 'message': 'No layouts were generated successfully'
             }), 500
 
     except Exception as e:
         logging.error(f"Error in fetch_detailed_layout: {e}")
         return jsonify({
-            'success': False, 
+            'success': False,
             'message': f'Failed to fetch detailed layout: {str(e)}'
         }), 500
 
