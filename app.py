@@ -522,7 +522,11 @@ def fetch_suggestions():
         return jsonify({'success': False, 'message': 'No questions available for suggestions.'}), 404
 
     # Prepare the content for the API request
-    content = (f"Based on the user details, user preferences and questions and answers given by the user, "
+    content = (f"You are an AI model which is good at giving career suggestions for people, I want you to use your creativity and perform these tasks"
+               f"Based on the user details, {json.dumps(user_data)}"
+               f"User preferences {json.dumps(user_responses)}"
+               f"And I had conducted a quiz based on the user preferences this is how he/she as answered, {json.dumps(questions)}"
+               f"I want you to give career suggestions based on for which career related questions they have answered properly"
                f"suggest 5 career paths along with 5 roadmap points for each in JSON format. "
                f"Also provide 1 Udemy search query related to each career path (just the query, not the full URL). "
                f"Also provide 1 YouTube search query related to each career path (just the query, not the full URL). "
