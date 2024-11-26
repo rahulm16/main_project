@@ -227,13 +227,14 @@ const modal = document.getElementById('full-profile-modal');
 const modalClose = modal.querySelector('.close');
 const viewFullProfileBtn = document.getElementById('view-full-profile');
 
+// Update the existing modal functionality in the profile_overview.js file
+
 viewFullProfileBtn.addEventListener('click', async () => {
     const modalContent = document.getElementById('modal-content');
-    // Generate QR code image path (assuming images stored in /static/profile_cards/)
     const qrCodePath = `/static/profile_cards/qrcode.png`;
     
     modalContent.innerHTML = `
-        <div class="profile-card">
+        <div class="profile-card" id="downloadable-profile-card">
             <img src="${qrCodePath}" alt="QR Code" class="qr-code">
             <div class="profile-details">
                 <p class="profile-text">
@@ -243,14 +244,147 @@ viewFullProfileBtn.addEventListener('click', async () => {
                     <a href="mailto:${userData.user.email}">${userData.user.email}</a>
                 </p>
             </div>
+            <button id="download-profile-card" class="btn btn-primary">Download Profile Card</button>
         </div>
     `;
     
-    modal.style.display = 'block';
+    modal.style.display = 'flex';
+
+    // Add download functionality
+    const downloadBtn = document.getElementById('download-profile-card');
+    downloadBtn.addEventListener('click', downloadProfileCard);
 });
 
-modalClose.addEventListener('click', () => {
-    modal.style.display = 'none';
+function downloadProfileCard() {
+    const profileCard = document.getElementById('downloadable-profile-card');
+    
+    // Create a canvas with increased resolution
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    
+    // Set canvas size (adjust as needed)
+    canvas.width = 840; // 3x original size for high quality
+    canvas.height = 1120; // 3x original size
+
+    // Function to draw rounded rectangle
+    function roundedRect(ctx, x, y, width, height, radius) {
+        ctx.beginPath();
+        ctx.moveTo(x + radius, y);
+        ctx.arcTo(x + width, y, x + width, y + height, radius);
+        ctx.arcTo(x + width, y + height, x, y + height, radius);
+        ctx.arcTo(x, y + height, x, y, radius);
+        ctx.arcTo(x, y, x + width, y, radius);
+        ctx.closePath();
+        return ctx;
+    }
+
+    // Set background
+    context.fillStyle = '#F0F0F0';
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Draw card background
+    context.fillStyle = '#FFFFFF';
+    const cardRadius = 40;
+    roundedRect(context, 20, 20, canvas.width - 40, canvas.height - 40, cardRadius)
+        .fill();
+
+    // Load QR code image
+    const qrCodeImg = new Image();
+    qrCodeImg.onload = function() {
+        try {
+            // Draw QR Code (centered, with padding)
+            const qrSize = 600;
+            context.drawImage(
+                qrCodeImg, 
+                (canvas.width - qrSize) / 2, 
+                100, 
+                qrSize, 
+                qrSize
+            );
+
+            // Prepare text styles
+            context.fillStyle = '#000000';
+            context.textAlign = 'center';
+            
+            // Draw name
+            context.font = 'bold 48px Arial';
+            context.fillText(
+                userData.user.name.toUpperCase(), 
+                canvas.width / 2, 
+                canvas.height - 300
+            );
+
+            // Draw specialization
+            context.font = '36px Arial';
+            context.fillText(
+                userData.userData.educationDetails.specialization.toUpperCase(),
+                canvas.width / 2,
+                canvas.height - 240
+            );
+
+            // Draw course
+            context.fillText(
+                userData.userData.educationDetails.course.toUpperCase(),
+                canvas.width / 2,
+                canvas.height - 180
+            );
+
+            // Draw email
+            context.font = '32px Arial';
+            context.fillStyle = '#0000EE';
+            context.fillText(
+                userData.user.email,
+                canvas.width / 2,
+                canvas.height - 100
+            );
+
+            // Convert to blob and download
+            canvas.toBlob(function(blob) {
+                const link = document.createElement('a');
+                link.download = `${userData.user.name.replace(/\s+/g, '_')}_profile_card.png`;
+                link.href = URL.createObjectURL(blob);
+                link.click();
+            });
+        } catch (error) {
+            console.error('Error creating profile card:', error);
+            showAlert('Failed to create profile card. Please try again.', 'error');
+        }
+    };
+
+    qrCodeImg.onerror = function() {
+        console.error('Failed to load QR code image');
+        showAlert('Failed to load QR code image.', 'error');
+    };
+
+    // Use the existing QR code image path
+    qrCodeImg.src = `/static/profile_cards/qrcode.png`;
+}
+
+// Update modal event listener to use this new function
+viewFullProfileBtn.addEventListener('click', async () => {
+    const modalContent = document.getElementById('modal-content');
+    const qrCodePath = `/static/profile_cards/qrcode.png`;
+    
+    modalContent.innerHTML = `
+        <div class="profile-card" id="downloadable-profile-card">
+            <img src="${qrCodePath}" alt="QR Code" class="qr-code">
+            <div class="profile-details">
+                <p class="profile-text">
+                    <b>${userData.user.name.toUpperCase()}</b> ,
+                    ${userData.userData.educationDetails.specialization.toUpperCase()}, 
+                    ${userData.userData.educationDetails.course.toUpperCase()}<br>
+                    <a href="mailto:${userData.user.email}">${userData.user.email}</a>
+                </p>
+            </div>
+            <button id="download-profile-card" class="btn btn-primary">Download Profile Card</button>
+        </div>
+    `;
+    
+    modal.style.display = 'flex';
+
+    // Add download functionality
+    const downloadBtn = document.getElementById('download-profile-card');
+    downloadBtn.addEventListener('click', downloadProfileCard);
 });
 
 // Close modal on outside click
