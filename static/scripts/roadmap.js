@@ -4,18 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeBtn = document.querySelector('.close-btn');
     const careerCards = document.querySelectorAll('.career-card');
 
-    // Fetch suggestion data from Flask backend
-    fetch('/api/suggestions')
-        .then(response => response.json())
-        .then(data => {
-            const suggestion = data; // Store the fetched data
-
-            // Render the flowchart and side columns dynamically
-            renderColumns(suggestion.container);
-            attachFlowchartEvents(); // Ensure events are attached after dynamic content is rendered
-        })
-        .catch(err => console.error('Error fetching suggestion data:', err));
-
     // Function to render the left, middle, and right columns dynamically
     function renderColumns(container) {
         const leftColumn = document.querySelector('.left-column');
