@@ -232,7 +232,7 @@ html{
 #modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
@@ -294,18 +294,18 @@ html{
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #555;
+    background: var(--input-bg-color);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #888;
+    background: var(--secondary-color);
     border-radius: 8px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #777;
+    background: var(--tertiary-color);
 }
 
 .spinner {
