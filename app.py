@@ -497,7 +497,7 @@ def fetch_suggestions():
     doc2 = documents3[0]  # Get the first document from user_responses
 
     # Prepare data for Mistral API
-    questions = [{"question": doc["question"], "answer": doc["answered"]} for doc in documents if "question" in doc and "answered" in doc]
+    aptitude_answered = [{"question": doc["question"], "answer": doc["answered"]} for doc in documents if "question" in doc and "answered" in doc]
 
     user_data = {
         "current status": doc1["current_status"],
@@ -517,31 +517,37 @@ def fetch_suggestions():
         "Third priority": doc2["careerPreferences"]["third"]
     }
 
-    if not questions:
+    if not aptitude_answered:
         logging.warning("No questions found in the 'answered' collection.")
         return jsonify({'success': False, 'message': 'No questions available for suggestions.'}), 404
 
     # Prepare the content for the API request
-    content = (f"You are an AI model which is good at giving career suggestions for people, I want you to use your creativity and perform these tasks"
-               f"Based on the user details, {json.dumps(user_data)}"
-               f"User preferences {json.dumps(user_responses)}"
-               f"And I had conducted a quiz based on the user preferences this is how he/she as answered, {json.dumps(questions)}"
-               f"I want you to give career suggestions based on for which career related questions they have answered properly"
-               f"suggest 5 career paths along with 5 roadmap points for each in JSON format. "
-               f"Also provide 1 Udemy search query related to each career path (just the query, not the full URL). "
-               f"Also provide 1 YouTube search query related to each career path (just the query, not the full URL). "
-               f"Also provide 1 Coursera search query related to each career path (just the query, not the full URL). "
-               f"Also provide 1 UpGrad search query related to each career path (just the query, not the full URL). "
-               f"For each career path, please also give 5 high accurate keywords that can be used to search on the NPTEL website."
-               f"These should be keywords that are relevant to courses available on NPTEL (e.g., topics, course names, subjects). "
-               f"Please provide 5 keywords, separated by commas. "
-               f"Please format the response as a JSON array like this: "
+    content = (f"You are an AI model which is good at giving career suggestions for people, I want you to use your creativity and perform these tasks\n\n"
+               f"Based on the user details\n, {json.dumps(user_data)}\n\n"
+               f"User preferences\n {json.dumps(user_responses)}\n\n"
+               f"And I had conducted a quiz based on the user preferences this is how he/she as answered\n, {json.dumps(aptitude_answered)}\n\n"
+               f"I want you to give career suggestions based on for which career related questions they have answered properly\n"
+               f"suggest 5 career paths along with 5 roadmap points for each in JSON format. \n"
+               f"Also provide 1 Udemy search query related to each career path (just the query, not the full URL). \n"
+               f"Also provide 1 YouTube search query related to each career path (just the query, not the full URL). \n"
+               f"Also provide 1 Coursera search query related to each career path (just the query, not the full URL). \n"
+               f"Also provide 1 UpGrad search query related to each career path (just the query, not the full URL). \n"
+               f"For each career path, please also give 5 high accurate keywords that can be used to search on the NPTEL website.\n"
+               f"These should be keywords that are relevant to courses available on NPTEL (e.g., topics, course names, subjects). \n"
+               f"Please provide 5 keywords, separated by commas. \n"
+               f"Please format the response as a JSON array like this: \n"
                f"[{{\"career\": \"Career Name\", \"roadmap\": [\"Step 1\", \"Step 2\", \"Step 3\", \"Step 4\", \"Step 5\"], "
                f"\"udemy_query\": \"Search query for Udemy\", "
                f"\"youtube_query\": \"Search query for YouTube\", "
                f"\"coursera_query\": \"Search query for Coursera\", "
                f"\"upgrad_query\": \"Search query for UpGrad\", "
-               f"\"nptel_keywords\": [\"keyword1\", \"keyword2\", \"keyword3\", \"keyword4\", \"keyword5\"]}}].")            
+               f"\"nptel_keywords\": [\"keyword1\", \"keyword2\", \"keyword3\", \"keyword4\", \"keyword5\"]}}].")
+    
+    # Write content to a .txt file
+    file_path = os.path.join(os.getcwd(), 'api_request_content.txt')
+    with open(file_path, 'w', encoding='utf-8') as file:
+        file.write(content)
+    logging.info(f"API request content written to {file_path}")            
     try:
         chat_response = mistral_client.chat.complete(
             model=model,

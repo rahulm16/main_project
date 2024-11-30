@@ -2,3 +2,5 @@
 __pycache__
 .env
 static/profile_cards/qrcode.png
+api_request_content.txt
+new.py
