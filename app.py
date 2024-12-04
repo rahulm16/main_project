@@ -192,6 +192,11 @@ def aptitude_results():
     wrong_answers = total_questions - correct_answers
     score_percentage = (correct_answers / total_questions) * 100 if total_questions > 0 else 0
 
+    # Initialize counts for Logic, Mathematical, and Verbal questions
+    logic_correct = 0
+    math_correct = 0
+    verbal_correct = 0
+
     detailed_results = []
     
     for answer in answered_data:
@@ -225,12 +230,24 @@ def aptitude_results():
                 'difficulty_level': difficulty_level
             })
 
+            # Count correct answers for Logic, Mathematical, and Verbal questions
+            if answer['correct_or_wrong'] == 'correct':
+                if 'logic' in question_data.get('Type', '').lower():
+                    logic_correct += 1
+                elif 'mathematical' in question_data.get('Type', '').lower():
+                    math_correct += 1
+                elif 'verbal' in question_data.get('Type', '').lower():
+                    verbal_correct += 1
+
     # Create aptitude results data
     aptitude_results_data = {
         "total_questions": total_questions,
         "correct_answers": correct_answers,
         "wrong_answers": wrong_answers,
-        "score_percentage": score_percentage
+        "score_percentage": score_percentage,
+        "logic_correct": logic_correct,
+        "math_correct": math_correct,
+        "verbal_correct": verbal_correct  # Add counts for each category
     }
 
     # Insert the aptitude results data into `gaq_aptitude_results` collection in `aicareer` database
@@ -322,14 +339,15 @@ def save_user_data():
     return jsonify({'status': 'success', 'message': 'User data successfully saved.'}), 200
 
 def generate_questions(career_preferences):
-    """ Generate aptitude questions using Mistral API. """
+    """ Generate aptitude questions using Mistral API with career preferences. """
     messages = [
         {
             "role": "user",
             "content": f"Generate 15 aptitude questions related to the following career preferences: {', '.join(career_preferences.values())}. Please format the response as a JSON array like this: [{{"
-                       f"\"question\": \"Question text\"," 
+                       f"\"question\": \"Question text\","
                        f"\"options\": [\"Option A\", \"Option B\", \"Option C\", \"Option D\"],"
-                       f"\"correct_answer\": \"Correct Option\""
+                       f"\"correct_answer\": \"Correct Option\","
+                       f"\"for_career_preference\": \"Career preference related to the question as it is in the given data; do not change anything\""
                        f"}}]."
         }
     ]
@@ -427,21 +445,33 @@ def results():
     # Fetch answered questions and their details from MongoDB
     answered_data = list(mongo.db.answered.find())
     
-    # Get the original questions with correct answers
+    # Get the original questions with correct answers and career preferences
     questions_data = {}
+    all_career_preferences = set()  # Track all unique career preferences
     for answer in answered_data:
         question = mongo.db.questions.find_one({"question": answer['question']})
         if question:
             questions_data[answer['question']] = {
                 'correct_answer': question['correct_answer'],
-                'options': question['options']
+                'options': question['options'],
+                'career_preference': question['for_career_preference']  # Added career preference field
             }
+            all_career_preferences.add(question['for_career_preference'])  # Collect all career preferences
 
     # Calculate statistics
     total_questions = len(answered_data)
     correct_answers = sum(1 for answer in answered_data if answer['correct_or_wrong'] == 'correct')
     wrong_answers = total_questions - correct_answers
     score_percentage = (correct_answers / total_questions) * 100 if total_questions > 0 else 0
+
+    # Track correct answers per career preference
+    career_correct_count = {career: 0 for career in all_career_preferences}  # Initialize all with 0
+    for answer in answered_data:
+        question_info = questions_data.get(answer['question'])
+        if question_info and answer['correct_or_wrong'] == 'correct':
+            career_preference = question_info['career_preference']
+            if career_preference:
+                career_correct_count[career_preference] += 1
 
     # Create detailed results list
     detailed_results = []
@@ -455,16 +485,19 @@ def results():
                 'options': question_info['options'],
                 'is_correct': answer['correct_or_wrong'] == 'correct'
             })
-     # Prepare the results data for MongoDB
+    
+    # Prepare the results data for MongoDB
     results_data = {
         "total_questions": total_questions,
         "correct_answers": correct_answers,
         "wrong_answers": wrong_answers,
-        "score_percentage": score_percentage
+        "score_percentage": score_percentage,
+        "career_correct_count": career_correct_count  # Added career correct count
     }
 
     # Save results to the 'aptitude_result' collection
-    mongo.db.aptitude_result.insert_one(results_data)  # Add this line to save to aptitude_result
+    mongo.db.aptitude_result.insert_one(results_data)
+
     return render_template(
         'results.html',
         user=session.get('user'),
@@ -477,10 +510,11 @@ def results():
 
 @app.route('/fetch_suggestions', methods=['GET'])
 def fetch_suggestions():
-    # Fetch 15 documents from the 'answered' collection
-    documents = mongo.db.answered.find().limit(15)
+    # Fetch the required data from the 'user_data', 'user_responses', 'gaq_aptitude_results', and 'aptitude_result' collections
     documents2 = list(mongo.db.user_data.find().limit(1))
     documents3 = list(mongo.db.user_responses.find().limit(1))
+    gaq_aptitude_result = list(mongo.db.gaq_aptitude_results.find().limit(1))
+    aptitude_result = list(mongo.db.aptitude_result.find().limit(1))
 
     # Check for user_data
     if not documents2:
@@ -496,9 +530,21 @@ def fetch_suggestions():
 
     doc2 = documents3[0]  # Get the first document from user_responses
 
-    # Prepare data for Mistral API
-    aptitude_answered = [{"question": doc["question"], "answer": doc["answered"]} for doc in documents if "question" in doc and "answered" in doc]
+    # Check for gaq_aptitude_result
+    if not gaq_aptitude_result:
+        logging.warning("No aptitude results found in the 'gaq_aptitude_result' collection.")
+        return jsonify({'success': False, 'message': 'No aptitude results available.'}), 404
 
+    gaq_result = gaq_aptitude_result[0]  # Get the first document from gaq_aptitude_result
+
+    # Check for aptitude_result
+    if not aptitude_result:
+        logging.warning("No aptitude results found in the 'aptitude_result' collection.")
+        return jsonify({'success': False, 'message': 'No aptitude results available.'}), 404
+
+    aptitude_result_doc = aptitude_result[0]  # Get the first document from aptitude_result
+
+    # Prepare data for Mistral API (User Info)
     user_data = {
         "current status": doc1["current_status"],
         "age": doc1["age"],
@@ -511,23 +557,35 @@ def fetch_suggestions():
         "Meticulousness personality trait": doc1["personality_traits"]["meticulousness"]
     }
 
+    # Prepare data for Mistral API (User Preferences)
     user_responses = {
         "First priority": doc2["careerPreferences"]["first"],
         "Second priority": doc2["careerPreferences"]["second"],
         "Third priority": doc2["careerPreferences"]["third"]
     }
 
-    if not aptitude_answered:
-        logging.warning("No questions found in the 'answered' collection.")
-        return jsonify({'success': False, 'message': 'No questions available for suggestions.'}), 404
+    # Prepare the aptitude results for Mistral API
+    aptitude_results = {
+        "gaq_aptitude_result": {
+            "logic_correct": gaq_result["logic_correct"],
+            "math_correct": gaq_result["math_correct"],
+            "verbal_correct": gaq_result["verbal_correct"],
+            "score_percentage": gaq_result["score_percentage"]
+        },
+        "aptitude_result": {
+            "career_correct_count": aptitude_result_doc["career_correct_count"],
+            "score_percentage": aptitude_result_doc["score_percentage"]
+        }
+    }
 
     # Prepare the content for the API request
     content = (f"You are an AI model which is good at giving career suggestions for people, I want you to use your creativity and perform these tasks\n\n"
                f"Based on the user details\n, {json.dumps(user_data)}\n\n"
                f"User preferences\n {json.dumps(user_responses)}\n\n"
-               f"And I had conducted a quiz based on the user preferences this is how he/she as answered\n, {json.dumps(aptitude_answered)}\n\n"
-               f"I want you to give career suggestions based on for which career related questions they have answered properly\n"
-               f"suggest 5 career paths along with 5 roadmap points for each in JSON format. \n"
+               f"This the results of 15 general aptitude questions:\n, {json.dumps(aptitude_results['gaq_aptitude_result'])}\n\n"
+               f"This is the result of 15 Technical Aptitude questions:\n, {json.dumps(aptitude_results['aptitude_result'])}\n\n"
+               f"I want you to give career suggestions based on the aptitude results and user preferences. "
+               f"Suggest 5 career paths along with 5 roadmap points for each in JSON format. \n"
                f"Also provide 1 Udemy search query related to each career path (just the query, not the full URL). \n"
                f"Also provide 1 YouTube search query related to each career path (just the query, not the full URL). \n"
                f"Also provide 1 Coursera search query related to each career path (just the query, not the full URL). \n"
@@ -542,7 +600,7 @@ def fetch_suggestions():
                f"\"coursera_query\": \"Search query for Coursera\", "
                f"\"upgrad_query\": \"Search query for UpGrad\", "
                f"\"nptel_keywords\": [\"keyword1\", \"keyword2\", \"keyword3\", \"keyword4\", \"keyword5\"]}}].")
-    
+
     # Write content to a .txt file
     file_path = os.path.join(os.getcwd(), 'api_request_content.txt')
     with open(file_path, 'w', encoding='utf-8') as file:
