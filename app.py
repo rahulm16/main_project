@@ -510,10 +510,11 @@ def results():
 
 @app.route('/fetch_suggestions', methods=['GET'])
 def fetch_suggestions():
-    # Fetch 15 documents from the 'answered' collection
-    documents = mongo.db.answered.find().limit(15)
+    # Fetch the required data from the 'user_data', 'user_responses', 'gaq_aptitude_results', and 'aptitude_result' collections
     documents2 = list(mongo.db.user_data.find().limit(1))
     documents3 = list(mongo.db.user_responses.find().limit(1))
+    gaq_aptitude_result = list(mongo.db.gaq_aptitude_results.find().limit(1))
+    aptitude_result = list(mongo.db.aptitude_result.find().limit(1))
 
     # Check for user_data
     if not documents2:
@@ -529,9 +530,21 @@ def fetch_suggestions():
 
     doc2 = documents3[0]  # Get the first document from user_responses
 
-    # Prepare data for Mistral API
-    aptitude_answered = [{"question": doc["question"], "answer": doc["answered"]} for doc in documents if "question" in doc and "answered" in doc]
+    # Check for gaq_aptitude_result
+    if not gaq_aptitude_result:
+        logging.warning("No aptitude results found in the 'gaq_aptitude_result' collection.")
+        return jsonify({'success': False, 'message': 'No aptitude results available.'}), 404
 
+    gaq_result = gaq_aptitude_result[0]  # Get the first document from gaq_aptitude_result
+
+    # Check for aptitude_result
+    if not aptitude_result:
+        logging.warning("No aptitude results found in the 'aptitude_result' collection.")
+        return jsonify({'success': False, 'message': 'No aptitude results available.'}), 404
+
+    aptitude_result_doc = aptitude_result[0]  # Get the first document from aptitude_result
+
+    # Prepare data for Mistral API (User Info)
     user_data = {
         "current status": doc1["current_status"],
         "age": doc1["age"],
@@ -544,23 +557,35 @@ def fetch_suggestions():
         "Meticulousness personality trait": doc1["personality_traits"]["meticulousness"]
     }
 
+    # Prepare data for Mistral API (User Preferences)
     user_responses = {
         "First priority": doc2["careerPreferences"]["first"],
         "Second priority": doc2["careerPreferences"]["second"],
         "Third priority": doc2["careerPreferences"]["third"]
     }
 
-    if not aptitude_answered:
-        logging.warning("No questions found in the 'answered' collection.")
-        return jsonify({'success': False, 'message': 'No questions available for suggestions.'}), 404
+    # Prepare the aptitude results for Mistral API
+    aptitude_results = {
+        "gaq_aptitude_result": {
+            "logic_correct": gaq_result["logic_correct"],
+            "math_correct": gaq_result["math_correct"],
+            "verbal_correct": gaq_result["verbal_correct"],
+            "score_percentage": gaq_result["score_percentage"]
+        },
+        "aptitude_result": {
+            "career_correct_count": aptitude_result_doc["career_correct_count"],
+            "score_percentage": aptitude_result_doc["score_percentage"]
+        }
+    }
 
     # Prepare the content for the API request
     content = (f"You are an AI model which is good at giving career suggestions for people, I want you to use your creativity and perform these tasks\n\n"
                f"Based on the user details\n, {json.dumps(user_data)}\n\n"
                f"User preferences\n {json.dumps(user_responses)}\n\n"
-               f"And I had conducted a quiz based on the user preferences this is how he/she as answered\n, {json.dumps(aptitude_answered)}\n\n"
-               f"I want you to give career suggestions based on for which career related questions they have answered properly\n"
-               f"suggest 5 career paths along with 5 roadmap points for each in JSON format. \n"
+               f"This the results of 15 general aptitude questions:\n, {json.dumps(aptitude_results['gaq_aptitude_result'])}\n\n"
+               f"This is the result of 15 Technical Aptitude questions:\n, {json.dumps(aptitude_results['aptitude_result'])}\n\n"
+               f"I want you to give career suggestions based on the aptitude results and user preferences. "
+               f"Suggest 5 career paths along with 5 roadmap points for each in JSON format. \n"
                f"Also provide 1 Udemy search query related to each career path (just the query, not the full URL). \n"
                f"Also provide 1 YouTube search query related to each career path (just the query, not the full URL). \n"
                f"Also provide 1 Coursera search query related to each career path (just the query, not the full URL). \n"
@@ -575,7 +600,7 @@ def fetch_suggestions():
                f"\"coursera_query\": \"Search query for Coursera\", "
                f"\"upgrad_query\": \"Search query for UpGrad\", "
                f"\"nptel_keywords\": [\"keyword1\", \"keyword2\", \"keyword3\", \"keyword4\", \"keyword5\"]}}].")
-    
+
     # Write content to a .txt file
     file_path = os.path.join(os.getcwd(), 'api_request_content.txt')
     with open(file_path, 'w', encoding='utf-8') as file:
