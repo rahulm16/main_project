@@ -192,6 +192,11 @@ def aptitude_results():
     wrong_answers = total_questions - correct_answers
     score_percentage = (correct_answers / total_questions) * 100 if total_questions > 0 else 0
 
+    # Initialize counts for Logic, Mathematical, and Verbal questions
+    logic_correct = 0
+    math_correct = 0
+    verbal_correct = 0
+
     detailed_results = []
     
     for answer in answered_data:
@@ -225,12 +230,24 @@ def aptitude_results():
                 'difficulty_level': difficulty_level
             })
 
+            # Count correct answers for Logic, Mathematical, and Verbal questions
+            if answer['correct_or_wrong'] == 'correct':
+                if 'logic' in question_data.get('Type', '').lower():
+                    logic_correct += 1
+                elif 'mathematical' in question_data.get('Type', '').lower():
+                    math_correct += 1
+                elif 'verbal' in question_data.get('Type', '').lower():
+                    verbal_correct += 1
+
     # Create aptitude results data
     aptitude_results_data = {
         "total_questions": total_questions,
         "correct_answers": correct_answers,
         "wrong_answers": wrong_answers,
-        "score_percentage": score_percentage
+        "score_percentage": score_percentage,
+        "logic_correct": logic_correct,
+        "math_correct": math_correct,
+        "verbal_correct": verbal_correct  # Add counts for each category
     }
 
     # Insert the aptitude results data into `gaq_aptitude_results` collection in `aicareer` database
@@ -322,14 +339,15 @@ def save_user_data():
     return jsonify({'status': 'success', 'message': 'User data successfully saved.'}), 200
 
 def generate_questions(career_preferences):
-    """ Generate aptitude questions using Mistral API. """
+    """ Generate aptitude questions using Mistral API with career preferences. """
     messages = [
         {
             "role": "user",
             "content": f"Generate 15 aptitude questions related to the following career preferences: {', '.join(career_preferences.values())}. Please format the response as a JSON array like this: [{{"
-                       f"\"question\": \"Question text\"," 
+                       f"\"question\": \"Question text\","
                        f"\"options\": [\"Option A\", \"Option B\", \"Option C\", \"Option D\"],"
-                       f"\"correct_answer\": \"Correct Option\""
+                       f"\"correct_answer\": \"Correct Option\","
+                       f"\"for_career_preference\": \"Career preference related to the question as it is in the given data; do not change anything\""
                        f"}}]."
         }
     ]
@@ -427,21 +445,33 @@ def results():
     # Fetch answered questions and their details from MongoDB
     answered_data = list(mongo.db.answered.find())
     
-    # Get the original questions with correct answers
+    # Get the original questions with correct answers and career preferences
     questions_data = {}
+    all_career_preferences = set()  # Track all unique career preferences
     for answer in answered_data:
         question = mongo.db.questions.find_one({"question": answer['question']})
         if question:
             questions_data[answer['question']] = {
                 'correct_answer': question['correct_answer'],
-                'options': question['options']
+                'options': question['options'],
+                'career_preference': question['for_career_preference']  # Added career preference field
             }
+            all_career_preferences.add(question['for_career_preference'])  # Collect all career preferences
 
     # Calculate statistics
     total_questions = len(answered_data)
     correct_answers = sum(1 for answer in answered_data if answer['correct_or_wrong'] == 'correct')
     wrong_answers = total_questions - correct_answers
     score_percentage = (correct_answers / total_questions) * 100 if total_questions > 0 else 0
+
+    # Track correct answers per career preference
+    career_correct_count = {career: 0 for career in all_career_preferences}  # Initialize all with 0
+    for answer in answered_data:
+        question_info = questions_data.get(answer['question'])
+        if question_info and answer['correct_or_wrong'] == 'correct':
+            career_preference = question_info['career_preference']
+            if career_preference:
+                career_correct_count[career_preference] += 1
 
     # Create detailed results list
     detailed_results = []
@@ -455,16 +485,19 @@ def results():
                 'options': question_info['options'],
                 'is_correct': answer['correct_or_wrong'] == 'correct'
             })
-     # Prepare the results data for MongoDB
+    
+    # Prepare the results data for MongoDB
     results_data = {
         "total_questions": total_questions,
         "correct_answers": correct_answers,
         "wrong_answers": wrong_answers,
-        "score_percentage": score_percentage
+        "score_percentage": score_percentage,
+        "career_correct_count": career_correct_count  # Added career correct count
     }
 
     # Save results to the 'aptitude_result' collection
-    mongo.db.aptitude_result.insert_one(results_data)  # Add this line to save to aptitude_result
+    mongo.db.aptitude_result.insert_one(results_data)
+
     return render_template(
         'results.html',
         user=session.get('user'),
