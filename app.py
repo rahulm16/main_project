@@ -1,15 +1,16 @@
 from flask import Flask, redirect, render_template, request, jsonify, session, url_for
-from course_finder import find_relevant_courses  # Assuming the previous code is in course_finder.py
+from course_finder import find_relevant_courses  
+from qr_generator import generate_qr_code
 from flask_pymongo import PyMongo
+from flask_cors import CORS
 from pymongo import MongoClient
 from bson import ObjectId
 from bson.json_util import dumps
 from mistralai import Mistral
 from flask_bcrypt import Bcrypt
 from datetime import datetime
-from bson import ObjectId
 from dotenv import load_dotenv
-from threading import Thread
+from bson import ObjectId, json_util
 import random
 import json
 import logging
@@ -21,6 +22,7 @@ app.secret_key = "your_secret_key"  # Change this to a strong secret key
 app.config["MONGO_URI"] = "mongodb://localhost:27017/aicareer"  # Your MongoDB URI
 mongo = PyMongo(app)
 bcrypt = Bcrypt(app)  # Initialize Bcrypt
+CORS(app)
 
 client = MongoClient("mongodb://localhost:27017/")  # Connecting to MongoDB (if on localhost)
 gaq_db = client.GAQ
@@ -190,6 +192,11 @@ def aptitude_results():
     wrong_answers = total_questions - correct_answers
     score_percentage = (correct_answers / total_questions) * 100 if total_questions > 0 else 0
 
+    # Initialize counts for Logic, Mathematical, and Verbal questions
+    logic_correct = 0
+    math_correct = 0
+    verbal_correct = 0
+
     detailed_results = []
     
     for answer in answered_data:
@@ -223,12 +230,24 @@ def aptitude_results():
                 'difficulty_level': difficulty_level
             })
 
+            # Count correct answers for Logic, Mathematical, and Verbal questions
+            if answer['correct_or_wrong'] == 'correct':
+                if 'logic' in question_data.get('Type', '').lower():
+                    logic_correct += 1
+                elif 'mathematical' in question_data.get('Type', '').lower():
+                    math_correct += 1
+                elif 'verbal' in question_data.get('Type', '').lower():
+                    verbal_correct += 1
+
     # Create aptitude results data
     aptitude_results_data = {
         "total_questions": total_questions,
         "correct_answers": correct_answers,
         "wrong_answers": wrong_answers,
-        "score_percentage": score_percentage
+        "score_percentage": score_percentage,
+        "logic_correct": logic_correct,
+        "math_correct": math_correct,
+        "verbal_correct": verbal_correct  # Add counts for each category
     }
 
     # Insert the aptitude results data into `gaq_aptitude_results` collection in `aicareer` database
@@ -320,14 +339,15 @@ def save_user_data():
     return jsonify({'status': 'success', 'message': 'User data successfully saved.'}), 200
 
 def generate_questions(career_preferences):
-    """ Generate aptitude questions using Mistral API. """
+    """ Generate aptitude questions using Mistral API with career preferences. """
     messages = [
         {
             "role": "user",
             "content": f"Generate 15 aptitude questions related to the following career preferences: {', '.join(career_preferences.values())}. Please format the response as a JSON array like this: [{{"
-                       f"\"question\": \"Question text\"," 
+                       f"\"question\": \"Question text\","
                        f"\"options\": [\"Option A\", \"Option B\", \"Option C\", \"Option D\"],"
-                       f"\"correct_answer\": \"Correct Option\""
+                       f"\"correct_answer\": \"Correct Option\","
+                       f"\"for_career_preference\": \"Career preference related to the question as it is in the given data; do not change anything\""
                        f"}}]."
         }
     ]
@@ -425,21 +445,33 @@ def results():
     # Fetch answered questions and their details from MongoDB
     answered_data = list(mongo.db.answered.find())
     
-    # Get the original questions with correct answers
+    # Get the original questions with correct answers and career preferences
     questions_data = {}
+    all_career_preferences = set()  # Track all unique career preferences
     for answer in answered_data:
         question = mongo.db.questions.find_one({"question": answer['question']})
         if question:
             questions_data[answer['question']] = {
                 'correct_answer': question['correct_answer'],
-                'options': question['options']
+                'options': question['options'],
+                'career_preference': question['for_career_preference']  # Added career preference field
             }
+            all_career_preferences.add(question['for_career_preference'])  # Collect all career preferences
 
     # Calculate statistics
     total_questions = len(answered_data)
     correct_answers = sum(1 for answer in answered_data if answer['correct_or_wrong'] == 'correct')
     wrong_answers = total_questions - correct_answers
     score_percentage = (correct_answers / total_questions) * 100 if total_questions > 0 else 0
+
+    # Track correct answers per career preference
+    career_correct_count = {career: 0 for career in all_career_preferences}  # Initialize all with 0
+    for answer in answered_data:
+        question_info = questions_data.get(answer['question'])
+        if question_info and answer['correct_or_wrong'] == 'correct':
+            career_preference = question_info['career_preference']
+            if career_preference:
+                career_correct_count[career_preference] += 1
 
     # Create detailed results list
     detailed_results = []
@@ -453,16 +485,19 @@ def results():
                 'options': question_info['options'],
                 'is_correct': answer['correct_or_wrong'] == 'correct'
             })
-     # Prepare the results data for MongoDB
+    
+    # Prepare the results data for MongoDB
     results_data = {
         "total_questions": total_questions,
         "correct_answers": correct_answers,
         "wrong_answers": wrong_answers,
-        "score_percentage": score_percentage
+        "score_percentage": score_percentage,
+        "career_correct_count": career_correct_count  # Added career correct count
     }
 
     # Save results to the 'aptitude_result' collection
-    mongo.db.aptitude_result.insert_one(results_data)  # Add this line to save to aptitude_result
+    mongo.db.aptitude_result.insert_one(results_data)
+
     return render_template(
         'results.html',
         user=session.get('user'),
@@ -475,10 +510,11 @@ def results():
 
 @app.route('/fetch_suggestions', methods=['GET'])
 def fetch_suggestions():
-    # Fetch 15 documents from the 'answered' collection
-    documents = mongo.db.answered.find().limit(15)
+    # Fetch the required data from the 'user_data', 'user_responses', 'gaq_aptitude_results', and 'aptitude_result' collections
     documents2 = list(mongo.db.user_data.find().limit(1))
     documents3 = list(mongo.db.user_responses.find().limit(1))
+    gaq_aptitude_result = list(mongo.db.gaq_aptitude_results.find().limit(1))
+    aptitude_result = list(mongo.db.aptitude_result.find().limit(1))
 
     # Check for user_data
     if not documents2:
@@ -491,12 +527,24 @@ def fetch_suggestions():
     if not documents3:
         logging.warning("No user responses found in the 'user_responses' collection.")
         return jsonify({'success': False, 'message': 'No user responses available.'}), 404
- 
+
     doc2 = documents3[0]  # Get the first document from user_responses
 
-    # Prepare data for Mistral API
-    questions = [{"question": doc["question"], "answer": doc["answered"]} for doc in documents if "question" in doc and "answered" in doc]
+    # Check for gaq_aptitude_result
+    if not gaq_aptitude_result:
+        logging.warning("No aptitude results found in the 'gaq_aptitude_result' collection.")
+        return jsonify({'success': False, 'message': 'No aptitude results available.'}), 404
 
+    gaq_result = gaq_aptitude_result[0]  # Get the first document from gaq_aptitude_result
+
+    # Check for aptitude_result
+    if not aptitude_result:
+        logging.warning("No aptitude results found in the 'aptitude_result' collection.")
+        return jsonify({'success': False, 'message': 'No aptitude results available.'}), 404
+
+    aptitude_result_doc = aptitude_result[0]  # Get the first document from aptitude_result
+
+    # Prepare data for Mistral API (User Info)
     user_data = {
         "current status": doc1["current_status"],
         "age": doc1["age"],
@@ -509,38 +557,55 @@ def fetch_suggestions():
         "Meticulousness personality trait": doc1["personality_traits"]["meticulousness"]
     }
 
+    # Prepare data for Mistral API (User Preferences)
     user_responses = {
         "First priority": doc2["careerPreferences"]["first"],
         "Second priority": doc2["careerPreferences"]["second"],
         "Third priority": doc2["careerPreferences"]["third"]
     }
 
-    if not questions:
-        logging.warning("No questions found in the 'answered' collection.")
-        return jsonify({'success': False, 'message': 'No questions available for suggestions.'}), 404
+    # Prepare the aptitude results for Mistral API
+    aptitude_results = {
+        "gaq_aptitude_result": {
+            "logic_correct": gaq_result["logic_correct"],
+            "math_correct": gaq_result["math_correct"],
+            "verbal_correct": gaq_result["verbal_correct"],
+            "score_percentage": gaq_result["score_percentage"]
+        },
+        "aptitude_result": {
+            "career_correct_count": aptitude_result_doc["career_correct_count"],
+            "score_percentage": aptitude_result_doc["score_percentage"]
+        }
+    }
 
     # Prepare the content for the API request
-    content = (f"You are an AI model which is good at giving career suggestions for people, I want you to use your creativity and perform these tasks"
-               f"Based on the user details, {json.dumps(user_data)}"
-               f"User preferences {json.dumps(user_responses)}"
-               f"And I had conducted a quiz based on the user preferences this is how he/she as answered, {json.dumps(questions)}"
-               f"I want you to give career suggestions based on for which career related questions they have answered properly"
-               f"suggest 5 career paths along with 5 roadmap points for each in JSON format. "
-               f"Also provide 1 Udemy search query related to each career path (just the query, not the full URL). "
-               f"Also provide 1 YouTube search query related to each career path (just the query, not the full URL). "
-               f"Also provide 1 Coursera search query related to each career path (just the query, not the full URL). "
-               f"Also provide 1 UpGrad search query related to each career path (just the query, not the full URL). "
-               f"For each career path, please also give 5 high accurate keywords that can be used to search on the NPTEL website."
-               f"These should be keywords that are relevant to courses available on NPTEL (e.g., topics, course names, subjects). "
-               f"Please provide 5 keywords, separated by commas. "
-               f"Please format the response as a JSON array like this: "
+    content = (f"You are an AI model which is good at giving career suggestions for people, I want you to use your creativity and perform these tasks\n\n"
+               f"Based on the user details\n, {json.dumps(user_data)}\n\n"
+               f"User preferences\n {json.dumps(user_responses)}\n\n"
+               f"This the results of 15 general aptitude questions:\n, {json.dumps(aptitude_results['gaq_aptitude_result'])}\n\n"
+               f"This is the result of 15 Technical Aptitude questions:\n, {json.dumps(aptitude_results['aptitude_result'])}\n\n"
+               f"I want you to give career suggestions based on the aptitude results and user preferences. "
+               f"Suggest 5 career paths along with 5 roadmap points for each in JSON format. \n"
+               f"Also provide 1 Udemy search query related to each career path (just the query, not the full URL). \n"
+               f"Also provide 1 YouTube search query related to each career path (just the query, not the full URL). \n"
+               f"Also provide 1 Coursera search query related to each career path (just the query, not the full URL). \n"
+               f"Also provide 1 UpGrad search query related to each career path (just the query, not the full URL). \n"
+               f"For each career path, please also give 5 high accurate keywords that can be used to search on the NPTEL website.\n"
+               f"These should be keywords that are relevant to courses available on NPTEL (e.g., topics, course names, subjects). \n"
+               f"Please provide 5 keywords, separated by commas. \n"
+               f"Please format the response as a JSON array like this: \n"
                f"[{{\"career\": \"Career Name\", \"roadmap\": [\"Step 1\", \"Step 2\", \"Step 3\", \"Step 4\", \"Step 5\"], "
                f"\"udemy_query\": \"Search query for Udemy\", "
                f"\"youtube_query\": \"Search query for YouTube\", "
                f"\"coursera_query\": \"Search query for Coursera\", "
                f"\"upgrad_query\": \"Search query for UpGrad\", "
                f"\"nptel_keywords\": [\"keyword1\", \"keyword2\", \"keyword3\", \"keyword4\", \"keyword5\"]}}].")
-                
+
+    # Write content to a .txt file
+    file_path = os.path.join(os.getcwd(), 'api_request_content.txt')
+    with open(file_path, 'w', encoding='utf-8') as file:
+        file.write(content)
+    logging.info(f"API request content written to {file_path}")            
     try:
         chat_response = mistral_client.chat.complete(
             model=model,
@@ -599,16 +664,10 @@ def fetch_suggestions():
   
 @app.route('/suggestions', methods=['GET'])
 def show_suggestions():
-    async_fetch_detailed_layout()
     # Retrieve suggestions from MongoDB
     suggestions = mongo.db.career_suggestions.find()
     suggestions_list = list(suggestions)  # Convert cursor to list
-    return render_template('suggestions.html', show_hamburger_menu=True, suggestions=suggestions_list, user=session.get('user'))
-
-def async_fetch_detailed_layout():
-    thread = Thread(target=fetch_detailed_layout)
-    thread.daemon = True  # This ensures the thread will be terminated when the main program exits
-    thread.start()
+    return render_template('suggestions.html', suggestions=suggestions_list, user=session.get('user'))
 
 @app.route('/update-nptel-courses')
 def update_nptel_courses():
@@ -702,6 +761,7 @@ def learning():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)})
 
+@app.route('/fetch_detailed_layout', methods=['GET'])
 def fetch_detailed_layout():
     try:
         # Get all career suggestions
@@ -710,9 +770,9 @@ def fetch_detailed_layout():
         if not career_suggestions:
             logging.error("No career suggestions found")
             return jsonify({'success': False, 'message': 'No career suggestions found'}), 404
-            
+
         layout_data_list = []
-        
+
         # Process each career suggestion
         for career in career_suggestions:
             # Define the expected JSON format for each career
@@ -769,7 +829,6 @@ def fetch_detailed_layout():
                       f"The structure should be flexible and generic enough to accommodate different types of web content layouts, such as educational paths, career advice, product info, etc.")
 
             try:
-                # Make API request for each career
                 chat_response = mistral_client.chat.complete(
                     model=model,
                     messages=[{
@@ -784,22 +843,22 @@ def fetch_detailed_layout():
 
                 # Clean and parse JSON response
                 json_str = raw_response.strip()
-                
+
                 # Handle code block formatting
                 if "```json" in json_str:
                     json_str = json_str.split("```json")[1].split("```")[0]
                 elif "```" in json_str:
                     json_str = json_str.split("```")[1].split("```")[0]
 
-                # Parse and validate JSON
+                # Parse JSON
                 layout_data = json.loads(json_str.strip())
-                
+
                 # Add career identifier to layout data
                 layout_data['career_id'] = str(career['_id'])
                 layout_data['career_name'] = career['career']
-                
+
                 layout_data_list.append(layout_data)
-                
+
             except Exception as e:
                 logging.error(f"Error processing career {career['career']}: {e}")
                 continue
@@ -808,27 +867,27 @@ def fetch_detailed_layout():
         if layout_data_list:
             try:
                 mongo.db.page_layout.insert_many(layout_data_list)
-                #logging.info(f"Successfully saved {len(layout_data_list)} detailed layout data to MongoDB")
+                logging.info(f"Successfully saved {len(layout_data_list)} detailed layout data to MongoDB")
                 return jsonify({
-                    'success': True, 
+                    'success': True,
                     'message': f'Successfully generated and saved {len(layout_data_list)} layouts'
                 }), 200
             except Exception as e:
                 logging.error(f"Error saving layouts to MongoDB: {e}")
                 return jsonify({
-                    'success': False, 
+                    'success': False,
                     'message': 'Error saving layouts to database'
                 }), 500
         else:
             return jsonify({
-                'success': False, 
+                'success': False,
                 'message': 'No layouts were generated successfully'
             }), 500
 
     except Exception as e:
         logging.error(f"Error in fetch_detailed_layout: {e}")
         return jsonify({
-            'success': False, 
+            'success': False,
             'message': f'Failed to fetch detailed layout: {str(e)}'
         }), 500
 
@@ -1005,5 +1064,182 @@ def like_post(post_id):
     
     return jsonify({'liked': user_email in likes_by})
         
+@app.route('/profile_overview')
+def profile_overview():
+    return render_template('profile_overview.html', show_hamburger_menu=True, user=session.get('user'))
+
+def parse_json(data):
+    """Convert MongoDB BSON to JSON."""
+    return json.loads(json_util.dumps(data))
+
+@app.route('/api/update-profile', methods=['POST'])
+def update_profile():
+    client = MongoClient('mongodb://localhost:27017/')
+    db = client['aicareer']
+    try:
+        data = request.json
+        user_email = data.get("email")
+        
+        if not user_email:
+            return jsonify({'error': 'Email is required'}), 400
+
+        logging.info(f"Starting profile update for email: {user_email}")
+        
+        # Update users collection - takes first document
+        new_user_doc = {
+            "email": user_email,
+            "fullName": data["name"]
+        }
+        users_result = db.users.replace_one(
+            {},  # Empty filter to get first document
+            new_user_doc,
+            upsert=True
+        )
+
+        # Update user_data collection - takes first document
+        new_user_data_doc = {
+            "current_status": data.get("currentStatus"),
+            "age": int(data.get("age")) if data.get("age") else None,
+            "highest_level_of_education": data.get("education"),
+            "current_field_of_study_or_work": data.get("currentField"),
+            "work_experience": data.get("workExperience"),
+            "key_skills": data.get("keySkills", []),
+            "personality_traits": {
+                "extroversion": 100,  # Default values as per existing document
+                "openness_to_work": 100,
+                "meticulousness": 100
+            },
+            "education_details": {
+                "syllabus": data.get("educationDetails", {}).get("syllabus", ""),
+                "specialization": data.get("educationDetails", {}).get("specialization", ""),
+                "course": data.get("educationDetails", {}).get("course", "")
+            }
+        }
+        
+        user_data_result = db.user_data.replace_one(
+            {},  # Empty filter to get first document
+            new_user_data_doc,
+            upsert=True
+        )
+        social_links_doc = {
+            "email": user_email,  # Add user identifier
+            "github_link": data.get("githubLink"),
+            "linkedin_link": data.get("linkedinLink")
+        }
+
+        social_links_result = db.social_links.replace_one(
+            {"email": user_email},  # Filter by user email
+            social_links_doc,
+            upsert=True
+        )
+        return jsonify({
+            'message': 'Profile updated successfully!',
+            'updates': {
+                'users': bool(users_result.acknowledged),
+                'user_data': bool(user_data_result.acknowledged),
+                'social_links': bool(social_links_result.acknowledged)
+            }
+        }), 200
+
+    except Exception as e:
+        logging.error(f"Error in update_profile: {str(e)}")
+        return jsonify({
+            'error': 'Internal server error',
+            'details': str(e)
+        }), 500
+
+@app.route('/api/profile-data')
+def get_profile_data():
+    client = MongoClient('mongodb://localhost:27017/')
+    db = client['aicareer']
+    try:
+        # Get first document from each collection
+        user = db.users.find_one()
+        if not user:
+            return jsonify({'error': 'User not found'}), 404
+        
+        user_data = db.user_data.find_one()
+        if not user_data:
+            return jsonify({'error': 'User data not found'}), 404
+
+        # Get career suggestions (first 5)
+        career_suggestions = list(db.career_suggestions.find().limit(5))
+        
+        # Get user responses
+        user_responses = db.user_responses.find_one()
+        
+        # Get aptitude scores (first document from each)
+        technical_aptitude = db.aptitude_result.find_one()
+        general_aptitude = db.gaq_aptitude_results.find_one()
+
+        # Prepare response data matching frontend structure
+        profile_data = {
+            'user': {
+                'name': user.get('fullName', ''),
+                'email': user.get('email', '')
+            },
+            'userData': {
+                'currentStatus': user_data.get('current_status', ''),
+                'age': user_data.get('age', ''),
+                'education': user_data.get('highest_level_of_education', ''),
+                'currentField': user_data.get('current_field_of_study_or_work', ''),
+                'keySkills': user_data.get('key_skills', []),
+                'workExperience': user_data.get('work_experience', ''),
+                'personalityTraits': user_data.get('personality_traits', {}),
+                'educationDetails': {
+                    'syllabus': user_data.get('education_details', {}).get('syllabus', ''),
+                    'specialization': user_data.get('education_details', {}).get('specialization', ''),
+                    'course': user_data.get('education_details', {}).get('course', '')
+                }
+            },
+            'careerSuggestions': [
+                {
+                    'title': career.get('career', ''),
+                    'match': 85,  # Default match percentage
+                    'roadmap': career.get('roadmap', []),
+                    'resources': {
+                        'udemy': career.get('udemy_link', ''),
+                        'youtube': career.get('youtube_link', ''),
+                        'coursera': career.get('coursera_link', ''),
+                        'upgrad': career.get('upgrad_link', ''),
+                        'nptel_keywords': career.get('nptel_keywords', [])
+                    }
+                } for career in career_suggestions
+            ],
+            'aptitudeScores': [
+                {
+                    'name': 'Technical',
+                    'score': technical_aptitude.get('score_percentage', 0) if technical_aptitude else 0,
+                    'details': {
+                        'total': technical_aptitude.get('total_questions', 0) if technical_aptitude else 0,
+                        'correct': technical_aptitude.get('correct_answers', 0) if technical_aptitude else 0,
+                        'wrong': technical_aptitude.get('wrong_answers', 0) if technical_aptitude else 0
+                    }
+                },
+                {
+                    'name': 'General',
+                    'score': general_aptitude.get('score_percentage', 0) if general_aptitude else 0,
+                    'details': {
+                        'total': general_aptitude.get('total_questions', 0) if general_aptitude else 0,
+                        'correct': general_aptitude.get('correct_answers', 0) if general_aptitude else 0,
+                        'wrong': general_aptitude.get('wrong_answers', 0) if general_aptitude else 0
+                    }
+                }
+            ],
+            'careerPreferences': user_responses.get('careerPreferences', {}) if user_responses else {}
+        }
+        social_links = db.social_links.find_one()
+        
+        # Add social links to userData
+        profile_data['userData']['githubLink'] = social_links.get('github_link', '') if social_links else ''
+        profile_data['userData']['linkedinLink'] = social_links.get('linkedin_link', '') if social_links else ''
+        output_file_path = "static/profile_cards/qrcode.png"
+        generate_qr_code(profile_data['userData']['linkedinLink'], output_file_path)
+        return jsonify(parse_json(profile_data))
+
+    except Exception as e:
+        logging.error(f"Error fetching profile data: {str(e)}")
+        return jsonify({'error': str(e)}), 500
+
 if __name__ == "__main__":
     app.run(debug=True)
