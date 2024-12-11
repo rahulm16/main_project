@@ -579,13 +579,13 @@ def fetch_suggestions():
     }
 
     # Prepare the content for the API request
-    content = (f"You are an AI model which is good at giving career suggestions for people, I want you to use your creativity and perform these tasks\n\n"
+    content = (f"You are an AI model which is good at giving career suggestions for people, I want you to use your creativity and identify valid and future proof career paths based on the latest industry trends and perform these tasks\n\n"
                f"Based on the user details\n, {json.dumps(user_data)}\n\n"
                f"User preferences\n {json.dumps(user_responses)}\n\n"
                f"This the results of 15 general aptitude questions:\n, {json.dumps(aptitude_results['gaq_aptitude_result'])}\n\n"
                f"This is the result of 15 Technical Aptitude questions:\n, {json.dumps(aptitude_results['aptitude_result'])}\n\n"
                f"I want you to give career suggestions based on the aptitude results and user preferences. "
-               f"Suggest 5 career paths along with 5 roadmap points for each in JSON format. \n"
+               f"Suggest 3 career paths along with 5 roadmap points that are valid in 2024's job market for each in JSON format. \n"
                f"Also provide 1 Udemy search query related to each career path (just the query, not the full URL). \n"
                f"Also provide 1 YouTube search query related to each career path (just the query, not the full URL). \n"
                f"Also provide 1 Coursera search query related to each career path (just the query, not the full URL). \n"
@@ -1162,8 +1162,8 @@ def get_profile_data():
         if not user_data:
             return jsonify({'error': 'User data not found'}), 404
 
-        # Get career suggestions (first 5)
-        career_suggestions = list(db.career_suggestions.find().limit(5))
+        # Get career suggestions (first 3)
+        career_suggestions = list(db.career_suggestions.find().limit(3))
         
         # Get user responses
         user_responses = db.user_responses.find_one()
