@@ -5,6 +5,7 @@ from flask_pymongo import PyMongo
 from flask_cors import CORS
 from pymongo import MongoClient
 from bson import ObjectId
+from werkzeug.utils import secure_filename
 from bson.json_util import dumps
 from mistralai import Mistral
 from flask_bcrypt import Bcrypt
@@ -20,6 +21,7 @@ load_dotenv()
 app = Flask(__name__)
 app.secret_key = "your_secret_key"  # Change this to a strong secret key
 app.config["MONGO_URI"] = "mongodb://localhost:27017/aicareer"  # Your MongoDB URI
+app.config['UPLOAD_FOLDER'] = 'static/resumes'
 mongo = PyMongo(app)
 bcrypt = Bcrypt(app)  # Initialize Bcrypt
 CORS(app)
@@ -60,6 +62,39 @@ def chatbot():
 def profile():
     return render_template('profile.html', user=session.get('user'))
 
+@app.route('/api/save_user_data', methods=['POST'])
+def save_user_data():
+    user_data = request.json  # Get data from the request
+
+    # Validate the incoming data
+    required_fields = ["current_status", "age", "highest_level_of_education",
+                       "current_field_of_study_or_work", "key_skills"]
+    missing_fields = [field for field in required_fields if field not in user_data]
+    if missing_fields:
+        return jsonify({'status': 'error', 'message': f'Missing fields: {", ".join(missing_fields)}'}), 400
+
+    # Insert data into MongoDB collection 'user_data'
+    mongo.db.user_data.insert_one(user_data)
+
+    return jsonify({'status': 'success', 'message': 'User data successfully saved.'}), 200
+
+@app.route('/api/upload_resume', methods=['POST'])
+def upload_resume():
+    if 'resume' not in request.files:
+        return jsonify({'status': 'error', 'message': 'No file part'}), 400
+    file = request.files['resume']
+    if file.filename == '':
+        return jsonify({'status': 'error', 'message': 'No selected file'}), 400
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        return jsonify({'status': 'success', 'message': 'Resume successfully uploaded.'}), 200
+    return jsonify({'status': 'error', 'message': 'File type not allowed'}), 400
+
+def allowed_file(filename):
+    ALLOWED_EXTENSIONS = {'pdf'}
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 @app.route('/choices')
 def choices():
     return render_template('choices.html', user=session.get('user'))
@@ -99,7 +134,7 @@ def aptitude():
     # Convert ObjectId in user data to string
     user['_id'] = str(user['_id'])  # Make sure the user ID is serializable
 
-    user_age = user.get('age', 0)
+    user_age = int(user.get('age', 0))  # Safely convert to integer
 
     # Determine difficulty level based on age
     if user_age <= 18:
@@ -157,7 +192,7 @@ def save_aptitude_answers():
 
     # Get answers and user details from the request
     answers = request.json.get('answers')  # List of answers provided by the user
-    user_age = user.get('age', 0)  # Get user's age from the user data
+    user_age = int(user.get('age', 0))  # Get user's age from the user data
 
     # Ensure that the answers are in a list format
     if not isinstance(answers, list):
@@ -368,22 +403,6 @@ def save_scenario_data():
     except Exception as e:
         logging.error(f"Error saving scenario data: {e}")
         return jsonify({'status': 'error', 'message': 'Failed to save scenario data.'}), 500
-
-@app.route('/api/save_user_data', methods=['POST'])
-def save_user_data():
-    user_data = request.json  # Get data from the request
-    
-    # Validate the incoming data
-    required_fields = ["current_status", "age", "highest_level_of_education", 
-                       "current_field_of_study_or_work", "key_skills", "personality_traits"]
-    missing_fields = [field for field in required_fields if field not in user_data]
-    if missing_fields:
-        return jsonify({'status': 'error', 'message': f'Missing fields: {", ".join(missing_fields)}'}), 400
-
-    # Insert data into MongoDB collection 'user_data'
-    mongo.db.user_data.insert_one(user_data)
-
-    return jsonify({'status': 'success', 'message': 'User data successfully saved.'}), 200
 
 def generate_questions(career_preferences):
     """ Generate aptitude questions using Mistral API with career preferences. """
@@ -1304,4 +1323,6 @@ def policies():
     return render_template('policy.html', user=session.get('user'))
 
 if __name__ == "__main__":
+    if not os.path.exists(app.config['UPLOAD_FOLDER']):
+        os.makedirs(app.config['UPLOAD_FOLDER'])
     app.run(debug=True)
