@@ -38,6 +38,15 @@ body {
     transition: background-color var(--transition-default), color var(--transition-default);
 }
 
+html{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
 /* Layout */
 .container {
     flex: 1;

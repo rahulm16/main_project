@@ -6,6 +6,7 @@
     <title>Profile - SavvyAI</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/profile.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/upload.css') }}">
 </head>
 <body class="light-mode">
     {% include 'header.html' %}
@@ -130,12 +131,19 @@
 
                     <div class="form-step" id="step-3">
                         <h2>Work Experience</h2>
-                        <label for="workExperience">Work Experience</label>
-                        <input type="text" id="workExperience" name="workExperience" required>
+                        <div class="dropzone" id="dropzone">
+                          <input type="file" id="fileInput" accept="application/pdf" multiple style="display: none;">
+                          <img src="{{ url_for('static', filename='images/upload_image.png') }}" alt="upload" class="upload-icon">
+                          <h3>
+                            Drag & Drop your Resume here
+                          </h3>
+                          <button class="btn btn-outline-info" id="browseFiles">Browse Files</button>
+                        </div>
                         <div class="buttons">
                             <button type="button" class="prev-btn" id="prev-btn">Back</button>
                             <button type="button" class="next-btn" id="next-btn">Next</button>
                         </div>
+
                     </div>
 
                     <div class="form-step" id="step-4">
@@ -158,5 +166,7 @@
 
     <script src="../static/scripts/header.js"></script>
     <script src="../static/scripts/profile.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="../static/scripts/upload.js"></script>
 </body>
 </html>

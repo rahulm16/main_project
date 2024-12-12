@@ -44,9 +44,13 @@ api_key = os.getenv("API_KEY")
 model = "mistral-large-latest"
 mistral_client = Mistral(api_key=api_key)
 
-@app.route('/')
+@app.route('/login')
 def index():
     return render_template('login.html', user=session.get('user'))
+
+@app.route('/')
+def home():
+    return render_template('home.html', user=session.get('user'))
 
 @app.route('/chatbot')
 def chatbot():
@@ -59,6 +63,31 @@ def profile():
 @app.route('/choices')
 def choices():
     return render_template('choices.html', user=session.get('user'))
+
+UPLOAD_FOLDER = 'resumes'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+@app.route('/upload_resume', methods=['POST'])
+def upload_resume():
+    if 'resume' not in request.files:
+        return jsonify(success=False, message="No file part")
+    
+    file = request.files['resume']
+    
+    if file.filename == '':
+        return jsonify(success=False, message="No selected file")
+    
+    if file and file.filename.endswith('.pdf'):
+        resume_folder = os.path.join(app.config['UPLOAD_FOLDER'])
+        if not os.path.exists(resume_folder):
+            os.makedirs(resume_folder)
+        
+        file_path = os.path.join(resume_folder, file.filename)
+        file.save(file_path)
+        return jsonify(success=True, message="File uploaded successfully")
+    
+    return jsonify(success=False, message="Invalid file type")
+
 
 @app.route('/aptitude', methods=['GET', 'POST'])
 def aptitude():
