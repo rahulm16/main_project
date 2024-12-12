@@ -21,7 +21,12 @@ load_dotenv()
 app = Flask(__name__)
 app.secret_key = "your_secret_key"  # Change this to a strong secret key
 app.config["MONGO_URI"] = "mongodb://localhost:27017/aicareer"  # Your MongoDB URI
-app.config['UPLOAD_FOLDER'] = 'static/resumes'
+# Configure the folder to store resumes
+UPLOAD_FOLDER = 'static/resume'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+# Ensure the folder exists
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 mongo = PyMongo(app)
 bcrypt = Bcrypt(app)  # Initialize Bcrypt
 CORS(app)
@@ -78,51 +83,35 @@ def save_user_data():
 
     return jsonify({'status': 'success', 'message': 'User data successfully saved.'}), 200
 
+# Endpoint to handle the resume upload
 @app.route('/api/upload_resume', methods=['POST'])
 def upload_resume():
     if 'resume' not in request.files:
-        return jsonify({'status': 'error', 'message': 'No file part'}), 400
-    file = request.files['resume']
-    if file.filename == '':
-        return jsonify({'status': 'error', 'message': 'No selected file'}), 400
-    if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        return jsonify({'status': 'success', 'message': 'Resume successfully uploaded.'}), 200
-    return jsonify({'status': 'error', 'message': 'File type not allowed'}), 400
+        return jsonify({'status': 'error', 'message': 'No file part'})
 
-def allowed_file(filename):
-    ALLOWED_EXTENSIONS = {'pdf'}
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+    file = request.files['resume']
+    
+    if file.filename == '':
+        return jsonify({'status': 'error', 'message': 'No selected file'})
+
+    if file and file.filename.endswith('.pdf'):
+        # Secure the filename
+        filename = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+        file.save(filename)
+        return jsonify({'status': 'success', 'message': 'File uploaded successfully'})
+    else:
+        return jsonify({'status': 'error', 'message': 'Invalid file format, only PDF allowed'})
+
+# Endpoint to handle saving user data without the resume
+@app.route('/api/save_user_data_other', methods=['POST'])
+def save_user_data_other():
+    data = request.json
+    # Process the data as needed (e.g., store it in the database)
+    return jsonify({'status': 'success', 'message': 'User data saved successfully'})
 
 @app.route('/choices')
 def choices():
     return render_template('choices.html', user=session.get('user'))
-
-UPLOAD_FOLDER = 'resumes'
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-@app.route('/upload_resume', methods=['POST'])
-def upload_resume():
-    if 'resume' not in request.files:
-        return jsonify(success=False, message="No file part")
-    
-    file = request.files['resume']
-    
-    if file.filename == '':
-        return jsonify(success=False, message="No selected file")
-    
-    if file and file.filename.endswith('.pdf'):
-        resume_folder = os.path.join(app.config['UPLOAD_FOLDER'])
-        if not os.path.exists(resume_folder):
-            os.makedirs(resume_folder)
-        
-        file_path = os.path.join(resume_folder, file.filename)
-        file.save(file_path)
-        return jsonify(success=True, message="File uploaded successfully")
-    
-    return jsonify(success=False, message="Invalid file type")
-
 
 @app.route('/aptitude', methods=['GET', 'POST'])
 def aptitude():
