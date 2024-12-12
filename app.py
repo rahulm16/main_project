@@ -44,9 +44,13 @@ api_key = os.getenv("API_KEY")
 model = "mistral-large-latest"
 mistral_client = Mistral(api_key=api_key)
 
-@app.route('/')
+@app.route('/login')
 def index():
     return render_template('login.html', user=session.get('user'))
+
+@app.route('/')
+def home():
+    return render_template('home.html', user=session.get('user'))
 
 @app.route('/chatbot')
 def chatbot():
@@ -322,6 +326,24 @@ def save_data():
 
     return jsonify({'status': 'success', 'message': result}), 200
 
+@app.route('/save-scenario-data', methods=['POST'])
+def save_scenario_data():
+    try:
+        # Get data from the request
+        user_data = request.json
+
+        # Validate incoming data
+        if not isinstance(user_data, dict):
+            return jsonify({'status': 'error', 'message': 'Invalid data format. Expected a dictionary.'}), 400
+
+        # Insert data into MongoDB
+        mongo.db.scenario_responses.insert_one(user_data)
+
+        return jsonify({'status': 'success', 'message': 'Scenario data saved successfully.'}), 200
+    except Exception as e:
+        logging.error(f"Error saving scenario data: {e}")
+        return jsonify({'status': 'error', 'message': 'Failed to save scenario data.'}), 500
+
 @app.route('/api/save_user_data', methods=['POST'])
 def save_user_data():
     user_data = request.json  # Get data from the request
@@ -510,9 +532,10 @@ def results():
 
 @app.route('/fetch_suggestions', methods=['GET'])
 def fetch_suggestions():
-    # Fetch the required data from the 'user_data', 'user_responses', 'gaq_aptitude_results', and 'aptitude_result' collections
+    # Fetch the required data from the 'user_data', 'user_responses', 'scenario_responses', 'gaq_aptitude_results', and 'aptitude_result' collections
     documents2 = list(mongo.db.user_data.find().limit(1))
-    documents3 = list(mongo.db.user_responses.find().limit(1))
+    documents3_user = list(mongo.db.user_responses.find().limit(1))
+    documents3_scenario = list(mongo.db.scenario_responses.find().limit(1))
     gaq_aptitude_result = list(mongo.db.gaq_aptitude_results.find().limit(1))
     aptitude_result = list(mongo.db.aptitude_result.find().limit(1))
 
@@ -523,12 +546,14 @@ def fetch_suggestions():
 
     doc1 = documents2[0]  # Get the first document from user_data
 
-    # Check for user_responses
-    if not documents3:
-        logging.warning("No user responses found in the 'user_responses' collection.")
-        return jsonify({'success': False, 'message': 'No user responses available.'}), 404
-
-    doc2 = documents3[0]  # Get the first document from user_responses
+    # Determine which responses to use based on the existence of the scenario_responses collection
+    if documents3_scenario:
+        doc2 = documents3_scenario[0]  # Get the first document from scenario_responses
+    else:
+        if not documents3_user:
+            logging.warning("No user responses found in the 'user_responses' collection.")
+            return jsonify({'success': False, 'message': 'No user responses available.'}), 404
+        doc2 = documents3_user[0]  # Get the first document from user_responses
 
     # Check for gaq_aptitude_result
     if not gaq_aptitude_result:
@@ -605,7 +630,7 @@ def fetch_suggestions():
     file_path = os.path.join(os.getcwd(), 'api_request_content.txt')
     with open(file_path, 'w', encoding='utf-8') as file:
         file.write(content)
-    logging.info(f"API request content written to {file_path}")            
+    logging.info(f"API request content written to {file_path}")
     try:
         chat_response = mistral_client.chat.complete(
             model=model,
@@ -661,7 +686,7 @@ def fetch_suggestions():
     except Exception as e:
         logging.error(f"Error while fetching suggestions: {e}")
         return jsonify({'success': False, 'message': 'Failed to fetch suggestions'}), 500
-  
+ 
 @app.route('/suggestions', methods=['GET'])
 def show_suggestions():
     # Retrieve suggestions from MongoDB
@@ -1240,6 +1265,18 @@ def get_profile_data():
     except Exception as e:
         logging.error(f"Error fetching profile data: {str(e)}")
         return jsonify({'error': str(e)}), 500
+
+@app.route('/decision')
+def decision():
+    return render_template('decision.html', user=session.get('user'))
+
+@app.route('/scenario_chatbot')
+def scenario_chatbot():
+    return render_template('scenario_chatbot.html', user=session.get('user'))
+
+@app.route('/policies')
+def policies():
+    return render_template('policy.html', user=session.get('user'))
 
 if __name__ == "__main__":
     app.run(debug=True)
