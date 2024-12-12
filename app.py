@@ -384,7 +384,15 @@ def generate_questions(career_preferences):
     messages = [
         {
             "role": "user",
-            "content": f"Generate 15 aptitude questions related to the following career preferences: {', '.join(career_preferences.values())}. Please format the response as a JSON array like this: [{{"
+            "content": f"Generate 15 aptitude questions divided among these career preferences: {', '.join(career_preferences.values())}. "
+                       f"For each career preference:\n"
+                       f"- Generate questions testing core technical knowledge\n"
+                       f"- Include questions about fundamental principles and advanced concepts\n"
+                       f"- Questions should range from fundamental concepts to complex technical topics\n"
+                       f"- All options must be technically accurate and closely related\n"
+                       f"- No hypothetical scenarios, focus on technical knowledge\n"
+                       f"- Ensure equal distribution of questions across given career preferences\n"
+                       f"Please format the response as a JSON array like this: [{{"
                        f"\"question\": \"Question text\","
                        f"\"options\": [\"Option A\", \"Option B\", \"Option C\", \"Option D\"],"
                        f"\"correct_answer\": \"Correct Option\","
@@ -594,11 +602,7 @@ def fetch_suggestions():
         "age": doc1["age"],
         "Education pursuing": doc1["highest_level_of_education"],
         "Current field of study or work": doc1["current_field_of_study_or_work"],
-        "Key skills": doc1["key_skills"],
-        "Work experience": doc1["work_experience"],
-        "Extroversion personality trait": doc1["personality_traits"]["extroversion"],
-        "Openness to work personality trait": doc1["personality_traits"]["openness_to_work"],
-        "Meticulousness personality trait": doc1["personality_traits"]["meticulousness"]
+        "Key skills": doc1["key_skills"]
     }
 
     # Prepare data for Mistral API (User Preferences)
@@ -629,16 +633,17 @@ def fetch_suggestions():
                f"This the results of 15 general aptitude questions:\n, {json.dumps(aptitude_results['gaq_aptitude_result'])}\n\n"
                f"This is the result of 15 Technical Aptitude questions:\n, {json.dumps(aptitude_results['aptitude_result'])}\n\n"
                f"I want you to give career suggestions based on the aptitude results and user preferences. "
-               f"Suggest 3 career paths along with 5 roadmap points that are valid in 2024's job market for each in JSON format. \n"
+               f"Suggest 3 career paths along with 5 unique roadmap points that are valid in 2024's job market for each in JSON format. \n"
                f"Also provide 1 Udemy search query related to each career path (just the query, not the full URL). \n"
                f"Also provide 1 YouTube search query related to each career path (just the query, not the full URL). \n"
                f"Also provide 1 Coursera search query related to each career path (just the query, not the full URL). \n"
                f"Also provide 1 UpGrad search query related to each career path (just the query, not the full URL). \n"
                f"For each career path, please also give 5 high accurate keywords that can be used to search on the NPTEL website.\n"
                f"These should be keywords that are relevant to courses available on NPTEL (e.g., topics, course names, subjects). \n"
+               f"Also give the percentage value which says how well that career suits them based on the data which you have, keep 60% as priority for technical aptitude results and keep 40% for general aptitude"
                f"Please provide 5 keywords, separated by commas. \n"
                f"Please format the response as a JSON array like this: \n"
-               f"[{{\"career\": \"Career Name\", \"roadmap\": [\"Step 1\", \"Step 2\", \"Step 3\", \"Step 4\", \"Step 5\"], "
+               f"[{{\"career\": \"Career Name\",\"percentage\": \"Percentage value\" \"roadmap\": [\"Step 1\", \"Step 2\", \"Step 3\", \"Step 4\", \"Step 5\"], "
                f"\"udemy_query\": \"Search query for Udemy\", "
                f"\"youtube_query\": \"Search query for YouTube\", "
                f"\"coursera_query\": \"Search query for Coursera\", "
@@ -942,7 +947,7 @@ def roadmap():
     db = client['aicareer']
     career_collection = db['career_suggestions']
     # Fetch all careers from career_suggestions collection
-    careers = list(career_collection.find({}, {'career': 1, 'roadmap': 1}))
+    careers = list(career_collection.find({}, {'career': 1, 'roadmap': 1, 'percentage': 1}))
     return render_template('roadmap.html', show_hamburger_menu=True, careers=careers, user=session.get('user'))
 
 def json_serialize(data):
@@ -1146,13 +1151,7 @@ def update_profile():
             "age": int(data.get("age")) if data.get("age") else None,
             "highest_level_of_education": data.get("education"),
             "current_field_of_study_or_work": data.get("currentField"),
-            "work_experience": data.get("workExperience"),
             "key_skills": data.get("keySkills", []),
-            "personality_traits": {
-                "extroversion": 100,  # Default values as per existing document
-                "openness_to_work": 100,
-                "meticulousness": 100
-            },
             "education_details": {
                 "syllabus": data.get("educationDetails", {}).get("syllabus", ""),
                 "specialization": data.get("educationDetails", {}).get("specialization", ""),
@@ -1228,7 +1227,6 @@ def get_profile_data():
                 'education': user_data.get('highest_level_of_education', ''),
                 'currentField': user_data.get('current_field_of_study_or_work', ''),
                 'keySkills': user_data.get('key_skills', []),
-                'workExperience': user_data.get('work_experience', ''),
                 'personalityTraits': user_data.get('personality_traits', {}),
                 'educationDetails': {
                     'syllabus': user_data.get('education_details', {}).get('syllabus', ''),
@@ -1296,6 +1294,26 @@ def scenario_chatbot():
 @app.route('/policies')
 def policies():
     return render_template('policy.html', user=session.get('user'))
+
+@app.route('/linkdin')
+def linkdin():
+    # API request
+    import requests
+
+    url = "https://linkedin-api8.p.rapidapi.com/search-jobs"
+
+    querystring = {"keywords":"cloud","locationId":"102713980","datePosted":"anyTime","sort":"mostRelevant"}
+
+    headers = {
+        "x-rapidapi-key": "03ca4eda3fmshb17a27cbe55673cp1430d5jsn600afaa0f966",
+        "x-rapidapi-host": "linkedin-api8.p.rapidapi.com"
+    }
+
+    response = requests.get(url, headers=headers, params=querystring)
+    data = response.json()
+
+    # Pass data to the template
+    return render_template('linkdin.html', jobs=data, user=session.get('user'))
 
 if __name__ == "__main__":
     if not os.path.exists(app.config['UPLOAD_FOLDER']):

@@ -27,7 +27,7 @@
         <div class="career-grid">
             {% for suggestion in suggestions %}
             <div class="career-card" onclick="openModal('{{ loop.index }}')">
-                <h2 class="career-title">{{ suggestion.career }}</h2>
+                <h2 class="career-title">{{ suggestion.career }}</h2><h3>Match: {{ suggestion.percentage }}</h3>
                 <ul class="roadmap-list">
                     {% for step in suggestion.roadmap %}
                     <li>{{ step }}</li>
