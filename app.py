@@ -21,7 +21,7 @@ load_dotenv()
 app = Flask(__name__)
 app.secret_key = "your_secret_key"  # Change this to a strong secret key
 app.config["MONGO_URI"] = "mongodb://localhost:27017/aicareer"  # Your MongoDB URI
-app.config['UPLOAD_FOLDER'] = 'resumes'
+app.config['UPLOAD_FOLDER'] = 'static/resumes'
 mongo = PyMongo(app)
 bcrypt = Bcrypt(app)  # Initialize Bcrypt
 CORS(app)
@@ -167,7 +167,7 @@ def save_aptitude_answers():
 
     # Get answers and user details from the request
     answers = request.json.get('answers')  # List of answers provided by the user
-    user_age = user.get('age', 0)  # Get user's age from the user data
+    user_age = int(user.get('age', 0))  # Get user's age from the user data
 
     # Ensure that the answers are in a list format
     if not isinstance(answers, list):
