@@ -6,9 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentStep = 0;
 
     const ageInput = document.getElementById("age");
-    const extroversionInput = document.getElementById("extroversion");
-    const opennessInput = document.getElementById("openness");
-    const meticulousnessInput = document.getElementById("meticulousness");
 
     const educationInput = document.getElementById("education");
     const syllabusDiv = document.getElementById("highschool-syllabus");
@@ -17,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const masterSpecializationDiv = document.getElementById("masters-specialization");
     const masterCourseDiv = document.getElementById("masters-course");
     const phdSpecializationDiv = document.getElementById("phd-specialization");
-    const workExperience = document.getElementById("workExperience");
 
     // Dynamic course data for bachelor and master levels
     const bachelorCourses = {
@@ -80,41 +76,38 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("age-value").textContent = ageInput.value;
     });
 
-    extroversionInput.addEventListener("input", () => {
-        document.getElementById("extroversion-value").textContent = extroversionInput.value;
-    });
-
-    opennessInput.addEventListener("input", () => {
-        document.getElementById("openness-value").textContent = opennessInput.value;
-    });
-
-    meticulousnessInput.addEventListener("input", () => {
-        document.getElementById("meticulousness-value").textContent = meticulousnessInput.value;
-    });
-
     // Show the current step in the form
     function showStep(step) {
         steps.forEach((s, index) => {
             s.classList.toggle("active", index === step);
         });
         prevBtns.forEach(btn => btn.style.display = step === 0 ? "none" : "inline");
-        nextBtns.forEach(btn => btn.textContent = step === steps.length - 1 ? "Finish" : "Next");
+        
+        // Modify next button text based on user status and current step
+        const status = document.querySelector('input[name="status"]:checked')?.value;
+        if (status === "student" && step === 1) {
+            // For students, change next button to "Finish" on education step
+            nextBtns.forEach(btn => btn.textContent = "Finish");
+        } else {
+            nextBtns.forEach(btn => btn.textContent = step === steps.length - 1 ? "Finish" : "Next");
+        }
     }
 
     // Event listeners for the next buttons
     nextBtns.forEach((btn, index) => {
         btn.addEventListener("click", () => {
+            const status = document.querySelector('input[name="status"]:checked');
+            
             if (currentStep === 0) {
                 currentStep = 1;
             } else if (currentStep === 1) {
-                const status = document.querySelector('input[name="status"]:checked');
-                if (status && status.value === "professional") {
-                    currentStep = 2; // Move to Step 3 (Work Experience)
-                } else {
-                    currentStep = 3; // Skip to Step 4
+                if (status && status.value === "student") {
+                    // For students, submit the form directly from the education step
+                    submitBtn.click();
+                    return;
+                } else if (status && status.value === "professional") {
+                    currentStep = 2; // Move to Step 3 (Upload Resume)
                 }
-            } else if (currentStep === 2) {
-                currentStep = 3; // Move to Step 4
             }
             showStep(currentStep);
         });
@@ -123,12 +116,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Event listeners for the previous buttons
     prevBtns.forEach(btn => {
         btn.addEventListener("click", () => {
+            const status = document.querySelector('input[name="status"]:checked');
+            
             if (currentStep === 0) return; // Already on Step 1
             else if (currentStep === 1) currentStep = 0; // Go back to Step 1
-            else if (currentStep === 2) currentStep = 1; // Go back to Step 2
-            else if (currentStep === 3) {
-                const status = document.querySelector('input[name="status"]:checked');
-                currentStep = (status && status.value === "professional") ? 2 : 1;
+            else if (currentStep === 2) {
+                currentStep = (status && status.value === "professional") ? 1 : 0;
             }
             showStep(currentStep);
         });
@@ -179,56 +172,57 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const status = document.querySelector('input[name="status"]:checked')?.value;
 
-        // Validate work experience if status is professional
-        if (status === "professional" && !document.getElementById("workExperience").value) {
-            alert("Please provide your work experience.");
-            return;
-        }
-
-        const formData = {
-            current_status: status,
-            age: parseInt(document.getElementById("age").value, 10),
-            highest_level_of_education: educationInput.value,
-            current_field_of_study_or_work: document.getElementById("fieldOfStudy").value,
-            key_skills: document.getElementById("skills").value.split(',').map(skill => skill.trim()),
-            work_experience: status === "professional" ? document.getElementById("workExperience").value : "N/A",
-            personality_traits: {
-                extroversion: parseInt(document.getElementById("extroversion").value, 10),
-                openness_to_work: parseInt(document.getElementById("openness").value, 10),
-                meticulousness: parseInt(document.getElementById("meticulousness").value, 10),
-            },
-            education_details: {}
-        };
+        const formData = new FormData();
+        formData.append('current_status', status);
+        formData.append('age', +document.getElementById("age").value);
+        formData.append('highest_level_of_education', educationInput.value);
+        formData.append('current_field_of_study_or_work', document.getElementById("fieldOfStudy").value);
+        formData.append('key_skills', document.getElementById("skills").value.split(',').map(skill => skill.trim()).join(','));
 
         // Add conditional education details to formData
         if (educationInput.value === "highschool") {
-            formData.education_details.syllabus = document.getElementById("syllabus").value === "other" ? document.getElementById("syllabus-other").value : document.getElementById("syllabus").value;
+            formData.append('education_details.syllabus', document.getElementById("syllabus").value === "other" ? document.getElementById("syllabus-other").value : document.getElementById("syllabus").value);
         } else if (educationInput.value === "bachelor") {
-            formData.education_details.specialization = document.getElementById("bachelorSpecialization").value === "other" ? document.getElementById("bachelor-specialization-other").value : document.getElementById("bachelorSpecialization").value;
-            formData.education_details.course = bachelorCourseSelect.value === "other" ? document.getElementById("bachelor-course-other").value : bachelorCourseSelect.value;
+            formData.append('education_details.specialization', document.getElementById("bachelorSpecialization").value === "other" ? document.getElementById("bachelor-specialization-other").value : document.getElementById("bachelorSpecialization").value);
+            formData.append('education_details.course', bachelorCourseSelect.value === "other" ? document.getElementById("bachelor-course-other").value : bachelorCourseSelect.value);
         } else if (educationInput.value === "master") {
-            formData.education_details.specialization = document.getElementById("masterSpecialization").value === "other" ? document.getElementById("master-specialization-other").value : document.getElementById("masterSpecialization").value;
-            formData.education_details.course = masterCourseSelect.value === "other" ? document.getElementById("master-course-other").value : masterCourseSelect.value;
+            formData.append('education_details.specialization', document.getElementById("masterSpecialization").value === "other" ? document.getElementById("master-specialization-other").value : document.getElementById("masterSpecialization").value);
+            formData.append('education_details.course', masterCourseSelect.value === "other" ? document.getElementById("master-course-other").value : masterCourseSelect.value);
         } else if (educationInput.value === "phd") {
-            formData.education_details.specialization = document.getElementById("phdSpecialization").value === "other" ? document.getElementById("phd-specialization-other").value : document.getElementById("phdSpecialization").value;
+            formData.append('education_details.specialization', document.getElementById("phdSpecialization").value === "other" ? document.getElementById("phd-specialization-other").value : document.getElementById("phdSpecialization").value);
         }
 
-        console.log(formData);
+        if (status === "professional") {
+            const resumeFile = document.getElementById("resume").files[0];
+            formData.append('resume', resumeFile);
 
-        fetch("/api/save_user_data", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(formData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success') {
-                window.location.href = "/aptitude";
-            }
-        })
-        .catch(error => console.error('Error:', error));
+            fetch("/api/upload_resume", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    window.location.href = "/aptitude";
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        } else {
+            fetch("/api/save_user_data", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(Object.fromEntries(formData))
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    window.location.href = "/aptitude";
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
     });
 
     // Initialize the form to show the first step
