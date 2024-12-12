@@ -351,6 +351,24 @@ def save_data():
 
     return jsonify({'status': 'success', 'message': result}), 200
 
+@app.route('/save-scenario-data', methods=['POST'])
+def save_scenario_data():
+    try:
+        # Get data from the request
+        user_data = request.json
+
+        # Validate incoming data
+        if not isinstance(user_data, dict):
+            return jsonify({'status': 'error', 'message': 'Invalid data format. Expected a dictionary.'}), 400
+
+        # Insert data into MongoDB
+        mongo.db.scenario_responses.insert_one(user_data)
+
+        return jsonify({'status': 'success', 'message': 'Scenario data saved successfully.'}), 200
+    except Exception as e:
+        logging.error(f"Error saving scenario data: {e}")
+        return jsonify({'status': 'error', 'message': 'Failed to save scenario data.'}), 500
+
 @app.route('/api/save_user_data', methods=['POST'])
 def save_user_data():
     user_data = request.json  # Get data from the request
@@ -539,9 +557,10 @@ def results():
 
 @app.route('/fetch_suggestions', methods=['GET'])
 def fetch_suggestions():
-    # Fetch the required data from the 'user_data', 'user_responses', 'gaq_aptitude_results', and 'aptitude_result' collections
+    # Fetch the required data from the 'user_data', 'user_responses', 'scenario_responses', 'gaq_aptitude_results', and 'aptitude_result' collections
     documents2 = list(mongo.db.user_data.find().limit(1))
-    documents3 = list(mongo.db.user_responses.find().limit(1))
+    documents3_user = list(mongo.db.user_responses.find().limit(1))
+    documents3_scenario = list(mongo.db.scenario_responses.find().limit(1))
     gaq_aptitude_result = list(mongo.db.gaq_aptitude_results.find().limit(1))
     aptitude_result = list(mongo.db.aptitude_result.find().limit(1))
 
@@ -552,12 +571,14 @@ def fetch_suggestions():
 
     doc1 = documents2[0]  # Get the first document from user_data
 
-    # Check for user_responses
-    if not documents3:
-        logging.warning("No user responses found in the 'user_responses' collection.")
-        return jsonify({'success': False, 'message': 'No user responses available.'}), 404
-
-    doc2 = documents3[0]  # Get the first document from user_responses
+    # Determine which responses to use based on the existence of the scenario_responses collection
+    if documents3_scenario:
+        doc2 = documents3_scenario[0]  # Get the first document from scenario_responses
+    else:
+        if not documents3_user:
+            logging.warning("No user responses found in the 'user_responses' collection.")
+            return jsonify({'success': False, 'message': 'No user responses available.'}), 404
+        doc2 = documents3_user[0]  # Get the first document from user_responses
 
     # Check for gaq_aptitude_result
     if not gaq_aptitude_result:
@@ -608,13 +629,13 @@ def fetch_suggestions():
     }
 
     # Prepare the content for the API request
-    content = (f"You are an AI model which is good at giving career suggestions for people, I want you to use your creativity and perform these tasks\n\n"
+    content = (f"You are an AI model which is good at giving career suggestions for people, I want you to use your creativity and identify valid and future proof career paths based on the latest industry trends and perform these tasks\n\n"
                f"Based on the user details\n, {json.dumps(user_data)}\n\n"
                f"User preferences\n {json.dumps(user_responses)}\n\n"
                f"This the results of 15 general aptitude questions:\n, {json.dumps(aptitude_results['gaq_aptitude_result'])}\n\n"
                f"This is the result of 15 Technical Aptitude questions:\n, {json.dumps(aptitude_results['aptitude_result'])}\n\n"
                f"I want you to give career suggestions based on the aptitude results and user preferences. "
-               f"Suggest 5 career paths along with 5 roadmap points for each in JSON format. \n"
+               f"Suggest 3 career paths along with 5 roadmap points that are valid in 2024's job market for each in JSON format. \n"
                f"Also provide 1 Udemy search query related to each career path (just the query, not the full URL). \n"
                f"Also provide 1 YouTube search query related to each career path (just the query, not the full URL). \n"
                f"Also provide 1 Coursera search query related to each career path (just the query, not the full URL). \n"
@@ -634,7 +655,7 @@ def fetch_suggestions():
     file_path = os.path.join(os.getcwd(), 'api_request_content.txt')
     with open(file_path, 'w', encoding='utf-8') as file:
         file.write(content)
-    logging.info(f"API request content written to {file_path}")            
+    logging.info(f"API request content written to {file_path}")
     try:
         chat_response = mistral_client.chat.complete(
             model=model,
@@ -690,7 +711,7 @@ def fetch_suggestions():
     except Exception as e:
         logging.error(f"Error while fetching suggestions: {e}")
         return jsonify({'success': False, 'message': 'Failed to fetch suggestions'}), 500
-  
+ 
 @app.route('/suggestions', methods=['GET'])
 def show_suggestions():
     # Retrieve suggestions from MongoDB
@@ -1191,8 +1212,8 @@ def get_profile_data():
         if not user_data:
             return jsonify({'error': 'User data not found'}), 404
 
-        # Get career suggestions (first 5)
-        career_suggestions = list(db.career_suggestions.find().limit(5))
+        # Get career suggestions (first 3)
+        career_suggestions = list(db.career_suggestions.find().limit(3))
         
         # Get user responses
         user_responses = db.user_responses.find_one()
@@ -1269,6 +1290,18 @@ def get_profile_data():
     except Exception as e:
         logging.error(f"Error fetching profile data: {str(e)}")
         return jsonify({'error': str(e)}), 500
+
+@app.route('/decision')
+def decision():
+    return render_template('decision.html', user=session.get('user'))
+
+@app.route('/scenario_chatbot')
+def scenario_chatbot():
+    return render_template('scenario_chatbot.html', user=session.get('user'))
+
+@app.route('/policies')
+def policies():
+    return render_template('policy.html', user=session.get('user'))
 
 if __name__ == "__main__":
     app.run(debug=True)
