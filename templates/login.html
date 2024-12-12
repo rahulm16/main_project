@@ -19,13 +19,10 @@
 
     <section class="hero">
         <div class="container" style="display: flex;">
-            <div class="hero-text">
-                <h1>Uncover your perfect career trajectory with SavvyAI</h1>
-                <p>SavvyAI delivers personalized career recommendations based on your unique skills, interests, and experiences. Start your journey to a fulfilling career today!</p>
-                <a href="#" id="explore-button" class="explore-btn disabled" onclick="handleExploreClick(event);">
-                    Explore
-                    <span class="tooltip">Log in first</span>
-                </a>                
+            <div class="left-section" style="flex: 1; padding: 20px; display: flex; justify-content: center; align-items: center;">
+                <div class="left-image">
+                    <img src="{{ url_for('static', filename='assets/images/about-left-image.png') }}" alt="Career Guidance" style="width: 80%; height: auto;">
+                </div>
             </div>
 
             <div class="signup-form">
@@ -36,20 +33,7 @@
                             <span class="login_class" onclick="showLoginPrompt();" style="cursor:pointer;">Log In</span>
                         </span>
                     </div>
-                    <div class="social-container">
-                        <a href="https://www.facebook.com/login" class="social" target="_blank" title="Login with Facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://accounts.google.com/signin" class="social" target="_blank" title="Login with Google">
-                            <i class="fab fa-google"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/login" class="social" target="_blank" title="Login with LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://www.apple.com/apple-id/" class="social" target="_blank" title="Login with Apple">
-                            <i class="fab fa-apple"></i>
-                        </a>
-                    </div>
+
                     <p class="or">OR</p>
                     <form id="signupForm" method="post">
                         <div class="form-group">
@@ -80,20 +64,7 @@
                             <span class="login_class" onclick="showSignUpForm();" style="cursor:pointer;">Sign Up</span>
                         </span>
                     </div>
-                    <div class="social-container">
-                        <a href="https://www.facebook.com/login" class="social" target="_blank" title="Login with Facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://accounts.google.com/signin" class="social" target="_blank" title="Login with Google">
-                            <i class="fab fa-google"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/login" class="social" target="_blank" title="Login with LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://www.apple.com/apple-id/" class="social" target="_blank" title="Login with Apple">
-                            <i class="fab fa-apple"></i>
-                        </a>
-                    </div>
+
                     <p class="or">OR</p>
                     <form id="loginForm" method="post">
                         <div class="form-group">
@@ -114,12 +85,12 @@
         </div>
     </section>
     
+    <div class="banner-images">
+        <img src="{{ url_for('static', filename='assets/images/baner-dec-left.png') }}" alt="Left Banner" class="left-banner">
+        <img src="{{ url_for('static', filename='assets/images/baner-dec-right.png') }}" alt="Right Banner" class="right-banner">
+    </div>
+    
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 SavvyAI. All rights reserved.</p>
-        </div>
-    </footer>
     <script src="../static/scripts/header.js"></script>
     <script src="../static/scripts/login.js"></script>
 </body>

@@ -1,10 +1,8 @@
-//login.js
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('loginForm');
     const signupForm = document.getElementById('signupForm');
     const loginFormContainer = document.querySelector('.login-form');
     const signupFormContainer = document.querySelector('.signup-form');
-    const exploreButton = document.getElementById("explore-button");
 
     // Show signup form by default
     signupFormContainer.style.display = 'block';
@@ -36,18 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
         passwordInput.setAttribute('type', type);
         eyeIcon.classList.toggle('fa-eye');
         eyeIcon.classList.toggle('fa-eye-slash');
-    }
-
-    // Handle explore button
-    function handleExploreClick(event) {
-        event.preventDefault();
-        const profileIcon = document.getElementById("profile-icon");
-        
-        if (profileIcon.style.display === 'block') {
-            window.location.href = "/profile";
-        } else {
-            window.headerUtils.showAlert('Please log in to explore the chatbot.', 'error');
-        }
     }
 
     // Form submissions
@@ -95,10 +81,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             if (data.success) {
                 window.headerUtils.showAlert('Logged in successfully!', 'success');
+                // Hide the forms after successful login
                 signupFormContainer.style.display = 'none';
                 loginFormContainer.style.display = 'none';
+                // Update the profile icon with user data
                 window.headerUtils.updateProfileIcon(data.user);
-                updateExploreButton(true);
+                
+                // Redirect to profile page
+                window.location.href = "/profile";
             } else {
                 window.headerUtils.showAlert(data.message || 'Login failed. Please check your credentials.', 'error');
             }
@@ -107,23 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    function updateExploreButton(enabled) {
-        if (enabled) {
-            exploreButton.classList.remove('disabled');
-            exploreButton.disabled = false;
-            exploreButton.querySelector('.tooltip').style.display = 'none';
-        } else {
-            exploreButton.classList.add('disabled');
-            exploreButton.disabled = true;
-            exploreButton.querySelector('.tooltip').style.display = '';
-        }
-    }
-
     // Listen for logout event
     document.addEventListener('userLoggedOut', () => {
         showSignUpForm();
-        updateExploreButton(false);
     });
-
-    exploreButton.addEventListener('click', handleExploreClick);
 });
