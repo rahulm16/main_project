@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
             s.classList.toggle("active", index === step);
         });
         prevBtns.forEach(btn => btn.style.display = step === 0 ? "none" : "inline");
-        
+
         // Modify next button text based on user status and current step
         const status = document.querySelector('input[name="status"]:checked')?.value;
         if (status === "student" && step === 1) {
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
     nextBtns.forEach((btn, index) => {
         btn.addEventListener("click", () => {
             const status = document.querySelector('input[name="status"]:checked');
-            
+
             if (currentStep === 0) {
                 currentStep = 1;
             } else if (currentStep === 1) {
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     submitBtn.click();
                     return;
                 } else if (status && status.value === "professional") {
-                    currentStep = 2; // Move to Step 3 (Upload Resume)
+                    currentStep = 2; // Move to Step 3 (Work Experience)
                 }
             }
             showStep(currentStep);
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     prevBtns.forEach(btn => {
         btn.addEventListener("click", () => {
             const status = document.querySelector('input[name="status"]:checked');
-            
+
             if (currentStep === 0) return; // Already on Step 1
             else if (currentStep === 1) currentStep = 0; // Go back to Step 1
             else if (currentStep === 2) {
@@ -193,36 +193,23 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (status === "professional") {
-            const resumeFile = document.getElementById("resume").files[0];
-            formData.append('resume', resumeFile);
-
-            fetch("/api/upload_resume", {
-                method: "POST",
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    window.location.href = "/aptitude";
-                }
-            })
-            .catch(error => console.error('Error:', error));
-        } else {
-            fetch("/api/save_user_data", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(Object.fromEntries(formData))
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    window.location.href = "/aptitude";
-                }
-            })
-            .catch(error => console.error('Error:', error));
+            formData.append('work_experience', document.getElementById("workExperience").value);
         }
+
+        fetch("/api/save_user_data", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(Object.fromEntries(formData))
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                window.location.href = "/aptitude";
+            }
+        })
+        .catch(error => console.error('Error:', error));
     });
 
     // Initialize the form to show the first step

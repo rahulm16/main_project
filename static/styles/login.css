@@ -654,6 +654,6 @@ footer p {
 
 /* Optional: Modify input fields to be larger */
 .form-group input {
-    font-size: 1.2rem;  /* Increase font size of input fields */
+    font-size: 1rem;  /* Increase font size of input fields */
     padding: 10px;
 }
