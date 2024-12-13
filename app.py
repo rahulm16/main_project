@@ -1291,7 +1291,7 @@ def linkdin():
 
     # Extract the career value
     career_keyword = career_suggestion.get('career')
-
+    print(career_keyword)
     # LinkedIn API details
     url = "https://linkedin-api8.p.rapidapi.com/search-jobs"
     querystring = {
