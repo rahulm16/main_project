@@ -1290,7 +1290,7 @@ def linkdin():
         return jsonify({'error': 'No career suggestions found'}), 404
 
     # Extract the career value
-    career_keyword = career_suggestion.get('career', 'AI and Machine Learning Engineer')
+    career_keyword = career_suggestion.get('career')
 
     # LinkedIn API details
     url = "https://linkedin-api8.p.rapidapi.com/search-jobs"
