@@ -16,6 +16,7 @@ import random
 import json
 import logging
 import os
+import requests
 
 load_dotenv()
 app = Flask(__name__)
@@ -1277,23 +1278,40 @@ def policies():
 
 @app.route('/linkdin')
 def linkdin():
-    # API request
-    import requests
+    # Connect to the MongoDB database
+    client = MongoClient("mongodb://localhost:27017/")
+    db = client['aicareer']
+    career_suggestions_collection = db['career_suggestions']
 
+    # Fetch the first document from the career_suggestions collection
+    career_suggestion = career_suggestions_collection.find_one()
+
+    if not career_suggestion:
+        return jsonify({'error': 'No career suggestions found'}), 404
+
+    # Extract the career value
+    career_keyword = career_suggestion.get('career', 'AI and Machine Learning Engineer')
+
+    # LinkedIn API details
     url = "https://linkedin-api8.p.rapidapi.com/search-jobs"
-
-    querystring = {"keywords":"cloud","locationId":"102713980","datePosted":"anyTime","sort":"mostRelevant"}
-
+    querystring = {
+        "keywords": career_keyword,
+        "locationId": "102713980",
+        "datePosted": "anyTime",
+        "sort": "mostRelevant"
+    }
     headers = {
         "x-rapidapi-key": "03ca4eda3fmshb17a27cbe55673cp1430d5jsn600afaa0f966",
         "x-rapidapi-host": "linkedin-api8.p.rapidapi.com"
     }
 
+    # Make the API request
     response = requests.get(url, headers=headers, params=querystring)
     data = response.json()
 
     # Pass data to the template
     return render_template('linkdin.html', jobs=data, user=session.get('user'))
+
 
 if __name__ == "__main__":
     app.run(debug=True)
