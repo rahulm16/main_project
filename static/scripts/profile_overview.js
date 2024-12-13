@@ -15,7 +15,7 @@ function showAlert(message, type = 'success', duration = 3000) {
     const alertElement = document.createElement('div');
     alertElement.className = `alert-modal ${type}`;
     alertElement.id = alertId;
-    
+
     alertElement.innerHTML = `
         <div class="alert-modal-content">
             <span class="alert-modal-message">${message}</span>
@@ -24,7 +24,7 @@ function showAlert(message, type = 'success', duration = 3000) {
     `;
 
     document.getElementById('alert-container').appendChild(alertElement);
-    
+
     // Show alert
     setTimeout(() => {
         alertElement.style.display = 'block';
@@ -56,7 +56,12 @@ async function fetchUserData() {
             throw new Error('Network response was not ok');
         }
         userData = await response.json();
-        
+
+        // Ensure keySkills is an array
+        if (typeof userData.userData.keySkills === 'string') {
+            userData.userData.keySkills = userData.userData.keySkills.split(',').map(skill => skill.trim());
+        }
+
         // Initial load - initialize everything
         if (!aptitudeChart) {
             initializeAll();
@@ -91,15 +96,21 @@ function initializeProfilePreview() {
     document.getElementById('profile-email').textContent = userData.user.email;
     document.getElementById('current-role').textContent = userData.userData.currentStatus;
     document.getElementById('current-field').textContent = userData.userData.currentField;
-    
+
     const skillsContainer = document.getElementById('skills-container');
     skillsContainer.innerHTML = '';
-    userData.userData.keySkills.forEach(skill => {
-        const skillBadge = document.createElement('span');
-        skillBadge.classList.add('skill-badge');
-        skillBadge.textContent = skill;
-        skillsContainer.appendChild(skillBadge);
-    });
+
+    // Check if keySkills is an array
+    if (Array.isArray(userData.userData.keySkills)) {
+        userData.userData.keySkills.forEach(skill => {
+            const skillBadge = document.createElement('span');
+            skillBadge.classList.add('skill-badge');
+            skillBadge.textContent = skill;
+            skillsContainer.appendChild(skillBadge);
+        });
+    } else {
+        console.error('keySkills is not an array:', userData.userData.keySkills);
+    }
 }
 
 // Initialize form
@@ -113,7 +124,14 @@ function initializeForm() {
     document.getElementById('githubLink').value = userData.userData.githubLink || '';
     document.getElementById('linkedinLink').value = userData.userData.linkedinLink || '';
     document.getElementById('workExperience').value = userData.userData.workExperience;
-    document.getElementById('skills').value = userData.userData.keySkills.join(', ');
+
+    // Ensure keySkills is an array before joining
+    if (Array.isArray(userData.userData.keySkills)) {
+        document.getElementById('skills').value = userData.userData.keySkills.join(', ');
+    } else {
+        console.error('keySkills is not an array:', userData.userData.keySkills);
+    }
+
     document.getElementById('specialization').value = userData.userData.educationDetails.specialization;
     document.getElementById('course').value = userData.userData.educationDetails.course;
 }
@@ -127,7 +145,7 @@ function initializeRecommendations() {
         careerDiv.classList.add('career-recommendation');
         careerDiv.innerHTML = `
             <p>${career.title}</p>
-            <span class="skill-badge">${career.match}% Match</span>
+            <span class="skill-badge">${career.match} Match</span>
         `;
         container.appendChild(careerDiv);
     });
@@ -136,7 +154,7 @@ function initializeRecommendations() {
 // Initialize aptitude chart
 function initializeAptitudeChart() {
     const ctx = document.getElementById('aptitude-chart').getContext('2d');
-    
+
     // Create new chart instance
     aptitudeChart = new Chart(ctx, {
         type: 'bar',
@@ -168,10 +186,10 @@ const tabPanes = document.querySelectorAll('.tab-pane');
 tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         const tabId = btn.getAttribute('data-tab');
-        
+
         tabBtns.forEach(btn => btn.classList.remove('active'));
         tabPanes.forEach(pane => pane.classList.remove('active'));
-        
+
         btn.classList.add('active');
         document.getElementById(tabId).classList.add('active');
     });
@@ -232,14 +250,14 @@ const viewFullProfileBtn = document.getElementById('view-full-profile');
 viewFullProfileBtn.addEventListener('click', async () => {
     const modalContent = document.getElementById('modal-content');
     const qrCodePath = `/static/profile_cards/qrcode.png`;
-    
+
     modalContent.innerHTML = `
         <div class="profile-card" id="downloadable-profile-card">
             <img src="${qrCodePath}" alt="QR Code" class="qr-code">
             <div class="profile-details">
                 <p class="profile-text">
                     <b>${userData.user.name.toUpperCase()}</b> ,
-                    ${userData.userData.educationDetails.specialization.toUpperCase()}, 
+                    ${userData.userData.educationDetails.specialization.toUpperCase()},
                     ${userData.userData.educationDetails.course.toUpperCase()}<br>
                     <a href="mailto:${userData.user.email}">${userData.user.email}</a>
                 </p>
@@ -247,7 +265,7 @@ viewFullProfileBtn.addEventListener('click', async () => {
             <button id="download-profile-card" class="btn btn-primary">Download Profile Card</button>
         </div>
     `;
-    
+
     modal.style.display = 'flex';
 
     // Add download functionality
@@ -257,11 +275,11 @@ viewFullProfileBtn.addEventListener('click', async () => {
 
 function downloadProfileCard() {
     const profileCard = document.getElementById('downloadable-profile-card');
-    
+
     // Create a canvas with increased resolution
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
-    
+
     // Set canvas size (adjust as needed)
     canvas.width = 840; // 3x original size for high quality
     canvas.height = 1120; // 3x original size
@@ -295,22 +313,22 @@ function downloadProfileCard() {
             // Draw QR Code (centered, with padding)
             const qrSize = 600;
             context.drawImage(
-                qrCodeImg, 
-                (canvas.width - qrSize) / 2, 
-                100, 
-                qrSize, 
+                qrCodeImg,
+                (canvas.width - qrSize) / 2,
+                100,
+                qrSize,
                 qrSize
             );
 
             // Prepare text styles
             context.fillStyle = '#000000';
             context.textAlign = 'center';
-            
+
             // Draw name
             context.font = 'bold 48px Arial';
             context.fillText(
-                userData.user.name.toUpperCase(), 
-                canvas.width / 2, 
+                userData.user.name.toUpperCase(),
+                canvas.width / 2,
                 canvas.height - 300
             );
 
@@ -364,14 +382,14 @@ function downloadProfileCard() {
 viewFullProfileBtn.addEventListener('click', async () => {
     const modalContent = document.getElementById('modal-content');
     const qrCodePath = `/static/profile_cards/qrcode.png`;
-    
+
     modalContent.innerHTML = `
         <div class="profile-card" id="downloadable-profile-card">
             <img src="${qrCodePath}" alt="QR Code" class="qr-code">
             <div class="profile-details">
                 <p class="profile-text">
                     <b>${userData.user.name.toUpperCase()}</b> ,
-                    ${userData.userData.educationDetails.specialization.toUpperCase()}, 
+                    ${userData.userData.educationDetails.specialization.toUpperCase()},
                     ${userData.userData.educationDetails.course.toUpperCase()}<br>
                     <a href="mailto:${userData.user.email}">${userData.user.email}</a>
                 </p>
@@ -379,7 +397,7 @@ viewFullProfileBtn.addEventListener('click', async () => {
             <button id="download-profile-card" class="btn btn-primary">Download Profile Card</button>
         </div>
     `;
-    
+
     modal.style.display = 'flex';
 
     // Add download functionality

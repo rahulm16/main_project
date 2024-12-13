@@ -1,5 +1,5 @@
 from flask import Flask, redirect, render_template, request, jsonify, session, url_for
-from course_finder import find_relevant_courses  
+from course_finder import find_relevant_courses
 from qr_generator import generate_qr_code
 from flask_pymongo import PyMongo
 from flask_cors import CORS
@@ -21,7 +21,6 @@ load_dotenv()
 app = Flask(__name__)
 app.secret_key = "your_secret_key"  # Change this to a strong secret key
 app.config["MONGO_URI"] = "mongodb://localhost:27017/aicareer"  # Your MongoDB URI
-app.config['UPLOAD_FOLDER'] = 'static/resumes'
 mongo = PyMongo(app)
 bcrypt = Bcrypt(app)  # Initialize Bcrypt
 CORS(app)
@@ -78,23 +77,6 @@ def save_user_data():
 
     return jsonify({'status': 'success', 'message': 'User data successfully saved.'}), 200
 
-@app.route('/api/upload_resume', methods=['POST'])
-def upload_resume():
-    if 'resume' not in request.files:
-        return jsonify({'status': 'error', 'message': 'No file part'}), 400
-    file = request.files['resume']
-    if file.filename == '':
-        return jsonify({'status': 'error', 'message': 'No selected file'}), 400
-    if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        return jsonify({'status': 'success', 'message': 'Resume successfully uploaded.'}), 200
-    return jsonify({'status': 'error', 'message': 'File type not allowed'}), 400
-
-def allowed_file(filename):
-    ALLOWED_EXTENSIONS = {'pdf'}
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
 @app.route('/choices')
 def choices():
     return render_template('choices.html', user=session.get('user'))
@@ -118,11 +100,11 @@ def aptitude():
         collection_name = "Medium"
     else:
         collection_name = "Hard"
-    
+
     # Fetch questions from the GAQ database
     questions_collection = gaq_db[collection_name]
     all_questions = list(questions_collection.find())
-    
+
     # Convert ObjectId to string for each question
     for question in all_questions:
         question['_id'] = str(question['_id'])  # Convert ObjectId to string
@@ -151,7 +133,7 @@ def aptitude():
         session['current_index'] += 1
         if session['current_index'] >= len(selected_questions):
             session['current_index'] = len(selected_questions) - 1
-        
+
         return redirect(url_for('aptitude'))
 
     # Pass user data to the template along with selected questions
@@ -193,7 +175,7 @@ def save_aptitude_answers():
     for answer in answers:
         question_text = answer['question']
         selected_answer = answer['answered']
-        
+
         # Fetch the question from the determined difficulty level collection
         question_data = questions_collection.find_one({"question": question_text})
 
@@ -220,11 +202,10 @@ def save_aptitude_answers():
 
     return jsonify({'status': 'success', 'message': 'Answers saved successfully.'})
 
-
 @app.route('/aptitude_results', methods=['GET'])
 def aptitude_results():
     # Fetch data from `gaq_answered` collection
-    answered_data = list(mongo.db.gaq_answered.find())  
+    answered_data = list(mongo.db.gaq_answered.find())
 
     total_questions = len(answered_data)
     correct_answers = sum(1 for answer in answered_data if answer['correct_or_wrong'] == 'correct')
@@ -237,11 +218,11 @@ def aptitude_results():
     verbal_correct = 0
 
     detailed_results = []
-    
+
     for answer in answered_data:
         difficulty_level = answer.get('difficulty_level')
         question_data = None
-        
+
         # Determine the correct collection based on the difficulty level
         if difficulty_level == 'easy':
             collection_name = "Easy"
@@ -251,7 +232,7 @@ def aptitude_results():
             collection_name = "Hard"
         else:
             collection_name = None  # Fallback in case the level is not recognized
-        
+
         if collection_name:
             # Access the correct collection based on the difficulty level
             questions_collection = gaq_db[collection_name]
@@ -303,7 +284,6 @@ def aptitude_results():
         detailed_results=detailed_results
     )
 
-
 @app.route('/api/signup', methods=['POST'])
 def signup():
     user_data = request.json
@@ -332,7 +312,7 @@ def api_login():
             'email': user['email']
         }
         return jsonify({'success': True, 'user': session['user']}), 200
-    
+
     logging.debug(f"Failed login attempt for {user_data['email']}.")
     return jsonify({'success': False, 'message': 'Invalid email or password.'}), 401
 
@@ -344,7 +324,7 @@ def logout():
 @app.route('/save-data/', methods=['POST'])
 def save_data():
     user_data = request.json  # Get data from the request
-    
+
     # Validate incoming data
     if not isinstance(user_data, dict):
         return jsonify({'status': 'error', 'message': 'Invalid data format. Expected a dictionary.'}), 400
@@ -432,7 +412,7 @@ def generate_questions(career_preferences):
 def get_questions():
     # Fetch questions from MongoDB
     questions_data = mongo.db.questions.find()
-    
+
     # Convert MongoDB cursor to a list
     questions = list(questions_data)
 
@@ -485,7 +465,7 @@ def save_answers():
             })
 
     mongo.db.answered.insert_many(results)
-    
+
     # Return status with redirect URL
     return jsonify({'status': 'success', 'message': 'Answers saved.', 'url': url_for('results')}), 200
 
@@ -493,7 +473,7 @@ def save_answers():
 def results():
     # Fetch answered questions and their details from MongoDB
     answered_data = list(mongo.db.answered.find())
-    
+
     # Get the original questions with correct answers and career preferences
     questions_data = {}
     all_career_preferences = set()  # Track all unique career preferences
@@ -534,7 +514,7 @@ def results():
                 'options': question_info['options'],
                 'is_correct': answer['correct_or_wrong'] == 'correct'
             })
-    
+
     # Prepare the results data for MongoDB
     results_data = {
         "total_questions": total_questions,
@@ -710,7 +690,7 @@ def fetch_suggestions():
     except Exception as e:
         logging.error(f"Error while fetching suggestions: {e}")
         return jsonify({'success': False, 'message': 'Failed to fetch suggestions'}), 500
- 
+
 @app.route('/suggestions', methods=['GET'])
 def show_suggestions():
     # Retrieve suggestions from MongoDB
@@ -731,17 +711,17 @@ def update_nptel_courses():
         nptel_collection_name = "2024_WA"
         career_db_name = "aicareer"
         career_collection_name = "career_suggestions"
-        
+
         # Call the function to find relevant courses
         find_relevant_courses(
-            mongo_uri, 
-            nptel_db_name, 
-            nptel_collection_name, 
-            career_db_name, 
+            mongo_uri,
+            nptel_db_name,
+            nptel_collection_name,
+            career_db_name,
             career_collection_name,
             save_to_db=True  # Add this parameter to your original function
         )
-        
+
         return jsonify({"status": "success", "message": "NPTEL courses updated successfully"})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)})
@@ -766,12 +746,12 @@ def learning():
 
             # Fetch the saved NPTEL courses for this career
             saved_nptel_courses = list(mongo.db.nptel_matches.find({"career": career_name}))
-            
+
             # Convert ObjectId to string for each course
             for course in saved_nptel_courses:
                 if '_id' in course:
                     course['_id'] = str(course['_id'])
-            
+
             nptel_courses[career_name] = saved_nptel_courses
 
             # Process other learning resources
@@ -997,7 +977,7 @@ def submit_feedback():
     try:
         # Get feedback data from request
         feedback_data = request.json
-        
+
         # Add user info and timestamp
         feedback_data.update({
             'submitted_at': datetime.utcnow(),
@@ -1012,7 +992,7 @@ def submit_feedback():
                 'success': True,
                 'message': 'Feedback submitted successfully'
             }), 201
-            
+
         else:
             raise Exception("Failed to insert feedback")
 
@@ -1030,21 +1010,21 @@ community_posts_collection = community_db.Posts
 def community():
     if 'user' not in session:
         return redirect(url_for('login'))
-    
+
     # Fetch all posts from MongoDB
     posts = list(community_posts_collection.find().sort('created_at', -1))
-    
+
     # Convert ObjectId to string for JSON serialization
     for post in posts:
         post['_id'] = str(post['_id'])
-    
+
     return render_template('community.html', show_hamburger_menu=True, user=session.get('user'), posts=posts)
 
 @app.route('/api/posts', methods=['GET', 'POST'])
 def handle_posts():
     if 'user' not in session:
         return jsonify({'error': 'Unauthorized'}), 401
-    
+
     if request.method == 'POST':
         data = request.json
         post = {
@@ -1061,16 +1041,16 @@ def handle_posts():
             'tags': data.get('tags', []),
             'authorAvatar': f"https://api.dicebear.com/6.x/avataaars/svg?seed={session['user'].get('email')}"
         }
-        
+
         result = community_posts_collection.insert_one(post)
         post['_id'] = str(result.inserted_id)
         return jsonify(post), 201
-    
+
     # GET method
     community = request.args.get('community', 'all')
     search = request.args.get('search', '')
     sort = request.args.get('sort', 'recent')
-    
+
     query = {}
     if community != 'all':
         query['community'] = community
@@ -1080,39 +1060,39 @@ def handle_posts():
             {'content': {'$regex': search, '$options': 'i'}},
             {'tags': {'$regex': search, '$options': 'i'}}
         ]
-    
+
     sort_query = [('created_at', -1)] if sort == 'recent' else [('likes', -1)]
-    
+
     posts = list(community_posts_collection.find(query).sort(sort_query))
     for post in posts:
         post['_id'] = str(post['_id'])
-    
+
     return jsonify(posts)
 
 @app.route('/api/posts/<post_id>/like', methods=['POST'])
 def like_post(post_id):
     if 'user' not in session:
         return jsonify({'error': 'Unauthorized'}), 401
-    
+
     user_email = session['user'].get('email')
     post = community_posts_collection.find_one({'_id': ObjectId(post_id)})
-    
+
     if not post:
         return jsonify({'error': 'Post not found'}), 404
-    
+
     likes_by = post.get('likes_by', [])
     if user_email in likes_by:
         likes_by.remove(user_email)
     else:
         likes_by.append(user_email)
-    
+
     community_posts_collection.update_one(
         {'_id': ObjectId(post_id)},
         {'$set': {'likes_by': likes_by, 'likes': len(likes_by)}}
     )
-    
+
     return jsonify({'liked': user_email in likes_by})
-        
+
 @app.route('/profile_overview')
 def profile_overview():
     return render_template('profile_overview.html', show_hamburger_menu=True, user=session.get('user'))
@@ -1128,12 +1108,12 @@ def update_profile():
     try:
         data = request.json
         user_email = data.get("email")
-        
+
         if not user_email:
             return jsonify({'error': 'Email is required'}), 400
 
         logging.info(f"Starting profile update for email: {user_email}")
-        
+
         # Update users collection - takes first document
         new_user_doc = {
             "email": user_email,
@@ -1158,7 +1138,7 @@ def update_profile():
                 "course": data.get("educationDetails", {}).get("course", "")
             }
         }
-        
+
         user_data_result = db.user_data.replace_one(
             {},  # Empty filter to get first document
             new_user_data_doc,
@@ -1200,17 +1180,17 @@ def get_profile_data():
         user = db.users.find_one()
         if not user:
             return jsonify({'error': 'User not found'}), 404
-        
+
         user_data = db.user_data.find_one()
         if not user_data:
             return jsonify({'error': 'User data not found'}), 404
 
         # Get career suggestions (first 3)
         career_suggestions = list(db.career_suggestions.find().limit(3))
-        
+
         # Get user responses
         user_responses = db.user_responses.find_one()
-        
+
         # Get aptitude scores (first document from each)
         technical_aptitude = db.aptitude_result.find_one()
         general_aptitude = db.gaq_aptitude_results.find_one()
@@ -1237,7 +1217,7 @@ def get_profile_data():
             'careerSuggestions': [
                 {
                     'title': career.get('career', ''),
-                    'match': 85,  # Default match percentage
+                    'match': career.get('percentage', ''),  # Default match percentage
                     'roadmap': career.get('roadmap', []),
                     'resources': {
                         'udemy': career.get('udemy_link', ''),
@@ -1271,7 +1251,7 @@ def get_profile_data():
             'careerPreferences': user_responses.get('careerPreferences', {}) if user_responses else {}
         }
         social_links = db.social_links.find_one()
-        
+
         # Add social links to userData
         profile_data['userData']['githubLink'] = social_links.get('github_link', '') if social_links else ''
         profile_data['userData']['linkedinLink'] = social_links.get('linkedin_link', '') if social_links else ''
@@ -1316,6 +1296,4 @@ def linkdin():
     return render_template('linkdin.html', jobs=data, user=session.get('user'))
 
 if __name__ == "__main__":
-    if not os.path.exists(app.config['UPLOAD_FOLDER']):
-        os.makedirs(app.config['UPLOAD_FOLDER'])
     app.run(debug=True)
