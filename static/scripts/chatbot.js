@@ -108,7 +108,7 @@ async function handleUserInput() {
 
             // Hide the suggestions box after the first input
             const suggestions = document.querySelector('.suggestions');
-            //suggestions.style.display = 'none';
+            suggestions.style.display = 'none';
         }
         
         // Store user response in the appropriate property based on current question index
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         updateToggleButtonAriaLabel();
     });
     
-    const randomSuggestions = getRandomSuggestions(10);
+    const randomSuggestions = getRandomSuggestions(5);
     const suggestionsContainer = document.querySelector('.suggestions');
     suggestionsContainer.innerHTML = ''; // Clear any existing suggestions
 

@@ -20,15 +20,18 @@ import requests
 
 load_dotenv()
 app = Flask(__name__)
-app.secret_key = "your_secret_key"  # Change this to a strong secret key
-app.config["MONGO_URI"] = "mongodb://localhost:27017/aicareer"  # Your MongoDB URI
+app.secret_key = "SavvyAI" 
+MONGO_URI = "mongodb://localhost:27017/aicareer"
+app.config["MONGO_URI"] = MONGO_URI  
 mongo = PyMongo(app)
-bcrypt = Bcrypt(app)  # Initialize Bcrypt
+bcrypt = Bcrypt(app)  
 CORS(app)
 
-client = MongoClient("mongodb://localhost:27017/")  # Connecting to MongoDB (if on localhost)
+client = MongoClient(MONGO_URI)
+db = client.aicareer
 gaq_db = client.GAQ
-
+community_db = client.Community_Savvyai
+community_posts_collection = community_db.Posts
 # GAQ collections for Easy, Medium, and Hard questions
 GAQ_Collection = {
     "easy": "easy",  # Easy questions collection
@@ -583,7 +586,8 @@ def fetch_suggestions():
         "age": doc1["age"],
         "Education pursuing": doc1["highest_level_of_education"],
         "Current field of study or work": doc1["current_field_of_study_or_work"],
-        "Key skills": doc1["key_skills"]
+        "Key skills": doc1["key_skills"],
+        "Work Experience": doc1["work_experience"]
     }
 
     # Prepare data for Mistral API (User Preferences)
@@ -924,8 +928,6 @@ def fetch_detailed_layout():
 #functions related to detailed pathway
 @app.route('/roadmap')
 def roadmap():
-    client = MongoClient("mongodb://localhost:27017/")
-    db = client['aicareer']
     career_collection = db['career_suggestions']
     # Fetch all careers from career_suggestions collection
     careers = list(career_collection.find({}, {'career': 1, 'roadmap': 1, 'percentage': 1}))
@@ -946,8 +948,6 @@ def json_serialize(data):
 
 @app.route('/api/layout/<career_id>')
 def get_layout(career_id):
-    client = MongoClient("mongodb://localhost:27017/")
-    db = client['aicareer']
     layout_collection = db['page_layout']
     # Fetch the layout document for the specific career
     layout = layout_collection.find_one({'career_id': career_id})
@@ -957,8 +957,6 @@ def get_layout(career_id):
 
 @app.route('/api/careers')
 def get_careers():
-    client = MongoClient("mongodb://localhost:27017/")
-    db = client['aicareer']
     career_collection = db['career_suggestions']
     # Fetch all careers with their roadmaps
     careers = list(career_collection.find({}, {'career': 1, 'roadmap': 1}))
@@ -1002,10 +1000,6 @@ def submit_feedback():
             'success': False,
             'message': 'An error occurred while submitting feedback'
         }), 500
-
-client = MongoClient("mongodb://localhost:27017/")  # Connecting to MongoDB (if on localhost)
-community_db = client.Community_Savvyai
-community_posts_collection = community_db.Posts
 
 @app.route('/community')
 def community():
@@ -1104,8 +1098,6 @@ def parse_json(data):
 
 @app.route('/api/update-profile', methods=['POST'])
 def update_profile():
-    client = MongoClient('mongodb://localhost:27017/')
-    db = client['aicareer']
     try:
         data = request.json
         user_email = data.get("email")
@@ -1174,8 +1166,6 @@ def update_profile():
 
 @app.route('/api/profile-data')
 def get_profile_data():
-    client = MongoClient('mongodb://localhost:27017/')
-    db = client['aicareer']
     try:
         # Get first document from each collection
         user = db.users.find_one()
@@ -1213,7 +1203,8 @@ def get_profile_data():
                     'syllabus': user_data.get('education_details', {}).get('syllabus', ''),
                     'specialization': user_data.get('education_details', {}).get('specialization', ''),
                     'course': user_data.get('education_details', {}).get('course', '')
-                }
+                },
+                'workExperience': user_data.get('work_experience', [])
             },
             'careerSuggestions': [
                 {
@@ -1278,9 +1269,6 @@ def policies():
 
 @app.route('/linkdin')
 def linkdin():
-    # Connect to the MongoDB database
-    client = MongoClient("mongodb://localhost:27017/")
-    db = client['aicareer']
     career_suggestions_collection = db['career_suggestions']
 
     # Fetch the first document from the career_suggestions collection
