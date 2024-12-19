@@ -119,8 +119,8 @@
                             <input type="text" id="phd-specialization-other" placeholder="Enter specialization" style="display: none;">
                         </div>
 
-                        <label for="fieldOfStudy">Current Field of Study/Work</label>
-                        <input type="text" id="fieldOfStudy" required>
+                        <label for="hobbies">Hobbies</label>
+                        <input type="text" id="hobbies" required>
                         <label for="skills">Key Skills</label>
                         <input type="text" id="skills" required>
                         <div class="buttons">
@@ -129,22 +129,15 @@
                         </div>
                     </div>
 
-                    <form id="multi-step-form" method="POST" enctype="multipart/form-data">
-                        <!-- Form steps here -->
-                        <div class="form-step" id="step-3">
-                            <h2>Work Experience</h2>
-                            <div class="dropzone" id="dropzone">
-                                <input type="file" id="fileInput" accept="application/pdf" multiple style="display: none;">
-                                <img src="{{ url_for('static', filename='images/upload_image.png') }}" alt="upload" class="upload-icon">
-                                <h3>Drag & Drop your Resume here</h3>
-                                <button type="button" class="btn btn-outline-info" id="browseFiles">Browse Files</button>
-                            </div>
-                            <div class="buttons">
-                                <button type="button" class="prev-btn" id="prev-btn">Back</button>
-                                <button type="button" class="next-btn" id="next-btn">Next</button>
-                            </div>
+                    <div class="form-step" id="step-3">
+                        <h2>Work Experience</h2>
+                        <label for="workExperience">Describe your work experience:</label>
+                        <textarea id="workExperience" name="workExperience" required></textarea>
+                        <div class="buttons">
+                            <button type="button" class="prev-btn" id="prev-btn">Back</button>
+                            <button type="submit" class="submit-btn" id="submit-btn">Finish</button>
                         </div>
-                    </form>
+                    </div>                    
                 </form>
             </div>
         </div>

@@ -1,5 +1,5 @@
 from flask import Flask, redirect, render_template, request, jsonify, session, url_for
-from course_finder import find_relevant_courses  
+from course_finder import find_relevant_courses
 from qr_generator import generate_qr_code
 from flask_pymongo import PyMongo
 from flask_cors import CORS
@@ -16,24 +16,22 @@ import random
 import json
 import logging
 import os
+import requests
 
 load_dotenv()
 app = Flask(__name__)
-app.secret_key = "your_secret_key"  # Change this to a strong secret key
-app.config["MONGO_URI"] = "mongodb://localhost:27017/aicareer"  # Your MongoDB URI
-# Configure the folder to store resumes
-UPLOAD_FOLDER = 'static/resume'
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-# Ensure the folder exists
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+app.secret_key = "SavvyAI" 
+MONGO_URI = "mongodb://localhost:27017/aicareer"
+app.config["MONGO_URI"] = MONGO_URI  
 mongo = PyMongo(app)
-bcrypt = Bcrypt(app)  # Initialize Bcrypt
+bcrypt = Bcrypt(app)  
 CORS(app)
 
-client = MongoClient("mongodb://localhost:27017/")  # Connecting to MongoDB (if on localhost)
+client = MongoClient(MONGO_URI)
+db = client.aicareer
 gaq_db = client.GAQ
-
+community_db = client.Community_Savvyai
+community_posts_collection = community_db.Posts
 # GAQ collections for Easy, Medium, and Hard questions
 GAQ_Collection = {
     "easy": "easy",  # Easy questions collection
@@ -73,7 +71,7 @@ def save_user_data():
 
     # Validate the incoming data
     required_fields = ["current_status", "age", "highest_level_of_education",
-                       "current_field_of_study_or_work", "key_skills"]
+                       "hobbies", "key_skills"]
     missing_fields = [field for field in required_fields if field not in user_data]
     if missing_fields:
         return jsonify({'status': 'error', 'message': f'Missing fields: {", ".join(missing_fields)}'}), 400
@@ -82,32 +80,6 @@ def save_user_data():
     mongo.db.user_data.insert_one(user_data)
 
     return jsonify({'status': 'success', 'message': 'User data successfully saved.'}), 200
-
-# Endpoint to handle the resume upload
-@app.route('/api/upload_resume', methods=['POST'])
-def upload_resume():
-    if 'resume' not in request.files:
-        return jsonify({'status': 'error', 'message': 'No file part'})
-
-    file = request.files['resume']
-    
-    if file.filename == '':
-        return jsonify({'status': 'error', 'message': 'No selected file'})
-
-    if file and file.filename.endswith('.pdf'):
-        # Secure the filename
-        filename = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
-        file.save(filename)
-        return jsonify({'status': 'success', 'message': 'File uploaded successfully'})
-    else:
-        return jsonify({'status': 'error', 'message': 'Invalid file format, only PDF allowed'})
-
-# Endpoint to handle saving user data without the resume
-@app.route('/api/save_user_data_other', methods=['POST'])
-def save_user_data_other():
-    data = request.json
-    # Process the data as needed (e.g., store it in the database)
-    return jsonify({'status': 'success', 'message': 'User data saved successfully'})
 
 @app.route('/choices')
 def choices():
@@ -132,11 +104,11 @@ def aptitude():
         collection_name = "Medium"
     else:
         collection_name = "Hard"
-    
+
     # Fetch questions from the GAQ database
     questions_collection = gaq_db[collection_name]
     all_questions = list(questions_collection.find())
-    
+
     # Convert ObjectId to string for each question
     for question in all_questions:
         question['_id'] = str(question['_id'])  # Convert ObjectId to string
@@ -165,7 +137,7 @@ def aptitude():
         session['current_index'] += 1
         if session['current_index'] >= len(selected_questions):
             session['current_index'] = len(selected_questions) - 1
-        
+
         return redirect(url_for('aptitude'))
 
     # Pass user data to the template along with selected questions
@@ -207,7 +179,7 @@ def save_aptitude_answers():
     for answer in answers:
         question_text = answer['question']
         selected_answer = answer['answered']
-        
+
         # Fetch the question from the determined difficulty level collection
         question_data = questions_collection.find_one({"question": question_text})
 
@@ -234,11 +206,10 @@ def save_aptitude_answers():
 
     return jsonify({'status': 'success', 'message': 'Answers saved successfully.'})
 
-
 @app.route('/aptitude_results', methods=['GET'])
 def aptitude_results():
     # Fetch data from `gaq_answered` collection
-    answered_data = list(mongo.db.gaq_answered.find())  
+    answered_data = list(mongo.db.gaq_answered.find())
 
     total_questions = len(answered_data)
     correct_answers = sum(1 for answer in answered_data if answer['correct_or_wrong'] == 'correct')
@@ -251,11 +222,11 @@ def aptitude_results():
     verbal_correct = 0
 
     detailed_results = []
-    
+
     for answer in answered_data:
         difficulty_level = answer.get('difficulty_level')
         question_data = None
-        
+
         # Determine the correct collection based on the difficulty level
         if difficulty_level == 'easy':
             collection_name = "Easy"
@@ -265,7 +236,7 @@ def aptitude_results():
             collection_name = "Hard"
         else:
             collection_name = None  # Fallback in case the level is not recognized
-        
+
         if collection_name:
             # Access the correct collection based on the difficulty level
             questions_collection = gaq_db[collection_name]
@@ -317,7 +288,6 @@ def aptitude_results():
         detailed_results=detailed_results
     )
 
-
 @app.route('/api/signup', methods=['POST'])
 def signup():
     user_data = request.json
@@ -346,7 +316,7 @@ def api_login():
             'email': user['email']
         }
         return jsonify({'success': True, 'user': session['user']}), 200
-    
+
     logging.debug(f"Failed login attempt for {user_data['email']}.")
     return jsonify({'success': False, 'message': 'Invalid email or password.'}), 401
 
@@ -358,7 +328,7 @@ def logout():
 @app.route('/save-data/', methods=['POST'])
 def save_data():
     user_data = request.json  # Get data from the request
-    
+
     # Validate incoming data
     if not isinstance(user_data, dict):
         return jsonify({'status': 'error', 'message': 'Invalid data format. Expected a dictionary.'}), 400
@@ -398,7 +368,15 @@ def generate_questions(career_preferences):
     messages = [
         {
             "role": "user",
-            "content": f"Generate 15 aptitude questions related to the following career preferences: {', '.join(career_preferences.values())}. Please format the response as a JSON array like this: [{{"
+            "content": f"Generate 15 aptitude questions divided among these career preferences: {', '.join(career_preferences.values())}. "
+                       f"For each career preference:\n"
+                       f"- Generate questions testing core technical knowledge\n"
+                       f"- Include questions about fundamental principles and advanced concepts\n"
+                       f"- Questions should range from fundamental concepts to complex technical topics\n"
+                       f"- All options must be technically accurate and closely related\n"
+                       f"- No hypothetical scenarios, focus on technical knowledge\n"
+                       f"- Ensure equal distribution of questions across given career preferences\n"
+                       f"Please format the response as a JSON array like this: [{{"
                        f"\"question\": \"Question text\","
                        f"\"options\": [\"Option A\", \"Option B\", \"Option C\", \"Option D\"],"
                        f"\"correct_answer\": \"Correct Option\","
@@ -438,7 +416,7 @@ def generate_questions(career_preferences):
 def get_questions():
     # Fetch questions from MongoDB
     questions_data = mongo.db.questions.find()
-    
+
     # Convert MongoDB cursor to a list
     questions = list(questions_data)
 
@@ -491,7 +469,7 @@ def save_answers():
             })
 
     mongo.db.answered.insert_many(results)
-    
+
     # Return status with redirect URL
     return jsonify({'status': 'success', 'message': 'Answers saved.', 'url': url_for('results')}), 200
 
@@ -499,7 +477,7 @@ def save_answers():
 def results():
     # Fetch answered questions and their details from MongoDB
     answered_data = list(mongo.db.answered.find())
-    
+
     # Get the original questions with correct answers and career preferences
     questions_data = {}
     all_career_preferences = set()  # Track all unique career preferences
@@ -540,7 +518,7 @@ def results():
                 'options': question_info['options'],
                 'is_correct': answer['correct_or_wrong'] == 'correct'
             })
-    
+
     # Prepare the results data for MongoDB
     results_data = {
         "total_questions": total_questions,
@@ -607,12 +585,9 @@ def fetch_suggestions():
         "current status": doc1["current_status"],
         "age": doc1["age"],
         "Education pursuing": doc1["highest_level_of_education"],
-        "Current field of study or work": doc1["current_field_of_study_or_work"],
+        "Current field of study or work": doc1["hobbies"],
         "Key skills": doc1["key_skills"],
-        "Work experience": doc1["work_experience"],
-        "Extroversion personality trait": doc1["personality_traits"]["extroversion"],
-        "Openness to work personality trait": doc1["personality_traits"]["openness_to_work"],
-        "Meticulousness personality trait": doc1["personality_traits"]["meticulousness"]
+        "Work Experience": doc1["work_experience"]
     }
 
     # Prepare data for Mistral API (User Preferences)
@@ -643,16 +618,17 @@ def fetch_suggestions():
                f"This the results of 15 general aptitude questions:\n, {json.dumps(aptitude_results['gaq_aptitude_result'])}\n\n"
                f"This is the result of 15 Technical Aptitude questions:\n, {json.dumps(aptitude_results['aptitude_result'])}\n\n"
                f"I want you to give career suggestions based on the aptitude results and user preferences. "
-               f"Suggest 3 career paths along with 5 roadmap points that are valid in 2024's job market for each in JSON format. \n"
+               f"Suggest 3 career paths along with 5 unique roadmap points that are valid in 2024's job market for each in JSON format. \n"
                f"Also provide 1 Udemy search query related to each career path (just the query, not the full URL). \n"
                f"Also provide 1 YouTube search query related to each career path (just the query, not the full URL). \n"
                f"Also provide 1 Coursera search query related to each career path (just the query, not the full URL). \n"
                f"Also provide 1 UpGrad search query related to each career path (just the query, not the full URL). \n"
                f"For each career path, please also give 5 high accurate keywords that can be used to search on the NPTEL website.\n"
                f"These should be keywords that are relevant to courses available on NPTEL (e.g., topics, course names, subjects). \n"
+               f"Also give the percentage value which says how well that career suits them based on the data which you have, keep 60% as priority for technical aptitude results and keep 40% for general aptitude"
                f"Please provide 5 keywords, separated by commas. \n"
                f"Please format the response as a JSON array like this: \n"
-               f"[{{\"career\": \"Career Name\", \"roadmap\": [\"Step 1\", \"Step 2\", \"Step 3\", \"Step 4\", \"Step 5\"], "
+               f"[{{\"career\": \"Career Name\",\"percentage\": \"Percentage value\" \"roadmap\": [\"Step 1\", \"Step 2\", \"Step 3\", \"Step 4\", \"Step 5\"], "
                f"\"udemy_query\": \"Search query for Udemy\", "
                f"\"youtube_query\": \"Search query for YouTube\", "
                f"\"coursera_query\": \"Search query for Coursera\", "
@@ -719,7 +695,7 @@ def fetch_suggestions():
     except Exception as e:
         logging.error(f"Error while fetching suggestions: {e}")
         return jsonify({'success': False, 'message': 'Failed to fetch suggestions'}), 500
- 
+
 @app.route('/suggestions', methods=['GET'])
 def show_suggestions():
     # Retrieve suggestions from MongoDB
@@ -740,17 +716,17 @@ def update_nptel_courses():
         nptel_collection_name = "2024_WA"
         career_db_name = "aicareer"
         career_collection_name = "career_suggestions"
-        
+
         # Call the function to find relevant courses
         find_relevant_courses(
-            mongo_uri, 
-            nptel_db_name, 
-            nptel_collection_name, 
-            career_db_name, 
+            mongo_uri,
+            nptel_db_name,
+            nptel_collection_name,
+            career_db_name,
             career_collection_name,
             save_to_db=True  # Add this parameter to your original function
         )
-        
+
         return jsonify({"status": "success", "message": "NPTEL courses updated successfully"})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)})
@@ -775,12 +751,12 @@ def learning():
 
             # Fetch the saved NPTEL courses for this career
             saved_nptel_courses = list(mongo.db.nptel_matches.find({"career": career_name}))
-            
+
             # Convert ObjectId to string for each course
             for course in saved_nptel_courses:
                 if '_id' in course:
                     course['_id'] = str(course['_id'])
-            
+
             nptel_courses[career_name] = saved_nptel_courses
 
             # Process other learning resources
@@ -952,11 +928,9 @@ def fetch_detailed_layout():
 #functions related to detailed pathway
 @app.route('/roadmap')
 def roadmap():
-    client = MongoClient("mongodb://localhost:27017/")
-    db = client['aicareer']
     career_collection = db['career_suggestions']
     # Fetch all careers from career_suggestions collection
-    careers = list(career_collection.find({}, {'career': 1, 'roadmap': 1}))
+    careers = list(career_collection.find({}, {'career': 1, 'roadmap': 1, 'percentage': 1}))
     return render_template('roadmap.html', show_hamburger_menu=True, careers=careers, user=session.get('user'))
 
 def json_serialize(data):
@@ -974,8 +948,6 @@ def json_serialize(data):
 
 @app.route('/api/layout/<career_id>')
 def get_layout(career_id):
-    client = MongoClient("mongodb://localhost:27017/")
-    db = client['aicareer']
     layout_collection = db['page_layout']
     # Fetch the layout document for the specific career
     layout = layout_collection.find_one({'career_id': career_id})
@@ -985,8 +957,6 @@ def get_layout(career_id):
 
 @app.route('/api/careers')
 def get_careers():
-    client = MongoClient("mongodb://localhost:27017/")
-    db = client['aicareer']
     career_collection = db['career_suggestions']
     # Fetch all careers with their roadmaps
     careers = list(career_collection.find({}, {'career': 1, 'roadmap': 1}))
@@ -1006,7 +976,7 @@ def submit_feedback():
     try:
         # Get feedback data from request
         feedback_data = request.json
-        
+
         # Add user info and timestamp
         feedback_data.update({
             'submitted_at': datetime.utcnow(),
@@ -1021,7 +991,7 @@ def submit_feedback():
                 'success': True,
                 'message': 'Feedback submitted successfully'
             }), 201
-            
+
         else:
             raise Exception("Failed to insert feedback")
 
@@ -1031,29 +1001,25 @@ def submit_feedback():
             'message': 'An error occurred while submitting feedback'
         }), 500
 
-client = MongoClient("mongodb://localhost:27017/")  # Connecting to MongoDB (if on localhost)
-community_db = client.Community_Savvyai
-community_posts_collection = community_db.Posts
-
 @app.route('/community')
 def community():
     if 'user' not in session:
         return redirect(url_for('login'))
-    
+
     # Fetch all posts from MongoDB
     posts = list(community_posts_collection.find().sort('created_at', -1))
-    
+
     # Convert ObjectId to string for JSON serialization
     for post in posts:
         post['_id'] = str(post['_id'])
-    
+
     return render_template('community.html', show_hamburger_menu=True, user=session.get('user'), posts=posts)
 
 @app.route('/api/posts', methods=['GET', 'POST'])
 def handle_posts():
     if 'user' not in session:
         return jsonify({'error': 'Unauthorized'}), 401
-    
+
     if request.method == 'POST':
         data = request.json
         post = {
@@ -1070,16 +1036,16 @@ def handle_posts():
             'tags': data.get('tags', []),
             'authorAvatar': f"https://api.dicebear.com/6.x/avataaars/svg?seed={session['user'].get('email')}"
         }
-        
+
         result = community_posts_collection.insert_one(post)
         post['_id'] = str(result.inserted_id)
         return jsonify(post), 201
-    
+
     # GET method
     community = request.args.get('community', 'all')
     search = request.args.get('search', '')
     sort = request.args.get('sort', 'recent')
-    
+
     query = {}
     if community != 'all':
         query['community'] = community
@@ -1089,39 +1055,39 @@ def handle_posts():
             {'content': {'$regex': search, '$options': 'i'}},
             {'tags': {'$regex': search, '$options': 'i'}}
         ]
-    
+
     sort_query = [('created_at', -1)] if sort == 'recent' else [('likes', -1)]
-    
+
     posts = list(community_posts_collection.find(query).sort(sort_query))
     for post in posts:
         post['_id'] = str(post['_id'])
-    
+
     return jsonify(posts)
 
 @app.route('/api/posts/<post_id>/like', methods=['POST'])
 def like_post(post_id):
     if 'user' not in session:
         return jsonify({'error': 'Unauthorized'}), 401
-    
+
     user_email = session['user'].get('email')
     post = community_posts_collection.find_one({'_id': ObjectId(post_id)})
-    
+
     if not post:
         return jsonify({'error': 'Post not found'}), 404
-    
+
     likes_by = post.get('likes_by', [])
     if user_email in likes_by:
         likes_by.remove(user_email)
     else:
         likes_by.append(user_email)
-    
+
     community_posts_collection.update_one(
         {'_id': ObjectId(post_id)},
         {'$set': {'likes_by': likes_by, 'likes': len(likes_by)}}
     )
-    
+
     return jsonify({'liked': user_email in likes_by})
-        
+
 @app.route('/profile_overview')
 def profile_overview():
     return render_template('profile_overview.html', show_hamburger_menu=True, user=session.get('user'))
@@ -1132,17 +1098,15 @@ def parse_json(data):
 
 @app.route('/api/update-profile', methods=['POST'])
 def update_profile():
-    client = MongoClient('mongodb://localhost:27017/')
-    db = client['aicareer']
     try:
         data = request.json
         user_email = data.get("email")
-        
+
         if not user_email:
             return jsonify({'error': 'Email is required'}), 400
 
         logging.info(f"Starting profile update for email: {user_email}")
-        
+
         # Update users collection - takes first document
         new_user_doc = {
             "email": user_email,
@@ -1159,21 +1123,16 @@ def update_profile():
             "current_status": data.get("currentStatus"),
             "age": int(data.get("age")) if data.get("age") else None,
             "highest_level_of_education": data.get("education"),
-            "current_field_of_study_or_work": data.get("currentField"),
-            "work_experience": data.get("workExperience"),
+            "hobbies": data.get("hobbies"),
             "key_skills": data.get("keySkills", []),
-            "personality_traits": {
-                "extroversion": 100,  # Default values as per existing document
-                "openness_to_work": 100,
-                "meticulousness": 100
-            },
             "education_details": {
                 "syllabus": data.get("educationDetails", {}).get("syllabus", ""),
                 "specialization": data.get("educationDetails", {}).get("specialization", ""),
                 "course": data.get("educationDetails", {}).get("course", "")
-            }
+            },
+            "work_experience": data.get("workExperience", [])
         }
-        
+
         user_data_result = db.user_data.replace_one(
             {},  # Empty filter to get first document
             new_user_data_doc,
@@ -1208,24 +1167,22 @@ def update_profile():
 
 @app.route('/api/profile-data')
 def get_profile_data():
-    client = MongoClient('mongodb://localhost:27017/')
-    db = client['aicareer']
     try:
         # Get first document from each collection
         user = db.users.find_one()
         if not user:
             return jsonify({'error': 'User not found'}), 404
-        
+
         user_data = db.user_data.find_one()
         if not user_data:
             return jsonify({'error': 'User data not found'}), 404
 
         # Get career suggestions (first 3)
         career_suggestions = list(db.career_suggestions.find().limit(3))
-        
+
         # Get user responses
         user_responses = db.user_responses.find_one()
-        
+
         # Get aptitude scores (first document from each)
         technical_aptitude = db.aptitude_result.find_one()
         general_aptitude = db.gaq_aptitude_results.find_one()
@@ -1240,20 +1197,20 @@ def get_profile_data():
                 'currentStatus': user_data.get('current_status', ''),
                 'age': user_data.get('age', ''),
                 'education': user_data.get('highest_level_of_education', ''),
-                'currentField': user_data.get('current_field_of_study_or_work', ''),
+                'hobbies': user_data.get('hobbies', ''),
                 'keySkills': user_data.get('key_skills', []),
-                'workExperience': user_data.get('work_experience', ''),
                 'personalityTraits': user_data.get('personality_traits', {}),
                 'educationDetails': {
                     'syllabus': user_data.get('education_details', {}).get('syllabus', ''),
                     'specialization': user_data.get('education_details', {}).get('specialization', ''),
                     'course': user_data.get('education_details', {}).get('course', '')
-                }
+                },
+                'workExperience': user_data.get('work_experience', [])
             },
             'careerSuggestions': [
                 {
                     'title': career.get('career', ''),
-                    'match': 85,  # Default match percentage
+                    'match': career.get('percentage', ''),  # Default match percentage
                     'roadmap': career.get('roadmap', []),
                     'resources': {
                         'udemy': career.get('udemy_link', ''),
@@ -1287,7 +1244,7 @@ def get_profile_data():
             'careerPreferences': user_responses.get('careerPreferences', {}) if user_responses else {}
         }
         social_links = db.social_links.find_one()
-        
+
         # Add social links to userData
         profile_data['userData']['githubLink'] = social_links.get('github_link', '') if social_links else ''
         profile_data['userData']['linkedinLink'] = social_links.get('linkedin_link', '') if social_links else ''
@@ -1311,7 +1268,39 @@ def scenario_chatbot():
 def policies():
     return render_template('policy.html', user=session.get('user'))
 
+@app.route('/linkdin')
+def linkdin():
+    career_suggestions_collection = db['career_suggestions']
+
+    # Fetch the first document from the career_suggestions collection
+    career_suggestion = career_suggestions_collection.find_one()
+
+    if not career_suggestion:
+        return jsonify({'error': 'No career suggestions found'}), 404
+
+    # Extract the career value
+    career_keyword = career_suggestion.get('career')
+    print(career_keyword)
+    # LinkedIn API details
+    url = "https://linkedin-api8.p.rapidapi.com/search-jobs"
+    querystring = {
+        "keywords": career_keyword,
+        "locationId": "102713980",
+        "datePosted": "anyTime",
+        "sort": "mostRelevant"
+    }
+    headers = {
+        "x-rapidapi-key": "03ca4eda3fmshb17a27cbe55673cp1430d5jsn600afaa0f966",
+        "x-rapidapi-host": "linkedin-api8.p.rapidapi.com"
+    }
+
+    # Make the API request
+    response = requests.get(url, headers=headers, params=querystring)
+    data = response.json()
+
+    # Pass data to the template
+    return render_template('linkdin.html', jobs=data, user=session.get('user'))
+
+
 if __name__ == "__main__":
-    if not os.path.exists(app.config['UPLOAD_FOLDER']):
-        os.makedirs(app.config['UPLOAD_FOLDER'])
     app.run(debug=True)

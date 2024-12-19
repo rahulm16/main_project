@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
             s.classList.toggle("active", index === step);
         });
         prevBtns.forEach(btn => btn.style.display = step === 0 ? "none" : "inline");
-        
+
         // Modify next button text based on user status and current step
         const status = document.querySelector('input[name="status"]:checked')?.value;
         if (status === "student" && step === 1) {
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
     nextBtns.forEach((btn, index) => {
         btn.addEventListener("click", () => {
             const status = document.querySelector('input[name="status"]:checked');
-            
+
             if (currentStep === 0) {
                 currentStep = 1;
             } else if (currentStep === 1) {
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     submitBtn.click();
                     return;
                 } else if (status && status.value === "professional") {
-                    currentStep = 2; // Move to Step 3 (Upload Resume)
+                    currentStep = 2; // Move to Step 3 (Work Experience)
                 }
             }
             showStep(currentStep);
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     prevBtns.forEach(btn => {
         btn.addEventListener("click", () => {
             const status = document.querySelector('input[name="status"]:checked');
-            
+
             if (currentStep === 0) return; // Already on Step 1
             else if (currentStep === 1) currentStep = 0; // Go back to Step 1
             else if (currentStep === 2) {
@@ -173,79 +173,60 @@ document.addEventListener("DOMContentLoaded", () => {
     submitBtn.addEventListener("click", (e) => {
         e.preventDefault();
     
-        // Get basic form data
         const status = document.querySelector('input[name="status"]:checked')?.value;
-        const educationInput = document.getElementById("education");
-        const bachelorCourseSelect = document.getElementById("bachelorCourse");
-        const masterCourseSelect = document.getElementById("masterCourse");
     
-        // Create FormData object to collect the form data
-        const formData = new FormData();
-        formData.append('current_status', status);
-        formData.append('age', +document.getElementById("age").value);
-        formData.append('highest_level_of_education', educationInput.value);
-        formData.append('current_field_of_study_or_work', document.getElementById("fieldOfStudy").value);
-        formData.append('key_skills', document.getElementById("skills").value.split(',').map(skill => skill.trim()).join(','));
+        const formData = {
+            current_status: status,
+            age: +document.getElementById("age").value,
+            highest_level_of_education: educationInput.value,
+            hobbies: document.getElementById("hobbies").value, // Assuming hobbies is an input field
+            key_skills: document.getElementById("skills").value.split(',').map(skill => skill.trim()), // Convert to an array
+            work_experience: status === "professional" ? document.getElementById("workExperience").value : "N/A", // Default work experience for student
     
-        // Add conditional education details to formData
+            // Add education details dynamically based on the selected education level
+            education_details: {}
+        };
+    
         if (educationInput.value === "highschool") {
-            formData.append('education_details.syllabus', document.getElementById("syllabus").value === "other" ? document.getElementById("syllabus-other").value : document.getElementById("syllabus").value);
+            formData.education_details.syllabus = document.getElementById("syllabus").value === "other" 
+                ? document.getElementById("syllabus-other").value 
+                : document.getElementById("syllabus").value;
         } else if (educationInput.value === "bachelor") {
-            formData.append('education_details.specialization', document.getElementById("bachelorSpecialization").value === "other" ? document.getElementById("bachelor-specialization-other").value : document.getElementById("bachelorSpecialization").value);
-            formData.append('education_details.course', bachelorCourseSelect.value === "other" ? document.getElementById("bachelor-course-other").value : bachelorCourseSelect.value);
+            formData.education_details.specialization = document.getElementById("bachelorSpecialization").value === "other" 
+                ? document.getElementById("bachelor-specialization-other").value 
+                : document.getElementById("bachelorSpecialization").value;
+            formData.education_details.course = bachelorCourseSelect.value === "other" 
+                ? document.getElementById("bachelor-course-other").value 
+                : bachelorCourseSelect.value;
         } else if (educationInput.value === "master") {
-            formData.append('education_details.specialization', document.getElementById("masterSpecialization").value === "other" ? document.getElementById("master-specialization-other").value : document.getElementById("masterSpecialization").value);
-            formData.append('education_details.course', masterCourseSelect.value === "other" ? document.getElementById("master-course-other").value : masterCourseSelect.value);
+            formData.education_details.specialization = document.getElementById("masterSpecialization").value === "other" 
+                ? document.getElementById("master-specialization-other").value 
+                : document.getElementById("masterSpecialization").value;
+            formData.education_details.course = masterCourseSelect.value === "other" 
+                ? document.getElementById("master-course-other").value 
+                : masterCourseSelect.value;
         } else if (educationInput.value === "phd") {
-            formData.append('education_details.specialization', document.getElementById("phdSpecialization").value === "other" ? document.getElementById("phd-specialization-other").value : document.getElementById("phdSpecialization").value);
+            formData.education_details.specialization = document.getElementById("phdSpecialization").value === "other" 
+                ? document.getElementById("phd-specialization-other").value 
+                : document.getElementById("phdSpecialization").value;
         }
     
-        // Handle the professional case with resume upload
-        if (status === "professional") {
-            const resumeFile = document.getElementById("fileInput").files[0];  // Get the resume file
-            if (resumeFile) {
-                formData.append('resume', resumeFile);
-    
-                // Perform the fetch request to upload the resume
-                fetch("/api/upload_resume", {
-                    method: "POST",
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'success') {
-                        console.log('Resume uploaded successfully');
-                    } else {
-                        console.error('Error uploading resume:', data.message);
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-            } else {
-                console.error('No resume file selected');
+        // Send the form data to the server
+        fetch("/api/save_user_data", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                window.location.href = "/aptitude";
             }
-        } else {
-            // If status is not professional, save user data without resume
-            fetch("/api/save_user_data", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(Object.fromEntries(formData))
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    console.log('User data saved successfully');
-                } else {
-                    console.error('Error saving user data:', data.message);
-                }
-            })
-            .catch(error => console.error('Error:', error));
-        }
-
-        // Redirect to the aptitude page after form submission
-        window.location.href = "/aptitude";  // Redirect to the aptitude page
-    });
+        })
+        .catch(error => console.error('Error:', error));
+    });   
 
     // Initialize the form to show the first step
     showStep(currentStep);
