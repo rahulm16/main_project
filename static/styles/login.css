@@ -657,3 +657,171 @@ footer p {
     font-size: 1rem;  /* Increase font size of input fields */
     padding: 10px;
 }
+
+/* Mobile Phone Display */
+@media (max-width: 768px) {
+    /* Hero Section */
+    .hero {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .hero-text {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 32px;
+    }
+
+    .hero-text p {
+        font-size: 16px;
+        padding-right: 0;
+    }
+
+    /* Form Containers */
+    .auth-form-container,
+    .login-form,
+    .signup-form {
+        max-width: 100%;
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    .auth-form-container h2,
+    .login-form h2,
+    .signup-form h2 {
+        font-size: 24px;
+    }
+
+    /* Form Elements */
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    .form-group label {
+        font-size: 14px;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    /* Buttons */
+    .button-common,
+    .signup-btn,
+    .login-btn,
+    .explore-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    /* Social Login */
+    .social-container a {
+        height: 30px;
+        width: 30px;
+        font-size: 16px;
+    }
+
+    /* Features */
+    .features {
+        padding: 40px 20px;
+    }
+
+    .features h2 {
+        font-size: 28px;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-card {
+        height: auto;
+        padding: 20px;
+    }
+
+    .feature-card img {
+        height: auto;
+        width: 100%;
+    }
+
+    .feature-card h3 {
+        font-size: 18px;
+    }
+
+    .feature-card p {
+        font-size: 14px;
+    }
+
+    /* Alert Message */
+    .alert-message {
+        top: 60px;
+        min-width: 280px;
+        max-width: 90%;
+    }
+
+    /* Banner Images */
+    .banner-images {
+        display: none;
+    }
+
+    /* Left Section */
+    .left-section {
+        display: none;
+    }
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 28px;
+    }
+
+    .hero-text p {
+        font-size: 14px;
+    }
+
+    .auth-form-container h2,
+    .login-form h2,
+    .signup-form h2 {
+        font-size: 20px;
+    }
+
+    .form-group label {
+        font-size: 12px;
+    }
+
+    .form-group input {
+        font-size: 12px;
+    }
+
+    .button-common,
+    .signup-btn,
+    .login-btn,
+    .explore-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .social-container a {
+        height: 25px;
+        width: 25px;
+        font-size: 14px;
+    }
+
+    .features h2 {
+        font-size: 24px;
+    }
+
+    .feature-card h3 {
+        font-size: 16px;
+    }
+
+    .feature-card p {
+        font-size: 12px;
+    }
+}
