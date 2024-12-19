@@ -663,6 +663,9 @@ header
     transition: all 0s ease 0s;
     margin-left: 0px;
   }
+  .header-area .main-nav .menu-trigger.active + .nav {
+    display: block;
+  }
   .background-header .nav {
     margin-top: 80px;
   }
