@@ -328,7 +328,7 @@ def save_user_data():
     
     # Validate the incoming data
     required_fields = ["current_status", "age", "highest_level_of_education", 
-                       "current_field_of_study_or_work", "key_skills", "personality_traits"]
+                       "current_field_of_study_or_work", "key_skills"]
     missing_fields = [field for field in required_fields if field not in user_data]
     if missing_fields:
         return jsonify({'status': 'error', 'message': f'Missing fields: {", ".join(missing_fields)}'}), 400

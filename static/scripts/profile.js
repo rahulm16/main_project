@@ -6,10 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentStep = 0;
 
     const ageInput = document.getElementById("age");
-    const extroversionInput = document.getElementById("extroversion");
-    const opennessInput = document.getElementById("openness");
-    const meticulousnessInput = document.getElementById("meticulousness");
-
     const educationInput = document.getElementById("education");
     const syllabusDiv = document.getElementById("highschool-syllabus");
     const bachelorSpecializationDiv = document.getElementById("bachelors-specialization");
@@ -65,6 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
         updateCourseOptions(bachelorSpecializationSelect, bachelorCourseSelect, bachelorCourses);
         if (bachelorSpecializationSelect.value === "other") {
             document.getElementById("bachelor-specialization-other").style.display = "block";
+        } else {
+            document.getElementById("bachelor-specialization-other").style.display = "none";
         }
     });
 
@@ -72,24 +70,14 @@ document.addEventListener("DOMContentLoaded", () => {
         updateCourseOptions(masterSpecializationSelect, masterCourseSelect, masterCourses);
         if (masterSpecializationSelect.value === "other") {
             document.getElementById("master-specialization-other").style.display = "block";
+        } else {
+            document.getElementById("master-specialization-other").style.display = "none";
         }
     });
 
-    // Update display of age/personality values as they are adjusted
+    // Update display of age value as it is adjusted
     ageInput.addEventListener("input", () => {
         document.getElementById("age-value").textContent = ageInput.value;
-    });
-
-    extroversionInput.addEventListener("input", () => {
-        document.getElementById("extroversion-value").textContent = extroversionInput.value;
-    });
-
-    opennessInput.addEventListener("input", () => {
-        document.getElementById("openness-value").textContent = opennessInput.value;
-    });
-
-    meticulousnessInput.addEventListener("input", () => {
-        document.getElementById("meticulousness-value").textContent = meticulousnessInput.value;
     });
 
     // Show the current step in the form
@@ -98,23 +86,39 @@ document.addEventListener("DOMContentLoaded", () => {
             s.classList.toggle("active", index === step);
         });
         prevBtns.forEach(btn => btn.style.display = step === 0 ? "none" : "inline");
-        nextBtns.forEach(btn => btn.textContent = step === steps.length - 1 ? "Finish" : "Next");
+        
+        // Modify the buttons based on user type and current step
+        nextBtns.forEach(btn => {
+            const status = document.querySelector('input[name="status"]:checked')?.value;
+            if (status === "student" && step === 1) {
+                btn.textContent = "Finish";  // For students, finish after education
+            } else if (status === "professional" && step === 2) {
+                btn.textContent = "Finish";  // For professionals, finish after work experience
+            } else {
+                btn.textContent = "Next";
+            }
+        });
     }
 
     // Event listeners for the next buttons
     nextBtns.forEach((btn, index) => {
         btn.addEventListener("click", () => {
+            const status = document.querySelector('input[name="status"]:checked')?.value;
+            
             if (currentStep === 0) {
-                currentStep = 1;
+                currentStep = 1;  // Move to education step
             } else if (currentStep === 1) {
-                const status = document.querySelector('input[name="status"]:checked');
-                if (status && status.value === "professional") {
-                    currentStep = 2; // Move to Step 3 (Work Experience)
+                if (status === "student") {
+                    // For students, submit form after education
+                    submitForm();
+                    return;
                 } else {
-                    currentStep = 3; // Skip to Step 4
+                    currentStep = 2;  // Move to work experience for professionals
                 }
-            } else if (currentStep === 2) {
-                currentStep = 3; // Move to Step 4
+            } else if (currentStep === 2 && status === "professional") {
+                // For professionals, submit form after work experience
+                submitForm();
+                return;
             }
             showStep(currentStep);
         });
@@ -123,13 +127,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Event listeners for the previous buttons
     prevBtns.forEach(btn => {
         btn.addEventListener("click", () => {
-            if (currentStep === 0) return; // Already on Step 1
-            else if (currentStep === 1) currentStep = 0; // Go back to Step 1
-            else if (currentStep === 2) currentStep = 1; // Go back to Step 2
-            else if (currentStep === 3) {
-                const status = document.querySelector('input[name="status"]:checked');
-                currentStep = (status && status.value === "professional") ? 2 : 1;
-            }
+            if (currentStep === 0) return;
+            else if (currentStep === 1) currentStep = 0;
+            else if (currentStep === 2) currentStep = 1;
             showStep(currentStep);
         });
     });
@@ -169,16 +169,28 @@ document.addEventListener("DOMContentLoaded", () => {
     handleOtherOption(document.getElementById("syllabus"), document.getElementById("syllabus-other"));
     handleOtherOption(bachelorCourseSelect, document.getElementById("bachelor-course-other"));
     handleOtherOption(masterCourseSelect, document.getElementById("master-course-other"));
-    handleOtherOption(bachelorSpecializationSelect, document.getElementById("bachelor-specialization-other"));
-    handleOtherOption(masterSpecializationSelect, document.getElementById("master-specialization-other"));
     handleOtherOption(document.getElementById("phdSpecialization"), document.getElementById("phd-specialization-other"));
 
-    // Form submission including additional fields
-    submitBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-
+    function submitForm() {
         const status = document.querySelector('input[name="status"]:checked')?.value;
 
+        // Basic validation
+        if (!status) {
+            alert("Please select your current status.");
+            return;
+        }
+        if (!educationInput.value) {
+            alert("Please select your education level.");
+            return;
+        }
+        if (!document.getElementById("fieldOfStudy").value) {
+            alert("Please enter your field of study/work.");
+            return;
+        }
+        if (!document.getElementById("skills").value) {
+            alert("Please enter your key skills.");
+            return;
+        }
         // Validate work experience if status is professional
         if (status === "professional" && !document.getElementById("workExperience").value) {
             alert("Please provide your work experience.");
@@ -192,28 +204,40 @@ document.addEventListener("DOMContentLoaded", () => {
             current_field_of_study_or_work: document.getElementById("fieldOfStudy").value,
             key_skills: document.getElementById("skills").value.split(',').map(skill => skill.trim()),
             work_experience: status === "professional" ? document.getElementById("workExperience").value : "N/A",
-            personality_traits: {
-                extroversion: parseInt(document.getElementById("extroversion").value, 10),
-                openness_to_work: parseInt(document.getElementById("openness").value, 10),
-                meticulousness: parseInt(document.getElementById("meticulousness").value, 10),
-            },
-            education_details: {}
         };
 
         // Add conditional education details to formData
         if (educationInput.value === "highschool") {
-            formData.education_details.syllabus = document.getElementById("syllabus").value === "other" ? document.getElementById("syllabus-other").value : document.getElementById("syllabus").value;
+            formData.education_details = {
+                syllabus: document.getElementById("syllabus").value === "other" ? 
+                    document.getElementById("syllabus-other").value : 
+                    document.getElementById("syllabus").value
+            };
         } else if (educationInput.value === "bachelor") {
-            formData.education_details.specialization = document.getElementById("bachelorSpecialization").value === "other" ? document.getElementById("bachelor-specialization-other").value : document.getElementById("bachelorSpecialization").value;
-            formData.education_details.course = bachelorCourseSelect.value === "other" ? document.getElementById("bachelor-course-other").value : bachelorCourseSelect.value;
+            formData.education_details = {
+                specialization: document.getElementById("bachelorSpecialization").value === "other" ? 
+                    document.getElementById("bachelor-specialization-other").value : 
+                    document.getElementById("bachelorSpecialization").value,
+                course: bachelorCourseSelect.value === "other" ? 
+                    document.getElementById("bachelor-course-other").value : 
+                    bachelorCourseSelect.value
+            };
         } else if (educationInput.value === "master") {
-            formData.education_details.specialization = document.getElementById("masterSpecialization").value === "other" ? document.getElementById("master-specialization-other").value : document.getElementById("masterSpecialization").value;
-            formData.education_details.course = masterCourseSelect.value === "other" ? document.getElementById("master-course-other").value : masterCourseSelect.value;
+            formData.education_details = {
+                specialization: document.getElementById("masterSpecialization").value === "other" ? 
+                    document.getElementById("master-specialization-other").value : 
+                    document.getElementById("masterSpecialization").value,
+                course: masterCourseSelect.value === "other" ? 
+                    document.getElementById("master-course-other").value : 
+                    masterCourseSelect.value
+            };
         } else if (educationInput.value === "phd") {
-            formData.education_details.specialization = document.getElementById("phdSpecialization").value === "other" ? document.getElementById("phd-specialization-other").value : document.getElementById("phdSpecialization").value;
+            formData.education_details = {
+                specialization: document.getElementById("phdSpecialization").value === "other" ? 
+                    document.getElementById("phd-specialization-other").value : 
+                    document.getElementById("phdSpecialization").value
+            };
         }
-
-        console.log(formData);
 
         fetch("/api/save_user_data", {
             method: "POST",
@@ -226,11 +250,16 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {
             if (data.status === 'success') {
                 window.location.href = "/aptitude";
+            } else {
+                alert(data.message || 'Error saving data');
             }
         })
-        .catch(error => console.error('Error:', error));
-    });
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error saving data. Please try again.');
+        });
+    }
 
-    // Initialize the form to show the first step
+    // Initialize the form
     showStep(currentStep);
 });
