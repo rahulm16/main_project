@@ -95,7 +95,7 @@ function initializeProfilePreview() {
     document.getElementById('profile-name').textContent = userData.user.name;
     document.getElementById('profile-email').textContent = userData.user.email;
     document.getElementById('current-role').textContent = userData.userData.currentStatus;
-    document.getElementById('current-field').textContent = userData.userData.currentField;
+    document.getElementById('hobbies-preview').textContent = userData.userData.hobbies;
 
     const skillsContainer = document.getElementById('skills-container');
     skillsContainer.innerHTML = '';
@@ -120,7 +120,7 @@ function initializeForm() {
     document.getElementById('age').value = userData.userData.age;
     document.getElementById('currentStatus').value = userData.userData.currentStatus;
     document.getElementById('education').value = userData.userData.education;
-    document.getElementById('currentField').value = userData.userData.currentField;
+    document.getElementById('hobbies').value = userData.userData.hobbies;
     document.getElementById('githubLink').value = userData.userData.githubLink || '';
     document.getElementById('linkedinLink').value = userData.userData.linkedinLink || '';
     document.getElementById('workExperience').value = userData.userData.workExperience;
@@ -205,7 +205,7 @@ document.getElementById('profile-form').addEventListener('submit', async (e) => 
         age: parseInt(document.getElementById('age').value, 10) || null,
         currentStatus: document.getElementById('currentStatus').value,
         education: document.getElementById('education').value,
-        currentField: document.getElementById('currentField').value,
+        hobbies: document.getElementById('hobbies').value,
         githubLink: document.getElementById('githubLink').value,
         linkedinLink: document.getElementById('linkedinLink').value,
         workExperience: document.getElementById('workExperience').value,

@@ -71,7 +71,7 @@ def save_user_data():
 
     # Validate the incoming data
     required_fields = ["current_status", "age", "highest_level_of_education",
-                       "current_field_of_study_or_work", "key_skills"]
+                       "hobbies", "key_skills"]
     missing_fields = [field for field in required_fields if field not in user_data]
     if missing_fields:
         return jsonify({'status': 'error', 'message': f'Missing fields: {", ".join(missing_fields)}'}), 400
@@ -585,7 +585,7 @@ def fetch_suggestions():
         "current status": doc1["current_status"],
         "age": doc1["age"],
         "Education pursuing": doc1["highest_level_of_education"],
-        "Current field of study or work": doc1["current_field_of_study_or_work"],
+        "Current field of study or work": doc1["hobbies"],
         "Key skills": doc1["key_skills"],
         "Work Experience": doc1["work_experience"]
     }
@@ -1123,13 +1123,14 @@ def update_profile():
             "current_status": data.get("currentStatus"),
             "age": int(data.get("age")) if data.get("age") else None,
             "highest_level_of_education": data.get("education"),
-            "current_field_of_study_or_work": data.get("currentField"),
+            "hobbies": data.get("hobbies"),
             "key_skills": data.get("keySkills", []),
             "education_details": {
                 "syllabus": data.get("educationDetails", {}).get("syllabus", ""),
                 "specialization": data.get("educationDetails", {}).get("specialization", ""),
                 "course": data.get("educationDetails", {}).get("course", "")
-            }
+            },
+            "work_experience": data.get("workExperience", [])
         }
 
         user_data_result = db.user_data.replace_one(
@@ -1196,7 +1197,7 @@ def get_profile_data():
                 'currentStatus': user_data.get('current_status', ''),
                 'age': user_data.get('age', ''),
                 'education': user_data.get('highest_level_of_education', ''),
-                'currentField': user_data.get('current_field_of_study_or_work', ''),
+                'hobbies': user_data.get('hobbies', ''),
                 'keySkills': user_data.get('key_skills', []),
                 'personalityTraits': user_data.get('personality_traits', {}),
                 'educationDetails': {
