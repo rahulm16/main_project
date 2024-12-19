@@ -21,7 +21,7 @@
         <div class="career-grid">
             {% for career in careers %}
             <div class="career-card" data-id="{{ career._id }}">
-                <h2>{{ career.career }}</h2>
+                <h2>{{ career.career }}</h2><h3>Match: {{ career.percentage }}</h3>
                 <ul>
                     {% for step in career.roadmap %}
                     <li>{{ step }}</li>

@@ -1,7 +1,7 @@
 const predefinedQuestions = [
     { question: "Hi, I am SavvyAI! I'm here to help you choose a career. Can you share what you've always dreamed of becoming?" },
-    { question: "That's great, Is there something you're passionate about or find fascinating that you'd like to explore?" },
-    { question: 'What other interests or skills would you like to develop into a career?' }
+    { question: "That's fantastic! Could you share something you're passionate about or deeply fascinated by that you'd love to explore further?" },
+    { question: 'Are there any other interests or skills you\'d like to nurture and potentially turn into a career?' }
 ];
 
 let currentQuestionIndex = 0;
@@ -108,7 +108,7 @@ async function handleUserInput() {
 
             // Hide the suggestions box after the first input
             const suggestions = document.querySelector('.suggestions');
-            //suggestions.style.display = 'none';
+            suggestions.style.display = 'none';
         }
         
         // Store user response in the appropriate property based on current question index
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         updateToggleButtonAriaLabel();
     });
     
-    const randomSuggestions = getRandomSuggestions(10);
+    const randomSuggestions = getRandomSuggestions(5);
     const suggestionsContainer = document.querySelector('.suggestions');
     suggestionsContainer.innerHTML = ''; // Clear any existing suggestions
 
