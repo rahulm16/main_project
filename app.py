@@ -17,6 +17,7 @@ import json
 import logging
 import os
 import requests
+from resume_parser import ResumeParser
 
 load_dotenv()
 app = Flask(__name__)
@@ -1331,9 +1332,42 @@ def linkdin():
     # Pass data to the template
     return render_template('linkdin.html', jobs=data, user=session.get('user'))
 
+@app.route('/api/parse-resume', methods=['POST'])
+def parse_resume():
+    if 'resume' not in request.files:
+        return jsonify({'success': False, 'message': 'No resume file uploaded'}), 400
+    
+    resume_file = request.files['resume']
+    if resume_file.filename == '':
+        return jsonify({'success': False, 'message': 'No file selected'}), 400
+    
+    if not resume_file.filename.endswith('.pdf'):
+        return jsonify({'success': False, 'message': 'Please upload a PDF file'}), 400
+    
+    try:
+        parser = ResumeParser()
+        parsed_data = parser.parse_resume(resume_file)
+        
+        if parsed_data:
+            return jsonify({
+                'success': True,
+                'education': parsed_data['education'],
+                'skills': ', '.join(parsed_data['skills']),
+                'hobbies': parsed_data['hobbies'],
+                'experience': parsed_data['experience']
+            })
+        else:
+            return jsonify({'success': False, 'message': 'Failed to parse resume'}), 500
+            
+    except Exception as e:
+        return jsonify({'success': False, 'message': str(e)}), 500
+
 
 if __name__ == "__main__":
     prompts_folder = os.path.join(os.getcwd(), 'prompts')
     if not os.path.exists(prompts_folder):
         os.makedirs(prompts_folder)
+    qr_folder = os.path.join(os.getcwd(), 'static/profile_cards')
+    if not os.path.exists(qr_folder):
+        os.makedirs(qr_folder)
     app.run(debug=True)
