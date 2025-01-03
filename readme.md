@@ -67,6 +67,13 @@ Ensure MongoDB is running by checking if it’s accessible at `localhost:27017`.
 
 ### **2. Install Requirements and Setup Environment**
 
+#### **Create a Virtual Environment**
+To create a virtual environment, run the following commands:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+```
+
 #### **Install Python Dependencies**
 To install required Python libraries, use the following:
 ```bash
