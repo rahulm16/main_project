@@ -166,10 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
     handleOtherOption(masterSpecializationSelect, document.getElementById("master-specialization-other"));
     handleOtherOption(document.getElementById("phdSpecialization"), document.getElementById("phd-specialization-other"));
 
-    document.getElementById("browseFiles").addEventListener("click", function () {
-        document.getElementById("fileInput").click();  // Trigger the file input
-    });
-
+    // Form submission including additional fields
     submitBtn.addEventListener("click", (e) => {
         e.preventDefault();
     
