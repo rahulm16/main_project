@@ -1320,4 +1320,7 @@ def linkdin():
 
 
 if __name__ == "__main__":
+    prompts_folder = os.path.join(os.getcwd(), 'prompts')
+    if not os.path.exists(prompts_folder):
+        os.makedirs(prompts_folder)
     app.run(debug=True)
