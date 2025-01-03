@@ -365,23 +365,34 @@ def save_scenario_data():
 
 def generate_questions(career_preferences):
     """ Generate aptitude questions using Mistral API with career preferences. """
+    # Prepare the content for generating technical questions
+    content = (f"Generate 15 aptitude questions divided among these career preferences: {', '.join(career_preferences.values())}. "
+               f"For each career preference:\n"
+               f"- Generate questions testing core technical knowledge\n"
+               f"- Include questions about fundamental principles and advanced concepts\n"
+               f"- Questions should range from fundamental concepts to complex technical topics\n"
+               f"- All options must be technically accurate and closely related\n"
+               f"- No hypothetical scenarios, focus on technical knowledge\n"
+               f"- Ensure equal distribution of questions across given career preferences\n"
+               f"Please format the response as a JSON array like this: [{{"
+               f"\"question\": \"Question text\","
+               f"\"options\": [\"Option A\", \"Option B\", \"Option C\", \"Option D\"],"
+               f"\"correct_answer\": \"Correct Option\","
+               f"\"for_career_preference\": \"Career preference related to the question as it is in the given data; do not change anything\""
+               f"}}].")
+
+    # Save the prompt to a file
+    prompt_file_path = os.path.join(os.getcwd(), 'prompts/fetch_questions_prompt.txt')
+    with open(prompt_file_path, 'w', encoding='utf-8') as file:
+        file.write(f"Career Preferences: {json.dumps(career_preferences, indent=2)}\n\n")
+        file.write("Prompt Content:\n")
+        file.write(content)
+    logging.info(f"Questions generation prompt written to {prompt_file_path}")
+
     messages = [
         {
             "role": "user",
-            "content": f"Generate 15 aptitude questions divided among these career preferences: {', '.join(career_preferences.values())}. "
-                       f"For each career preference:\n"
-                       f"- Generate questions testing core technical knowledge\n"
-                       f"- Include questions about fundamental principles and advanced concepts\n"
-                       f"- Questions should range from fundamental concepts to complex technical topics\n"
-                       f"- All options must be technically accurate and closely related\n"
-                       f"- No hypothetical scenarios, focus on technical knowledge\n"
-                       f"- Ensure equal distribution of questions across given career preferences\n"
-                       f"Please format the response as a JSON array like this: [{{"
-                       f"\"question\": \"Question text\","
-                       f"\"options\": [\"Option A\", \"Option B\", \"Option C\", \"Option D\"],"
-                       f"\"correct_answer\": \"Correct Option\","
-                       f"\"for_career_preference\": \"Career preference related to the question as it is in the given data; do not change anything\""
-                       f"}}]."
+            "content": content
         }
     ]
 
@@ -636,7 +647,7 @@ def fetch_suggestions():
                f"\"nptel_keywords\": [\"keyword1\", \"keyword2\", \"keyword3\", \"keyword4\", \"keyword5\"]}}].")
 
     # Write content to a .txt file
-    file_path = os.path.join(os.getcwd(), 'api_request_content.txt')
+    file_path = os.path.join(os.getcwd(), 'prompts/fetch_suggestions_prompt.txt')
     with open(file_path, 'w', encoding='utf-8') as file:
         file.write(content)
     logging.info(f"API request content written to {file_path}")
@@ -834,33 +845,39 @@ def fetch_detailed_layout():
             }
 
             # Prepare the API request content for each career
-            content = (f"For the career path: {career['career']}, "
-                      f"Please generate a JSON structure for a web page layout or content presentation. The JSON should include the following components:"
-                      f"Heading: A title or heading of the page or content section."
-                      f"Container: A main container divided into sections (e.g., columns, blocks, or regions):"
-                      f"Left Column: An array of items or cards with the following structure:"
-                      f"id: A unique identifier for each item/card."
-                      f"title: The title or name of the item/card."
-                      f"matches: A list of related item IDs or references."
-                      f"content: A list of text content or descriptions for each item (e.g., bullet points or key information). There should be minimum 3 points of 15 words"
-                      f"Middle Column: An array of items (e.g., flowchart, timeline, steps) this should be headings to pursue that career with the following structure:"
-                      f"id: A unique identifier for each item."
-                      f"title: A title or label for the item. Minimum of 6 titles"
-                      f"tooltip: A description or additional info about the item."
-                      f"Right Column: An array of items or cards with the same structure as the left column:"
-                      f"id: A unique identifier for each item/card."
-                      f"title: The title or name of the item/card."
-                      f"matches: A list of related item IDs or references. The matches array in left column and right column matches to the id in middle column"
-                      f"content: A list of text content or descriptions for each item (e.g., bullet points or key information). There should be minimum 3 points of 15 words"
-                      f"Format: The JSON output should be structured as follows: {json_format}"
-                      f"In the structure:"
-                      f"heading: The main title or header for the page."
-                      f"container: Contains three sections:"
-                      f"leftColumn: A list of cards or blocks for content or information. the string values of id should be l1, l2, l3 like that"
-                      f"middleColumn: A list of items such as a flowchart, steps, or milestones with descriptive tooltips. the string values of id should be m1, m2, m3 like that"
-                      f"rightColumn: Another list of cards or blocks for related content or career options. the string values of id should be r1, r2, r3 like that"
-                      f"there should be minimum 5 cards in both left and right column"
-                      f"The structure should be flexible and generic enough to accommodate different types of web content layouts, such as educational paths, career advice, product info, etc.")
+            content = (f"For the career path: {career['career']}, \n\n"
+                      f"Please generate a JSON structure for a web page layout or content presentation. The JSON should include the following components:\n"
+                      f"Heading: A title or heading of the page or content section.\n"
+                      f"Container: A main container divided into sections (e.g., columns, blocks, or regions):\n\n"
+                      f"Left Column: An array of items or cards with the following structure:\n\n"
+                      f"id: A unique identifier for each item/card.\n"
+                      f"title: The title or name of the item/card.\n"
+                      f"matches: A list of related item IDs or references.\n"
+                      f"content: A list of text content or descriptions for each item (e.g., bullet points or key information). There should be minimum 3 points of 15 words\n"
+                      f"Middle Column: An array of items (e.g., flowchart, timeline, steps) this should be headings to pursue that career with the following structure:\n"
+                      f"id: A unique identifier for each item.\n"
+                      f"title: A title or label for the item. Minimum of 6 titles\n"
+                      f"tooltip: A description or additional info about the item.\n"
+                      f"Right Column: An array of items or cards with the same structure as the left column:\n"
+                      f"id: A unique identifier for each item/card.\n"
+                      f"title: The title or name of the item/card.\n"
+                      f"matches: A list of related item IDs or references. The matches array in left column and right column matches to the id in middle column\n"
+                      f"content: A list of text content or descriptions for each item (e.g., bullet points or key information). There should be minimum 3 points of 15 words\n"
+                      f"Format: The JSON output should be structured as follows:\n\n {json_format}\n\n"
+                      f"In the structure:\n"
+                      f"heading: The main title or header for the page.\n"
+                      f"container: Contains three sections:\n"
+                      f"leftColumn: A list of cards or blocks for content or information. the string values of id should be l1, l2, l3 like that\n"
+                      f"middleColumn: A list of items such as a flowchart, steps, or milestones with descriptive tooltips. the string values of id should be m1, m2, m3 like that\n"
+                      f"rightColumn: Another list of cards or blocks for related content or career options. the string values of id should be r1, r2, r3 like that\n"
+                      f"there should be minimum 5 cards in both left and right column\n"
+                      f"The structure should be flexible and generic enough to accommodate different types of web content layouts, such as educational paths, career advice, product info, etc.\n")
+
+            # Save the prompt to a file
+            prompt_file_path = os.path.join(os.getcwd(), f'prompts/fetch_layout_prompt_{career["career"]}.txt')
+            with open(prompt_file_path, 'w', encoding='utf-8') as file:
+                file.write(content)
+            logging.info(f"Layout generation prompt written to {prompt_file_path}")
 
             try:
                 chat_response = mistral_client.chat.complete(
@@ -896,7 +913,7 @@ def fetch_detailed_layout():
             except Exception as e:
                 logging.error(f"Error processing career {career['career']}: {e}")
                 continue
-
+        
         # Save all layouts to MongoDB after processing all careers
         if layout_data_list:
             try:
