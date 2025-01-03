@@ -609,7 +609,7 @@ def fetch_suggestions():
         "current status": doc1["current_status"],
         "age": doc1["age"],
         "Education pursuing": doc1["highest_level_of_education"],
-        "Current field of study or work": doc1["hobbies"],
+        "hobbies": doc1["hobbies"],  
         "Key skills": doc1["key_skills"],
         "Work Experience": doc1["work_experience"]
     }
