@@ -65,7 +65,25 @@ Ensure MongoDB is running by checking if it’s accessible at `localhost:27017`.
 
 ---
 
-### **2. Run the Flask Application**
+### **2. Install Requirements and Setup Environment**
+
+#### **Install Python Dependencies**
+To install required Python libraries, use the following:
+```bash
+pip install -r requirements.txt
+```
+
+#### **Setup Environment Variables**
+Create a `.env` file in the project root directory and add the following environment variables:
+```properties
+FLASK_APP="app.py"
+API_KEY="your_mistralai_api_key"
+MONGO_URI="mongodb://localhost:27017/"
+```
+
+Replace `your_mistralai_api_key` with your actual API key.
+
+### **3. Run the Flask Application**
 
 #### **Install Python Dependencies**
 To install required Python libraries, use the following:
@@ -84,7 +102,7 @@ Visit `http://localhost:5000` in your browser to use the SavvyAI system.
 
 ---
 
-### **3. Integrating APIs**
+### **4. Integrating APIs**
 
 #### **Mistralai API**
 - Obtain an API key from Mistralai’s developer portal.
