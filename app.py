@@ -364,7 +364,12 @@ def save_scenario_data():
         return jsonify({'status': 'error', 'message': 'Failed to save scenario data.'}), 500
 
 def generate_questions(career_preferences):
-    """ Generate aptitude questions using Mistral API with career preferences. """
+    """ Generate aptitude questions using Mistral API with career preferences and user data. """
+    # Fetch the user data from the database
+    user = mongo.db.user_data.find_one()
+    if not user:
+        return "User data not found.", 404
+
     # Prepare the content for generating technical questions
     content = (f"Generate 15 aptitude questions divided among these career preferences: {', '.join(career_preferences.values())}. "
                f"For each career preference:\n"
@@ -374,6 +379,14 @@ def generate_questions(career_preferences):
                f"- All options must be technically accurate and closely related\n"
                f"- No hypothetical scenarios, focus on technical knowledge\n"
                f"- Ensure equal distribution of questions across given career preferences\n"
+               f"Consider the following user data while generating questions:\n"
+               f"Age: {user.get('age')}\n"
+               f"Current Status: {user.get('current_status')}\n"
+               f"Highest Level of Education: {user.get('highest_level_of_education')}\n"
+               f"Key Skills: {', '.join(user.get('key_skills', []))}\n"
+               f"Education Details: Syllabus: {user.get('education_details', {}).get('syllabus', '')}, "
+               f"Specialization: {user.get('education_details', {}).get('specialization', '')}, "
+               f"Course: {user.get('education_details', {}).get('course', '')}\n"
                f"Please format the response as a JSON array like this: [{{"
                f"\"question\": \"Question text\","
                f"\"options\": [\"Option A\", \"Option B\", \"Option C\", \"Option D\"],"
@@ -596,7 +609,7 @@ def fetch_suggestions():
         "current status": doc1["current_status"],
         "age": doc1["age"],
         "Education pursuing": doc1["highest_level_of_education"],
-        "Current field of study or work": doc1["hobbies"],
+        "hobbies": doc1["hobbies"],  
         "Key skills": doc1["key_skills"],
         "Work Experience": doc1["work_experience"]
     }
