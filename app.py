@@ -373,12 +373,29 @@ def save_scenario_data():
         logging.error(f"Error saving scenario data: {e}")
         return jsonify({'status': 'error', 'message': 'Failed to save scenario data.'}), 500
 
+def clear_prompts_directory():
+    """Clear all files in the prompts directory."""
+    prompts_dir = os.path.join(os.getcwd(), 'prompts')
+    if os.path.exists(prompts_dir):
+        for file in os.listdir(prompts_dir):
+            file_path = os.path.join(prompts_dir, file)
+            try:
+                if os.path.isfile(file_path):
+                    os.unlink(file_path)
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)
+            except Exception as e:
+                logging.error(f"Error clearing prompts file {file_path}: {e}")
+
 def generate_questions(career_preferences):
     """ Generate aptitude questions using Mistral API with career preferences and user data. """
     # Fetch the user data from the database
     user = mongo.db.user_data.find_one()
     if not user:
         return "User data not found.", 404
+
+    # Clear the prompts directory before saving new prompt
+    clear_prompts_directory()
 
     # Prepare the content for generating technical questions
     content = (f"Generate 15 aptitude questions divided among these career preferences: {', '.join(career_preferences.values())}. "
