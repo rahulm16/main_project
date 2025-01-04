@@ -18,6 +18,7 @@ import logging
 import os
 import requests
 from resume_parser import ResumeParser
+import shutil  # Add this import at the top with other imports
 
 load_dotenv()
 app = Flask(__name__)
@@ -372,12 +373,29 @@ def save_scenario_data():
         logging.error(f"Error saving scenario data: {e}")
         return jsonify({'status': 'error', 'message': 'Failed to save scenario data.'}), 500
 
+def clear_prompts_directory():
+    """Clear all files in the prompts directory."""
+    prompts_dir = os.path.join(os.getcwd(), 'prompts')
+    if os.path.exists(prompts_dir):
+        for file in os.listdir(prompts_dir):
+            file_path = os.path.join(prompts_dir, file)
+            try:
+                if os.path.isfile(file_path):
+                    os.unlink(file_path)
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)
+            except Exception as e:
+                logging.error(f"Error clearing prompts file {file_path}: {e}")
+
 def generate_questions(career_preferences):
     """ Generate aptitude questions using Mistral API with career preferences and user data. """
     # Fetch the user data from the database
     user = mongo.db.user_data.find_one()
     if not user:
         return "User data not found.", 404
+
+    # Clear the prompts directory before saving new prompt
+    clear_prompts_directory()
 
     # Prepare the content for generating technical questions
     content = (f"Generate 15 aptitude questions divided among these career preferences: {', '.join(career_preferences.values())}. "
@@ -1340,6 +1358,20 @@ def linkdin():
     # Pass data to the template
     return render_template('linkdin.html', jobs=data, user=session.get('user'))
 
+def clear_temp_directory():
+    """Clear all files in the temp directory."""
+    temp_dir = os.path.join(os.getcwd(), 'temp')
+    if os.path.exists(temp_dir):
+        for file in os.listdir(temp_dir):
+            file_path = os.path.join(temp_dir, file)
+            try:
+                if os.path.isfile(file_path):
+                    os.unlink(file_path)
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)
+            except Exception as e:
+                logging.error(f"Error clearing temp file {file_path}: {e}")
+
 @app.route('/api/parse-resume', methods=['POST'])
 def parse_resume():
     if 'resume' not in request.files:
@@ -1353,6 +1385,9 @@ def parse_resume():
         return jsonify({'success': False, 'message': 'Please upload a PDF file'}), 400
     
     try:
+        # Clear temp directory before saving new file
+        clear_temp_directory()
+        
         parser = ResumeParser()
         # Save the uploaded file temporarily
         resume_path = os.path.join('temp', secure_filename(resume_file.filename))
