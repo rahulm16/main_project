@@ -752,7 +752,7 @@ def show_suggestions():
     # Retrieve suggestions from MongoDB
     suggestions = mongo.db.career_suggestions.find()
     suggestions_list = list(suggestions)  # Convert cursor to list
-    return render_template('suggestions.html', suggestions=suggestions_list, user=session.get('user'))
+    return render_template('suggestions.html', show_hamburger_menu=True, suggestions=suggestions_list, user=session.get('user'))
 
 @app.route('/update-nptel-courses')
 def update_nptel_courses():
@@ -1323,7 +1323,7 @@ def scenario_chatbot():
 
 @app.route('/policies')
 def policies():
-    return render_template('policy.html', user=session.get('user'))
+    return render_template('policy.html', show_hamburger_menu=True, user=session.get('user'))
 
 @app.route('/linkdin')
 def linkdin():
