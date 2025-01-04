@@ -1,16 +1,8 @@
 import PyPDF2
 import re
-from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
-import nltk
-
-# Download NLTK data
-nltk.download('punkt')
-nltk.download('stopwords')
 
 class ResumeParser:
     def __init__(self):
-        self.stop_words = set(stopwords.words('english'))
         
         # Define section keywords
         self.section_keywords = {

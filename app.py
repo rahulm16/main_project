@@ -18,6 +18,7 @@ import logging
 import os
 import requests
 from resume_parser import ResumeParser
+import shutil  # Add this import at the top with other imports
 
 load_dotenv()
 app = Flask(__name__)
@@ -1340,6 +1341,20 @@ def linkdin():
     # Pass data to the template
     return render_template('linkdin.html', jobs=data, user=session.get('user'))
 
+def clear_temp_directory():
+    """Clear all files in the temp directory."""
+    temp_dir = os.path.join(os.getcwd(), 'temp')
+    if os.path.exists(temp_dir):
+        for file in os.listdir(temp_dir):
+            file_path = os.path.join(temp_dir, file)
+            try:
+                if os.path.isfile(file_path):
+                    os.unlink(file_path)
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)
+            except Exception as e:
+                logging.error(f"Error clearing temp file {file_path}: {e}")
+
 @app.route('/api/parse-resume', methods=['POST'])
 def parse_resume():
     if 'resume' not in request.files:
@@ -1353,6 +1368,9 @@ def parse_resume():
         return jsonify({'success': False, 'message': 'Please upload a PDF file'}), 400
     
     try:
+        # Clear temp directory before saving new file
+        clear_temp_directory()
+        
         parser = ResumeParser()
         # Save the uploaded file temporarily
         resume_path = os.path.join('temp', secure_filename(resume_file.filename))
