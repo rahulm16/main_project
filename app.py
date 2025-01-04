@@ -69,27 +69,56 @@ def profile():
 
 @app.route('/api/save_user_data', methods=['POST'])
 def save_user_data():
-    user_data = request.json  # Get data from the request
+    try:
+        user_data = request.json
 
-    # Validate the incoming data
-    required_fields = ["current_status", "age", "highest_level_of_education",
-                       "hobbies", "key_skills"]
-    missing_fields = [field for field in required_fields if field not in user_data]
-    if missing_fields:
-        return jsonify({'status': 'error', 'message': f'Missing fields: {", ".join(missing_fields)}'}), 400
+        # Validate the incoming data
+        required_fields = ["current_status", "age"]
+        missing_fields = [field for field in required_fields if field not in user_data]
+        if missing_fields:
+            return jsonify({
+                'status': 'error', 
+                'message': f'Missing required fields: {", ".join(missing_fields)}'
+            }), 400
 
-    # Insert data into MongoDB collection 'user_data'
-    mongo.db.user_data.insert_one(user_data)
+        # Ensure all fields exist with default values if not provided
+        processed_data = {
+            "current_status": user_data.get("current_status"),
+            "age": user_data.get("age"),
+            "highest_level_of_education": user_data.get("highest_level_of_education", ""),
+            "hobbies": user_data.get("hobbies", ""),
+            "key_skills": user_data.get("key_skills", []) or [],  # Convert empty string to empty list
+            "education_details": user_data.get("education_details", {}),
+            "work_experience": user_data.get("work_experience", "")
+        }
 
-    # Save social links separately
-    social_links = {
-        "email": session.get('user', {}).get('email'),
-        "linkedin_link": user_data.get("linkedin_link"),
-        "github_link": user_data.get("github_link")
-    }
-    mongo.db.social_links.replace_one({"email": social_links["email"]}, social_links, upsert=True)
+        # Insert data into MongoDB collection 'user_data'
+        mongo.db.user_data.insert_one(processed_data)
 
-    return jsonify({'status': 'success', 'message': 'User data successfully saved.'}), 200
+        # Save social links separately if they exist
+        if user_data.get("linkedin_link") or user_data.get("github_link"):
+            social_links = {
+                "email": session.get('user', {}).get('email'),
+                "linkedin_link": user_data.get("linkedin_link", ""),
+                "github_link": user_data.get("github_link", "")
+            }
+            mongo.db.social_links.replace_one(
+                {"email": social_links["email"]}, 
+                social_links, 
+                upsert=True
+            )
+
+        return jsonify({
+            'status': 'success', 
+            'message': 'User data successfully saved.'
+        }), 200
+
+    except Exception as e:
+        logging.error(f"Error saving user data: {str(e)}")
+        return jsonify({
+            'status': 'error',
+            'message': f'An error occurred while saving user data: {str(e)}'
+        }), 500
 
 @app.route('/choices')
 def choices():

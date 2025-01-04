@@ -175,18 +175,60 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
     
         const status = document.querySelector('input[name="status"]:checked')?.value;
-    
-        const formData = {
+        
+        // Get education details based on extracted resume data for professionals
+        let formData = {
             current_status: status,
             age: +document.getElementById("age").value,
-            highest_level_of_education: document.getElementById("preview-education").value,
-            hobbies: document.getElementById("preview-hobbies").value,
-            key_skills: document.getElementById("preview-skills").value.split(',').map(skill => skill.trim()),
-            work_experience: document.getElementById("preview-experience").value,
+            highest_level_of_education: "",
+            hobbies: "",
+            key_skills: [],
+            work_experience: "",
             education_details: {},
-            linkedin_link: document.getElementById("preview-linkedin").value,
-            github_link: document.getElementById("preview-github").value
+            linkedin_link: "",
+            github_link: ""
         };
+    
+        if (status === "professional") {
+            // For professionals, get data from preview fields
+            formData.highest_level_of_education = document.getElementById("preview-education").value;
+            formData.hobbies = document.getElementById("preview-hobbies").value;
+            formData.key_skills = document.getElementById("preview-skills").value.split(',').map(skill => skill.trim()).filter(skill => skill);
+            formData.work_experience = document.getElementById("preview-experience").value;
+            formData.linkedin_link = document.getElementById("preview-linkedin").value;
+            formData.github_link = document.getElementById("preview-github").value;
+        } else {
+            // For students, get data from form fields
+            formData.highest_level_of_education = document.getElementById("education").value;
+            formData.hobbies = document.getElementById("hobbies").value;
+            formData.key_skills = document.getElementById("skills").value.split(',').map(skill => skill.trim()).filter(skill => skill);
+            
+            // Get education details based on education level
+            const educationLevel = document.getElementById("education").value;
+            if (educationLevel === "highschool") {
+                const syllabus = document.getElementById("syllabus").value;
+                formData.education_details.syllabus = syllabus === "other" ? 
+                    document.getElementById("syllabus-other").value : syllabus;
+            } else if (educationLevel === "bachelor") {
+                const specialization = document.getElementById("bachelorSpecialization").value;
+                const course = document.getElementById("bachelorCourse").value;
+                formData.education_details.specialization = specialization === "other" ? 
+                    document.getElementById("bachelor-specialization-other").value : specialization;
+                formData.education_details.course = course === "other" ? 
+                    document.getElementById("bachelor-course-other").value : course;
+            } else if (educationLevel === "master") {
+                const specialization = document.getElementById("masterSpecialization").value;
+                const course = document.getElementById("masterCourse").value;
+                formData.education_details.specialization = specialization === "other" ? 
+                    document.getElementById("master-specialization-other").value : specialization;
+                formData.education_details.course = course === "other" ? 
+                    document.getElementById("master-course-other").value : course;
+            } else if (educationLevel === "phd") {
+                const specialization = document.getElementById("phdSpecialization").value;
+                formData.education_details.specialization = specialization === "other" ? 
+                    document.getElementById("phd-specialization-other").value : specialization;
+            }
+        }
     
         // Send the form data to the server
         fetch("/api/save_user_data", {
@@ -200,6 +242,8 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {
             if (data.status === 'success') {
                 window.location.href = "/aptitude";
+            } else {
+                console.error('Error:', data.message);
             }
         })
         .catch(error => console.error('Error:', error));
