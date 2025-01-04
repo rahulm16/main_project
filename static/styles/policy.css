@@ -45,7 +45,7 @@ html{
     overflow: auto;
 }
 
-h1 {
+h1.gradient-text {
     background: linear-gradient(90deg, var(--secondary-color), var(--tertiary-color));
     -webkit-background-clip: text;
     background-clip: text;
