@@ -3,3 +3,6 @@ __pycache__
 .env
 static/profile_cards/qrcode.png
 prompts
+resume_txt
+temp
+parser.py

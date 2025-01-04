@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     const steps = document.querySelectorAll(".form-step");
-    const nextBtns = document.querySelectorAll("#next-btn");
-    const prevBtns = document.querySelectorAll("#prev-btn");
-    const submitBtn = document.getElementById("submit-btn");
+    const nextBtns = document.querySelectorAll(".next-btn");
+    const prevBtns = document.querySelectorAll(".prev-btn");
+    const submitBtn = document.querySelector(".submit-btn");
     let currentStep = 0;
 
     const ageInput = document.getElementById("age");
@@ -106,8 +106,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     submitBtn.click();
                     return;
                 } else if (status && status.value === "professional") {
-                    currentStep = 2; // Move to Step 3 (Work Experience)
+                    currentStep = 2; // Move to Step 2 (Resume Upload)
                 }
+            } else if (currentStep === 2 && status && status.value === "professional") {
+                currentStep = 3; // Move to Step 3 (Extracted Information)
             }
             showStep(currentStep);
         });
@@ -122,6 +124,8 @@ document.addEventListener("DOMContentLoaded", () => {
             else if (currentStep === 1) currentStep = 0; // Go back to Step 1
             else if (currentStep === 2) {
                 currentStep = (status && status.value === "professional") ? 1 : 0;
+            } else if (currentStep === 3) {
+                currentStep = 2; // Go back to Step 2 (Resume Upload)
             }
             showStep(currentStep);
         });
@@ -175,38 +179,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const formData = {
             current_status: status,
             age: +document.getElementById("age").value,
-            highest_level_of_education: educationInput.value,
-            hobbies: document.getElementById("hobbies").value, // Assuming hobbies is an input field
-            key_skills: document.getElementById("skills").value.split(',').map(skill => skill.trim()), // Convert to an array
-            work_experience: status === "professional" ? document.getElementById("workExperience").value : "N/A", // Default work experience for student
-    
-            // Add education details dynamically based on the selected education level
-            education_details: {}
+            highest_level_of_education: document.getElementById("preview-education").value,
+            hobbies: document.getElementById("preview-hobbies").value,
+            key_skills: document.getElementById("preview-skills").value.split(',').map(skill => skill.trim()),
+            work_experience: document.getElementById("preview-experience").value,
+            education_details: {},
+            linkedin_link: document.getElementById("preview-linkedin").value,
+            github_link: document.getElementById("preview-github").value
         };
-    
-        if (educationInput.value === "highschool") {
-            formData.education_details.syllabus = document.getElementById("syllabus").value === "other" 
-                ? document.getElementById("syllabus-other").value 
-                : document.getElementById("syllabus").value;
-        } else if (educationInput.value === "bachelor") {
-            formData.education_details.specialization = document.getElementById("bachelorSpecialization").value === "other" 
-                ? document.getElementById("bachelor-specialization-other").value 
-                : document.getElementById("bachelorSpecialization").value;
-            formData.education_details.course = bachelorCourseSelect.value === "other" 
-                ? document.getElementById("bachelor-course-other").value 
-                : bachelorCourseSelect.value;
-        } else if (educationInput.value === "master") {
-            formData.education_details.specialization = document.getElementById("masterSpecialization").value === "other" 
-                ? document.getElementById("master-specialization-other").value 
-                : document.getElementById("masterSpecialization").value;
-            formData.education_details.course = masterCourseSelect.value === "other" 
-                ? document.getElementById("master-course-other").value 
-                : masterCourseSelect.value;
-        } else if (educationInput.value === "phd") {
-            formData.education_details.specialization = document.getElementById("phdSpecialization").value === "other" 
-                ? document.getElementById("phd-specialization-other").value 
-                : document.getElementById("phdSpecialization").value;
-        }
     
         // Send the form data to the server
         fetch("/api/save_user_data", {
@@ -225,6 +205,147 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(error => console.error('Error:', error));
     });   
 
+    // Add handlers for professional vs student forms
+    const professionalForm = document.getElementById("professional-form");
+    const studentForm = document.getElementById("student-form");
+    const resumeInput = document.getElementById("resume");
+    const previewContainer = document.querySelector(".preview-container");
+
+    // Show/hide appropriate form based on status selection
+    document.querySelectorAll('input[name="status"]').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            if (e.target.value === "professional") {
+                professionalForm.style.display = "block";
+                studentForm.style.display = "none";
+            } else {
+                professionalForm.style.display = "none";
+                studentForm.style.display = "block";
+            }
+        });
+    });
+
+    // Handle resume upload
+    resumeInput.addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const formData = new FormData();
+            formData.append('resume', file);
+
+            try {
+                const response = await fetch('/api/parse-resume', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    // Show preview container and populate fields
+                    previewContainer.style.display = "block";
+                    document.getElementById("preview-education").value = data.education;
+                    document.getElementById("preview-hobbies").value = data.hobbies;
+                    document.getElementById("preview-skills").value = data.skills;
+                    document.getElementById("preview-experience").value = data.experience;
+                    document.getElementById("preview-linkedin").value = data.linkedin;
+                    document.getElementById("preview-github").value = data.github;
+                }
+            } catch (error) {
+                console.error('Error parsing resume:', error);
+            }
+        }
+    });
+
+    // File Upload Handling
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('resume');
+    const fileDetails = document.querySelector('.file-details');
+    const fileName = document.querySelector('.file-name');
+    const removeButton = document.querySelector('.remove-file');
+
+    // Prevent default drag behaviors
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, preventDefaults, false);
+        document.body.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    // Highlight drop zone when dragging over it
+    ['dragenter', 'dragover'].forEach(eventName => {
+        dropZone.addEventListener(eventName, highlight, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, unhighlight, false);
+    });
+
+    function highlight(e) {
+        dropZone.classList.add('dragover');
+    }
+
+    function unhighlight(e) {
+        dropZone.classList.remove('dragover');
+    }
+
+    // Handle dropped files
+    dropZone.addEventListener('drop', handleDrop, false);
+
+    function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        handleFiles(files);
+    }
+
+    function handleFiles(files) {
+        if (files.length > 0) {
+            const file = files[0];
+            if (file.type === 'application/pdf') {
+                fileInput.files = files;
+                showFileDetails(file);
+            } else {
+                alert('Please upload a PDF file');
+            }
+        }
+    }
+
+    // Handle manual file selection
+    fileInput.addEventListener('change', function(e) {
+        if (this.files.length > 0) {
+            showFileDetails(this.files[0]);
+        }
+    });
+
+    function showFileDetails(file) {
+        const dropZone = document.querySelector('.file-upload-area');
+        const selectedFile = document.querySelector('.selected-file');
+        const fileName = document.querySelector('.file-name');
+        
+        fileName.textContent = file.name;
+        selectedFile.style.display = 'block';
+        dropZone.style.display = 'none'; // Hide the drop zone
+    }
+
+    // Handle file removal
+    document.querySelector('.remove-file').addEventListener('click', function() {
+        const fileInput = document.getElementById('resume');
+        const selectedFile = document.querySelector('.selected-file');
+        const dropZone = document.querySelector('.file-upload-area');
+        
+        fileInput.value = '';
+        selectedFile.style.display = 'none';
+        dropZone.style.display = 'flex'; // Show the drop zone again
+        
+        // Reset the preview container if it exists
+        const previewContainer = document.querySelector('.preview-container');
+        if (previewContainer) {
+            const previewFields = previewContainer.querySelectorAll('.preview-field');
+            previewFields.forEach(field => field.value = '');
+            previewContainer.style.display = 'none';
+        }
+    });
+    
     // Initialize the form to show the first step
     showStep(currentStep);
 });

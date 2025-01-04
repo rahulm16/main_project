@@ -422,3 +422,8 @@ input, textarea {
 .profile-card .profile-text {
     line-height: 1.5;
 }
+
+.work_exp_po{
+    max-width: 800px;
+    min-height: 100px;
+}

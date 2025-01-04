@@ -35,7 +35,10 @@ After gathering and analyzing the data, the system generates:
 - **Career Options**: Personalized career paths based on user’s skills and aspirations.
 - **Skill Development**: Suggestions for courses, certifications, and professional networks based on **LinkedIn data**.
 
-### **5. Continuous Learning**
+### **5. Resume Upload**
+Users can upload their resumes in PDF format. The system parses the resume to extract education, skills, hobbies, and work experience, which are then used to enhance career recommendations.
+
+### **6. Continuous Learning**
 SavvyAI helps users continue to develop their careers by:
 - **Skill Gap Analysis**: Identifying areas for improvement and recommending appropriate educational resources.
 - **Progression Guidance**: Offering continuous support as users progress in their career journey.
@@ -62,7 +65,32 @@ Ensure MongoDB is running by checking if it’s accessible at `localhost:27017`.
 
 ---
 
-### **2. Run the Flask Application**
+### **2. Install Requirements and Setup Environment**
+
+#### **Create a Virtual Environment**
+To create a virtual environment, run the following commands:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+```
+
+#### **Install Python Dependencies**
+To install required Python libraries, use the following:
+```bash
+pip install -r requirements.txt
+```
+
+#### **Setup Environment Variables**
+Create a `.env` file in the project root directory and add the following environment variables:
+```properties
+FLASK_APP="app.py"
+API_KEY="your_mistralai_api_key"
+MONGO_URI="mongodb://localhost:27017/"
+```
+
+Replace `your_mistralai_api_key` with your actual API key.
+
+### **3. Run the Flask Application**
 
 #### **Install Python Dependencies**
 To install required Python libraries, use the following:
@@ -81,7 +109,7 @@ Visit `http://localhost:5000` in your browser to use the SavvyAI system.
 
 ---
 
-### **3. Integrating APIs**
+### **4. Integrating APIs**
 
 #### **Mistralai API**
 - Obtain an API key from Mistralai’s developer portal.

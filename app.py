@@ -17,6 +17,7 @@ import json
 import logging
 import os
 import requests
+from resume_parser import ResumeParser
 
 load_dotenv()
 app = Flask(__name__)
@@ -78,6 +79,14 @@ def save_user_data():
 
     # Insert data into MongoDB collection 'user_data'
     mongo.db.user_data.insert_one(user_data)
+
+    # Save social links separately
+    social_links = {
+        "email": session.get('user', {}).get('email'),
+        "linkedin_link": user_data.get("linkedin_link"),
+        "github_link": user_data.get("github_link")
+    }
+    mongo.db.social_links.replace_one({"email": social_links["email"]}, social_links, upsert=True)
 
     return jsonify({'status': 'success', 'message': 'User data successfully saved.'}), 200
 
@@ -1331,9 +1340,51 @@ def linkdin():
     # Pass data to the template
     return render_template('linkdin.html', jobs=data, user=session.get('user'))
 
+@app.route('/api/parse-resume', methods=['POST'])
+def parse_resume():
+    if 'resume' not in request.files:
+        return jsonify({'success': False, 'message': 'No resume file uploaded'}), 400
+    
+    resume_file = request.files['resume']
+    if resume_file.filename == '':
+        return jsonify({'success': False, 'message': 'No file selected'}), 400
+    
+    if not resume_file.filename.endswith('.pdf'):
+        return jsonify({'success': False, 'message': 'Please upload a PDF file'}), 400
+    
+    try:
+        parser = ResumeParser()
+        # Save the uploaded file temporarily
+        resume_path = os.path.join('temp', secure_filename(resume_file.filename))
+        resume_file.save(resume_path)
+
+        parsed_data = parser.parse_resume(resume_path)
+        
+        if parsed_data:
+            return jsonify({
+                'success': True,
+                'education': ', '.join(parsed_data['education']),
+                'skills': ', '.join(parsed_data['skills']),
+                'hobbies': parsed_data['hobbies'],
+                'experience': parsed_data['experience'],
+                'linkedin': parsed_data['linkedin'],
+                'github': parsed_data['github']
+            })
+        else:
+            return jsonify({'success': False, 'message': 'Failed to parse resume'}), 500
+            
+    except Exception as e:
+        return jsonify({'success': False, 'message': str(e)}), 500
+
 
 if __name__ == "__main__":
     prompts_folder = os.path.join(os.getcwd(), 'prompts')
     if not os.path.exists(prompts_folder):
         os.makedirs(prompts_folder)
+    qr_folder = os.path.join(os.getcwd(), 'static/profile_cards')
+    if not os.path.exists(qr_folder):
+        os.makedirs(qr_folder)
+    resume_upload = os.path.join(os.getcwd(), 'temp')
+    if not os.path.exists(resume_upload):
+        os.makedirs(resume_upload)
     app.run(debug=True)
