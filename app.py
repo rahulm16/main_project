@@ -80,6 +80,14 @@ def save_user_data():
     # Insert data into MongoDB collection 'user_data'
     mongo.db.user_data.insert_one(user_data)
 
+    # Save social links separately
+    social_links = {
+        "email": session.get('user', {}).get('email'),
+        "linkedin_link": user_data.get("linkedin_link"),
+        "github_link": user_data.get("github_link")
+    }
+    mongo.db.social_links.replace_one({"email": social_links["email"]}, social_links, upsert=True)
+
     return jsonify({'status': 'success', 'message': 'User data successfully saved.'}), 200
 
 @app.route('/choices')
@@ -1346,15 +1354,21 @@ def parse_resume():
     
     try:
         parser = ResumeParser()
-        parsed_data = parser.parse_resume(resume_file)
+        # Save the uploaded file temporarily
+        resume_path = os.path.join('temp', secure_filename(resume_file.filename))
+        resume_file.save(resume_path)
+
+        parsed_data = parser.parse_resume(resume_path)
         
         if parsed_data:
             return jsonify({
                 'success': True,
-                'education': parsed_data['education'],
+                'education': ', '.join(parsed_data['education']),
                 'skills': ', '.join(parsed_data['skills']),
                 'hobbies': parsed_data['hobbies'],
-                'experience': parsed_data['experience']
+                'experience': parsed_data['experience'],
+                'linkedin': parsed_data['linkedin'],
+                'github': parsed_data['github']
             })
         else:
             return jsonify({'success': False, 'message': 'Failed to parse resume'}), 500
@@ -1370,4 +1384,7 @@ if __name__ == "__main__":
     qr_folder = os.path.join(os.getcwd(), 'static/profile_cards')
     if not os.path.exists(qr_folder):
         os.makedirs(qr_folder)
+    resume_upload = os.path.join(os.getcwd(), 'temp')
+    if not os.path.exists(resume_upload):
+        os.makedirs(resume_upload)
     app.run(debug=True)

@@ -183,7 +183,9 @@ document.addEventListener("DOMContentLoaded", () => {
             hobbies: document.getElementById("preview-hobbies").value,
             key_skills: document.getElementById("preview-skills").value.split(',').map(skill => skill.trim()),
             work_experience: document.getElementById("preview-experience").value,
-            education_details: {}
+            education_details: {},
+            linkedin_link: document.getElementById("preview-linkedin").value,
+            github_link: document.getElementById("preview-github").value
         };
     
         // Send the form data to the server
@@ -243,6 +245,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     document.getElementById("preview-hobbies").value = data.hobbies;
                     document.getElementById("preview-skills").value = data.skills;
                     document.getElementById("preview-experience").value = data.experience;
+                    document.getElementById("preview-linkedin").value = data.linkedin;
+                    document.getElementById("preview-github").value = data.github;
                 }
             } catch (error) {
                 console.error('Error parsing resume:', error);

@@ -308,6 +308,12 @@ input[type="radio"]:hover {
     max-width: 550px;
 }
 
+#preview-experience{
+    min-height: 150px;
+    background-color: var(--input-bg-color); /* Darker background */
+    color: var(--text-color);
+}
+
 /* Primary Button Styles */
 .next-btn, .prev-btn, .submit-btn {
     padding: 12px 20px; /* Balanced padding */

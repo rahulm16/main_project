@@ -1,28 +1,35 @@
 import PyPDF2
-import nltk
 import re
-from nltk.tokenize import word_tokenize, sent_tokenize
+from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
+import nltk
 
-# Download required NLTK data
+# Download NLTK data
 nltk.download('punkt')
 nltk.download('stopwords')
-nltk.download('averaged_perceptron_tagger')
 
 class ResumeParser:
     def __init__(self):
         self.stop_words = set(stopwords.words('english'))
         
-        # Keywords for different sections
-        self.education_keywords = {'education', 'qualification', 'academic', 'degree', 'university', 'college', 'school'}
-        self.skills_keywords = {'skills', 'technical skills', 'technologies', 'programming', 'languages', 'tools'}
-        self.experience_keywords = {'experience', 'work history', 'employment', 'job history', 'professional experience'}
-        self.hobbies_keywords = {'hobbies', 'interests', 'activities', 'extracurricular'}
+        # Define section keywords
+        self.section_keywords = {
+            'education': ['education', 'academic background', 'qualification', 'degree'],
+            'skills': ['skills', 'technical skills', 'technologies'],
+            'experience': ['experience', 'work history', 'employment', 'job history'],
+            'hobbies': ['hobbies', 'interests', 'activities']
+        }
 
-    def extract_text_from_pdf(self, pdf_file):
-        """Extract text content from PDF file"""
+        # Link patterns for LinkedIn and GitHub
+        self.link_patterns = {
+            'linkedin': r'linkedin\.com/in/[\w-]+',
+            'github': r'github\.com/[\w-]+'
+        }
+
+    def extract_text_from_pdf(self, pdf_path: str) -> str:
+        """Extract text from a PDF file."""
         try:
-            reader = PyPDF2.PdfReader(pdf_file)
+            reader = PyPDF2.PdfReader(pdf_path)
             text = ""
             for page in reader.pages:
                 text += page.extract_text() + "\n"
@@ -31,101 +38,145 @@ class ResumeParser:
             print(f"Error extracting text from PDF: {e}")
             return ""
 
-    def find_section_content(self, text, keywords, end_keywords=None):
-        """Find content of a specific section based on keywords"""
-        text_lower = text.lower()
-        section_start = float('inf')
-        
-        # Find the earliest occurrence of any keyword
-        for keyword in keywords:
-            pos = text_lower.find(keyword)
-            if pos != -1 and pos < section_start:
-                section_start = pos
+    def find_category(self, line: str) -> str:
+        """Determine which section a line belongs to based on keywords."""
+        line_lower = line.lower().strip()
+        for category, keywords in self.section_keywords.items():
+            if any(keyword in line_lower for keyword in keywords):
+                return category
+        return ""
 
-        if section_start == float('inf'):
-            return ""
+    def extract_links(self, text: str) -> dict:
+        """Extract LinkedIn and GitHub links from text."""
+        links = {}
+        for platform, pattern in self.link_patterns.items():
+            match = re.search(pattern, text)
+            links[platform] = match.group(0) if match else ""
+        return links
 
-        # Find the end of the section
-        section_end = len(text)
-        if end_keywords:
-            for keyword in end_keywords:
-                pos = text_lower.find(keyword, section_start + 1)
-                if pos != -1 and pos < section_end:
-                    section_end = pos
-
-        section_text = text[section_start:section_end].strip()
-        return section_text
-
-    def clean_text(self, text):
-        """Clean and normalize text"""
-        # Remove special characters and extra whitespace
-        text = re.sub(r'[^\w\s]', ' ', text)
-        text = re.sub(r'\s+', ' ', text).strip()
-        return text
-
-    def extract_education(self, text):
-        """Extract education information"""
-        education_section = self.find_section_content(text, self.education_keywords)
-        if education_section:
-            # Extract the highest education level
-            education_levels = {
-                'phd': 'phd',
-                'master': 'master',
-                'bachelor': 'bachelor',
-                'high school': 'highschool'
-            }
-            
-            text_lower = education_section.lower()
-            for level, value in education_levels.items():
-                if level in text_lower:
-                    return value
-        return "Not specified"
-
-    def extract_skills(self, text):
-        """Extract skills"""
-        skills_section = self.find_section_content(text, self.skills_keywords)
-        if skills_section:
-            # Tokenize and extract potential skills
-            words = word_tokenize(skills_section)
-            # Remove stop words and common words
-            skills = [word for word in words if word.lower() not in self.stop_words and len(word) > 2]
-            return list(set(skills))  # Remove duplicates
-        return []
-
-    def extract_experience(self, text):
-        """Extract work experience"""
-        experience_section = self.find_section_content(text, self.experience_keywords)
-        if experience_section:
-            # Clean and return the experience section
-            return self.clean_text(experience_section)
-        return "No experience listed"
-
-    def extract_hobbies(self, text):
-        """Extract hobbies and interests"""
-        hobbies_section = self.find_section_content(text, self.hobbies_keywords)
-        if hobbies_section:
-            # Clean and return the hobbies section
-            return self.clean_text(hobbies_section)
-        return "Not specified"
-
-    def parse_resume(self, pdf_file):
-        """Main method to parse resume"""
+    def parse_resume(self, txt_path: str):
+        """Main method to parse resume using keyword-based approach"""
         try:
-            # Extract text from PDF
-            text = self.extract_text_from_pdf(pdf_file)
+            # Read the file
+            text = self.extract_text_from_pdf(txt_path)
             if not text:
                 return None
 
-            # Parse different sections
+            # Initialize parsed data structure
             parsed_data = {
-                'education': self.extract_education(text),
-                'skills': self.extract_skills(text),
-                'hobbies': self.extract_hobbies(text),
-                'experience': self.extract_experience(text)
+                'education': [],
+                'skills': [],
+                'experience': [],
+                'hobbies': [],
+                'links': self.extract_links(text)
             }
 
-            return parsed_data
+            # Split into lines and process
+            lines = text.splitlines()
+            current_category = None
+            current_content = []
+            
+            for line in lines:
+                line = line.strip()
+                if not line:  # Skip empty lines
+                    continue
+                
+                # Check if this line starts a new category
+                category = self.find_category(line)
+                
+                if category:
+                    # Save previous category's content if exists
+                    if current_category and current_content:
+                        parsed_data[current_category].extend(current_content)
+                        current_content = []
+                    current_category = category
+                    
+                elif current_category and line:
+                    current_content.append(line)
+
+            # Add the last category's content
+            if current_category and current_content:
+                parsed_data[current_category].extend(current_content)
+
+            # Clean up and format the parsed data
+            formatted_data = self.clean_parsed_data(parsed_data)
+            
+            return {
+                'education': formatted_data['education'],
+                'skills': formatted_data['skills'],
+                'hobbies': formatted_data['hobbies'],
+                'experience': formatted_data['experience'],
+                'linkedin': formatted_data['links'].get('linkedin', ''),
+                'github': formatted_data['links'].get('github', '')
+            }
 
         except Exception as e:
             print(f"Error parsing resume: {e}")
             return None
+
+    def clean_parsed_data(self, parsed_data: dict) -> dict:
+        """Clean and format parsed data according to application requirements."""
+        cleaned_data = {
+            'education': [],
+            'skills': [],
+            'hobbies': '',
+            'experience': '',
+            'links': parsed_data['links']
+        }
+
+        # Clean education section - join related lines
+        education_entries = []
+        current_entry = []
+        for line in parsed_data['education']:
+            if any(keyword in line.lower() for keyword in ['bachelor', 'master', 'phd', 'degree']):
+                if current_entry:
+                    education_entries.append(' - '.join(current_entry))
+                current_entry = [line]
+            else:
+                current_entry.append(line)
+        if current_entry:
+            education_entries.append(' - '.join(current_entry))
+        cleaned_data['education'] = education_entries
+
+        # Extract skills based on categories
+        all_skills = []
+        current_category = None
+        skills_buffer = []
+
+        for skill_line in parsed_data['skills']:
+            skill_line = skill_line.strip()
+            if ':' in skill_line:
+                # If we have buffered skills, add them to the current category
+                if current_category and skills_buffer:
+                    skills_to_add = [s.strip() for s in skills_buffer if s.strip()]
+                    all_skills.extend(skills_to_add)
+                
+                # Start new category
+                current_category = skill_line.split(':')[0].strip()
+                skills_after_colon = skill_line.split(':')[1].strip()
+                if skills_after_colon:
+                    skills_buffer = [s.strip() for s in skills_after_colon.split(',')]
+                else:
+                    skills_buffer = []
+            else:
+                # Add to current buffer if not empty line
+                if skill_line:
+                    skills_buffer.extend([s.strip() for s in skill_line.split(',')])
+
+        # Add any remaining buffered skills
+        if skills_buffer:
+            all_skills.extend([s.strip() for s in skills_buffer if s.strip()])
+
+        # Remove duplicates and empty strings
+        cleaned_data['skills'] = list(filter(None, set(all_skills)))
+
+        # Clean hobbies section - join into comma-separated string
+        cleaned_data['hobbies'] = ', '.join(filter(None, parsed_data['hobbies']))
+
+        # Clean experience section - format as a readable string
+        experience_lines = []
+        for exp in parsed_data['experience']:
+            experience_lines.append(exp)
+        cleaned_data['experience'] = '\n'.join(experience_lines)
+        print(cleaned_data)
+        return cleaned_data

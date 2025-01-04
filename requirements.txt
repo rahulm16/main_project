@@ -7,5 +7,4 @@ MistralAI
 Flask-Bcrypt
 python-dotenv
 PyPDF2
-nltk
 qrcode
