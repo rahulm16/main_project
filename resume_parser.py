@@ -14,10 +14,16 @@ class ResumeParser:
         
         # Define section keywords
         self.section_keywords = {
-            'education': ['education', 'academic background', 'qualification', 'degree'],
-            'skills': ['skills', 'technical skills', 'technologies'],
-            'experience': ['experience', 'work history', 'employment', 'job history'],
-            'hobbies': ['hobbies', 'interests', 'activities']
+            'education': ['education', 'academic background', 'qualification', 'degree', 'academic details'],
+            'skills': ['skills', 'technical skills', 'technologies', 'core competencies', 'expertise'],
+            'experience': ['experience', 'work history', 'employment', 'job history', 'professional background'],
+            'hobbies': ['hobbies', 'interests'],
+            'objective': ['career objective', 'professional summary', 'profile summary', 'summary', 'objective'],
+            'extracurricular': ['extra curricular', 'extracurricular activities', 'co-curricular', 'achievements'],
+            'training': ['trainings/courses', 'courses', 'certifications', 'workshops', 'professional development'],
+            'projects': ['projects', 'academics/personal projects', 'personal projects', 'major projects', 'mini projects'],
+            'portfolio': ['portfolio/work samples', 'samples', 'publications', 'research papers'],
+            'accomplishments': ['accomplishments/additional details', 'awards', 'honors', 'recognition', 'additional details']
         }
 
         # Link patterns for LinkedIn and GitHub
@@ -62,12 +68,18 @@ class ResumeParser:
             if not text:
                 return None
 
-            # Initialize parsed data structure
+            # Initialize parsed data structure with default empty values
             parsed_data = {
                 'education': [],
                 'skills': [],
                 'experience': [],
                 'hobbies': [],
+                'objective': [],
+                'extracurricular': [],
+                'training': [],
+                'projects': [],
+                'portfolio': [],
+                'accomplishments': [],
                 'links': self.extract_links(text)
             }
 
@@ -101,11 +113,12 @@ class ResumeParser:
             # Clean up and format the parsed data
             formatted_data = self.clean_parsed_data(parsed_data)
             
+            # Return only the required fields, with empty default values if sections don't exist
             return {
-                'education': formatted_data['education'],
-                'skills': formatted_data['skills'],
-                'hobbies': formatted_data['hobbies'],
-                'experience': formatted_data['experience'],
+                'education': formatted_data['education'] if formatted_data['education'] else [],
+                'skills': formatted_data['skills'] if formatted_data['skills'] else [],
+                'hobbies': formatted_data['hobbies'] if formatted_data['hobbies'] else '',
+                'experience': formatted_data['experience'] if formatted_data['experience'] else '',
                 'linkedin': formatted_data['links'].get('linkedin', ''),
                 'github': formatted_data['links'].get('github', '')
             }
