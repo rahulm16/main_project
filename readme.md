@@ -38,10 +38,22 @@ After gathering and analyzing the data, the system generates:
 ### **5. Resume Upload**
 Users can upload their resumes in PDF format. The system parses the resume to extract education, skills, hobbies, and work experience, which are then used to enhance career recommendations.
 
-### **6. Continuous Learning**
+### **6. Resume Download and Template Options**
+Users can download their resumes in various templates. The system offers multiple resume templates to choose from, allowing users to select the one that best fits their style and preferences.
+
+### **7. Continuous Learning**
 SavvyAI helps users continue to develop their careers by:
 - **Skill Gap Analysis**: Identifying areas for improvement and recommending appropriate educational resources.
 - **Progression Guidance**: Offering continuous support as users progress in their career journey.
+
+### **8. QR Code Generation**
+Users can generate QR codes for their profiles, which can be shared easily with potential employers or networking contacts.
+
+### **9. Feedback System**
+Users can provide feedback on the recommendations and the overall system, helping to improve the platform.
+
+### **10. Community Engagement**
+Users can engage with a community of like-minded individuals, share insights, and seek advice on career-related topics.
 
 ---
 
@@ -91,12 +103,6 @@ MONGO_URI="mongodb://localhost:27017/"
 Replace `your_mistralai_api_key` with your actual API key.
 
 ### **3. Run the Flask Application**
-
-#### **Install Python Dependencies**
-To install required Python libraries, use the following:
-```bash
-pip install -r requirements.txt
-```
 
 #### **Run the Flask Application**
 Once the dependencies are installed, start the Flask server by running:
