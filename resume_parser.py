@@ -111,8 +111,8 @@ class ResumeParser:
                 'skills': formatted_data['skills'] if formatted_data['skills'] else [],
                 'hobbies': formatted_data['hobbies'] if formatted_data['hobbies'] else '',
                 'experience': formatted_data['experience'] if formatted_data['experience'] else '',
-                'linkedin': formatted_data['links'].get('linkedin', ''),
-                'github': formatted_data['links'].get('github', '')
+                'linkedin': 'https://'+formatted_data['links'].get('linkedin', ''),
+                'github': 'https://'+formatted_data['links'].get('github', '')
             }
 
         except Exception as e:

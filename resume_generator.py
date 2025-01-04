@@ -67,8 +67,8 @@ class ResumeGenerator:
         # Contact Info Block
         contact = self.document.add_paragraph(style='Section Text')
         contact.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        contact.add_run(f"{user_data['email']} • ")
-        contact.add_run(user_data.get('github', '')).bold = True
+        contact.add_run(f"{user_data['email']} \n")
+        contact.add_run(user_data.get('github', '\n'))
         contact.add_run(f" • {user_data['linkedin'].replace('https://', '')}")
         
         self._add_horizontal_line()
