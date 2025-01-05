@@ -61,7 +61,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="email" id="email" name="email" required>
+                                        <input  type="email" id="email" class="email-field" name="email" required readonly>
                                     </div>
                                     <div class="form-group">
                                         <label for="age">Age</label>
@@ -109,6 +109,25 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary">Save Changes</button>
                             </form>
+
+                            <div class="resume-download-section">
+                                <h3>Download Resume</h3>
+                                <div class="template-options">
+                                    <div class="template-card" data-template="1">
+                                        <img src="{{ url_for('static', filename='images/template1.png') }}" alt="Template 1">
+                                        <p>Professional Template</p>
+                                    </div>
+                                    <div class="template-card" data-template="2">
+                                        <img src="{{ url_for('static', filename='images/template2.png') }}" alt="Template 2">
+                                        <p>Modern Template</p>
+                                    </div>
+                                    <div class="template-card" data-template="3">
+                                        <img src="{{ url_for('static', filename='images/template3.png') }}" alt="Template 3">
+                                        <p>Creative Template</p>
+                                    </div>
+                                </div>
+                                <button id="download-resume" class="btn btn-primary" disabled>Download Resume</button>
+                            </div>
                         </div>
                     </div>
                 </div>

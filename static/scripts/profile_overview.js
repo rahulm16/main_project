@@ -414,3 +414,51 @@ window.addEventListener('click', (event) => {
 
 // Initial fetch of user data on page load
 fetchUserData();
+
+// Template selection and resume download
+const templateCards = document.querySelectorAll('.template-card');
+const downloadBtn = document.getElementById('download-resume');
+let selectedTemplate = null;
+
+templateCards.forEach(card => {
+    card.addEventListener('click', () => {
+        templateCards.forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        selectedTemplate = card.dataset.template;
+        downloadBtn.disabled = false;
+    });
+});
+
+downloadBtn.addEventListener('click', async () => {
+    if (!selectedTemplate) return;
+    
+    try {
+        const response = await fetch('/api/download-resume', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                template: selectedTemplate
+            })
+        });
+        
+        if (!response.ok) throw new Error('Failed to generate resume');
+        
+        // Create blob from response and download
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `resume_${selectedTemplate}.docx`;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        a.remove();
+        
+        showAlert('Resume downloaded successfully!', 'success');
+    } catch (error) {
+        console.error('Error downloading resume:', error);
+        showAlert('Failed to download resume. Please try again.', 'error');
+    }
+});

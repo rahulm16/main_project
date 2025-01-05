@@ -8,3 +8,4 @@ Flask-Bcrypt
 python-dotenv
 PyPDF2
 qrcode
+python-docx

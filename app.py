@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request, jsonify, session, url_for
+from flask import Flask, redirect, render_template, request, jsonify, session, url_for, send_file
 from course_finder import find_relevant_courses
 from qr_generator import generate_qr_code
 from flask_pymongo import PyMongo
@@ -19,7 +19,7 @@ import os
 import requests
 from resume_parser import ResumeParser
 import shutil  # Add this import at the top with other imports
-
+from resume_generator import ResumeGenerator  # Add this import at the top with other imports
 load_dotenv()
 app = Flask(__name__)
 app.secret_key = "SavvyAI" 
@@ -69,27 +69,56 @@ def profile():
 
 @app.route('/api/save_user_data', methods=['POST'])
 def save_user_data():
-    user_data = request.json  # Get data from the request
+    try:
+        user_data = request.json
 
-    # Validate the incoming data
-    required_fields = ["current_status", "age", "highest_level_of_education",
-                       "hobbies", "key_skills"]
-    missing_fields = [field for field in required_fields if field not in user_data]
-    if missing_fields:
-        return jsonify({'status': 'error', 'message': f'Missing fields: {", ".join(missing_fields)}'}), 400
+        # Validate the incoming data
+        required_fields = ["current_status", "age"]
+        missing_fields = [field for field in required_fields if field not in user_data]
+        if missing_fields:
+            return jsonify({
+                'status': 'error', 
+                'message': f'Missing required fields: {", ".join(missing_fields)}'
+            }), 400
 
-    # Insert data into MongoDB collection 'user_data'
-    mongo.db.user_data.insert_one(user_data)
+        # Ensure all fields exist with default values if not provided
+        processed_data = {
+            "current_status": user_data.get("current_status"),
+            "age": user_data.get("age"),
+            "highest_level_of_education": user_data.get("highest_level_of_education", ""),
+            "hobbies": user_data.get("hobbies", ""),
+            "key_skills": user_data.get("key_skills", []) or [],  # Convert empty string to empty list
+            "education_details": user_data.get("education_details", {}),
+            "work_experience": user_data.get("work_experience", "")
+        }
 
-    # Save social links separately
-    social_links = {
-        "email": session.get('user', {}).get('email'),
-        "linkedin_link": user_data.get("linkedin_link"),
-        "github_link": user_data.get("github_link")
-    }
-    mongo.db.social_links.replace_one({"email": social_links["email"]}, social_links, upsert=True)
+        # Insert data into MongoDB collection 'user_data'
+        mongo.db.user_data.insert_one(processed_data)
 
-    return jsonify({'status': 'success', 'message': 'User data successfully saved.'}), 200
+        # Save social links separately if they exist
+        if user_data.get("linkedin_link") or user_data.get("github_link"):
+            social_links = {
+                "email": session.get('user', {}).get('email'),
+                "linkedin_link": user_data.get("linkedin_link", ""),
+                "github_link": user_data.get("github_link", "")
+            }
+            mongo.db.social_links.replace_one(
+                {"email": social_links["email"]}, 
+                social_links, 
+                upsert=True
+            )
+
+        return jsonify({
+            'status': 'success', 
+            'message': 'User data successfully saved.'
+        }), 200
+
+    except Exception as e:
+        logging.error(f"Error saving user data: {str(e)}")
+        return jsonify({
+            'status': 'error',
+            'message': f'An error occurred while saving user data: {str(e)}'
+        }), 500
 
 @app.route('/choices')
 def choices():
@@ -1164,13 +1193,19 @@ def update_profile():
 
         logging.info(f"Starting profile update for email: {user_email}")
 
-        # Update users collection - takes first document
+        # Fetch the existing user document
+        existing_user = db.users.find_one({"email": user_email})
+        if not existing_user:
+            return jsonify({'error': 'User not found'}), 404
+
+        # Update users collection - retain the existing password
         new_user_doc = {
             "email": user_email,
-            "fullName": data["name"]
+            "fullName": data["name"],
+            "password": existing_user["password"]  # Retain the existing password
         }
         users_result = db.users.replace_one(
-            {},  # Empty filter to get first document
+            {"email": user_email},  # Filter by user email
             new_user_doc,
             upsert=True
         )
@@ -1410,6 +1445,58 @@ def parse_resume():
             
     except Exception as e:
         return jsonify({'success': False, 'message': str(e)}), 500
+
+@app.route('/api/download-resume', methods=['POST'])
+def download_resume():
+    try:
+        data = request.json
+        template_id = data.get('template')
+        
+        # Fetch user data from database
+        user_data = db.user_data.find_one()
+        user = db.users.find_one()
+        
+        if not user_data or not user:
+            return jsonify({'error': 'User data not found'}), 404
+        
+        # Prepare data for resume generator
+        resume_data = {
+            'name': user.get('fullName'),
+            'email': user.get('email'),
+            'age': user_data.get('age'),
+            'education': user_data.get('highest_level_of_education'),
+            'specialization': user_data.get('education_details', {}).get('specialization'),
+            'course': user_data.get('education_details', {}).get('course'),
+            'skills': user_data.get('key_skills', []),
+            'work_experience': user_data.get('work_experience'),
+            'hobbies': user_data.get('hobbies'),
+            'github': db.social_links.find_one().get('github_link'),
+            'linkedin': db.social_links.find_one().get('linkedin_link')
+        }
+        
+        # Generate resume
+        generator = ResumeGenerator()
+        if template_id == '1':
+            doc = generator.generate_template1(resume_data)
+        elif template_id == '2':
+            doc = generator.generate_template2(resume_data)
+        else:
+            doc = generator.generate_template3(resume_data)
+        
+        # Save to temporary file
+        filename = f"resume_{resume_data['name'].replace(' ', '_')}.docx"
+        temp_path = os.path.join('temp', filename)
+        doc.save(temp_path)
+        
+        return send_file(
+            temp_path,
+            as_attachment=True,
+            download_name=filename,
+            mimetype='application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+        )
+        
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 
 if __name__ == "__main__":
