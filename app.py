@@ -608,7 +608,6 @@ def fetch_suggestions():
     # Fetch the required data from the 'user_data', 'user_responses', 'scenario_responses', 'gaq_aptitude_results', and 'aptitude_result' collections
     documents2 = list(mongo.db.user_data.find().limit(1))
     documents3_user = list(mongo.db.user_responses.find().limit(1))
-    documents3_scenario = list(mongo.db.scenario_responses.find().limit(1))
     gaq_aptitude_result = list(mongo.db.gaq_aptitude_results.find().limit(1))
     aptitude_result = list(mongo.db.aptitude_result.find().limit(1))
 
@@ -619,14 +618,7 @@ def fetch_suggestions():
 
     doc1 = documents2[0]  # Get the first document from user_data
 
-    # Determine which responses to use based on the existence of the scenario_responses collection
-    if documents3_scenario:
-        doc2 = documents3_scenario[0]  # Get the first document from scenario_responses
-    else:
-        if not documents3_user:
-            logging.warning("No user responses found in the 'user_responses' collection.")
-            return jsonify({'success': False, 'message': 'No user responses available.'}), 404
-        doc2 = documents3_user[0]  # Get the first document from user_responses
+    doc2 = documents3_user[0]  # Get the first document from user_responses
 
     # Check for gaq_aptitude_result
     if not gaq_aptitude_result:
