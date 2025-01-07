@@ -384,24 +384,6 @@ def save_data():
 
     return jsonify({'status': 'success', 'message': result}), 200
 
-@app.route('/save-scenario-data', methods=['POST'])
-def save_scenario_data():
-    try:
-        # Get data from the request
-        user_data = request.json
-
-        # Validate incoming data
-        if not isinstance(user_data, dict):
-            return jsonify({'status': 'error', 'message': 'Invalid data format. Expected a dictionary.'}), 400
-
-        # Insert data into MongoDB
-        mongo.db.scenario_responses.insert_one(user_data)
-
-        return jsonify({'status': 'success', 'message': 'Scenario data saved successfully.'}), 200
-    except Exception as e:
-        logging.error(f"Error saving scenario data: {e}")
-        return jsonify({'status': 'error', 'message': 'Failed to save scenario data.'}), 500
-
 def clear_prompts_directory():
     """Clear all files in the prompts directory."""
     prompts_dir = os.path.join(os.getcwd(), 'prompts')
@@ -1347,14 +1329,6 @@ def get_profile_data():
     except Exception as e:
         logging.error(f"Error fetching profile data: {str(e)}")
         return jsonify({'error': str(e)}), 500
-
-@app.route('/decision')
-def decision():
-    return render_template('decision.html', user=session.get('user'))
-
-@app.route('/scenario_chatbot')
-def scenario_chatbot():
-    return render_template('scenario_chatbot.html', user=session.get('user'))
 
 @app.route('/policies')
 def policies():
