@@ -26,33 +26,29 @@ The system collects the following basic information from users:
 - **Aptitude Assessment**: AI-driven tools analyze user’s intellectual strengths and aptitudes to determine suitable career areas.
 - **Skills Mapping**: The system evaluates existing skills and maps them to various career options.
 
-### **3. Scenario-Based Interactions**
-- **Known Career Path**: If the user has a clear career goal, scenario-based questions help assess their decision-making process, work ethics, and job preferences.
-- **Clueless About Career**: If the user is unsure, the system generates new scenario-based questions to help them discover potential career paths. These questions are powered by the **Mistralai AI**.
-
-### **4. Career Recommendations**
+### **3. Career Recommendations**
 After gathering and analyzing the data, the system generates:
 - **Career Options**: Personalized career paths based on user’s skills and aspirations.
 - **Skill Development**: Suggestions for courses, certifications, and professional networks based on **LinkedIn data**.
 
-### **5. Resume Upload**
+### **4. Resume Upload**
 Users can upload their resumes in PDF format. The system parses the resume to extract education, skills, hobbies, and work experience, which are then used to enhance career recommendations.
 
-### **6. Resume Download and Template Options**
+### **5. Resume Download and Template Options**
 Users can download their resumes in various templates. The system offers multiple resume templates to choose from, allowing users to select the one that best fits their style and preferences.
 
-### **7. Continuous Learning**
+### **6. Continuous Learning**
 SavvyAI helps users continue to develop their careers by:
 - **Skill Gap Analysis**: Identifying areas for improvement and recommending appropriate educational resources.
 - **Progression Guidance**: Offering continuous support as users progress in their career journey.
 
-### **8. QR Code Generation**
+### **7. QR Code Generation**
 Users can generate QR codes for their profiles, which can be shared easily with potential employers or networking contacts.
 
-### **9. Feedback System**
+### **8. Feedback System**
 Users can provide feedback on the recommendations and the overall system, helping to improve the platform.
 
-### **10. Community Engagement**
+### **9. Community Engagement**
 Users can engage with a community of like-minded individuals, share insights, and seek advice on career-related topics.
 
 ---
@@ -133,9 +129,6 @@ SavvyAI’s AI-powered recommendation system considers:
 - **User’s Aptitude**: The system uses **Mistralai** to analyze the user’s strengths.
 - **Career Aspirations**: Based on direct user input and preferences.
 - **Professional Data**: Integrated from **LinkedIn** to enhance accuracy.
-
-### **Scenario-Based Approach**
-- SavvyAI uses a **dynamic, interactive questioning process** to understand users’ career preferences and thought processes, tailoring career suggestions even for users who are unsure about their career paths.
 
 ### **Skill-Based Guidance**
 - SavvyAI doesn’t just recommend careers but also provides **skill development guidance**, suggesting necessary courses and resources to help users bridge their skill gaps and improve employability.

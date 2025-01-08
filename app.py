@@ -22,11 +22,11 @@ import shutil  # Add this import at the top with other imports
 from resume_generator import ResumeGenerator  # Add this import at the top with other imports
 load_dotenv()
 app = Flask(__name__)
-app.secret_key = "SavvyAI" 
+app.secret_key = "SavvyAI"
 MONGO_URI = "mongodb://localhost:27017/aicareer"
-app.config["MONGO_URI"] = MONGO_URI  
+app.config["MONGO_URI"] = MONGO_URI
 mongo = PyMongo(app)
-bcrypt = Bcrypt(app)  
+bcrypt = Bcrypt(app)
 CORS(app)
 
 client = MongoClient(MONGO_URI)
@@ -71,18 +71,20 @@ def profile():
 def save_user_data():
     try:
         user_data = request.json
+        user_email = session.get('user', {}).get('email')
 
         # Validate the incoming data
         required_fields = ["current_status", "age"]
         missing_fields = [field for field in required_fields if field not in user_data]
         if missing_fields:
             return jsonify({
-                'status': 'error', 
+                'status': 'error',
                 'message': f'Missing required fields: {", ".join(missing_fields)}'
             }), 400
 
         # Ensure all fields exist with default values if not provided
         processed_data = {
+            "user_email": user_email,
             "current_status": user_data.get("current_status"),
             "age": user_data.get("age"),
             "highest_level_of_education": user_data.get("highest_level_of_education", ""),
@@ -98,18 +100,18 @@ def save_user_data():
         # Save social links separately if they exist
         if user_data.get("linkedin_link") or user_data.get("github_link"):
             social_links = {
-                "email": session.get('user', {}).get('email'),
+                "user_email": user_email,
                 "linkedin_link": user_data.get("linkedin_link", ""),
                 "github_link": user_data.get("github_link", "")
             }
             mongo.db.social_links.replace_one(
-                {"email": social_links["email"]}, 
-                social_links, 
+                {"user_email": social_links["user_email"]},
+                social_links,
                 upsert=True
             )
 
         return jsonify({
-            'status': 'success', 
+            'status': 'success',
             'message': 'User data successfully saved.'
         }), 200
 
@@ -126,8 +128,8 @@ def choices():
 
 @app.route('/aptitude', methods=['GET', 'POST'])
 def aptitude():
-    # Fetch user data
-    user = mongo.db.user_data.find_one()
+    user_email = session.get('user', {}).get('email')
+    user = mongo.db.user_data.find_one({"user_email": user_email})
     if not user:
         return redirect(url_for('index'))
 
@@ -184,8 +186,8 @@ def aptitude():
 
 @app.route('/api/save-aptitude-answers', methods=['POST'])
 def save_aptitude_answers():
-    # Fetch the user data from the database
-    user = mongo.db.user_data.find_one()
+    user_email = session.get('user', {}).get('email')
+    user = mongo.db.user_data.find_one({"user_email": user_email})
 
     if not user:
         return jsonify({'status': 'error', 'message': 'User not found.'}), 404
@@ -227,6 +229,7 @@ def save_aptitude_answers():
             correct_or_wrong = 'correct' if selected_answer == correct_answer else 'wrong'
 
             answered_results.append({
+                "user_email": user_email,
                 "question": question_text,
                 "answered": selected_answer,
                 "correct_or_wrong": correct_or_wrong,
@@ -234,6 +237,7 @@ def save_aptitude_answers():
             })
         else:
             answered_results.append({
+                "user_email": user_email,
                 "question": question_text,
                 "answered": selected_answer,
                 "correct_or_wrong": 'question not found',
@@ -247,8 +251,9 @@ def save_aptitude_answers():
 
 @app.route('/aptitude_results', methods=['GET'])
 def aptitude_results():
+    user_email = session.get('user', {}).get('email')
     # Fetch data from `gaq_answered` collection
-    answered_data = list(mongo.db.gaq_answered.find())
+    answered_data = list(mongo.db.gaq_answered.find({"user_email": user_email}))
 
     total_questions = len(answered_data)
     correct_answers = sum(1 for answer in answered_data if answer['correct_or_wrong'] == 'correct')
@@ -304,6 +309,7 @@ def aptitude_results():
 
     # Create aptitude results data
     aptitude_results_data = {
+        "user_email": user_email,
         "total_questions": total_questions,
         "correct_answers": correct_answers,
         "wrong_answers": wrong_answers,
@@ -354,6 +360,7 @@ def api_login():
             'fullName': user['fullName'],
             'email': user['email']
         }
+        session.modified = True  # Ensure session is saved
         return jsonify({'success': True, 'user': session['user']}), 200
 
     logging.debug(f"Failed login attempt for {user_data['email']}.")
@@ -367,6 +374,7 @@ def logout():
 @app.route('/save-data/', methods=['POST'])
 def save_data():
     user_data = request.json  # Get data from the request
+    user_email = session.get('user', {}).get('email')
 
     # Validate incoming data
     if not isinstance(user_data, dict):
@@ -377,30 +385,13 @@ def save_data():
         return jsonify({'status': 'error', 'message': 'Invalid or missing career preferences.'}), 400
 
     # Insert data into MongoDB
+    user_data['user_email'] = user_email
     mongo.db.user_responses.insert_one(user_data)
 
     # Generate questions after saving data
     result = generate_questions(user_data['careerPreferences'])
 
     return jsonify({'status': 'success', 'message': result}), 200
-
-@app.route('/save-scenario-data', methods=['POST'])
-def save_scenario_data():
-    try:
-        # Get data from the request
-        user_data = request.json
-
-        # Validate incoming data
-        if not isinstance(user_data, dict):
-            return jsonify({'status': 'error', 'message': 'Invalid data format. Expected a dictionary.'}), 400
-
-        # Insert data into MongoDB
-        mongo.db.scenario_responses.insert_one(user_data)
-
-        return jsonify({'status': 'success', 'message': 'Scenario data saved successfully.'}), 200
-    except Exception as e:
-        logging.error(f"Error saving scenario data: {e}")
-        return jsonify({'status': 'error', 'message': 'Failed to save scenario data.'}), 500
 
 def clear_prompts_directory():
     """Clear all files in the prompts directory."""
@@ -418,8 +409,9 @@ def clear_prompts_directory():
 
 def generate_questions(career_preferences):
     """ Generate aptitude questions using Mistral API with career preferences and user data. """
+    user_email = session.get('user', {}).get('email')
     # Fetch the user data from the database
-    user = mongo.db.user_data.find_one()
+    user = mongo.db.user_data.find_one({"user_email": user_email})
     if not user:
         return "User data not found.", 404
 
@@ -484,6 +476,8 @@ def generate_questions(career_preferences):
         questions_data = json.loads(cleaned_response)
 
         # Store in MongoDB (assuming collection is named 'questions')
+        for question in questions_data:
+            question['user_email'] = user_email
         mongo.db.questions.insert_many(questions_data)
 
     except (json.JSONDecodeError, ValueError) as e:
@@ -494,8 +488,9 @@ def generate_questions(career_preferences):
 
 @app.route('/questions', methods=['GET'])
 def get_questions():
+    user_email = session.get('user', {}).get('email')
     # Fetch questions from MongoDB
-    questions_data = mongo.db.questions.find()
+    questions_data = mongo.db.questions.find({"user_email": user_email})
 
     # Convert MongoDB cursor to a list
     questions = list(questions_data)
@@ -522,6 +517,7 @@ def get_questions():
 
 @app.route('/api/save-answers', methods=['POST'])
 def save_answers():
+    user_email = session.get('user', {}).get('email')
     answers = request.json  # Get the answers from the request
 
     if not isinstance(answers, list):
@@ -530,19 +526,21 @@ def save_answers():
     results = []  # To store the results for insertion
 
     for answer in answers:
-        question_data = mongo.db.questions.find_one({"question": answer['question']})
+        question_data = mongo.db.questions.find_one({"question": answer['question'], "user_email": user_email})
 
         if question_data:
             correct_answer = question_data.get("correct_answer")
             correct_or_wrong = 'correct' if answer['answered'] == correct_answer else 'wrong'
 
             results.append({
+                "user_email": user_email,
                 "question": answer['question'],
                 "answered": answer['answered'],
                 "correct_or_wrong": correct_or_wrong,
             })
         else:
             results.append({
+                "user_email": user_email,
                 "question": answer['question'],
                 "answered": answer['answered'],
                 "correct_or_wrong": 'question not found',
@@ -555,14 +553,15 @@ def save_answers():
 
 @app.route('/results', methods=['GET'])
 def results():
+    user_email = session.get('user', {}).get('email')
     # Fetch answered questions and their details from MongoDB
-    answered_data = list(mongo.db.answered.find())
+    answered_data = list(mongo.db.answered.find({"user_email": user_email}))
 
     # Get the original questions with correct answers and career preferences
     questions_data = {}
     all_career_preferences = set()  # Track all unique career preferences
     for answer in answered_data:
-        question = mongo.db.questions.find_one({"question": answer['question']})
+        question = mongo.db.questions.find_one({"question": answer['question'], "user_email": user_email})
         if question:
             questions_data[answer['question']] = {
                 'correct_answer': question['correct_answer'],
@@ -601,6 +600,7 @@ def results():
 
     # Prepare the results data for MongoDB
     results_data = {
+        "user_email": user_email,
         "total_questions": total_questions,
         "correct_answers": correct_answers,
         "wrong_answers": wrong_answers,
@@ -623,12 +623,12 @@ def results():
 
 @app.route('/fetch_suggestions', methods=['GET'])
 def fetch_suggestions():
-    # Fetch the required data from the 'user_data', 'user_responses', 'scenario_responses', 'gaq_aptitude_results', and 'aptitude_result' collections
-    documents2 = list(mongo.db.user_data.find().limit(1))
-    documents3_user = list(mongo.db.user_responses.find().limit(1))
-    documents3_scenario = list(mongo.db.scenario_responses.find().limit(1))
-    gaq_aptitude_result = list(mongo.db.gaq_aptitude_results.find().limit(1))
-    aptitude_result = list(mongo.db.aptitude_result.find().limit(1))
+    user_email = session.get('user', {}).get('email')
+    # Fetch the required data from the 'user_data', 'user_responses', 'gaq_aptitude_results', and 'aptitude_result' collections
+    documents2 = list(mongo.db.user_data.find({"user_email": user_email}).limit(1))
+    documents3_user = list(mongo.db.user_responses.find({"user_email": user_email}).limit(1))
+    gaq_aptitude_result = list(mongo.db.gaq_aptitude_results.find({"user_email": user_email}).limit(1))
+    aptitude_result = list(mongo.db.aptitude_result.find({"user_email": user_email}).limit(1))
 
     # Check for user_data
     if not documents2:
@@ -637,14 +637,7 @@ def fetch_suggestions():
 
     doc1 = documents2[0]  # Get the first document from user_data
 
-    # Determine which responses to use based on the existence of the scenario_responses collection
-    if documents3_scenario:
-        doc2 = documents3_scenario[0]  # Get the first document from scenario_responses
-    else:
-        if not documents3_user:
-            logging.warning("No user responses found in the 'user_responses' collection.")
-            return jsonify({'success': False, 'message': 'No user responses available.'}), 404
-        doc2 = documents3_user[0]  # Get the first document from user_responses
+    doc2 = documents3_user[0]  # Get the first document from user_responses
 
     # Check for gaq_aptitude_result
     if not gaq_aptitude_result:
@@ -665,7 +658,7 @@ def fetch_suggestions():
         "current status": doc1["current_status"],
         "age": doc1["age"],
         "Education pursuing": doc1["highest_level_of_education"],
-        "hobbies": doc1["hobbies"],  
+        "hobbies": doc1["hobbies"],
         "Key skills": doc1["key_skills"],
         "Work Experience": doc1["work_experience"]
     }
@@ -762,6 +755,8 @@ def fetch_suggestions():
             suggestion['nptel_keywords'] = nptel_keywords
 
         # Update the 'career_suggestions' collection with the new data
+        for suggestion in suggestions:
+            suggestion['user_email'] = user_email
         mongo.db.career_suggestions.insert_many(suggestions)
 
         logging.info(f"Inserted {len(suggestions)} suggestions into MongoDB.")
@@ -778,8 +773,9 @@ def fetch_suggestions():
 
 @app.route('/suggestions', methods=['GET'])
 def show_suggestions():
+    user_email = session.get('user', {}).get('email')
     # Retrieve suggestions from MongoDB
-    suggestions = mongo.db.career_suggestions.find()
+    suggestions = mongo.db.career_suggestions.find({"user_email": user_email})
     suggestions_list = list(suggestions)  # Convert cursor to list
     return render_template('suggestions.html', show_hamburger_menu=True, suggestions=suggestions_list, user=session.get('user'))
 
@@ -797,6 +793,11 @@ def update_nptel_courses():
         career_db_name = "aicareer"
         career_collection_name = "career_suggestions"
 
+        # Get the current user's email from the session
+        user_email = session.get('user', {}).get('email')
+        if not user_email:
+            return jsonify({"status": "error", "message": "User not logged in"}), 401
+
         # Call the function to find relevant courses
         find_relevant_courses(
             mongo_uri,
@@ -804,7 +805,8 @@ def update_nptel_courses():
             nptel_collection_name,
             career_db_name,
             career_collection_name,
-            save_to_db=True  # Add this parameter to your original function
+            user_email,
+            save_to_db=True
         )
 
         return jsonify({"status": "success", "message": "NPTEL courses updated successfully"})
@@ -818,7 +820,7 @@ def learning():
         update_nptel_courses()
 
         # Fetch all career suggestions from MongoDB
-        career_data = list(mongo.db.career_suggestions.find())
+        career_data = list(mongo.db.career_suggestions.find({"user_email": session.get('user', {}).get('email')}))
 
         # Initialize dictionaries for our data
         careers_courses = {}
@@ -878,8 +880,9 @@ def learning():
 @app.route('/fetch_detailed_layout', methods=['GET'])
 def fetch_detailed_layout():
     try:
+        user_email = session.get('user', {}).get('email')
         # Get all career suggestions
-        career_suggestions = list(mongo.db.career_suggestions.find())
+        career_suggestions = list(mongo.db.career_suggestions.find({"user_email": user_email}))
         logging.debug("Fetching detailed layout for the career suggestions")
         if not career_suggestions:
             logging.error("No career suggestions found")
@@ -974,6 +977,7 @@ def fetch_detailed_layout():
                 layout_data = json.loads(json_str.strip())
 
                 # Add career identifier to layout data
+                layout_data['user_email'] = user_email
                 layout_data['career_id'] = str(career['_id'])
                 layout_data['career_name'] = career['career']
 
@@ -982,7 +986,7 @@ def fetch_detailed_layout():
             except Exception as e:
                 logging.error(f"Error processing career {career['career']}: {e}")
                 continue
-        
+
         # Save all layouts to MongoDB after processing all careers
         if layout_data_list:
             try:
@@ -1014,9 +1018,10 @@ def fetch_detailed_layout():
 #functions related to detailed pathway
 @app.route('/roadmap')
 def roadmap():
+    user_email = session.get('user', {}).get('email')
     career_collection = db['career_suggestions']
     # Fetch all careers from career_suggestions collection
-    careers = list(career_collection.find({}, {'career': 1, 'roadmap': 1, 'percentage': 1}))
+    careers = list(career_collection.find({"user_email": user_email}, {'career': 1, 'roadmap': 1, 'percentage': 1}))
     return render_template('roadmap.html', show_hamburger_menu=True, careers=careers, user=session.get('user'))
 
 def json_serialize(data):
@@ -1034,18 +1039,20 @@ def json_serialize(data):
 
 @app.route('/api/layout/<career_id>')
 def get_layout(career_id):
+    user_email = session.get('user', {}).get('email')
     layout_collection = db['page_layout']
     # Fetch the layout document for the specific career
-    layout = layout_collection.find_one({'career_id': career_id})
+    layout = layout_collection.find_one({'career_id': career_id, 'user_email': user_email})
     if layout:
         return jsonify(json_serialize(layout))
     return jsonify({'error': 'Layout not found'}), 404
 
 @app.route('/api/careers')
 def get_careers():
+    user_email = session.get('user', {}).get('email')
     career_collection = db['career_suggestions']
     # Fetch all careers with their roadmaps
-    careers = list(career_collection.find({}, {'career': 1, 'roadmap': 1}))
+    careers = list(career_collection.find({"user_email": user_email}, {'career': 1, 'roadmap': 1}))
     return jsonify(json_serialize(careers))
 
 #feedback
@@ -1212,6 +1219,7 @@ def update_profile():
 
         # Update user_data collection - takes first document
         new_user_data_doc = {
+            "user_email": user_email,
             "current_status": data.get("currentStatus"),
             "age": int(data.get("age")) if data.get("age") else None,
             "highest_level_of_education": data.get("education"),
@@ -1226,18 +1234,18 @@ def update_profile():
         }
 
         user_data_result = db.user_data.replace_one(
-            {},  # Empty filter to get first document
+            {"user_email": user_email},  # Filter by user email
             new_user_data_doc,
             upsert=True
         )
         social_links_doc = {
-            "email": user_email,  # Add user identifier
+            "user_email": user_email,  # Add user identifier
             "github_link": data.get("githubLink"),
             "linkedin_link": data.get("linkedinLink")
         }
 
         social_links_result = db.social_links.replace_one(
-            {"email": user_email},  # Filter by user email
+            {"user_email": user_email},  # Filter by user email
             social_links_doc,
             upsert=True
         )
@@ -1260,24 +1268,25 @@ def update_profile():
 @app.route('/api/profile-data')
 def get_profile_data():
     try:
+        user_email = session.get('user', {}).get('email')
         # Get first document from each collection
-        user = db.users.find_one()
+        user = db.users.find_one({"email": user_email})
         if not user:
             return jsonify({'error': 'User not found'}), 404
 
-        user_data = db.user_data.find_one()
+        user_data = db.user_data.find_one({"user_email": user_email})
         if not user_data:
             return jsonify({'error': 'User data not found'}), 404
 
         # Get career suggestions (first 3)
-        career_suggestions = list(db.career_suggestions.find().limit(3))
+        career_suggestions = list(db.career_suggestions.find({"user_email": user_email}).limit(3))
 
         # Get user responses
-        user_responses = db.user_responses.find_one()
+        user_responses = db.user_responses.find_one({"user_email": user_email})
 
         # Get aptitude scores (first document from each)
-        technical_aptitude = db.aptitude_result.find_one()
-        general_aptitude = db.gaq_aptitude_results.find_one()
+        technical_aptitude = db.aptitude_result.find_one({"user_email": user_email})
+        general_aptitude = db.gaq_aptitude_results.find_one({"user_email": user_email})
 
         # Prepare response data matching frontend structure
         profile_data = {
@@ -1335,7 +1344,7 @@ def get_profile_data():
             ],
             'careerPreferences': user_responses.get('careerPreferences', {}) if user_responses else {}
         }
-        social_links = db.social_links.find_one()
+        social_links = db.social_links.find_one({"user_email": user_email})
 
         # Add social links to userData
         profile_data['userData']['githubLink'] = social_links.get('github_link', '') if social_links else ''
@@ -1348,24 +1357,17 @@ def get_profile_data():
         logging.error(f"Error fetching profile data: {str(e)}")
         return jsonify({'error': str(e)}), 500
 
-@app.route('/decision')
-def decision():
-    return render_template('decision.html', user=session.get('user'))
-
-@app.route('/scenario_chatbot')
-def scenario_chatbot():
-    return render_template('scenario_chatbot.html', user=session.get('user'))
-
 @app.route('/policies')
 def policies():
     return render_template('policy.html', show_hamburger_menu=True, user=session.get('user'))
 
 @app.route('/linkdin')
 def linkdin():
+    user_email = session.get('user', {}).get('email')
     career_suggestions_collection = db['career_suggestions']
 
     # Fetch the first document from the career_suggestions collection
-    career_suggestion = career_suggestions_collection.find_one()
+    career_suggestion = career_suggestions_collection.find_one({"user_email": user_email})
 
     if not career_suggestion:
         return jsonify({'error': 'No career suggestions found'}), 404
@@ -1411,25 +1413,25 @@ def clear_temp_directory():
 def parse_resume():
     if 'resume' not in request.files:
         return jsonify({'success': False, 'message': 'No resume file uploaded'}), 400
-    
+
     resume_file = request.files['resume']
     if resume_file.filename == '':
         return jsonify({'success': False, 'message': 'No file selected'}), 400
-    
+
     if not resume_file.filename.endswith('.pdf'):
         return jsonify({'success': False, 'message': 'Please upload a PDF file'}), 400
-    
+
     try:
         # Clear temp directory before saving new file
         clear_temp_directory()
-        
+
         parser = ResumeParser()
         # Save the uploaded file temporarily
         resume_path = os.path.join('temp', secure_filename(resume_file.filename))
         resume_file.save(resume_path)
 
         parsed_data = parser.parse_resume(resume_path)
-        
+
         if parsed_data:
             return jsonify({
                 'success': True,
@@ -1442,7 +1444,7 @@ def parse_resume():
             })
         else:
             return jsonify({'success': False, 'message': 'Failed to parse resume'}), 500
-            
+
     except Exception as e:
         return jsonify({'success': False, 'message': str(e)}), 500
 
@@ -1451,14 +1453,15 @@ def download_resume():
     try:
         data = request.json
         template_id = data.get('template')
-        
+
         # Fetch user data from database
-        user_data = db.user_data.find_one()
-        user = db.users.find_one()
-        
+        user_email = session.get('user', {}).get('email')
+        user_data = db.user_data.find_one({"user_email": user_email})
+        user = db.users.find_one({"email": user_email})
+
         if not user_data or not user:
             return jsonify({'error': 'User data not found'}), 404
-        
+
         # Prepare data for resume generator
         resume_data = {
             'name': user.get('fullName'),
@@ -1470,10 +1473,10 @@ def download_resume():
             'skills': user_data.get('key_skills', []),
             'work_experience': user_data.get('work_experience'),
             'hobbies': user_data.get('hobbies'),
-            'github': db.social_links.find_one().get('github_link'),
-            'linkedin': db.social_links.find_one().get('linkedin_link')
+            'github': db.social_links.find_one({"user_email": user_email}).get('github_link'),
+            'linkedin': db.social_links.find_one({"user_email": user_email}).get('linkedin_link')
         }
-        
+
         # Generate resume
         generator = ResumeGenerator()
         if template_id == '1':
@@ -1482,22 +1485,21 @@ def download_resume():
             doc = generator.generate_template2(resume_data)
         else:
             doc = generator.generate_template3(resume_data)
-        
+
         # Save to temporary file
         filename = f"resume_{resume_data['name'].replace(' ', '_')}.docx"
         temp_path = os.path.join('temp', filename)
         doc.save(temp_path)
-        
+
         return send_file(
             temp_path,
             as_attachment=True,
             download_name=filename,
             mimetype='application/vnd.openxmlformats-officedocument.wordprocessingml.document'
         )
-        
+
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
 
 if __name__ == "__main__":
     prompts_folder = os.path.join(os.getcwd(), 'prompts')

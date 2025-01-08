@@ -81,9 +81,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Check session data on page load
     function checkSessionData() {
-        const user = JSON.parse(document.getElementById('user-data').textContent);
-        if (user) {
-            updateProfileIcon(user);
+        const userDataElement = document.getElementById('user-data');
+        if (userDataElement) {
+            const user = JSON.parse(userDataElement.textContent);
+            if (user) {
+                updateProfileIcon(user);
+            }
         }
     }
 

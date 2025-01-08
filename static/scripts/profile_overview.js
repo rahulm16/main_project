@@ -51,7 +51,7 @@ function showAlert(message, type = 'success', duration = 3000) {
 // Fetch user data from the API
 async function fetchUserData() {
     try {
-        const response = await fetch('http://localhost:5000/api/profile-data');
+        const response = await fetch('/api/profile-data');  // Use relative URL
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
