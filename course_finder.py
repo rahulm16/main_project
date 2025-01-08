@@ -3,7 +3,7 @@ import re
 from collections import Counter
 
 def find_relevant_courses(mongo_uri, nptel_db_name, nptel_collection_name, 
-                         career_db_name, career_collection_name, save_to_db=False):
+                         career_db_name, career_collection_name, user_email, save_to_db=False):
     # Connect to MongoDB
     client = pymongo.MongoClient(mongo_uri)
     
@@ -19,11 +19,11 @@ def find_relevant_courses(mongo_uri, nptel_db_name, nptel_collection_name,
         # Clear existing matches in the aicareer database
         career_db.nptel_matches.drop()
     
-    # Fetch all documents from the career collection
-    career_docs = list(career_collection.find())
+    # Fetch all documents from the career collection for the current user
+    career_docs = list(career_collection.find({"user_email": user_email}))
     
     if not career_docs:
-        print(f"No documents found in the '{career_collection_name}' collection.")
+        print(f"No documents found in the '{career_collection_name}' collection for user {user_email}.")
         return
     
     # Process each career
@@ -77,7 +77,8 @@ def find_relevant_courses(mongo_uri, nptel_db_name, nptel_collection_name,
                     'course_link': course.get('Course-link'),
                     'nptel_url': course.get('NPTEL-URL'),
                     'content': course.get('content', '') if course.get('content') else '',
-                    'score': course_score
+                    'score': course_score,
+                    'user_email': user_email
                 }
                 relevant_courses.append(course_data)
         
@@ -101,6 +102,3 @@ if __name__ == "__main__":
     career_db_name = "aicareer"
     career_collection_name = "career_suggestions"
     
-    # Call the function to find and save relevant courses
-    find_relevant_courses(mongo_uri, nptel_db_name, nptel_collection_name, 
-                         career_db_name, career_collection_name, save_to_db=True)
