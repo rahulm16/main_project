@@ -77,6 +77,13 @@ header.scrolled {
   color: var(--tertiary-color);
 }
 
+/* Remove underline from anchor links */
+a.logo-link {
+  text-decoration: none; /* Remove the underline */
+  color: inherit; /* Inherit the text color from the parent */
+}
+
+
 /* Mode Toggle Button */
 button.mode-toggle {
   background: none;

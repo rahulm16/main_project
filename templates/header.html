@@ -3,7 +3,9 @@
         {% if show_hamburger_menu %}
             <i class='bx bx-menu' id="hamburger-menu"></i>
         {% endif %}
-        <h1><span class="savvy">Savvy</span><span class="ai">AI</span></h1>
+        <a href="/" class="logo-link"> <!-- Wrap SavvyAI in anchor tag -->
+            <h1><span class="savvy">Savvy</span><span class="ai">AI</span></h1>
+        </a>
     </div>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/header.css') }}">
 
