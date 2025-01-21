@@ -1393,7 +1393,7 @@ def linkdin():
     data = response.json()
 
     # Pass data to the template
-    return render_template('linkdin.html', jobs=data, user=session.get('user'))
+    return render_template('linkdin.html', show_hamburger_menu=True, jobs=data, user=session.get('user'))
 
 def clear_temp_directory():
     """Clear all files in the temp directory."""
