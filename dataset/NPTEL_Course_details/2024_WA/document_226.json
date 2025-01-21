@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa27",
+    "Course-ID": "noc24-cs105",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Programming in Java",
+    "Course-instructor": "Prof. Debasis Samanta",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs105/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106105191",
+    "content": "With the growth of Information and Communication Technology, there is a need to develop large and complex software. Further, those software should be platform independent, Internet enabled, easy to modify, secure, and robust. To meet this requirement object-oriented paradigm has been developed and based on this paradigm the Java programming language emerges as the best programming environment. Now, Java programming language is being used for mobile programming, Internet programming, and many other applications compatible to distributed systems. This course aims to cover the essential topics of Java programming so that the participants can improve their skills to cope with the current demand of IT industries and solve many problems in their own filed of studies."
+}

@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759e3",
+    "question": "Each question has an underlined word followed by four answer choices. You will choose the word that is a necessary part of the underlined word. school",
+    "options": [
+        "student",
+        "report card",
+        "test",
+        "learning"
+    ],
+    "correct_answer": "student",
+    "Type": "Logic"
+}

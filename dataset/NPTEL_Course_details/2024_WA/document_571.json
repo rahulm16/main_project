@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb80",
+    "Course-ID": "noc24-ma78",
+    "Discipline": "Mathematics",
+    "Course-name": "Ordinary Differential Equations",
+    "Course-instructor": "Prof. Kaushik Bal",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma78/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111104521",
+    "content": "Differential Equations are one of the central topics which results when studying models arising out of physical systems. Most often than not the nonlinear nature of the equation forces us to study the qualitative and geometric theory of equations and dynamical systems. In this course we start by first studying about the various aspect of Linear Systems and then analyze local and global behavior of nonlinear systems using techniques from Linear theory."
+}

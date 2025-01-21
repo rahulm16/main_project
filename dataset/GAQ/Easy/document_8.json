@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be753",
+    "question": "In a row of children, B is 7th from the left and K is 5th from the right. If there are 18 children in the row, how many children are there between B and K?",
+    "options": [
+        "6",
+        "7",
+        "8",
+        "9"
+    ],
+    "correct_answer": "8",
+    "Type": "Logic"
+}

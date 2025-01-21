@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be83c",
+    "question": "The price of a stock increases by 15% every month. If the price of the stock is Rs. 1000 in January, what will its price be in April?",
+    "options": [
+        "Rs. 1500",
+        "Rs. 1800",
+        "Rs. 1600",
+        "Rs. 1200"
+    ],
+    "correct_answer": "Rs. 1600",
+    "Type": "Mathematical"
+}

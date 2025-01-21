@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa81",
+    "Course-ID": "noc24-ee137",
+    "Discipline": "Electrical and Electronics Engineering",
+    "Course-name": "Electromagnetic Theory",
+    "Course-instructor": "Prof. Pradeep Kumar K",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee137/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108104087",
+    "content": "Electromagnetic theory is a core course in Electrical Engineering curriculum. The course covers static and dynamic electric and magnetic fields and their interaction. Major topics include Electromagnetic Waves, Transmission Lines, Waveguides, and Antenna fundamentals. In addition, quasi-static analysis and numerical methods are also discussed. Successful completion of the course will allow students to take up Microwave Engg, Antennas, and Optics for future studies."
+}

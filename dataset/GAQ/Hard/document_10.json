@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be81b",
+    "question": "Ravi is taller than Ramesh but shorter than Suresh. If Praveen is taller than Ravi but shorter than Suresh, who is the tallest?",
+    "options": [
+        "Ramesh",
+        "Ravi",
+        "Suresh",
+        "Praveen"
+    ],
+    "correct_answer": "Suresh",
+    "Type": "Logic"
+}

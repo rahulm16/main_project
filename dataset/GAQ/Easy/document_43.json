@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be776",
+    "question": "A man buys an article for \u20b9250 and sells it for \u20b9300. What is his profit percentage?",
+    "options": [
+        "20%",
+        "25%",
+        "30%",
+        "15%"
+    ],
+    "correct_answer": "20%",
+    "Type": "Mathematical"
+}

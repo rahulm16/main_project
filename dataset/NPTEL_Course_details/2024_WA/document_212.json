@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa19",
+    "Course-ID": "noc24-cs79",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Design and Analysis of Algorithms",
+    "Course-instructor": "Prof. Madhavan Mukund",
+    "Institute-name": "Chennai Mathematical Institute",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs79/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106106131",
+    "content": "This course will cover basic concepts in the design and analysis of algorithms. 1. Asymptotic complexity,notation 2. Sorting and search 3. Algorithms on graphs: exploration, connectivity, shortest paths, directed acyclic graphs, spanning trees 4. Design techniques: divide and conquer, greedy, dynamic programming 5. Data structures: heaps, union of disjoint sets, search trees 6. Intractability"
+}

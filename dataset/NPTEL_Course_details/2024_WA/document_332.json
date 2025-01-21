@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa91",
+    "Course-ID": "noc24-ee106",
+    "Discipline": "Electrical and Electronics Engineering",
+    "Course-name": "Analog Electronic Circuits - IITKGP",
+    "Course-instructor": "Prof. Pradip Mandal",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee106/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108105158",
+    "content": "This course on Analog Electronic Circuits has been designed primarily as a core course for undergraduate students and, as a refresher course for master level students and circuit designers working in industry. It starts with basic circuit components and circuit concepts and then, gradually moves to practical building blocks of analog electronic systems. In this course, a serious attempt has been made to make a balance between theory and practice so that the discussed circuits can be constructed in an undergraduate level laboratory class and their measured performance can be easily compared with the analytically predicted performance. It helps to build confidence on theory. The other important feature of this course is, it covers both BJT based circuits and MOSFET based circuits parallel so that similarities and performance differences between these two classes of circuits are understandable. Moreover, the BJT based circuits discussed here can be easily constricted on bread board to verify their characteristic through measurement. On the other hand, analysis of the MOSFET based circuits provides the necessary foundation for Analog VLSI circuit/system design, a next level course in Microelectronics and VLSI Design. The above mentioned two features make the proposed course unique with respect to the existing NPTEL courses on this topic. Further, the content of the proposed course is well aligned to the content of Analog Electronics course (EC09) under ?\u00a2\u201a\u00c7\u00a8?\u00ecAICTE Model Curriculum for undergraduate degree in Electronics and Communication Engineering (Engineering & Technology) published in 2018"
+}

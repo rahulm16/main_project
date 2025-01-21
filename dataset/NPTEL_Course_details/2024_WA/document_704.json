@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfc06",
+    "Course-ID": "noc24-ph35",
+    "Discipline": "Physics",
+    "Course-name": "Neutron Scattering for Condensed Matter Studies",
+    "Course-instructor": "Prof. Saibal Basu",
+    "Institute-name": "IIT Bombay",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ph35/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/115101131",
+    "content": "The short-range strong interaction of neutron with matter and the inherent magnetic moment of neutron, makes neutron scattering a unique probe in condensed matter research. An important advantage of neutrons is that they carry no charge and can penetrate the bulk of materials. They interact via strong force with the nuclei of the material and the scattering cross section varies randomly between various elements and even between two isotopes of the same element. This allows one to observe light atoms such as hydrogen in the presence of heavier ones and distinguish neighbouring elements in the periodic table easily. Notably, hydrogen and deuterium have large contrast with respect to neutrons. One can exploit isotopic substitution and contrast variation methods in such studies. Since neutron also carries a magnetic moment of -1.91?N, it also interacts with magnetic moment in atoms, making it a unique probe for determination of microscopic magnetic structure. Wavelength and energy of thermal neutron match with the lattice spacing and excitations in condensed matter and makes it an indispensable tool to study both structure and dynamics in condensed matter. Using neutron scattering techniques with varying momentum transfer and energy transfer range and resolution one is capable or understanding structure and dynamics in materials at various length and time scales."
+}

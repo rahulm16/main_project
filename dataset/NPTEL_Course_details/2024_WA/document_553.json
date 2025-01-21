@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb6e",
+    "Course-ID": "noc24-ma71",
+    "Discipline": "Mathematics",
+    "Course-name": "Introduction to Fuzzy Set Theory, Arithmetic and Logic",
+    "Course-instructor": "Prof. Nilladri Chaterjee",
+    "Institute-name": "IIT Delhi",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma71/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111102130",
+    "content": "The primary purpose of this course is to introduce students to the important areas of fuzzy set theory and fuzzy logic. No previous knowledge is needed regarding fuzzy set theory or fuzzy logic. But familiarity with classical set theory, and two-valued logic will be helpful. In most real-life applications of any decision making one needs to face many types on uncertainty. While as humans we can deal with this uncertainty with our reasoning prowess it is not clear how to deal with this uncertainty in a system. Fuzzy sets and fuzzy logic gives us one way of representing this uncertainty and reasoning with them. This course is aimed at providing a strong background for the subject. This course will be useful as an elective course for senior undergraduates, and master degree students. Weekly assignments will be provided and their solutions will be given in the following week to help students to solve the problems."
+}

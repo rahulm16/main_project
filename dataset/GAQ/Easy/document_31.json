@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be76a",
+    "question": "In a certain code, 'GREAT' is written as 'HTFBS'. How is 'SMILE' written?",
+    "options": [
+        "TLHMF",
+        "TNHMF",
+        "TMHMF",
+        "TMHNF"
+    ],
+    "correct_answer": "TNHMF",
+    "Type": "Logic"
+}

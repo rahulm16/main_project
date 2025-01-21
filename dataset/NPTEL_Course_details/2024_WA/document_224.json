@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa25",
+    "Course-ID": "noc24-cs119",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Software Engineering",
+    "Course-instructor": "Prof. Rajib Mall",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs119/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106105182",
+    "content": "Large scale software development poses special challenges. This course targets to expose the students to the challenges of large scale software development and would expose the students as to how to overcome those. Starting with basic life cycle model concepts, it would discuss requirements specification, design, and testing issues. The concepts will be illustrated with appropriate examples."
+}

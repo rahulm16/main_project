@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa20",
+    "Course-ID": "noc24-cs104",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Applied Accelerated Artificial Intelligence",
+    "Course-instructor": "Prof. Satyajit Das\nProf. Satyadhyan Chickerur\nProf. Bharatkumar Sharma\nProf. Adesuyi Tosin",
+    "Institute-name": "IIT Palakkad\nKLE Technological University\nNVIDIA",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs104/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106106238",
+    "content": "This course will cover the fundamentals of the compute capabilities and the system software required for implementing artificial intelligence (AI) based solutions on industrial use cases such as the ones in the domains of healthcare and Smart City. The course will discuss end to end deployments of two industrial use cases with demonstration, and hence will help participants use state-of-the-art AI SDKs effectively to solve complex problems."
+}

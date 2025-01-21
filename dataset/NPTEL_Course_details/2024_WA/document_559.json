@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb74",
+    "Course-ID": "noc24-ma57",
+    "Discipline": "Mathematics",
+    "Course-name": "Point Set Topology",
+    "Course-instructor": "Prof. Ronnie Sebastian",
+    "Institute-name": "IIT Bombay",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma57/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111101168",
+    "content": "Point set topology is one of the most important and basic courses that one encounters during a masters program in mathematics. This course introduces students to the most important concepts in point set topology. The course begins by defining topological spaces and introducing various ways to put topologies on sets. Then the notion of continuous maps is introduced. Continuous maps enable us to see how different topological spaces interact with each other. A very special class of topological spaces is metric spaces. Most of our intuition for topology comes from metric spaces. Metric spaces are introduced and we analyze the concepts developed so far in this special case. After this the topological properties of connectedness, compactness and local compactness are studied. Then another method to put a topology on a set, namely the quotient topology, is introduced. Finally the course ends with a discussion on when a topology arises from a metric. The main result in this part is Urysohn's Metrization Theorem.\nThroughout the course the emphasis is on various examples which we encounter often in mathematics, like Euclidean spaces, spheres, subsets of Euclidean spaces, matrices, general linear group, special linear group, orthogonal group, unitary group, special orthogonal group, special unitary group, Grassmannians, projective spaces. Our aim will be to try and see if these spaces are connected, path connected, Hausdorff, compact, locally compact. The focus of this course is not on constructing counterexamples. There are far too many useful things in topology to focus on, and so it may be better to learn these, than spend time on counterexamples which serve little purpose later.\nThis course may be useful and accessible to students doing a masters in mathematics. The course may also be useful to students in a bachelors program in mathematics, physics or engineering streams, who need mathematics in their studies or have some interest in pure mathematics.\nThe instructor is a faculty in the Department of Mathematics at IIT-Bombay. More resources related to topology from courses taught by him can be found at the following pages:\nhttp://www.math.iitb.ac.in/~ronnie/Spring2022/MA406.html,\nhttp://www.math.iitb.ac.in/~ronnie/Spring2021/MA816.html,\nhttp://www.math.iitb.ac.in/~ronnie/Fall2020/MA815.html\nTA List:\nParvez Rasul (https://sites.google.com/view/rasulparvez/home)"
+}

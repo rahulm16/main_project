@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be781",
+    "question": "Find the simple interest on \u20b95000 for 2 years at a rate of 5% per annum.",
+    "options": [
+        "\u20b9450",
+        "\u20b9500",
+        "\u20b9550",
+        "\u20b9600"
+    ],
+    "correct_answer": "\u20b9500",
+    "Type": "Mathematical"
+}

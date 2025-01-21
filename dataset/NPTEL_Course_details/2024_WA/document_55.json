@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf97c",
+    "Course-ID": "noc24-bt43",
+    "Discipline": "Biotechnology and Bioengineering",
+    "Course-name": "Cellular Biophysics: A Framework for Quantitative Biology",
+    "Course-instructor": "Prof. Chaitanya A.Athale",
+    "Institute-name": "IISER Pune",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_bt43/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/102106093",
+    "content": "Given than most biological systems are in fact out of equilibrium, this course will touch upon some of the most recent theoretical and experimental approaches to understand the out of equilibrium aspects of biophysics. To this end we make a thermodynamics detour to answer the question posed by Schroedinger: What is life? We then consider a diversity of cell types to ask how the hierarchies of molecules and cells integrate. The question of how stochastic processes lead to deterministic outcomes will be briefly touched upon. Research paper reading will highlight case studies of the successful application of physics biological to problems."
+}

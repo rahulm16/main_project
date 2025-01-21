@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbb1",
+    "Course-ID": "noc24-me119",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Fundamentals of Convective Heat Transfer",
+    "Course-instructor": "Prof. Amaresh Dalal",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me119/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112103297",
+    "content": "Convective heat transfer is one of the most important areas of engineering sciences. It is major mode of heat transfer during flowing fluid and it is the most common mode of heat transfer used in industry. This course will cover the preliminary concepts, forced convection and natural convection for external flows and internal flows, turbulent flows and phase change heat transfer. Numerical solution of the governing equations will also be covered. This course is more analytical. The course will help faculty members, students and researchers in the field to get indepth concepts in convective heat transfer."
+}

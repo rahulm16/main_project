@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be759",
+    "question": "Find the missing number: 3, 8, 18, 38, ?",
+    "options": [
+        "58",
+        "78",
+        "80",
+        "98"
+    ],
+    "correct_answer": "78",
+    "Type": "Logic"
+}

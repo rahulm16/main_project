@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb57",
+    "Course-ID": "noc24-ma50",
+    "Discipline": "Mathematics",
+    "Course-name": "Introduction to Abstract Group Theory",
+    "Course-instructor": "Prof. Krishna Hanumanthu",
+    "Institute-name": "Chennai Mathematical Institute",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma50/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111106113",
+    "content": "This course will introduce abstract groups. We will start with definitions, basic properties and constructions and cover many important theorems in basic group theory, such as Lagrange?\u00a2\u201a\u00c7\u00a8\u201a\u00d1\u00a2s theorem, Cauchy?\u00a2\u201a\u00c7\u00a8\u201a\u00d1\u00a2s theorem and Sylow theorems. A major emphasis of the course will be to present numerous worked-out examples and problems. A part of the lecture every week will be devoted to explicit calculations."
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf9c4",
+    "Course-ID": "noc24-cy42",
+    "Discipline": "Chemistry",
+    "Course-name": "Quantum Mechanics and Molecular Spectroscopy",
+    "Course-instructor": "Prof. G Naresh Patwari",
+    "Institute-name": "IIT Bombay",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cy42/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/104101126",
+    "content": "This course is based on application of quantum mechanics to molecular systems to probe their energy levels. Prior understanding of solutions to the time-independent Schrodinger equation is assumed. The major emphasis of this course is to derive the 'Transition Moment Integral' using semi-classical approach. Further, the relationship between the transition moment integral to experimental observables such as extinction coefficient (from Beet-Lambert law) will evaluated."
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf973",
+    "Course-ID": "noc24-ge45",
+    "Discipline": "Biomedical Engineering, Electrical and Electronics Engineering, Instrumentation Engineering, MEMS",
+    "Course-name": "Biomedical Ultrasound: Fundamentals of Imaging and Micromachined Transducers",
+    "Course-instructor": "Prof. Karla P. Mercado Shekhar\nProf. Himanshu Shekhar\nProf. Hardik Jeetendra Pandya",
+    "Institute-name": "IIT Gandhinagar and IISc Bangalore",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ge45/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/121108458",
+    "content": "Ultrasound is growing rapidly as a diagnostic modality due to its low cost, non-ionizing nature, and portability, and has the potential to significantly impact healthcare delivery. This course will provide the conceptual foundations and practical insights for the use of ultrasound imaging, encompassing physics, instrumentation, signal generation, image reconstruction, and clinical applications. There is great interest in cutting edge research on biomedical ultrasound electronic system development and validation. Microfabricated transducers represent a new frontier in ultrasound, promising better performance and reduced complexity and cost. However, to employ microfabrication multidisciplinary expertise is necessary. This course offers exposure to the right mix of concepts in biomedical ultrasound along with microfabrication for techniques to develop transducers."
+}

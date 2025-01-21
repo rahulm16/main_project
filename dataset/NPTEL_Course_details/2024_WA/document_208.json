@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa15",
+    "Course-ID": "noc24-cs100",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Randomized Methods in Complexity",
+    "Course-instructor": "Prof. Nitin Saxena\n",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs100/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106104228",
+    "content": "In this course we will study how randomness helps in designing algorithms and how randomness can be removed from algorithms. We will start by formalizing computation in terms of algorithms and circuits. We will see an example of randomized algorithms-- identity testing --and prove that eliminating randomness would require proving hardness results. We prove hardness results for the problems of parity and clique using randomized methods. We construct `highly?\u00a2\u201a\u00c7\u00a8\u201a\u00d1\u00a2-connected graphs called expanders that are useful in reducing randomness in algorithms. These lead to a surprising logarithmic-space algorithm for checking connectivity in graphs. We show that if there is hardness in nature then randomness cannot exist! This we prove by developing pseudo-random generators and error-correcting codes."
+}

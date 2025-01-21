@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb7b",
+    "Course-ID": "noc24-ma77",
+    "Discipline": "Mathematics",
+    "Course-name": "Computational Commutative Algebra",
+    "Course-instructor": "Prof. Manoj Kummini",
+    "Institute-name": "Chennai Mathematical Institute",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma77/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111106138",
+    "content": "This is an introductory course in computational commutative algebra. Topics in a typical first course in commutative algebra are developed along with computations in Macaulay2. The emphasis will be on concrete computations, more than on giving complete proofs of theorems."
+}

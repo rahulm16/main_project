@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa79",
+    "Course-ID": "noc24-ee119",
+    "Discipline": "Electrical and Electronics Engineering",
+    "Course-name": "Modern Digital Communication Techniques",
+    "Course-instructor": "Prof. Suvra Sekhar Das",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee119/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/117105144",
+    "content": "The course Modern Digital Communication Techniques in taught in IIT Kharagpur as a 4 credit (4 hrs / week) core subject in the Masters program of Telecommunications systems engineering in the department of Electronics and Electrical Communication Engineering. It is taken in the first semester by master degree students, PhD students and Masters by research students. It is also taken as elective by final year UG students. It is also taken as a core subject by Dual degree students who specialize in the field of communication engineering.\nDigital communications has had one of the most profound influences in the development of the mankind. It is behind the success of today networked society. The objective of this course is to present the engineering principles, theories and practices, which are necessary for successful design of a digital communication system.\nThe course will delve into the design principles of transmitter and receiver so as to establish a reliable communication link. This course aims at enabling the participants to establish unambiguous mathematical statements describing every step of transmitting and receiving a signal through a communication link. It aims at exposing the details of noise, its modeling and its effect on communication systems design. It will cover methods of performance analysis of digital communication systems. Through use of fundamental knowledge developed in related areas of signal processing, the course aims at presenting a unified way of analyzing and designing a digital communication system. It will encompass central aspects of estimation and detection theory, which are crucial in designing a complete receiver (synchronization, channel equalization, etc.).\nAt the end of the course, the participant will be equipped with methods of systematic representation, analysis and design of a digital communication system which are essential in designing communication systems with complex and futuristic requirements"
+}

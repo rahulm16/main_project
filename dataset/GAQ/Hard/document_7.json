@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be818",
+    "question": "Six friends are sitting in a circle. A is sitting between B and F. C is to the immediate left of D. Who is sitting opposite to E?",
+    "options": [
+        "A",
+        "B",
+        "F",
+        "D"
+    ],
+    "correct_answer": "D",
+    "Type": "Logic"
+}

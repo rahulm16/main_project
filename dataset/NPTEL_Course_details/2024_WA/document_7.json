@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf94c",
+    "Course-ID": "noc24-ae18",
+    "Discipline": "Aerospace Engineering",
+    "Course-name": "Smart Structures",
+    "Course-instructor": "Prof. Mohammed Rabius Sunny",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ae18/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/101105090",
+    "content": "This course will cover four different smart materials namely piezoelectric materials, shape memory alloys, electro and magneto rheological fluids. Materials properties of these materials and development of their constitutive relations will be discussed. Mechanics of fibre reinforced composite laminates will be introduced. Next, analysis of metallic as well as fibre composite structures fitted with these materials will covered. Analysis will involve both close form and approximate solutions of the respective governing equations. Development of codes for such analysis will also be discussed."
+}

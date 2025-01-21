@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa44",
+    "Course-ID": "noc24-cs82",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Computer Graphics",
+    "Course-instructor": "Prof. Samit Bhattacharya",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs82/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106103224",
+    "content": "Computer graphics is one of the fundamental aspects of any computing system. Its primary role is to render the digital content (0's and 1's) in a human-comprehensible form on the computer screen. The rendering follows a series of stages, collectively known as the graphics pipeline. In this course, we will introduce the pipeline and its stages. The topics covered include various object representation techniques followed by the pipeline stages of modeling transformation, 3D to 2D viewing transformation, clipping and hidden surface removal and scan conversion (rendering). We shall follow the stages of the 3D graphics pipeline. In order to complete the coverage, we shall also briefly introduce the present day graphics hardware (I/O devices, GPU) and the widely popular openGL graphics library"
+}

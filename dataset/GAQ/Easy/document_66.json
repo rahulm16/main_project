@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be78d",
+    "question": "What is 15% of \u20b9400?",
+    "options": [
+        "\u20b940",
+        "\u20b950",
+        "\u20b960",
+        "\u20b970"
+    ],
+    "correct_answer": "\u20b960",
+    "Type": "Mathematical"
+}

@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be786",
+    "question": "How many degrees are there in the sum of the angles of a triangle?",
+    "options": [
+        "90\u00b0",
+        "180\u00b0",
+        "270\u00b0",
+        "360\u00b0"
+    ],
+    "correct_answer": "180\u00b0",
+    "Type": "Mathematical"
+}

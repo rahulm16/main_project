@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759e9",
+    "question": "The words in the bottom row are related in the same way as the words in the top row. For each item, find the word that completes the bottom row of words. Row 1: apples  fruit  supermarket\nRow 2: novel  book  ?\n",
+    "options": [
+        "bookstore",
+        "magazine",
+        "vegetable",
+        "shopping"
+    ],
+    "correct_answer": "bookstore",
+    "Type": "Logic"
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf995",
+    "Course-ID": "noc24-bt47",
+    "Discipline": "Biotechnology and Bioengineering",
+    "Course-name": "Introduction to Biostatistics",
+    "Course-instructor": "Prof. Shamik Sen",
+    "Institute-name": "IIT Bombay",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_bt47/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/102101056",
+    "content": "Observations from biological laboratory experiments, clinical trials, and health surveys always carry some amount of uncertainty. In many cases, especially for the laboratory experiments, it is inevitable to just ignore this uncertainty due to large variation in observations. Tools from statistics are very useful in analyzing this uncertainty and filtering noise from data. Also, due to advancement of microscopy and molecular tools, a rich data can be generated from experiments. To make sense of this data, we need to integrate this data a model using tools from statistics. In this course, we will discuss about different statistical tools required to (i) analyze our observations, (ii) design new experiments, and (iii) integrate large number of observations in single unified model. We will discuss about both the theory of these tools and will do hand-on exercise on open source software R."
+}

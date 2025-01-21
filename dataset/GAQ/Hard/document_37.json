@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be836",
+    "question": "The sum of two numbers is 45, and their difference is 15. What are the two numbers?",
+    "options": [
+        "30, 15",
+        "35, 10",
+        "40, 5",
+        "25, 20"
+    ],
+    "correct_answer": "30, 15",
+    "Type": "Mathematical"
+}

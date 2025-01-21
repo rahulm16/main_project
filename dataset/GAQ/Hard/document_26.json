@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be82b",
+    "question": "The perimeter of a rectangle is 40 cm, and the length is 12 cm. What is the width of the rectangle?",
+    "options": [
+        "8 cm",
+        "10 cm",
+        "6 cm",
+        "5 cm"
+    ],
+    "correct_answer": "8 cm",
+    "Type": "Mathematical"
+}

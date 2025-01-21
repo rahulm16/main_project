@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf971",
+    "Course-ID": "noc24-bt42",
+    "Discipline": "Biological Science",
+    "Course-name": "Advances in Omics",
+    "Course-instructor": "Prof. Nagarjun Vijay",
+    "Institute-name": "IISER Bhopal",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_bt42/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/102106456",
+    "content": "The course begins with a historical perspective to genomics and how the human genome project catalyzed the development of Next-Generation sequencing technologies. Instead of following a standard textbook format of chapters, the course is designed to use the latest articles in leading journals to keep the course focused on the recent advances in the field. However, the course is well grounded in the basics and exposes the students to practical NGS data analysis. In contrast to traditional course on genomics and proteomics, this course has a strong evolutionary flavor."
+}

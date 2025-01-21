@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf9e7",
+    "Course-ID": "noc24-ce71",
+    "Discipline": "Civil Engineering",
+    "Course-name": "Remote Sensing: Principles and Applications",
+    "Course-instructor": "Prof. Eswar Rajasekaran",
+    "Institute-name": "IIT Bombay",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ce71/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/105101206",
+    "content": "Remote sensing (RS) is the technology that helps to gather information about objects and phenomena from a distance. There has been a radical transformation in the technology from the early application of ?\u00a2\u201a\u00c7\u00a8\u00c0\u00faimage interpretation?\u00a2\u201a\u00c7\u00a8\u201a\u00d1\u00a2 to the paradigm of quantitative RS. The advancement in sensors and data processing algorithms have led to multiple applications of RS in various domains. To perform quantitative RS, one must understand the basic nature of RS sensors, the interaction between electromagnetic radiation and earth surface features and the assumptions and limitations of the algorithms applied. This course will enable the participants to learn about the necessary physical concepts involved in different phases of RS which will help in better appreciation of algorithms and existing datasets. The concepts will further be strengthened through explanation of selected applications."
+}

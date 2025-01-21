@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa5b",
+    "Course-ID": "noc24-ee107",
+    "Discipline": "Electrical and Electronics Engineering",
+    "Course-name": "Electronic Systems for Cancer Diagnosis",
+    "Course-instructor": "Prof. Hardik Jeetendra Pandya",
+    "Institute-name": "IISc Bangalore",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee107/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108108124",
+    "content": "This course is designed with an aim of educating students on the process flow for designing electronic systems for tissue-based cancer diagnosis. An exposure towards developing strategies to discriminate pathological cells from normal ones based on the electrophysiological properties of cells. Design and integrate biochip with electronic module for understanding the electro-thermo-mechanical properties of tissues. microtechnology and its use to fabricate sensors and systems. Students will have an exposure towards how to fabricate the sensors and its application in real world. Several examples of engineering devices used in clinical research will be also covered. Both conventional (class 1000) and non-conventional (class 10000) clean room and some equipment within it will also be shown. Below are some of the course outcomes. The first objective of this course is to understand cancer and its properties: Breast Cancer and Oral Cancer The second objective is to educate the students on the process flow for designing electronic systems for tissue-based cancer diagnosis The third objective is to develop skills to design electronic systems for cytology-based studies Fourth objective is to develop skills to integrate biochips with electronic system for cancer diagnosis The fifth objective is to understand how to work in a conventional (class 1000) and non-conventional (class 10000) clean room environment and understand several equipments The final objective is to learn and understand in detail how to design electronic systems with the preexisting knowledge of basic electronics and to add on the 3D printing skills."
+}

@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be827",
+    "question": "A person invests Rs. 10,000 at 12% simple interest. What will be the total amount at the end of 5 years?",
+    "options": [
+        "Rs. 15,000",
+        "Rs. 16,000",
+        "Rs. 18,000",
+        "Rs. 17,000"
+    ],
+    "correct_answer": "Rs. 16,000",
+    "Type": "Mathematical"
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf94f",
+    "Course-ID": "noc24-ae24",
+    "Discipline": "Aerospace Engineering",
+    "Course-name": "Introduction to Aircraft Design",
+    "Course-instructor": "Prof. Rajkumar S. Pant",
+    "Institute-name": "IIT Bombay",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ae24/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/101101083",
+    "content": "This course is designed to provide students an understanding of procedure followed in conceptual design of an aircraft, meeting the user-specified design requirements and safety considerations specified by the aircraft certification agencies. The students will be exposed to types of aircraft and their features, requirements capture, configuration selection, initial sizing, determination of aerodynamic coefficients, constraint analysis, mass break down, types of loads, V-n diagram, Operational issues (noise, emissions, Range-Payload diagram), and life cycle cost analysis. A special feature of this course will be to take the students through a complete exercise in re-sizing and of a baseline civil transport aircraft to meet a specified market requirement. This exercise will be conducted through a series of tutorials which will run all along the course."
+}

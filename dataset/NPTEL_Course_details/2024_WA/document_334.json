@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa93",
+    "Course-ID": "noc24-ee98",
+    "Discipline": "Electrical and Electronics Engineering\t",
+    "Course-name": "Mathematical Aspects of Biomedical Electronic System Design",
+    "Course-instructor": "Prof. Chandramani Singh",
+    "Institute-name": "IISc Bangalore",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee98/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108108180",
+    "content": "This course is a system design-oriented course aimed to provide exposure to mathematical analysis and its importance in the translational biomedical systems. Biomedical electronics and subsequent mathematical analysis are popular research areas, and this course is an introduction to both. The emphasis is on biostatistical aspects with an introduction to standard Biological system design and experimental protocols. Expected course outcomes: ?\u00a2\u201a\u00c7\u00a8\u00ac\u00a2 Introduction to Biomedical optics ?\u00a2\u201a\u00c7\u00a8\u00ac\u00a2 Multimodal Approaches for Tissue phenotyping ?\u00a2\u201a\u00c7\u00a8\u00ac\u00a2 Mathematical Modelling of Biomedical System Design ?\u00a2\u201a\u00c7\u00a8\u00ac\u00a2 Acquisition, Preprocessing and Analysis of Biological Signals ?\u00a2\u201a\u00c7\u00a8\u00ac\u00a2 Demonstration of EEGLab and ERPLab for EEG and ERP signal processing"
+}

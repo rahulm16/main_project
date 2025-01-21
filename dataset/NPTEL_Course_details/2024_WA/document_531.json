@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb58",
+    "Course-ID": "noc24-ma82",
+    "Discipline": "Mathematics",
+    "Course-name": "Regression Analysis",
+    "Course-instructor": "Prof. Soumen Maity",
+    "Institute-name": "IISER Pune",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma82/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111105042",
+    "content": "Regression analysis is one of the most powerful methods in statistics for determining the relationships between variables and using these relationships to forecast future observations. The foundation of regression analysis is very helpful for any kind of modelling exercises. Regression models are used to predict and forecast future outcomes. Its popularity in finance is very high; it is also very popular in other disciplines like life and biological sciences, management, engineering, etc. In this online course, you will learn how to derive simple and multiple linear regression models, learn what assumptions underline the models, learn how to test whether your data satisfy those assumptions and what can be done when those assumptions are not met, and develop strategies for building best models. We will also learn how to create dummy variables and interpret their effects in multiple regression analysis; to build polynomial regression models and generalized linear models."
+}

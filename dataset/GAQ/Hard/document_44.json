@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be83d",
+    "question": "The sum of two numbers is 120 and their ratio is 3:5. What is the larger number?",
+    "options": [
+        "75",
+        "45",
+        "60",
+        "72"
+    ],
+    "correct_answer": "75",
+    "Type": "Mathematical"
+}

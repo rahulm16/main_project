@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be831",
+    "question": "The price of a commodity increases by 10% each year. If the price is Rs. 500 in the first year, what will it be after 3 years?",
+    "options": [
+        "Rs. 650",
+        "Rs. 665",
+        "Rs. 750",
+        "Rs. 750.5"
+    ],
+    "correct_answer": "Rs. 665",
+    "Type": "Mathematical"
+}

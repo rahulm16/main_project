@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759ec",
+    "question": "First, you will be given a list of three \"nonsense\" words and their English word meanings. The question(s) that follow will ask you to reverse the process and translate an English word into the artificial language. Here are some words translated from an artificial language.\ndaftafoni means advisement\nimodafta means misadvise\nimolokti means misconduct\nWhich word could mean \"statement\"?",
+    "options": [
+        "kratafoni",
+        "kratadafta",
+        "loktifoni",
+        "daftaimo"
+    ],
+    "correct_answer": "kratafoni",
+    "Type": "Logic"
+}

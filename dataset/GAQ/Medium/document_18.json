@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759ee",
+    "question": "Each problem consists of three statements. Based on the first two statements, the third statement may be true, false, or uncertain. All the trees in the park are flowering trees.\nSome of the trees in the park are dogwoods.\nAll dogwoods in the park are flowering trees.\nIf the first two statements are true, the third statement is",
+    "options": [
+        "true",
+        "false",
+        "uncertain",
+        "Not enough Information"
+    ],
+    "correct_answer": "true",
+    "Type": "Logic"
+}

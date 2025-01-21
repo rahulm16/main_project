@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb95",
+    "Course-ID": "noc24-me97",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Solid Mechanics",
+    "Course-instructor": "Prof. Ajeet Kumar",
+    "Institute-name": "IIT Delhi",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me97/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112102284",
+    "content": "This is the first course where deformation of solid bodies and the underlying concepts are introduced to undergraduate students. The course begins by building solid foundation of the concept of stress and strain in three-dimensional deformable bodies. It further uses these concepts to study extension, torsion and bending of beams. The one-dimensional theory of beams are also introduced. We also discuss various theories of failure which are critical for design of machine elements in industry."
+}

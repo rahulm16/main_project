@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa8d",
+    "Course-ID": "noc24-ee91",
+    "Discipline": "Electrical and Electronics Engineering",
+    "Course-name": "Electrical Equipment and Machines: Finite Element Analysis",
+    "Course-instructor": "Prof. S. V. Kulkarni",
+    "Institute-name": "IIT Bombay",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee91/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108101167",
+    "content": "The course consists of theory and applications of Finite Element Method (FEM). This numerical technique, applied for solving partial differential equations, is popularly used by researchers and practicing engineers for design, development and optimization of electrical equipment and machines. A course of FEM is being included in many universities in India at UG and PG level. This module will be helpful forstudents and working professionals to understand and apply FEM effectively for design, analysis, and optimization of devices. Freeware based FEM simulations and coding procedures will be a part of this course. Students can develop their own codes for practical two- dimensional problems using freeware software.\nThere are two existing NPTEL courses on computational electromagnetics covering various numerical techniques especially for high-frequency electromagnetics. This course is exclusively for FE Analysis of low-frequency machines and equipment. Four unique features of this proposed course are:\n1. Explanation of EM concepts relevant for low frequency electromagnetic computations\n2. Use of field distributions and interactive Java based examples hosted in a virtual lab (https://www.ee.iitb.ac.in/course/~vel/)\n3. Application of the Finite Element theory for different low frequency electromagnetic problems related to electrical machines and equipment\n4. Solving the developed Finite Element formulations using freeware platforms like Scilab and Gmsh\nThe proposer has conducted many Continuing Education Programs for industry and academia on electromagnetic fields and numerical techniques\n(https://www.ee.iitb.ac.in/~fclab/Invited_talks_and_Training_Programs/CEP%20Courses%20Conducted.pdf) and has given a number of invited talks on computational electromagnetics in various Engineering Colleges (https://www.ee.iitb.ac.in/~fclab/Invited_talks_and_Training_Programs/Invited%20Guest%20Lectures%20in%20Engineering%20Colleges%20in%20India.pdf), international (https://www.ee.iitb.ac.in/~fclab/Invited_talks_and_Training_Programs/International%20Invited%20Talks%20and%20Tutorials.pdf)and national\n(https://www.ee.iitb.ac.in/~fclab/Invited_talks_and_Training_Programs/Invited%20Tutorials%20and%20Talks%20in%20Workshops%20%20in%20India.pdf ) conferences and workshops."
+}

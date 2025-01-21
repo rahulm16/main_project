@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb69",
+    "Course-ID": "noc24-ma69",
+    "Discipline": "Mathematics",
+    "Course-name": "Linear Algebra",
+    "Course-instructor": "Prof. Dilip Patil",
+    "Institute-name": "IISc Bangalore",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma69/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111108098",
+    "content": "The main purpose of this course in the study of linear operators on finite dimensional vector spaces. The idea is to emphasize the simple geometric notions common to many parts of mathematics and its applications. Except for an occasional reference to undergraduate mathematics, the course will be self-contained. The algebraic co-ordinate free methods will be adopted through out the course. These methods are elegant and as elementary as the classical as coordinatized treatment. The scalar field will be arbitrary (even a finite field), however, in the treatment of vector spaces with inner products, special attention will be given to the real and complex cases. Determinants via the theory of multilinear forms. Variety of examples of the important concepts. The exercises will constitute significant asstion ; ranging from routine applications to ones which will extend the very best students."
+}

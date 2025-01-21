@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759f1",
+    "question": "Each problem consists of three statements. Based on the first two statements, the third statement may be true, false, or uncertain. Fact 1:        All chickens are birds.\nFact 2:        Some chickens are hens.\nFact 3:        Female birds lay eggs.\nIf the first three statements are facts, which of the following statements must also be a fact?\nI:        All birds lay eggs.\nII:        Some Hens are birds.\nIII:        Some chickens are not hens.\n",
+    "options": [
+        "I only",
+        "II only",
+        "II and III only",
+        "None of the statements is a known fact.\n"
+    ],
+    "correct_answer": "II and III only",
+    "Type": "Logic"
+}

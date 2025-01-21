@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbae",
+    "Course-ID": "noc24-me86",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Foundation of Computational Fluid Dynamics",
+    "Course-instructor": "Prof. Vengadesan",
+    "Institute-name": "IIT Madras",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me86/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112106186",
+    "content": "This is an introductory course in CFD. In this course, students will be exposed to basics of CFD. Students will gain knowledge on FD/ FV strategy, formulation of the problem and solution techniques. Students at the end of the course will get to experience a simple and sample working CFD code and thus develop confidence."
+}

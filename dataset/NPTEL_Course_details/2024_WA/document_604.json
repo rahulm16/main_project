@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfba1",
+    "Course-ID": "noc24-me82",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Foundations of Cognitive Robotics",
+    "Course-instructor": "Prof. Bishakh Bhattacharya",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "4 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "August 16, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me82/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112104293",
+    "content": "With the rapidly advancing process of inclusion of robots from Industry to the Social Arena, the functional requirement of the robots and corresponding human expectations have increased tremendously. However, in order to fully comprehend the complexities of such robot design, one needs to possess an over-all idea of the field. The objective of this course is to introduce students, researchers to this new field of robotics with the help of illustrative models, facts and relevant theories. The course has been designed by carefully maintaining a balance between biology, engineering and control system design so that it can attract a broad group of people interested in the interdisciplinary field."
+}

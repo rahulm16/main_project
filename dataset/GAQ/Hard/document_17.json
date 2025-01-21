@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be822",
+    "question": "If it takes 10 workers 10 days to build a wall, how many days will it take 20 workers to build the same wall?",
+    "options": [
+        "5",
+        "10",
+        "15",
+        "20"
+    ],
+    "correct_answer": "5",
+    "Type": "Logic"
+}

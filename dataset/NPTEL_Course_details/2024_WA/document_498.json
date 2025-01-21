@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb37",
+    "Course-ID": "noc24-mg107",
+    "Discipline": "Management",
+    "Course-name": "Advanced Business Decision Support Systems",
+    "Course-instructor": "Prof. Deepu Philip\nProf. Amandeep Singh Oberoi\nProf. Prabal Pratap Singh",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_mg107/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/110104168",
+    "content": "Big Data analytics has been recognised as one of the key elements of Industry 4.0 because it offers insightful information for managing smart factories. Big Data and current industrial revolution have the potential to optimise processes and cut down on resource consumption, which will be crucial for achieving sustainable development. The course is broken up into twelve weeks, and each week conclusion includes an exercise to test and sharpen your skills. The lectures would walk the students over the fundamental syntax and operations, as well as the key Python numerical and visualisation libraries. These skills will be put to use in hands-on activities that involve loading a dataset from the steel industry and creating algorithms for data aggregation. While understanding the concepts through case studies, the learners would be able to load, work, and visualize real-time useful data."
+}

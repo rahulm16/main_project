@@ -2,7 +2,6 @@ Flask
 Flask-PyMongo
 Flask-Cors
 pymongo
-bson
 MistralAI
 Flask-Bcrypt
 python-dotenv

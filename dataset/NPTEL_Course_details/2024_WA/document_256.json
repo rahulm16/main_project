@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa45",
+    "Course-ID": "noc24-cs76",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Artificial Intelligence for Economics",
+    "Course-instructor": "Prof. Adway Mitra\nProf. Dripto Bakshi\nProf. Palash Dey",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs76/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106105470",
+    "content": "AI/ML are increasingly being used in various disciplines of science, technology and humanities. They have a wide scope of application in Economics, a subject which has profound influence on the workings of modern society. This course aims to inform students of the key ideas of AI/ML and how they can be applied in the domain of Economics & Finance. The course will include various use-cases based on modern research papers, while also equipping them with the necessary theoretical tools for the same. These will include relevant algorithms in Artificial Intelligence including optimization and search, Machine Learning including predictive algorithms for different types of data, Game Theory and Mechanism Design."
+}

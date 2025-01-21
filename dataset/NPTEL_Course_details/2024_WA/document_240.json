@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa35",
+    "Course-ID": "noc24-cs107",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Statistical Learning for Reliability Analysis",
+    "Course-instructor": "Prof. Monalisa Sarma",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs107/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106105239",
+    "content": "Statistical Learning (SL) is the science of analyzing data to convert information to useful knowledge. This knowledge could help us understand our world better, and in many contexts enable us to make better decisions. While this is the broad and grand objective, there is a huge demand to solve many problems with computationally intelligent techniques, such ML, DL, AI and SL. This course seeks to present the participants a wide range of statistical learning approaches related to data sampling, hypothesis testing, statistical inference with both parametric and non-parametric methods, dealing data with one or more population, variance analysis, t-testing, likelihood estimation, etc."
+}

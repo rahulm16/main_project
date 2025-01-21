@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e575a03",
+    "question": "Each question consist of two words which have a certain relationship to each other followed by four pairs of related words, Select the pair which has the same relationship. LIGHT:BLIND",
+    "options": [
+        "speech:dumb",
+        "language:deaf",
+        "tongue:sound",
+        "voice:vibration"
+    ],
+    "correct_answer": "speech:dumb",
+    "Type": "Verbal"
+}

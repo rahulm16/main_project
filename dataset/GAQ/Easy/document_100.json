@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be7af",
+    "question": "Fill in the blank: She goes to the gym _____ day.",
+    "options": [
+        "each",
+        "every",
+        "some",
+        "any"
+    ],
+    "correct_answer": "every",
+    "Type": "Verbal"
+}

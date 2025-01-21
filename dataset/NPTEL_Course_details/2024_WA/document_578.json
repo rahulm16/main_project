@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb87",
+    "Course-ID": "noc24-mg133",
+    "Discipline": "Mathematics",
+    "Course-name": "Descriptive Statistics with R Software",
+    "Course-instructor": "Prof. Prashant Jha\nProf. Shalabh",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "8 Weeks",
+    "Start-date": "August 19, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_mg133/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111104120",
+    "content": "Any data analysis is incomplete without statistics. After getting the data, any statistical analysis starts with descriptive statistics which aims to extract the information hidden inside the data. The tools of descriptive statistics are based on mathematical and statistical functions which are to be evaluated using the software. The statistical software are paid as well as free. Most of the statistical software are paid software. A popular free statistical software is R. What are the basic tools of descriptive statistics and how to use the R software for descriptive statistical analysis is the objective of the course to be taught"
+}

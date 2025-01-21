@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbca",
+    "Course-ID": "noc24-me143",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Experimental Modal Analysis",
+    "Course-instructor": "Prof. Subodh V. Modak",
+    "Institute-name": "IIT Delhi",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me143/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112102318",
+    "content": "This course is about the fundamentals and basic concepts of Experimental Modal Analysis (EMA) and its applications. EMA, also known as Modal Testing, is a technique for experimentally determining the natural frequencies, mode shapes, and damping factors of a physical system or structure. One primary application of EMA is for the avoidance of resonant operation and troubleshooting vibration and noise problems. Another important application is in validating and updating structural dynamic FE models. EMA also enables deriving an experimental mathematical model of a physical system, which can be used for response simulation, force identification, structural modification, and structural control. The course will start from the theoretical basis of EMA, followed by signal processing for modal analysis. Then it will cover how the frequency and impulse response functions (FRFs and IRFs) can be measured by exciting the structure and measuring the input force and output response and how the modal parameters can be estimated from these measured FRFs and IRFs. In the end, the course will briefly cover Phase resonance testing, Operational Modal Analysis, and applications of EMA."
+}

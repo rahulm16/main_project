@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbc6",
+    "Course-ID": "noc24-me104",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Basics of Mechanical Engineering - 1",
+    "Course-instructor": "Prof. Janakranjan Ramkumar\nProf. Amandeep Singh Oberoi",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me104/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112104526",
+    "content": "This course is the first part of a three-part series which gives a brief introduction about basic mechanical engineering concepts. The course, due to the huge amount of content, is split into three: This course encompasses the concepts of solid mechanics and design like basic concepts of solids, machine components, linkages, mechanisms, and mechanical components of automobiles. The course also consists of basic concepts of machine learning and artificial intelligence techniques and topics like machine learning and deep learning methods like linear regression, logistic regression, clustering, classification, decision tree, random forest, SVM, and artificial neural network. The course will enable the student to have a firm grasp on these basic concepts and will serve as an introductory course which will discuss these topics and help students to develop interest and knowledge in basic and core concepts of mechanical engineering."
+}

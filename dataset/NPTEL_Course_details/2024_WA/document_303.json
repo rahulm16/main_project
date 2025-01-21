@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa74",
+    "Course-ID": "noc24-ee147",
+    "Discipline": "Electrical and Electronics Engineering",
+    "Course-name": "Digital Circuits",
+    "Course-instructor": "Prof. Santanu Chattopadhyay",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee147/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108105113",
+    "content": "Digital circuits are part of any electronic design today. This also happens to be one of the core subjects for the undergraduate students in Electronics, Electrical and Computer Engineering. It forms the basis of many of the next level courses. The proposed course on digital circuits will cover all the fundamental concepts in digital design. It will primarily focus on the prescribed GATE syllabus for Electronics and Communication Engineering (ECE) specialization. The course will start with the representations of numbers ?\u00a2\u201a\u00c7\u00a8\u201a\u00c4\u00fa different number systems and conversion between them, representation of integer and real numbers etc. This will be followed by combinational and sequential circuit design techniques. Data converters and semiconductor memories will be covered. Microprocessor 8085 will be discussed as a complete digital system example. Designed primarily as a single course covering the digital circuits portion of GATE syllabus, the course will also be helpful for any other aspirant willing to learn digital electronics principles comprehensively in today?\u00a2\u201a\u00c7\u00a8\u201a\u00d1\u00a2s perspective."
+}

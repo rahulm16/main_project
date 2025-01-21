@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa9c",
+    "Course-ID": "noc24-ee152",
+    "Discipline": "Electronics and Communication Engineering",
+    "Course-name": "5G Wireless Standard Design",
+    "Course-instructor": "Prof. Rohit Budhiraja",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee152/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/117104484",
+    "content": "The students normally have strong theoretical background in wireless communications systems, but negligible exposure on the use of this theory to design practical wireless systems. And current jobs in the wireless communication industry require design of standards-based practical wireless systems. The objective of this course is to bridge the gap between the theory and practise of 5G wireless communication systems, and consequently also the gap between academia and industry.\n\nTo achieve the objective, underlying concepts of 5G transceivers will be taught in the class, and the students will be expected to read the 5G standard documents to understand the transceiver specifications. The students will then design and implement in MATLAB a 5G compliant wireless system. The course will therefore involve a MATLAB coding component, which will also be considered for evaluation. Lastly students will discuss possible evolutionary paths for the 5G standard."
+}

@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be796",
+    "question": "Find the odd one out: Apple, Orange, Carrot, Mango.",
+    "options": [
+        "Apple",
+        "Orange",
+        "Carrot",
+        "Mango"
+    ],
+    "correct_answer": "Carrot",
+    "Type": "Verbal"
+}

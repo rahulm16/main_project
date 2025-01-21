@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb5e",
+    "Course-ID": "noc24-ma83",
+    "Discipline": "Mathematics",
+    "Course-name": "Combinatorics",
+    "Course-instructor": "Prof. Narayanan N",
+    "Institute-name": "IIT Madras",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma83/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111106155",
+    "content": "We start with the finite and infinite avatars of the Pigeonhole Principle, Basic counting tools and the twelvefold way followed by compositions and partitions of integers and Stirling numbers. We then look at Inclusion exclusion and Mobius inversion followed by generating functions. We then look at Polya's theorem, graphs and conclude with a short introduction to species of structures."
+}

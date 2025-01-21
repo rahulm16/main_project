@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa3e",
+    "Course-ID": "noc24-cs115",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Introduction to Internet of Things",
+    "Course-instructor": "Prof. Sudip Misra",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs115/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106105166",
+    "content": "Internet of Things (IoT) is presently a hot technology worldwide. Government, academia, and industry are involved in different aspects of research, implementation, and business with IoT. IoT cuts across different application domain verticals ranging from civilian to defence sectors. These domains include agriculture, space, healthcare, manufacturing, construction, water, and mining, which are presently transitioning their legacy infrastructure to support IoT. Today it is possible to envision pervasive connectivity, storage, and computation, which, in turn, gives rise to building different IoT solutions. IoT-based applications such as innovative shopping system, infrastructure management in both urban and rural areas, remote health monitoring and emergency notification systems, and transportation systems, are gradually relying on IoT based systems. Therefore, it is very important to learn the fundamentals of this emerging technology."
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbaf",
+    "Course-ID": "noc24-me133",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Computational Continuum Mechanics",
+    "Course-instructor": "Prof. Sachin Singh Gautam",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me133/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112103296",
+    "content": "Continuum mechanics as a full-fledged course is a very interesting but a challenging subject. Usually,its application within the nonlinear finite element codes is not clear to the student. Computational continuum mechanics tries to bridge this gap. Hence, it can be treated as an applied version of continuum mechanics course. It assumes no prior exposure to continuum mechanics. The course starts with sufficient introduction to tensors, kinematics, and kinetics. Then, the course applies these concepts to set up the constitutive relations for nonlinear finite element analysis of a simple hyperelastic material. This is followed by the linearization of the weak form of the equilibrium equations followed by discretization to obtain the finite element equations, in particular, the tangent matrices and residual vectors is discussed. Finally, the Newton-Raphson solution procedure is discussed along with line search and arc length methods to enhance the solution procedure."
+}

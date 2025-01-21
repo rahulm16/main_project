@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be839",
+    "question": "The sum of the first 10 natural numbers is:",
+    "options": [
+        "45",
+        "55",
+        "65",
+        "60"
+    ],
+    "correct_answer": "55",
+    "Type": "Mathematical"
+}

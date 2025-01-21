@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb81",
+    "Course-ID": "noc24-ma79",
+    "Discipline": "Mathematics",
+    "Course-name": "Advanced Theory of Ordinary Differential Equations",
+    "Course-instructor": "Prof. Hari Sankar Mahato",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma79/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111105522",
+    "content": "Differential equations play an important role in applied mathematics. They provide the modelling tools to depict and simulate real world (physical) problems. This course is intended for all undergraduate students such as students from any BTech, BSc and MSc level courses. It will offer a detailed introduction and tools necessary to model, analyze and solve numerically the differential equations (DEs). We will cover both first order and second order ODEs & their subsequent theories."
+}

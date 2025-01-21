@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be833",
+    "question": "What is the square root of 576?",
+    "options": [
+        "24",
+        "36",
+        "18",
+        "26"
+    ],
+    "correct_answer": "24",
+    "Type": "Mathematical"
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa99",
+    "Course-ID": "noc24-cs111",
+    "Discipline": "Electrical Engineering / Computer Science Engineering",
+    "Course-name": "Linear Algebra Through Geometry",
+    "Course-instructor": "Prof. M Krishna Kumar\nProf. Ashok Rao\nProf. Arulalan M R",
+    "Institute-name": "IISc Bangalore and NITK",
+    "Duration": "12 weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs111/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106108482",
+    "content": "This course will provide a holistic approach to LA covering both the algebraic and more importantly, geometric perspectives.\nA typical linear algebra course focuses on explaining the action of a matrix in abstract or algebraic language. However, we know that a picture is worth a thousand words. While algebra is useful for computation, it rarely provides sufficient intuition. This course provides\n        (a) a more holistic approach to linear algebra, helping students comprehend concepts and connect them to their respective domains effectively\n(b) intuition and visualizations, whenever and wherever possible, to concepts of linear algebra such as vector spaces, subspaces, eigenvectors and systems of linear equations.\nThis approach will motivate learners to create their own illustrations and examples to fully understand the various ideas."
+}

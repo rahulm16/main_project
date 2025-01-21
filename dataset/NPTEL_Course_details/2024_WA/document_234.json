@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa2f",
+    "Course-ID": "noc24-cs113",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "The Joy of Computing using Python",
+    "Course-instructor": "Prof. Sudarshan Iyengar\nProf. Simran Setia",
+    "Institute-name": "IIT Ropar",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs113/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106106182",
+    "content": "A fun filled whirlwind tour of 30 hrs, covering everything you need to know to fall in love with the most sought after skill of the 21st century. The course brings programming to your desk with anecdotes, analogies and illustrious examples. Turning abstractions to insights and engineering to art, the course focuses primarily to inspire the learner's mind to think logically and arrive at a solution programmatically. As part of the course, you will be learning how to practice and culture the art of programming with Python as a language. At the end of the course, we introduce some of the current advances in computing to motivate the enthusiastic learner to pursue further directions."
+}

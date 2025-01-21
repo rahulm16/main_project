@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbe6",
+    "Course-ID": "noc24-ge60",
+    "Discipline": "Multi-disciplinary primarily for Mechanical, Electrical, Aerospace and Chemical engineering streams",
+    "Course-name": "Intelligent Feedback and Control",
+    "Course-instructor": "Prof. Leena Vachhani",
+    "Institute-name": "IIT Bombay",
+    "Duration": "4 Weeks",
+    "Start-date": "August 19, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ge60/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/127101530",
+    "content": "In practice, achieving 100% control objective is not the aim and allows bandwidth to achieve multiple objectives using well-known PID controller design. However, it is important to understand where is the possibility of satisfying control objectives using PID control. The course connects modern control techniques with the classical PID control approach wherever possible. This approach recognizes the strength of PID control design and suggests that it should be the preferred choice when the control objectives are not overly stringent. The systematic approach of learning applicability and limitations of PID control and their advanced variants through this course makes it beneficial for the students/professionals developing controllers for practical applications."
+}

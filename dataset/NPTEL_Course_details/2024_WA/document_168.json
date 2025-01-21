@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf9ed",
+    "Course-ID": "noc24-ce76",
+    "Discipline": "Civil Engineering",
+    "Course-name": "Mechanics of Solids",
+    "Course-instructor": "Prof. Priyanka Ghosh",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ce76/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/105104160",
+    "content": "This course is to serve as an introduction to mechanics of deformable solid bodies. The primary course objective is to equip the students with the tools necessary to solve mechanics problems, which involves (a) static analysis of a component to find the internal actions (forces and moments), (b) determine stresses, strains and deformation due to internal actions, and (c) compare them with known acceptable values. This requires the familiarity with the vocabulary of the subject, skill of drawing free body diagrams and the understanding of the material behavior under loads. It is expected to improve your engineering design skills."
+}

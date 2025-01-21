@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be76c",
+    "question": "Choose the odd one out: Lion, Tiger, Elephant, Leopard",
+    "options": [
+        "Lion",
+        "Tiger",
+        "Elephant",
+        "Leopard"
+    ],
+    "correct_answer": "Elephant",
+    "Type": "Logic"
+}

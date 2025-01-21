@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb5d",
+    "Course-ID": "noc24-ma67",
+    "Discipline": "Mathematics",
+    "Course-name": "Sobolev Spaces and Partial Differential Equations",
+    "Course-instructor": "Prof. S Kesavan",
+    "Institute-name": "IMSc - The Institute of Mathematical Sciences",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma67/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111106154",
+    "content": "The modern theory of Partial Differential Equations relies heavily on functional analytic methods. With the advent of high speed computers, numerical methods, like the finite element method, have revolutionized areas like computational fluid dynamics and structural analysis."
+}

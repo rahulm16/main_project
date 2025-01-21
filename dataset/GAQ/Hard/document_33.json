@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be832",
+    "question": "A triangle has sides 7 cm, 24 cm, and 25 cm. Is it a right-angled triangle?",
+    "options": [
+        "Yes",
+        "No",
+        "Cannot be determined",
+        "None of the above"
+    ],
+    "correct_answer": "Yes",
+    "Type": "Mathematical"
+}

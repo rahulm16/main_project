@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be778",
+    "question": "A train travels 60 km in 1 hour. What is its speed in meters per second?",
+    "options": [
+        "15 m/s",
+        "16.67 m/s",
+        "20 m/s",
+        "25 m/s"
+    ],
+    "correct_answer": "16.67 m/s",
+    "Type": "Mathematical"
+}

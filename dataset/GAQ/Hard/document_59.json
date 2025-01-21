@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be84c",
+    "question": "Which sentence is grammatically correct?",
+    "options": [
+        "Neither the teacher nor the students was late.",
+        "Neither the teacher nor the students were late.",
+        "Neither the teacher nor the students is late.",
+        "Neither the teacher nor the students are late."
+    ],
+    "correct_answer": "Neither the teacher nor the students were late.",
+    "Type": "Verbal"
+}

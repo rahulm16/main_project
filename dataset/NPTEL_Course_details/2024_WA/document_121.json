@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf9be",
+    "Course-ID": "noc24-ch78",
+    "Discipline": "Chemical Engineering/Petroleum Engineering/Reservoir Engineering",
+    "Course-name": "Artificial Lift",
+    "Course-instructor": "Prof. Abdus Samad",
+    "Institute-name": "IIT Madras",
+    "Duration": "12 weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ch78/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/103106220",
+    "content": "The course contains the oil and gas pumping mechanism when the reservoir pressure is low, and it is required to enhance production using artificial means. The wellbore can have liquid loading problems, or fluid can have higher viscosity or corrosive chemicals, and the pumping of such wellbores needs special attention. Through this course, the students will learn different artificial lifts such as sucker rod pumps, electrical submersible pumps, gas lifts etc. After completing the course, the students will be able to size and select an artificial lift for a specific wellbore."
+}

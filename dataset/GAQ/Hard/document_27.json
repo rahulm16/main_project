@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be82c",
+    "question": "A shopkeeper sells an article for Rs. 5000 at a profit of 25%. What was the cost price of the article?",
+    "options": [
+        "Rs. 4000",
+        "Rs. 3500",
+        "Rs. 4500",
+        "Rs. 4750"
+    ],
+    "correct_answer": "Rs. 4000",
+    "Type": "Mathematical"
+}

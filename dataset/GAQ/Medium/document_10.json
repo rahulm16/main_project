@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759e6",
+    "question": "Three of the words will be in the same classification, the remaining one will not be. Your answer will be the one word that does NOT belong in the same classification as the others. Which word does NOT belong with the others?",
+    "options": [
+        "dodge",
+        "flee",
+        "duck",
+        "avoid"
+    ],
+    "correct_answer": "Flee",
+    "Type": "Logic"
+}

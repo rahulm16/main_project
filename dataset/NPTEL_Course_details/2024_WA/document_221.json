@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa22",
+    "Course-ID": "noc24-cs90",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Social Network Analysis",
+    "Course-instructor": "Prof. Tanmoy Chakraborty",
+    "Institute-name": "IIT Delhi",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs90/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106106239",
+    "content": "Networks are a fundamental tool for modeling complex social, technological, and biological systems. Coupled with the emergence of online social networks and large-scale data availability in social sciences, this course focuses on the analysis of massive networks which provide many computational, algorithmic, and modeling challenges. The course will cover research on the structure and analysis of such large networks and on models and algorithms that abstract their basic properties. We will explore how to practically analyze large-scale network data and how to reason about it through models for network structure and evolution. Topics covered in this course are how information spreads through society; robustness and fragility of networks; algorithms for the World Wide Web; prediction and recommendation in online social networks; representation learning for large networks; etc."
+}

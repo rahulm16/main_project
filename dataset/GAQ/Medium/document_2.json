@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759de",
+    "question": "Look carefully for the pattern, and then choose which pair of numbers comes next. 21 25 18 29 33 18",
+    "options": [
+        "43 18",
+        "41 44",
+        "37 18",
+        "37 41"
+    ],
+    "correct_answer": "37 41",
+    "Type": "Logic"
+}

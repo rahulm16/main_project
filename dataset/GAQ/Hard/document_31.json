@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be830",
+    "question": "A man invests Rs. 5000 at an interest rate of 8% per annum compounded annually. What will be the amount after 3 years?",
+    "options": [
+        "Rs. 6300",
+        "Rs. 6350",
+        "Rs. 6500",
+        "Rs. 6480"
+    ],
+    "correct_answer": "Rs. 6300",
+    "Type": "Mathematical"
+}

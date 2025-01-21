@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759ef",
+    "question": "Each problem consists of three statements. Based on the first two statements, the third statement may be true, false, or uncertain. The temperature on Monday was lower than on Tuesday.\nThe temperature on Wednesday was lower than on Tuesday.\nThe temperature on Monday was higher than on Wednesday\nIf the first two statements are true, the third statement is",
+    "options": [
+        "true",
+        "false",
+        "uncertain",
+        "Not enough Information"
+    ],
+    "correct_answer": "uncertain",
+    "Type": "Logic"
+}

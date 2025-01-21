@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa98",
+    "Course-ID": "noc24-ee127",
+    "Discipline": "Electrical Engineering",
+    "Course-name": "Electronic Systems Design: Hands-on Circuits and PCB Design with CAD Software",
+    "Course-instructor": "Prof. Ankur Gupta",
+    "Institute-name": "IIT Delhi",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee127/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108102481",
+    "content": "This course is designed with an aim to make participants familiar with printed circuit board (PCB) design and fundamentals of electronic circuits. Participants will have the capability to examine and build fundamental analog and digital circuits, in addition to creating printed circuit boards, assembling them, and ensuring their proper functionality. Participants will have the opportunity to utilize various CAD and design tools, including schematic entry, PCB layout and routing, circuit simulators, CircuitMaker, and other related software. Participants will gain practical skills in activities such as circuit construction, exporting circuits to PCB layout, working with through holes and vias, and performing routing, among other techniques."
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa28",
+    "Course-ID": "noc24-cs128",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "C Programming and Assembly Language",
+    "Course-instructor": "Prof. Janakiraman Viraraghavan",
+    "Institute-name": "IIT Madras",
+    "Duration": "4 Weeks",
+    "Start-date": "August 19, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs128/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106106210",
+    "content": "Students who complete their bachelors degree (BE/ BTech) in computer science or electrical engineering do extensive course work in Microprocessors and then in C programming. However, what is missing in the current curriculum is to explicitly establish the link between the two. Specifically we look at how a C program is translated to assembly language and how it eventually gets executed on a microprocessor. Through, animations we show what happens in the stack, data and code segment, of the microprocessor when a C program is executed."
+}

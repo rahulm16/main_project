@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e575a00",
+    "question": "In each question below, there is a sentence of which some parts have been jumbled up. Rearrange these parts which are labelled P, Q, R and S to produce the correct sentence. Choose the proper sequence. \nSince the beginning of history\nP :\thave managed to catch\nQ :\tthe Eskimos and Red Indians\nR :\tby a very difficulty method\nS :\ta few specimens of this aquatic animal\nThe Proper sequence should be:",
+    "options": [
+        "QRPS",
+        "SQPR",
+        "SQRP",
+        "QPSR"
+    ],
+    "correct_answer": "QPSR",
+    "Type": "Verbal"
+}

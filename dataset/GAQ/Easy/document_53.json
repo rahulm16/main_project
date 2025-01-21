@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be780",
+    "question": "A shopkeeper sold an item for \u20b9500 at a profit of \u20b9100. What is the cost price of the item?",
+    "options": [
+        "\u20b9300",
+        "\u20b9400",
+        "\u20b9450",
+        "\u20b9350"
+    ],
+    "correct_answer": "\u20b9400",
+    "Type": "Mathematical"
+}

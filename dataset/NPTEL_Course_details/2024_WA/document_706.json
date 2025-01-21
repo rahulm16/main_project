@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfc08",
+    "Course-ID": "noc24-ph37",
+    "Discipline": "Physics",
+    "Course-name": "Introduction to Electromagnetic Theory (Hindi)",
+    "Course-instructor": "Prof. Manoj Harbola",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ph37/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/115104134",
+    "content": "This course introduces students to handling electromagnetic theory using vector calculus. This enables students to handle problems that are more complicated than they are used to from their school days. Due to general nature of the mathematics they learn in this course, what they learn here will help them in their future courses like fluid dynamics that use similar mathematics."
+}

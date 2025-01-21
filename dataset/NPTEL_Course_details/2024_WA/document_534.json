@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb5b",
+    "Course-ID": "noc24-ma66",
+    "Discipline": "Mathematics",
+    "Course-name": "Measure and Integration",
+    "Course-instructor": "Prof. S. Kesavan",
+    "Institute-name": "IMSc - The Institute of Mathematical Sciences",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma66/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111106161",
+    "content": "The theory of measure and integration is now an integral part of any masters or graduate program in mathemat ics in Indian Universities. It is an important prerequisite for most analysis based courses. In this course, we will start with a study of abstract measures with the Lebesgue measure being the most important example. After looking at measurable functions and some types of convergences for such functions, we will introduce the notion of the Lebesgue integral in an abstract measure space and study its properties. We will relate the two important processes of the calculus ?\u00a2\u201a\u00c7\u00a8\u201a\u00c4\u00fa differentiation and integration ?\u00a2\u201a\u00c7\u00a8\u201a\u00c4\u00fa in the context of the Lebesgue integral. We will also study measures and integrals on product spaces and also signed measures. Finally we will study the important properties of L^p ?\u00a2\u201a\u00c7\u00a8\u201a\u00c4\u00fa spaces."
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb75",
+    "Course-ID": "noc24-ma73",
+    "Discipline": "Mathematics",
+    "Course-name": "Partial Differential Equations",
+    "Course-instructor": "Prof. Sivaji Ganesh",
+    "Institute-name": "IIT Bombay",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma73/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111101153",
+    "content": "Partial Differential Equations (PDEs) appear as mathematical models for many a physical phenomena. Closed-form solutions to most of these PDEs cannot be found. One of the possible ways to understand the models is by studying the qualitative properties exhibited by their solutions. In this course, we study first order nonlinear PDEs, and the properties of the three important types of second order linear PDEs (Wave, Laplace, Heat) would be studied and compared."
+}

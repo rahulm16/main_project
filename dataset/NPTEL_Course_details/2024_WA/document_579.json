@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb88",
+    "Course-ID": "noc24-ma64",
+    "Discipline": "Mathematics",
+    "Course-name": "Probability Theory for Data Science",
+    "Course-instructor": "Prof. Ishapathik Das",
+    "Institute-name": "IIT Tirupati",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma64/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111106525",
+    "content": "\"Probability Theory for Data Science\" is a specialized course designed to equip students with the essential knowledge and skills needed to analyze uncertain phenomena and make data-driven decisions in various domains. It provides a comprehensive understanding of the principles of probability and their applications in the context of data science. This course is essential for anyone aspiring to work in data-driven fields such as machine learning, artificial intelligence, statistics, and predictive analytics. The course typically begins with an introduction to basic concepts in probability theory, including sample spaces, events, and different approaches to defining probability. Emphasis is placed on developing a solid grasp of fundamental probability rules, such as the addition and multiplication rules, as well as understanding conditional probability, independence, and Bayes theorem. As the course progresses, students delve deeper into more advanced topics, such as random variables, probability distributions, and expectation. They explore common probability distributions, including binomial, Poisson, uniform, exponential, and normal distributions, and they learn how to calculate probabilities and expected values associated with these distributions. Additionally, students gain insight into concepts like moments, variance, and covariance, which are crucial for understanding data variability in real-world scenarios. Following this, students delve into the study of multiple random variables, exploring concepts such as the transformation of random variables, moment-generating functions, and key theorems pertaining to the convergence of random variables. \"Probability Theory for Data Science\" equips students with a strong theoretical foundation in probability and the analytical skills necessary to tackle complex data-driven problems. By mastering the principles of probability theory and its applications in data science, students are better prepared to excel in diverse roles within the rapidly growing field of data analytics and machine learning."
+}

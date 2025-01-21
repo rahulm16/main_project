@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be793",
+    "question": "Identify the synonym of 'Beautiful'.",
+    "options": [
+        "Ugly",
+        "Attractive",
+        "Plain",
+        "Ordinary"
+    ],
+    "correct_answer": "Attractive",
+    "Type": "Verbal"
+}

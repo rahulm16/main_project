@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa41",
+    "Course-ID": "noc24-cs116",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Introduction To Algorithms and Analysis",
+    "Course-instructor": "Prof. Sourav Mukhopadhyay",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs116/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106105164",
+    "content": "This course provides an introduction to mathematical modeling of computational problems. It covers the common algorithms, algorithmic paradigms, and data structures used to solve these problems. The course emphasizes the relationship between algorithms and programming, and introduces basic performance measures and analysis techniques for these problems."
+}

@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759ea",
+    "question": "Every one of the following questions consists of a related pair of words, followed by five pairs of words. Choose the pair that best represents a similar relationship to the one expressed in the original pair of words.\n TAILOR : SUIT",
+    "options": [
+        "scheme : agent",
+        "edit : manuscript",
+        "revise : writer",
+        "mention : opinion"
+    ],
+    "correct_answer": "edit : manuscript",
+    "Type": "Logic"
+}

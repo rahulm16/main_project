@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be795",
+    "question": "Choose the correctly spelled word.",
+    "options": [
+        "Accomodation",
+        "Accommodation",
+        "Acommodation",
+        "Accomadation"
+    ],
+    "correct_answer": "Accommodation",
+    "Type": "Verbal"
+}

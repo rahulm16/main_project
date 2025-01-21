@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa29",
+    "Course-ID": "noc24-cs69",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Demystifying Networking",
+    "Course-instructor": "Prof. Sridhar Iyer\nProf. Ashutosh Raina",
+    "Institute-name": "IIT Bombay",
+    "Duration": "4 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "August 16, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs69/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106101209",
+    "content": "This course will provide students with an overview of networking concepts and technologies. It is meant as a primer for non-majors, i.e., for students who don't have networking as a core course in their curriculum. After this primer, students may choose to take other networking courses for delving deeper into specific technologies."
+}

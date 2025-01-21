@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa39",
+    "Course-ID": "noc24-cs94",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Ethical Hacking",
+    "Course-instructor": "Prof. Indranil Sengupta",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs94/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106105217",
+    "content": "Ethical hacking is a subject that has become very important in present-day context, and can help individuals and organizations to adopt safe practices and usage of their IT infrastructure. Starting from the basic topics like networking, network security and cryptography, the course will cover various attacks and vulnerabilities and ways to secure them. There will be hands-on demonstrations that will be helpful to the participants. The participants are encouraged to try and replicate the demonstration experiments that will be discussed as part of the course."
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa3d",
+    "Course-ID": "noc24-cs95",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Introduction to Industry 4.0 and Industrial Internet of Things",
+    "Course-instructor": "Prof. Sudip Misra",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs95/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106105195",
+    "content": "Industry 4.0 concerns the transformation of industrial processes through the integration of modern technologies such as sensors, communication, and computational processing. Technologies such as Cyber Physical Systems (CPS), Internet of Things (IoT), Cloud Computing, Machine Learning, and Data Analytics are considered to be the different drivers necessary for the transformation. Industrial Internet of Things (IIoT) is an application of IoT in industries to modify the various existing industrial systems. IIoT links the automation system with enterprise, planning and product lifecycle."
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa10",
+    "Course-ID": "noc24-cs127",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Software Conceptual Design",
+    "Course-instructor": "Prof. Sridhar Iyer\nProf. Prajish Prasad\nProf. T. G. Lakshmi",
+    "Institute-name": "IIT Bombay",
+    "Duration": "4 Weeks",
+    "Start-date": "August 19, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs127/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106101235",
+    "content": "This course will provide learners with an overview of what all is involved in creating conceptual software designs. Specifically, it will take learners through different aspects of understanding, creating and evaluating software conceptual designs. After going through the course, learners will be able to: 1. Think of software in terms of sub-systems, and understand what issues have to be considered in order to design these sub-systems 2. Create a software conceptual design for a given design problem, and model them using Unified Modeling Language (UML) diagrams 3. Evaluate their designs for functional and non-functional quality attributes"
+}

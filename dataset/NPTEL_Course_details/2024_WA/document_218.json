@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa1f",
+    "Course-ID": "noc24-cs103",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Getting Started with Competitive Programming",
+    "Course-instructor": "Prof. Neeldhara Misra",
+    "Institute-name": "IIT Gandhinagar",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs103/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106106231",
+    "content": "This is a course on algorithm design with a focus on issues of modeling and implementation. Each lecture will be focused entirely on one or two problems that reveal the use of a specific algorithmic technique. The techniques themselves are chosen to be in line with those covered in existing NPTEL courses on data structures and algorithms, so that students who complete those courses can find in this course a natural follow up. This course is intended for anyone who wants to deepen their appreciation for algorithmic techniques that they have learned in a foundational course and/or would like to take a first step towards preparing for coding competitions such as the ICPC."
+}

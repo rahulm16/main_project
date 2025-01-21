@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa2b",
+    "Course-ID": "noc24-cs67",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Introduction to Quantum Computing: Quantum Algorithms and Qiskit",
+    "Course-instructor": "Prof. Prabha Mandayam\nProf. Anupama Ray\nProf. Sheshashayee Raghunathan",
+    "Institute-name": "IBM and IIT Madras",
+    "Duration": "4 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "August 16, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs67/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106106232",
+    "content": "Quantum computing is fast emerging as one the key disruptive technologies of our times. It is a fundamentally new computing paradigm that has the potential to efficiently solve certain challenging problems which cannot be solved efficiently in a classical setting. IBM has made significant investment in this technology and is recognized as a leader in this space. This course will provide introduction to Quantum Computation, starting with basic concepts such as superposition and entanglement, to discussing the quantum circuit model of computation and basic Quantum algorithms that demonstrate the power of computing with quantum bits. We will also introduce the idea of quantum error correction to mitigate the effects of noise in today\u201a\u00c4\u00f4s quantum devices. We will have full hands-on sessions for each concept taught using Qiskit, a pythonic way of programming and the IBM Circuit Composer ."
+}

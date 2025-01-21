@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be765",
+    "question": "In a certain code, 12345 is written as 54321. How is 6789 written?",
+    "options": [
+        "9876",
+        "7689",
+        "8967",
+        "9786"
+    ],
+    "correct_answer": "9876",
+    "Type": "Logic"
+}

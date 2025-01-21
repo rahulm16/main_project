@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb72",
+    "Course-ID": "noc24-ma96",
+    "Discipline": "Mathematics",
+    "Course-name": "Geometry Of Vision",
+    "Course-instructor": "Prof. Vijay Ravikumar",
+    "Institute-name": "Azim Premji University",
+    "Duration": "4 Weeks",
+    "Start-date": "August 19, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma96/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111106156",
+    "content": "This course will explore how one of our senses -- our sense of sight -- relies on our brain's seemingly hardwired understanding of a fascinating geometric space. What's more, this space -- known as the two dimensional Projective Plane -- is surprisingly different from the familiar Euclidean plane. By examining some basic questions related to perspective drawing, like why parallel lines appear to converge in our vision, we can identify and analyze the defining properties of this space - properties which are well known to our visual sense, but defy our logical intuition. As the course progresses, we will situate perspective drawing in the framework of Projective Geometry, and get familiar with the algebra of homogeneous coordinates, which will allow us to translate our sensory intuition into precise information we can easily communicate. We will also get to know the topological space known as the real projective plane, as well the matrix group that governs its transformations. Being a four-week long elective, this course will nicely complement standard courses on geometry and topology, by giving hands-on experience with several important mathematical objects you will meet in those classes. Some basic linear algebra will be required, especially in the final week of the course (in particular, we will assume familiarity with vector calculus and with matrices as linear transformations). As part of the series Our Mathematical Senses, we plan to offer follow-up courses in subsequent semesters, exploring our sense of spatial orientation (the Topology of Movement) and our sense of hearing (the Calculus of Sound)"
+}

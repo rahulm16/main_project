@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbb2",
+    "Course-ID": "noc24-me95",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Mathematical Modeling of Manufacturing Processes",
+    "Course-instructor": "Prof. Swarup Bag",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me95/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112103273",
+    "content": "The understanding of the basic mechanism such as heat and mass transport with associated fluid flow including metallurgical transformation, distortion and residual stress generation in different manufacturing processes is the focus of this course. Understanding the complex interaction not only helps to develop mathematical model, it makes the foundation for analysis, numerical simulation at different scale and experimentation for different types of manufacturing processes. The development of computational models for a manufacturing process relies on mathematical expression of the governing mechanism. It helps to design relevant experiments and drives to find the data to be obtained. Mutual understanding between analytical/numerical and experimental results leads to better insight of the basic manufacturing processes that impact on the improvement of existing process and directs for the development of new process. However, this course is completely different from statistical or data driven modeling approach. This course emphasized on the understanding of the most general to advanced manufacturing processes based on scientific principle. The complex mechanism is presented in a simplified way to understand the subject at elementary level. The broad impact is that the students will be able to develop physics based computational model of manufacturing process using standard commercial package (However, this course does not intend to cover the learning of the commercial software)."
+}

@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be775",
+    "question": "What is the sum of the first five prime numbers?",
+    "options": [
+        "26",
+        "28",
+        "32",
+        "30"
+    ],
+    "correct_answer": "28",
+    "Type": "Mathematical"
+}

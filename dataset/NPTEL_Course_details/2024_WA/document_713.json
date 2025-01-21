@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfc0f",
+    "Course-ID": "noc24-ph27",
+    "Discipline": "Physics",
+    "Course-name": "Advanced Quantum Mechanics with Applications",
+    "Course-instructor": "Prof. Saurabh Basu",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ph27/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/115103104",
+    "content": "The Course deals with the prerequisite material for studying advanced level research in various fields of Physics, Applied Physics and Electrical Engineering. The course begins with an introduction to advanced topics, such as, the Density Matrix formalism and its applications to quantum optics. Hence angular momentum is introduced to discuss nuclear magnetic resonance. Hence basics of quantum information theory is brought into consideration with a view to explain quantum information algorithms. Quantum dynamics is hence studied with a view to understand quantum optics for driven systems. A glossary of the approximate methods is described with a few examples. Finally, basics of quantum transport is presented to understand the conductance properties of semiconductors."
+}

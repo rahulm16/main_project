@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be81d",
+    "question": "In a family of seven, P is the father, Q is the mother, and R is the only son of P. T is the brother of P, and M is the sister of Q. S is T's daughter. How is R related to S?",
+    "options": [
+        "Brother",
+        "Cousin",
+        "Uncle",
+        "Nephew"
+    ],
+    "correct_answer": "Cousin",
+    "Type": "Logic"
+}

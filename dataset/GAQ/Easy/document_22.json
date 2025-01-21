@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be761",
+    "question": "Choose the odd one out: Pen, Pencil, Eraser, Notebook, Paper",
+    "options": [
+        "Pen",
+        "Notebook",
+        "Eraser",
+        "Paper"
+    ],
+    "correct_answer": "Eraser",
+    "Type": "Logic"
+}

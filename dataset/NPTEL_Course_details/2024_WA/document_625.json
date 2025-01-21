@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbb7",
+    "Course-ID": "noc24-me87",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Steam Power Engineering",
+    "Course-instructor": "Prof. Vinayak N. Kulkarni",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me87/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112103277",
+    "content": "This course deals with the steam power plants. One part of the course is about simple steam power cycle, reheat, regeneration and superheating. Further actual cycle with component efficiencies would also be discussed. Then each component of the plant is discussed detail. Initially, types of steam generators and their parts highlighted. Then steam turbine, its type, efficiency and arrangements are focused. Thus this course would provide an understanding on electricity generation or transportation application using steam as working medium."
+}

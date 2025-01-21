@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb7c",
+    "Course-ID": "noc24-ma91",
+    "Discipline": "Mathematics",
+    "Course-name": "Advanced Calculus For Engineers",
+    "Course-instructor": "Prof Jitendra Kumar\nProf. Somesh Kumar",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma91/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111105160",
+    "content": "This course is about basic mathematics, which is a fundamental and essential component of all undergraduate studies in sciences and engineering. This course consists of topics in differential, integral, and vector calculus with applications to various engineering problems. This course will cover calculus of two or more variables in detail. Knowledge of ordinary differential equations are part of this course. Students will learn how to perform double and triple integrals. Topic in vector calculus includesline and surface integrals, Green, Gauss and Stokes theorem."
+}

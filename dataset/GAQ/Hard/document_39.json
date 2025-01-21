@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be838",
+    "question": "What is the value of x in the equation 5x + 3 = 28?",
+    "options": [
+        "5",
+        "4",
+        "6",
+        "7"
+    ],
+    "correct_answer": "5",
+    "Type": "Mathematical"
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf9fc",
+    "Course-ID": "noc24-ce56",
+    "Discipline": "Civil Engineering",
+    "Course-name": "Global Navigation Satellite Systems and Applications",
+    "Course-instructor": "Prof. Arun K. Saraf",
+    "Institute-name": "IIT Roorkee",
+    "Duration": "4 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "August 16, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ce56/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/105107194",
+    "content": "The proposed course provides basic understanding about digital elevation models (DEMs) and their applications in Civil Engineering and Earth Sciences. Further, in the proposed course various DEMs, their source, generation techniques, derivatives, errors and limitations would be discussed extensively. Surface Hydrologic Modelling using DEMs, modelling derivatives and their applications would also be discussed."
+}

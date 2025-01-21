@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be840",
+    "question": "If 4 workers can complete a task in 6 days, how many workers will be required to complete the same task in 3 days?",
+    "options": [
+        "6",
+        "8",
+        "10",
+        "12"
+    ],
+    "correct_answer": "8",
+    "Type": "Mathematical"
+}

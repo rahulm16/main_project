@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf946",
+    "Course-ID": "noc24-ae16",
+    "Discipline": "Aerospace / Mechanical Engineering",
+    "Course-name": "Elements of Mechanical Vibration",
+    "Course-instructor": "Prof. Ashish K Darpe",
+    "Institute-name": "IIT Delhi",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ae16/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/101102090",
+    "content": "It is hard to imagine any mechanical/aerospace system that is not subjected to dynamic excitation force. The time-varying forces excite these machines/structures and manifests in their vibratory motion. The vibratory motion greatly influences the stresses and hence the durability and residual life of these complex systems, apart from generating undesired noise. The task for an engineer in designing these systems is ensuring a desired life. It is therefore necessary to develop insights into the vibration phenomenon, so that the issue of undesired vibration levels is addressed at the design stage itself. This course addresses the fundamentals of vibration theory with simple but practical examples with an emphasis on seeing the larger picture and interpreting the outcome of vibration analysis from the context of machinery or structural design. At the end of the course the student will be able to understand the process of modelling any practical vibratory system, its analysis and interpreting the results."
+}

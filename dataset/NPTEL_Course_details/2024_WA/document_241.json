@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa36",
+    "Course-ID": "noc24-cs131",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Google Cloud Computing Foundations",
+    "Course-instructor": "Prof. Soumya Kanti Ghosh",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "8 Weeks",
+    "Start-date": "August 19, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs131/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106105223",
+    "content": "The Google Cloud Computing Foundations course aims to provide students with little to no background or experience in cloud computing, a detailed overview of concepts covering cloud basics, big data, and machine learning and where and how the Google Cloud Platform fits in.The course involves understanding concepts and perform hands-on training (via Qwiklabs platform) to practice the learning"
+}

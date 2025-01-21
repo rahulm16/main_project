@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be83f",
+    "question": "The square of a number is 81. What is the number?",
+    "options": [
+        "8",
+        "9",
+        "10",
+        "7"
+    ],
+    "correct_answer": "9",
+    "Type": "Mathematical"
+}

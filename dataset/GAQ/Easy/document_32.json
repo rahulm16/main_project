@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be76b",
+    "question": "If '+' means '-', '-' means '*', '*' means '/' and '/' means '+', then what is the value of 8 + 4 * 2 / 2?",
+    "options": [
+        "6",
+        "10",
+        "8",
+        "12"
+    ],
+    "correct_answer": "6",
+    "Type": "Logic"
+}

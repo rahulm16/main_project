@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf979",
+    "Course-ID": "noc24-bt40",
+    "Discipline": "Biotechnology and Bioengineering",
+    "Course-name": "Proteins and Gel-Based Proteomics",
+    "Course-instructor": "Prof. Sanjeeva Srivastava",
+    "Institute-name": "IIT Bombay",
+    "Duration": "4 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "August 16, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_bt40/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/102101049",
+    "content": "This course introduces to the basic biology of proteins and gel-based proteomics. To obtain better understanding of cellular processes & regulation, there has been an increasing interest in studying proteomics. Proteomics techniques aim to look into the protein properties from a global perspective, i.e., not undertaking one protein at a time, but an entire set of proteins in the milieu. These proteomic techniques typically aim to elucidate the expression, interaction, and cellular function of proteins.\nThe course will provide the basic understanding of amino acids and proteins. It would also provide detailed information on gel-based proteomic techniques such as SDS-PAGE and 2-DE. Some of the limitation of 2-DE has been overcome by advanced Difference gel electrophoresis (DIGE) technique, which will be discussed in this course. Protein identification using MALDI-TOF/TOF mass spectrometry will also be discussed. 2-DE in combination with mass spectrometry has become very powerful tool for proteomics applications and students can learn these tools by attending this course."
+}

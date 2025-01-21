@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa9a",
+    "Course-ID": "noc24-ee128",
+    "Discipline": "Electrical, Mechanical, and Aerospace Engineering",
+    "Course-name": "Nonlinear Dynamical Systems and Control",
+    "Course-instructor": "Prof. Vijaysekhar Chellaboina",
+    "Institute-name": "IIT Madras",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee128/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/117106483",
+    "content": "The course will provide an introduction to stability and control of nonlinear systems described by ordinary differential equations. The first part of the course will focus on the asymptotic analysis of nonlinear systems through Lyapunov function methods. The second part of the course will provide applications of the Lyapunov function approach to control of linear and nonlinear systems. The specific topics include robust control, adaptive control, and feedback linearization."
+}

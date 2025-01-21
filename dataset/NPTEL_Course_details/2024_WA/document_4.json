@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf949",
+    "Course-ID": "noc24-ae21",
+    "Discipline": "Aerospace engineering",
+    "Course-name": "Introduction to Airbreathing Propulsion",
+    "Course-instructor": "Prof. Ashoke De",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ae21/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/101104084",
+    "content": "Due to the rapid advance in air transportation as well as military and intelligence missions, aircraft and rocket propulsion has become an essential part of engineering education. Propulsion is the combined aero-thermal science for aircrafts and rockets. Propulsion has both macro and microscales. Macroscale handles the performance and operation of aircrafts and rockets during different missions, while microscale is concerned with component design including both rotary modules (i.e., compressor, fan, pump, and turbine) and stationary modules (i.e., intake, combustor, afterburner, and nozzle). The fundamental knowledge of propulsion is expected to improve the design of the industrial propulsive systems by enhancing the stability, improving the efficiency, and reduction in pollutant formation. In this course, an integrated understanding of theory and practice of propulsion would be covered. The discussion would continue on the design, operation, installation and several inspections, repair, and maintenance aspects of aircraft and rocket engines."
+}

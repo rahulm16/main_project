@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa43",
+    "Course-ID": "noc24-cs126",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Design & Implementation of Human-Computer Interfaces",
+    "Course-instructor": "Prof. Samit Bhattacharya",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs126/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106103237",
+    "content": "Human-computer interfaces have become very much part of our lives, due to the proliferation of large number of consumer electronic products. The key issue is to make the products usable to lay-persons. As a result, the main concern is usability and how to ensure it for the product. As it happens, development of a usable system follows a process consisting of stages. In this course, we shall learn the stages a system should follow to be usable. In the first few lectures (first week), we will get introduced to the human-computer interfaces, concept of usability and its engineering (including the stages). In the subsequent lectures, the stages will be covered. Weeks 2 and 3 are devoted to the topics on identification of usability requirements. In week 4, we shall learn about the fundamental concepts involved in usable design. Evaluation of the design to ensure usability is covered in week 5. Weeks 6 and 7 contains lectures on converting the design to an information system. Implementation of the system is discussed in weeks 8-10. Week 11 will cover the concepts related to the evaluation for system usability. In the final week (12), we will cover few related topics and conclude the course."
+}

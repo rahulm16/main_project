@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb5f",
+    "Course-ID": "noc24-ma84",
+    "Discipline": "Mathematics",
+    "Course-name": "Approximate Reasoning using Fuzzy Set Theory",
+    "Course-instructor": "Prof. Balasubramaniam Jayaram",
+    "Institute-name": "IIT Hyderabad",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma84/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111106162",
+    "content": "The main focus of this course is to provide an understanding of and the theoretical underpinning of the different schemes of Approximate Reasoning employing Fuzzy Sets. It is envisaged that the structure and approach of the course will be to make a student of Math appreciate how the different structural constructs, often consigned to theoretical studies, play a role in propping up working engineering models, and a student of engineering understand the variety of theoretical explorations that allow for some basic guarantees to their embedded models. A basic understanding of analysis and algebra is required, while the basics of fuzzy set theory, while being useful will also be covered as we go along. Thus it should be accessible to final year undergrads and any post-graduate student in Math / CSE or EE."
+}

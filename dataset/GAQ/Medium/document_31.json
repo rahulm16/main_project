@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759fb",
+    "question": "Which of phrases given below each sentence should replace the phrase printed in bold type to make the grammatically correct? If the sentence is correct as it is, mark 'E' as the answer. The man to who I sold my house was a cheat.",
+    "options": [
+        "to whom I sell",
+        "to who I sell",
+        "who was sold to",
+        "to whom I sold"
+    ],
+    "correct_answer": "to whom I sold",
+    "Type": "Verbal"
+}

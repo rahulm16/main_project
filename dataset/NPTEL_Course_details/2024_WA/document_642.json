@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbc8",
+    "Course-ID": "noc24-me106",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Fundamentals of Acoustics",
+    "Course-instructor": "Prof. Venkata R. Sonti",
+    "Institute-name": "IISc Bangalore",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me106/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112108527",
+    "content": "The course teaches the partial differential equation that describes the behavior of sound, i.e., the wave equation. The course starts initially with lumped vibrations, then 1-D waves on strings and rods and then finally to 1-D and 3-D acoustic wave equations. The 1-D equation is solved using the assumed wave solution. The 3-D wave equation is solved using the Kirchhoff Helmholtz Integral Equation and the Green function. Several examples are solved in rectangular, cylindrical and spherical coordinate systems. Both interior and exterior problems are addressed."
+}

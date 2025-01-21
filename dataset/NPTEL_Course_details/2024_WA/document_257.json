@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa46",
+    "Course-ID": "noc24-cs97",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Approximation Algorithm",
+    "Course-instructor": "Prof. Palash Dey",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs97/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106105471",
+    "content": "Many real-world problems are NP-complete. Hence, they are unlikely to admit a polynomial-time algorithm. In this course, we will study various techniques to design efficient algorithms to compute an approximately optimal solutions."
+}

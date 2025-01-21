@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbf3",
+    "Course-ID": "noc24-ge58",
+    "Discipline": "Multidisciplinary",
+    "Course-name": "Bandit Algorithm (Online Machine Learning)",
+    "Course-instructor": "Prof. Manjesh Hanawal",
+    "Institute-name": "IIT Bombay",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ge58/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/110101145",
+    "content": "In many scenarios, one faces uncertain environments where a-priori the best action to play is unknown. How to obtain best possible reward/utility in such scenarios. One natural way is to first explore the environment and to identify the `best?\u00c9\u00ac\u00a2?\u00a2\u201a\u00c4\u00f6\u00ac\u00a8?\u00a2\u201a\u00c4\u00fb\u00ac\u00a2 actions and exploit them. However, this give raise to an exploration vs exploitation dilemma, where on hand hand we need to do sufficient explorations to identify the best action so that we are confident about its optimality, and on the other hand, best actions need to exploited more number of times to obtain higher reward. In this course we will study many bandit algorithms that balance exploration and exploitation well in various random environment to accumulate good rewards over the duration of play. Bandit algorithms find applications in online advertising, recommendation systems, auctions, routing, e-commerce or in any filed online scenarios where information can be gather in an increment fashion."
+}

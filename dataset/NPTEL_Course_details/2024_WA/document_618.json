@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbb0",
+    "Course-ID": "noc24-me102",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Dynamic Behaviour of Materials",
+    "Course-instructor": "Prof. Prasenjit Khanikar",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me102/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112103278",
+    "content": "Study of materials behavior in extreme environments and development of new materials for such environments has become a vital research area for materials scientists and engineers in the 21 st century. Mechanical properties of materials under dynamic loading are considered as an important area of research and development in defense, automotive and aerospace industries. Under dynamic loading conditions, the inertial effects come to play an important role in the deformation behavior of the material. Many materials exhibit strain rate sensitivity at higher strain rates, i.e., flow stress dependence on strain rates. In addition, the failure mechanisms under high strain rate loading conditions are generally different than those occur in low strain rate. Furthermore, the deformation and failure mechanisms are controlled by the microstructure of the materials. This course will be important to mechanical, materials and civil engineers to understand materials behavior for ballistic applications, explosive forming or welding applications, automotive and aerospace applications."
+}

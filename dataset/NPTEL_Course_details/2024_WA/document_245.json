@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa3a",
+    "Course-ID": "noc24-cs124",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Computer Vision",
+    "Course-instructor": "Prof. Jayanta Mukhopadhyay",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs124/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106105216",
+    "content": "The course will have a comprehensive coverage of theory and computation related to imaging geometry, and scene understanding. It will also provide exposure to clustering, classification and deep learning techniques applied in this area."
+}

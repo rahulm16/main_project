@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb6d",
+    "Course-ID": "noc24-ma72",
+    "Discipline": "Mathematics",
+    "Course-name": "Introduction to Probability Theory and Stochastic Processes (Tamil)",
+    "Course-instructor": "Prof. S Dharmaraja",
+    "Institute-name": "IIT Delhi",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma72/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111102518",
+    "content": "This course explanations and expositions of probability and stochastic processes concepts which they need for their experiments and research. It also covers theoretical concepts of probability and stochastic processes pertaining to handling various stochastic modeling. This course provides random variable, distributions, moments, modes of convergences, classification and properties of stochastic processes, stationary processes, discrete and continuous time Markov chains and simple Markovian queueing models."
+}

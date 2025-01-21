@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa2e",
+    "Course-ID": "noc24-cs68",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Python for Data Science",
+    "Course-instructor": "Prof. Ragunathan Rengasamy",
+    "Institute-name": "IIT Madras",
+    "Duration": "4 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "August 16, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs68/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106106212",
+    "content": "The course aims at equipping participants to be able to use python programming for solving data science problems"
+}

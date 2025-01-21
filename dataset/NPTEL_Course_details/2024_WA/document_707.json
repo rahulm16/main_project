@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfc09",
+    "Course-ID": "noc24-ph38",
+    "Discipline": "Physics",
+    "Course-name": "Foundations of Quantum Theory: Non-Relativistic Approach",
+    "Course-instructor": "Prof. Sandeep Kumar Goyal",
+    "Institute-name": "IISER Mohali",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ph38/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/115106536",
+    "content": "Quantum theory (QT) is empirically a very successful theory; there is however an apparent lack of understanding of the theory. This is mostly due to the fact that, unlike the space-time structure, the cut between the ontology and epistemology in QT is difficult to resolve. The two fundamental concepts\u2013the non-local correlations (entanglement) between space-like separated systems and the indistinguishability (non-orthogonality) of quantum states\u2013is widely believed to separate QT from classical theories. In this course we take a foundational approach to QT from the outside: i.e., since classical theories are completely devoid of entanglement, it is compared with various foil theories that are also non-local and indistinguishable in the sense of QT, such that their special nature in the theory can be quantified. The two concepts will be explained in this course through variety of topics it has motivated in the field of quantum information and computation, both in non relativistic settings. In the followup course proposed, we will also discuss the relativisitic approach to foundations of quantum theory."
+}

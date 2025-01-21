@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa3b",
+    "Course-ID": "noc24-cs125",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Programming in Modern C++",
+    "Course-instructor": "Prof. Partha Pratim Das",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs125/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106105234",
+    "content": "There has been a continual debate on which programming language/s to learn, to use. As the latest TIOBE Programming Community Index for August 2021 indicates ?\u00c9?\u00ed?\u00c7\u00ac\u00a2?\u00c9\u00ac\u00a2?\u00a2\u201a\u00c7\u00a8?\u00b0?\u00c7\u00ac\u00a8?\u00c9\u00ac\u00a2?\u00a2\u201a\u00c4\u00f6\u00ac\u00a8?\u00d6\u201a\u00c4\u00fa C (13%), Python (12%), C++ (7%), Java (10%), and C#(5%) together control nearly half the programming activities worldwide. Further, C Programming Language Family (C, C++, C#, Objective C etc.) dominate more than 25% of activities. Hence, learning C++ is important as one learns about the entire family, about Object-Oriented Programming and gets a solid foundation to also migrate to Java and Python as needed. C++ is the mother of most general purpose of languages. It is multi-paradigm encompassing procedural, object-oriented, generic, and even functional programming. C++ has primarily been the systems language till C++03 which punches efficiency of the code with the efficacy of OOP. Then, why should I learn it if my primary focus is on applications? This is where the recent updates of C++, namely, C++11 and several later offer excellent depths and flexibility for C++ that no language can match. These extensions attempt to alleviate some of the long-standing shortcomings for C++ including porous resource management, error-prone pointer handling, expression semantics, and better readability. The present course builds up on the knowledge of C programming and basic data structure (array, list, stack, queue etc.) to create a strong familiarity with C++98 / C++03. Besides the constructs, syntax and semantics of C++ (over C), we also focus on various idioms of C++ and attempt to go to depth with every C++ feature justifying and illustrating them with several examples and assignment problems. On the way, we illustrate various OOP concepts. The course also covers important advances in C++11 and later released features."
+}

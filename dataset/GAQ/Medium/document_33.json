@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759fd",
+    "question": "In each questions below five words are given. Find out that word, the spelling of which is WRONG. The letter of that word is the answer. If all the four words are spelt correctly, the answer is 'E', i.e., \"All Correct\". (solve as per the direction given above)",
+    "options": [
+        "History",
+        "Chemistry",
+        "Commerce",
+        "All correct"
+    ],
+    "correct_answer": "All correct",
+    "Type": "Verbal"
+}

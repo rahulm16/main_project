@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759e0",
+    "question": "Find the number that fits somewhere into the middle of the series. Some of the items involve both numbers and letters Look at this series: U32, V29, __, X23, Y20, ... What number should fill the blank?",
+    "options": [
+        "W26",
+        "W17",
+        "Z17",
+        "Z26"
+    ],
+    "correct_answer": "W26",
+    "Type": "Logic"
+}

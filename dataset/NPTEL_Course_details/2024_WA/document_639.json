@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbc5",
+    "Course-ID": "noc24-me142",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Energy Conservation and Waste Heat Recovery",
+    "Course-instructor": "Prof. Prasanta Kr Das\nProf. A Bhattacharya",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me142/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112105221",
+    "content": "Estimates from analyses and audits from various industries suggest that 20 to 50% of industrial energy input is lost as waste heat. This waste heat can be in the form of hot exhaust gases, water/fluid streams (from condensers in power plants) or heat lost from hot equipment and surfaces. As the world strives for higher energy efficiencies, it is imperative that along with better equipment we focus on recovering the energy stored in this waste heat and utilize it for useful purposes.\nThe proposed course introduces us to various methods of Waste Heat Recovery that has been employed by the industry to harness the energy stored in waste heat and use it for generation of additional electric power."
+}

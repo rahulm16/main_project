@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e575a15",
+    "question": "The average of 20 numbers is zero. Of them, at the most, how many may be greater than zero?",
+    "options": [
+        "0",
+        "1",
+        "10",
+        "19"
+    ],
+    "correct_answer": "19",
+    "Type": "Mathematical"
+}

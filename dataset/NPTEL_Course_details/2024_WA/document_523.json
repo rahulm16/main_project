@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb50",
+    "Course-ID": "noc24-mg113",
+    "Discipline": "Management / Finance / Data Science",
+    "Course-name": "Advanced R Programming for Data Analytics in Business",
+    "Course-instructor": "Prof. Abhinava Tripathi",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_mg113/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/110104513",
+    "content": "Over the next few decades, Data Science (DS), Machine-Learning (ML), and AI (Artificial Intelligence) will play a crucial role in several aspects of business decision-making and management information systems. Leaders in organizations need to capitalize on data analytics to gain a competitive advantage in the modern business landscape. The application of cutting-edge data analytics techniques implemented with R programming (and RStudio, a powerful IDE (Integrated Development Environment)) will prepare the learners for business analytics workflow and make them job ready for mid-to-senior managerial positions in various business and industry settings. In this course, you will use advanced data analytics tools to explore, clean, wrangle, visualize, and process business data to generate useful insights and make inferences from raw and unstructured data. The course will also introduce the learners to use cases from business, finance, and management areas and problem sets that require advanced techniques for processing the data and communicating the results, and providing managerial implications. This course has been carefully designed to cater to not only business, finance, and management professionals but also those from other industries and academics that significantly rely on data-driven decision-making. The operating environment for all types of organizations (engineering and management) has become extremely dynamic and data-driven and continues to evolve at an extremely fast pace, with technological innovations at the heart of this change. Against this backdrop, DS, ML, and AI are providing new opportunities for all market participants, i.e., business leaders, policymakers, regulators, and governments. The objective of this course is to help the learners understand and apply these modern DS, ML, and AI techniques in the business, finance, and management industry. This includes solving real-life business, finance, and management problems to improve organizational decision-making."
+}

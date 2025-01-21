@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb65",
+    "Course-ID": "noc24-ma87",
+    "Discipline": "Mathematics",
+    "Course-name": "Essential Mathematics for Machine Learning",
+    "Course-instructor": "Prof. S. K. Gupta\nProf. Sanjeev Kumar",
+    "Institute-name": "IIT Roorkee",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma87/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111107137",
+    "content": "Machine learning (ML) is one of the most popular topics of nowadays research. This particular topic is having applications in all the areas of engineering and sciences. Various tools of machine learning are having a rich mathematical theory. Therefore, in order to develop new algorithms of machine/deep learning, it is necessary to have knowledge of all such mathematical concepts. In this course, we will introduce these basic mathematical concepts related to the machine/deep learning. In particular, we will focus on topics from matrix algebra, calculus, optimization, and probability theory those are having strong linkage with machine learning. Applications of these topics will be introduced in ML with help of some real-life examples."
+}

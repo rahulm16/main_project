@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa30",
+    "Course-ID": "noc24-cs92",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Discrete Mathematics - IIT Ropar",
+    "Course-instructor": "Prof. Sudarshan Iyengar\nProf. Anil Shukla",
+    "Institute-name": "IIT Ropar",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs92/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106106183",
+    "content": "The course will be an introduction to Discrete Mathematics which comprises of the essentials for a computer science student to go ahead and study any other topics in the subject. The emphasis will be on problem solving as well as proofs. We will be providing motivational illustrations and applications through out the course. The course doesn't assume any pre-requisites except for high school level arithmetic and algebra."
+}

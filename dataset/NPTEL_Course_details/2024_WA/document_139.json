@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf9d0",
+    "Course-ID": "noc24-cy59",
+    "Discipline": "Chemistry",
+    "Course-name": "Fundamentals of Statistical Thermodynamics",
+    "Course-instructor": "Prof. Nand Kishore",
+    "Institute-name": "IIT Bombay",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cy59/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/104101139",
+    "content": "Statistical thermodynamics will establish a link between bulk properties based on classical thermodynamics (which students are presumed to have learnt) with microscopic properties of individual molecules. All the essential thermodynamic quantities and laws will be expressed in terms of relevant partition functions. The knowledge thus gained from the contents of this course will enable students to understand that thermodynamic quantities can also be obtained from spectroscopic measurements."
+}

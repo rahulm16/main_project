@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa06",
+    "Course-ID": "noc24-ce75",
+    "Discipline": "Civil Engineering/Earthquake Engineering",
+    "Course-name": "Earthquake Geotechnical Engineering",
+    "Course-instructor": "Prof. B. K. Maheshwari",
+    "Institute-name": "IIT Roorkee",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ce75/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/105107225",
+    "content": "The course covers application of principles of Earthquake Engineering to Soil Mechanics and Geotechnical Engineering. First, a required basic background related to Earthquake Engineering will be taught, this will start from geotechnical issues during earthquakes, relevant damages and subject introduction. Next, some background related to engineering seismology will be discussed followed by strong ground motion and wave propagation. Two most important topics: dynamic soil properties and liquefaction of soils will be covered in much detail. The course will also cover ground response analysis and local site effects. Further slope stability, landslides and retaining walls will be taught. Finally soil improvement for seismic mitigation will be covered."
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa78",
+    "Course-ID": "noc24-ee104",
+    "Discipline": "Electrical and Electronics Engineering",
+    "Course-name": "Principles and Techniques of Modern Radar Systems",
+    "Course-instructor": "Prof. Amitabha Bhattacharya",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee104/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108105154",
+    "content": "The course ?\u00a2\u201a\u00c7\u00a8?\u00ecPrinciples and Techniques of Modern Radar Systems?\u00a2\u201a\u00c7\u00a8\u00ac\u00f9 covers a broad spectrum of the radar system design and analysis, starting with the basic concepts of microwave radar principles. It first develops a simplified model called ?\u00a2\u201a\u00c7\u00a8?\u00ecradar range equation?\u00a2\u201a\u00c7\u00a8\u00ac\u00f9 to introduce the basic concepts of the Radar. Then it introduces the simple CW Radar and shows it limitations and how that can be overcome with the help of frequency modulation. Then it introduces the concept of pulsed radar to increase the range of the radar detection, Thereafter the concept of MTI filtering to discriminate clutter in the Doppler domain is introduced and performance metric of MTI filtering is introduced. The drawback of MTI filtering in airborne radar is introduced next to highlight the concept of pulsed Doppler radar. Thereafter tracking radar is introduced alongwith monopulse concept to measure angular position of a target with very high accuracy. Then the detection theory is introduced by elaborate description of match filtering, ambiguity function, range resolution and Doppler resolution concepts. Thereafter pulse compression is introduced to increase the downrange resolution and synthetic aperture processing to increase cross range resolution. Thus the concept of the imaging radar is introduced. The statistical nature of target and environment parameter fluctuations is introduced next by introducing the concept of probability of false alarm and probability of detection. Swerling models are introduced and with their help the radar equation model is modified to make it more realistic. The modern trend of close sensing of targets with ground penetrating radar is next introduced and also the topic of radar tomography is introduced to give the course students a thrill of various modern civil, industrial and mining applications of radar technology. This trend of radar technology evolution from defence applications to civilian applications is emphasized at the end of the course."
+}

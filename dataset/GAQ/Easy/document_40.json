@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be773",
+    "question": "A clock shows the time as 2:45. What is the angle between the hour and minute hands?",
+    "options": [
+        "67.5\u00b0",
+        "90\u00b0",
+        "97.5\u00b0",
+        "112.5\u00b0"
+    ],
+    "correct_answer": "97.5\u00b0",
+    "Type": "Logic"
+}

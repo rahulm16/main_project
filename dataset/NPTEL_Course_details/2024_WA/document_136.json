@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf9cd",
+    "Course-ID": "noc24-cy45",
+    "Discipline": "Chemistry",
+    "Course-name": "Organic Chemistry in Biology and Drug Development",
+    "Course-instructor": "Prof. Amit Basak",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cy45/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/104105120",
+    "content": "In the biosphere, the chemistry must be considered in the context of the cell, or an organ, or even a whole organism. That makes mimicking of biological processes to be extremely challenging as the reaction needs to be performed with perfect orthogonality to other functional entities present in a biological system. Today, with the advancement of various spectroscopic and molecular biology techniques and with a better understanding of chemical principles, functions of various bio molecules have been unravelled which has paved the way for development of newer drugs. The present course is an attempt to bridge the gap in our understanding of biological systems and processes at the molecular and functional level. The course first introduces the various kinds of bio molecules, macro to medium size to small, their structures and functions followed by molecular engineering to manipulate their activity and biosynthesis. That creates a perfect platform for the next module on drug design and discovery"
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa5f",
+    "Course-ID": "noc24-ee111",
+    "Discipline": "Electrical and Electronics Engineering",
+    "Course-name": "Analog VLSI Design",
+    "Course-instructor": "Prof. Imon Mondal",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee111/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108104193",
+    "content": "This course is aimed at introducing analog circuits from the perspective of designing amplifiers in an integrated circuit using MOS transistors. The students will be introduced to the techniques required for designing amplifiers using negative feedback as the guiding principle. Small signal characteristics of widely used amplifier topologies will be discussed and their limitations analysed. The learning objective of the course is to make the students proficient in the synthesis basic amplifier topologies so that one can develop an intuition to design circuits based on specific requirements in their career."
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa14",
+    "Course-ID": "noc24-cs77",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Distributed Systems",
+    "Course-instructor": "Prof. Rajiv Misra",
+    "Institute-name": "IIT Patna",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs77/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106106168",
+    "content": "A distributed system is a software system in which components located on networked computers communicate and coordinate their actions by passing messages. The components interact with each other in order to achieve a common goal. Distributed applications (distributed apps) are applications or software that runs on multiple computers within a network at the same time and can be stored on servers or with cloud computing. This course provides an in-depth understanding of fundamental principles and models underlying the theory, algorithms, and systems aspects of distributed computing. Few Emerging topics such as Peer-to-Peer computing, Distributed Hash Table, Google File System, HDFS, Spark, Sensor Networks and Security in Distributed Systems will also be covered for significant impact. Upon completing this course, students will have intimate knowledge about how things work in a distributed environment."
+}

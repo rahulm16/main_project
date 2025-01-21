@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb5c",
+    "Course-ID": "noc24-ma51",
+    "Discipline": "Mathematics",
+    "Course-name": "Mathematical Methods in Physics 2",
+    "Course-instructor": "Prof. Auditya Sharma",
+    "Institute-name": "IISER Bhopal",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma51/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111106152",
+    "content": "This would be the second of a two-part series on Mathematical Methods in Physics. The aim here is to provide a solid mathematical foundation for the budding Physicist eager to climb the ladder of self-learning. This course is designed to cater to an undergraduate student who excitedly embarks on a study of Physics, but is obstructed by the mathematics which appears so forbidding. The approach we will follow is one of showing many examples, and weaving the theory around examples. When possible, we will show how Mathematica can be used to offer extra insight."
+}

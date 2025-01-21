@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa42",
+    "Course-ID": "noc24-cs109",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Algorithmic Game Theory",
+    "Course-instructor": "Prof. Palash Dey",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs109/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106105237",
+    "content": "Game theory is the formal study of interaction between self-interested (or goal-oriented) systems (or agents or decision makers or players), and strategic scenarios that arise in such settings. It began life in Economics in the 1940's with the work of von Neumann and Morgenstern, but has since been applied to an extraordinary range of subjects, including political science, evolutionary biology and even to inspection regimes for arms control. Game theory has for years also played an important, if less recognized, role in several branches of computer science. Applications within computer science include the use of games in automated verification and model checking to model computing systems in an unknown and possibly adverse environment. In AI games are applied to the analysis of multi-agent systems. Recently, with the advent of the internet and e-commerce, many game theoretic questions in the interplay between economics and computing have received extensive attention. These include electronic auctions, and more generally mechanism design questions (inverse game theory) related to finding incentive structures for cooperation between independent entities on the internet. Wherever game theory plays a quantitative role, algorithmic and computational questions related to solving games are also of central importance. This course discusses algorithmic aspects of game-theoretic models, with a focus on recent algorithmic and mathematical developments."
+}

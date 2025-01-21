@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf9cf",
+    "Course-ID": "noc24-cy58",
+    "Discipline": "Chemistry",
+    "Course-name": "One and Two Dimensional NMR Spectroscopy for Chemists",
+    "Course-instructor": "Prof. Suryaprakash N",
+    "Institute-name": "IISc Bangalore",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cy58/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/104108124",
+    "content": "In this course, I will discuss fundamental concepts of NMR spectroscopy, experimental determination of NMR spectral parameters, their interpretation, selective and broadband homo and Heteronuclear spin decoupling, numerous examples of the analysis of NMR spectra of 1H, 13C and other heteronuclei will be given. The relaxation processes, their measurement and utility in understanding molecular dynamics, the polarization transfer mechanism, the spectral editing techniques, such as, APT, DEPT, INEPT will also be discussed. Two dimensional NMR and the commonly employed experiments, viz., COSY, TOCSY, HSQC, HMQC, HMBC, NOESY, etc will be discussed with number of examples. The practical aspects of one and two dimensional NMR data acquisition and processing will also be highlighted. The solid state NMR, magic angle spinning and cross polarization will also be discussed."
+}

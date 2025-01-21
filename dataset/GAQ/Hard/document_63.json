@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be850",
+    "question": "What does 'Serendipity' mean?",
+    "options": [
+        "Unlucky accident",
+        "Unexpected good luck",
+        "Intentional success",
+        "An unfortunate event"
+    ],
+    "correct_answer": "Unexpected good luck",
+    "Type": "Verbal"
+}

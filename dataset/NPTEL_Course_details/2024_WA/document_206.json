@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa13",
+    "Course-ID": "noc24-cs72",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Modern Algebra",
+    "Course-instructor": "Prof. Manindra Agrawal",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs72/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106104149",
+    "content": "The course discusses how algebra allows us to abstract out the geometric objects and numbers. This leads to an understanding of fundamental properties of geometry and numbers as well as allows us to manipulate them in ways not possible directly. This has resulted in some of the most remarkable applications of mathematics in real life."
+}

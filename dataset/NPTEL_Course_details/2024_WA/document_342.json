@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa9b",
+    "Course-ID": "noc24-ee79",
+    "Discipline": "Electronics and Communication Engineering",
+    "Course-name": "Basics of Software Defined Radios and Practical Applications",
+    "Course-instructor": "Prof. Meenakshi Rawat",
+    "Institute-name": "IIT Roorkee",
+    "Duration": "4 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "August 16, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee79/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108107107",
+    "content": "Software-defined radio (SDR) is an inherent part of the modern communication system, where many processes, which used to be implemented in hardware, are defined in the software domain for flexibility and configurability. This course describes various components of software-defined-radios with the understanding of their limitation and application of ?\u00a2\u201a\u00c7\u00a8\u00c0\u00fasoftware-defined-solutions?\u00a2\u201a\u00c7\u00a8\u201a\u00d1\u00a2 to overcome such limitations. Understanding the interplay of analog and digital signal processing for power as well as spectrum efficient transmission and reception of signal leads to an optimized, yet, practical radio solution. This course will allow students to understand (1) the terminology used in industrial data-sheets and (2) motivation for selecting appropriate commercial solutions for a practical transceiver design."
+}

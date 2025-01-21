@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e575a16",
+    "question": "A, B and C can do a piece of work in 20, 30 and 60 days respectively. In how many days can A do the work if he is assisted by B and C on every third day?",
+    "options": [
+        "12 days",
+        "15 days",
+        "16 days",
+        "18 days"
+    ],
+    "correct_answer": "15 days",
+    "Type": "Mathematical"
+}

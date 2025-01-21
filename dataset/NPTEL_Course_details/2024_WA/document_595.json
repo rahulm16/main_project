@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb98",
+    "Course-ID": "noc24-me112",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Convective Heat Transfer",
+    "Course-instructor": "Prof Saptarshi Basu",
+    "Institute-name": "IISc Bangalore",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me112/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112108246",
+    "content": "Convective heat transfer is ubiquitous to many domains ranging from large scale power generation to microscale flow. The course as outlined aims to offer insights and fundamentals into convective heat transfer processes. The course will first cover the basics of conservation equations in generalized convective heat transfer systems. Subsequently in the later modules, it will offer in depth analyses of specific areas like a.) internal and external forced convection, b.) internal and external free convection and c.) advanced topics like turbulent heat transfer. The coverage will benefit people from many industries like gas turbines, solar thermal, materials processing to name a few."
+}

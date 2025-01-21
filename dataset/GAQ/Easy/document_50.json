@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be77d",
+    "question": "A rectangular field has a length of 20 m and a width of 15 m. What is its area?",
+    "options": [
+        "300 m\u00b2",
+        "250 m\u00b2",
+        "400 m\u00b2",
+        "450 m\u00b2"
+    ],
+    "correct_answer": "300 m\u00b2",
+    "Type": "Mathematical"
+}

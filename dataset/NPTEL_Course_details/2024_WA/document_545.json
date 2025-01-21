@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb66",
+    "Course-ID": "noc24-ma54",
+    "Discipline": "Mathematics",
+    "Course-name": "Numerical methods",
+    "Course-instructor": "Prof. Ameeya Kumar Nayak\nProf. Sanjeev Kumar",
+    "Institute-name": "IIT Roorkee",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma54/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111107105",
+    "content": "This course is a basic course offered to UG student of Engineering/Science background. It contains solution of system of linear equations, roots of non-linear equations, interpolation, numerical differentiation and integration. It plays an important role for solving various engineering sciences problems. Therefore, it has tremendous applications in diverse fields in engineering sciences."
+}

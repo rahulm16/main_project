@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa0d",
+    "Course-ID": "noc24-cs83",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Computer Architecture",
+    "Course-instructor": "Prof. Smruti Ranjan Sarangi",
+    "Institute-name": "IIT Delhi",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs83/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106102157",
+    "content": "This is an introductory computer architecture course for beginners. We will start out with a discussion on binary representations, and a discussion on number systems (1's complement and 2's complement). Then, the course will move on to discuss assembly languages, and computer arithmetic. Once, we are done with the fundamentals, we shall look at the design of a simple processor, concepts of pipelining, and the design of a modern memory system."
+}

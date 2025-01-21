@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb73",
+    "Course-ID": "noc24-ma89",
+    "Discipline": "Mathematics",
+    "Course-name": "A Basic Course in Number Theory",
+    "Course-instructor": "Prof. Shripad Garge",
+    "Institute-name": "IIT Bombay",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma89/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111101137",
+    "content": "This course intends to develop the basics of number theory touching upon many essential points such as the prime number theorem, quadratic reciprocity laws, Gauss?\u00c9\u00ac\u00a2?\u00a2\u201a\u00c4\u00f6\u00ac\u00a8?\u00a2\u201a\u00c4\u00fb\u00ac\u00a2 theorem on the classification of binary quadratic forms, Brahmagupta-Pell equations, to quote a few. This course will enable a student to learn more advanced topics in number theory."
+}

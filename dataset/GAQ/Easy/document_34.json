@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be76d",
+    "question": "In a row of students, Arun is 15th from the left and 12th from the right. How many students are there in the row?",
+    "options": [
+        "25",
+        "26",
+        "27",
+        "28"
+    ],
+    "correct_answer": "26",
+    "Type": "Logic"
+}

@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759f4",
+    "question": "Read each sentence to find out whether there is any grammatical error in it. The error, if any will be in one part of the sentence. The letter of that part is the answer. If there is no error, the answer is 'D'. (Ignore the errors of punctuation, if any). (solve as per the direction given above)",
+    "options": [
+        "He was sure",
+        "that he should",
+        "win the Prize.",
+        "No error."
+    ],
+    "correct_answer": "that he should",
+    "Type": "Verbal"
+}

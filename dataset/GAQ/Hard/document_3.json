@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be814",
+    "question": "In a certain code language, 'APPLE' is written as 'ELOPA'. How will 'ORANGE' be written?",
+    "options": [
+        "GENARO",
+        "EROAGN",
+        "EGAORN",
+        "GENARO"
+    ],
+    "correct_answer": "EGAORN",
+    "Type": "Logic"
+}

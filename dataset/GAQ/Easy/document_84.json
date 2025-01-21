@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be79f",
+    "question": "Choose the correct form: I _____ to the market yesterday.",
+    "options": [
+        "go",
+        "went",
+        "gone",
+        "going"
+    ],
+    "correct_answer": "went",
+    "Type": "Verbal"
+}

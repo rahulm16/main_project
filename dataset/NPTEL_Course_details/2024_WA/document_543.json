@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb64",
+    "Course-ID": "noc24-ma53",
+    "Discipline": "Mathematics",
+    "Course-name": "Matrix Analysis with Applications",
+    "Course-instructor": "Prof. S. K. Gupta\nProf. Sanjeev Kumar",
+    "Institute-name": "IIT Roorkee",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma53/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111107112",
+    "content": "This course is offered to UG and PG students of Engineering/Science background. It contains the concepts related to matrix theory, related concepts and their applications in various disciplines. It covers a depth understanding of matrix computations involving rank, eigenvalues, eigenvectors, similarity transformations, (diagonalisation, Joradan canonical etc). It also includes applications of matrix theory in optimization, differential equations, numerics, image processing and data analytics."
+}

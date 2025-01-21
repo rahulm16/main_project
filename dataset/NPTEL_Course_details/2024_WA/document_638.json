@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbc4",
+    "Course-ID": "noc24-me88",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Robotics",
+    "Course-instructor": "Prof. Dk Pratihar",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me88/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112105249",
+    "content": "The course will start with a brief introduction to robots and robotics. The motivation behind keeping robots in modern industries will be discussed. After providing a brief history of robotics, different components of a robotic system will be identified. The method of determining degrees of freedom of a robotic system will be discussed with some examples. After classifying the robots based on certain criteria, workspace analysis of manipulators will be carried out. Applications of robots in different areas like in manufacturing units, medical science, space, and others, will be discussed. Various methods of robot teaching will be explained with some suitable examples. Economic analysis will be conducted to decide whether we should purchase a robot. Both forward and inverse kinematics problems will be solved with the help of some suitable examples. To ensure smooth variation of joint angles of the robot, trajectory planning schemes will be explained. After carrying out velocity analysis with the help of Jacobian matrix, inverse dynamics problems of robots will be solved using Lagrange-Euler formulation. Control scheme used in robots to realise the joint torques will be discussed. Besides manipulators, analysis will be carried out on wheeled and multi-legged robots. The working principles of various sensors used in robots will be explained in detail. The steps to be followed in robot vision will be discussed with some suitable examples. The principles of motion planning algorithms will be explained in detail. Thus, this course will deal with all the issues related to kinematics, dynamics, control schemes and robot intelligence."
+}

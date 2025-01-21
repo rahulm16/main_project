@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf9f1",
+    "Course-ID": "noc24-ce92",
+    "Discipline": "Civil Engineering",
+    "Course-name": "Optimization Methods for Civil Engineering",
+    "Course-instructor": "Prof. Rajib Kumar Bhattacharjya",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ce92/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/105103210",
+    "content": "The primary objectives of the course are to introducing the students to the fundamentals of classical optimization techniques and also exposing them to the theory of different non-classical optimization methods and algorithms developed for solving various types of civil engineering optimization problems."
+}

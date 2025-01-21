@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfadf",
+    "Course-ID": "noc24-hs113",
+    "Discipline": "Humanities and Social Sciences",
+    "Course-name": "Handling Large-Scale Unit Level Data",
+    "Course-instructor": "Prof. Pratap C. Mohanty",
+    "Institute-name": "IIT Roorkee",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_hs113/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/109107182",
+    "content": "The primary objective of this module is to enable learners in handling various large-scale complex database for detailed analysis. This attempts in identifying various complexities in these database. The latest statitistical software like STATA will be employed in explaining these concepts as stated in the module. This will be practically oriented. The module covers the topics from basics of data, their collection, tabulation and analysis. Topics include familiarization with unit-level data, collection, prerequisites, descriptive and inferential statistics, analysis of data using STATA, analysis of qualitative variables, and handling longitudinal data, etc."
+}

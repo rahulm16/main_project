@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e575a0c",
+    "question": "Each of these questions is followed by three statements. You have to study the question and all the three statements given to decide whether any information provided in the statement(s) is redundant and can be dispensed with while answering the given question. At what time will the train reach city X from city Y?\n\nI. The train crosses another train of equal length of 200 metres and running in opposite directions in 15 seconds.\n\nII. The train leaves city Y at 7.15 a.m. for city X situated at a distance of 558 km.\n\nIII. The 200 metres long train crosses a signal pole in 10 seconds.",
+    "options": [
+        "I only",
+        "II only",
+        "III only",
+        "II and III only"
+    ],
+    "correct_answer": "II and III only",
+    "Type": "Mathematical"
+}

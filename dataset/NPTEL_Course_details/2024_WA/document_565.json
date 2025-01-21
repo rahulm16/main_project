@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb7a",
+    "Course-ID": "noc24-ma76",
+    "Discipline": "Mathematics",
+    "Course-name": "Representation Theory of General Linear Lie Algebra",
+    "Course-instructor": "Prof. R. Venkatesh",
+    "Institute-name": "IISc Bangalore",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma76/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111108520",
+    "content": "Representation theory has many applications in both mathematics and theoretical physics. The course will introduce representation theory via studying the finite dimensional representations of general Linear Lie algebra (gl_n). We prove all finite dimensional representations of gl_n is completely reducible. We develop Verma\u2019s highest weight theory using the root space decomposition of gl_n, and using this we classify all finite dimensional irreducible representations of gl_n. Finally, we end with Weyl Character formula and some of its applications."
+}

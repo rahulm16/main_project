@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be78b",
+    "question": "A fruit vendor sells 24 oranges for \u20b996. What is the cost of 1 orange?",
+    "options": [
+        "\u20b92",
+        "\u20b93",
+        "\u20b94",
+        "\u20b95"
+    ],
+    "correct_answer": "\u20b94",
+    "Type": "Mathematical"
+}

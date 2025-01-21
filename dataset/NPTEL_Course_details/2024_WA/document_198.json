@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa0b",
+    "Course-ID": "noc24-cs112",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Secure Computation: Part II",
+    "Course-instructor": "Prof. Ashish Choudhury",
+    "Institute-name": "IIIT Bangalore",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs112/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106108237",
+    "content": "Secure multi-party computation (MPC) is one of the most fundamental problems in cryptography as well as distributed computing. In a nutshell, a MPC protocol allows a set of mutually distrusting parties with private inputs, to perform any joint computation on their data, by keeping their respective data as private as possible. Secure MPC abstracts several real-world problems, for example privacy-preserving data mining, privacy-preserving ML, secure e-auctions, private matchmaking, secure set-intersection, secure e-voting, secure signal-processing, secure bioinformatics, secure biometrics, secure outsourcing, to name a few. Since the domain of secure computation is enormously vast, it is impossible to discuss every relevant topic in just a single course. Hence the plan is to cover the topics in two parts. The first part titled Secure Computation: Part I has been already offered. In that course, we covered a simpler form of adversarial setting, namely semi-honest adversary (passive adversary), where the corrupt parties are supposed to follow protocol instructions. However, real-life attackers may not be so benign and can cause the compromised parties to behave in any arbitrary fashion. Such corruptions are better modelled by active/malicious (Byzantine) adversaries, which will be the focus of this course."
+}

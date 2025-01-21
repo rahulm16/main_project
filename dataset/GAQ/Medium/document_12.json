@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759e8",
+    "question": "A good way to figure out the relationship in a given question is to make up a sentence that describes the relationship between the first two words. Then, try to use the same sentence to find out which of the answer choices completes the same relationship with the third word. Play is to actor as concert is to",
+    "options": [
+        "symphony",
+        "musician",
+        "piano",
+        "percussion"
+    ],
+    "correct_answer": "musician",
+    "Type": "Logic"
+}

@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be787",
+    "question": "Convert 2 hours and 30 minutes into minutes.",
+    "options": [
+        "120 minutes",
+        "150 minutes",
+        "160 minutes",
+        "180 minutes"
+    ],
+    "correct_answer": "150 minutes",
+    "Type": "Mathematical"
+}

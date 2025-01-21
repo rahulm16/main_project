@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb67",
+    "Course-ID": "noc24-ma55",
+    "Discipline": "Mathematics",
+    "Course-name": "Operations Research",
+    "Course-instructor": "Prof. Kusumdeep",
+    "Institute-name": "IIT Roorkee",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma55/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111107128",
+    "content": "Optimization is the most important sub area of the discipline Operations Research. Optimization problems arise in all walks of human activity- particularly in engineering, business, finance and economics. The simplest optimization problems are linear in nature which may be subject to a set of linear constraints. This course will equip the student with the expertise to mathematically model real life optimization problems as Linear Programming (Optimization) Problems and subsequently educate the student to solve these models with the help of the available methods."
+}

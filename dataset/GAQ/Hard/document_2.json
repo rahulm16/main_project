@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be813",
+    "question": "If A is the father of B, but B is not the son of A, how is B related to A?",
+    "options": [
+        "Daughter",
+        "Cousin",
+        "Niece",
+        "Aunt"
+    ],
+    "correct_answer": "Daughter",
+    "Type": "Logic"
+}

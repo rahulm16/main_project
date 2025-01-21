@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbc3",
+    "Course-ID": "noc24-me141",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Computational Fluid Dynamics",
+    "Course-instructor": "Prof. Suman Chakraborty",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me141/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112105254",
+    "content": "This is an introductory course in Fluid Mechanics. The subject Fluid Mechanics has a wide scope and is of prime importance in several fields of engineering and science. Present course emphasizes the fundamental underlying fluid mechanical principles and application of those principles to solve real life problems. Special attention is given towards deriving all the governing equations starting from the fundamental principle. There is a well balanced coverage of physical concepts, mathematical operations along with examples and exercise problems of practical importance. After completion of the course, the students will have a strong fundamental understanding of the basic principles of Fluid Mechanics and will be able to apply the basic principles to analyze fluid mechanical systems."
+}

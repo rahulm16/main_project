@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be784",
+    "question": "If a = 3 and b = 4, what is the value of a\u00b2 + b\u00b2?",
+    "options": [
+        "9",
+        "12",
+        "16",
+        "25"
+    ],
+    "correct_answer": "25",
+    "Type": "Mathematical"
+}

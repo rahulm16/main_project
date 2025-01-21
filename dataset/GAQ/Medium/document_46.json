@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e575a0a",
+    "question": "A train running at the speed of 60 km/hr crosses a pole in 9 seconds. What is the length of the train?",
+    "options": [
+        "120 metres",
+        "180 metres",
+        "324 metres",
+        "150 metres"
+    ],
+    "correct_answer": "150 metres",
+    "Type": "Mathematical"
+}

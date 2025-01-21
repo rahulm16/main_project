@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa96",
+    "Course-ID": "noc24-ee125",
+    "Discipline": "Electrical Engineering",
+    "Course-name": "A Basic Course on Electric and Magnetic Circuits",
+    "Course-instructor": "Prof. Ashok Kumar Pradhan",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee125/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108105479",
+    "content": "This is a basic course on electric and magnetic circuits suitable for any first-year undergraduate engineering program. It covers the analysis of DC circuits, AC circuits using the phasor concept, three-phase circuits, magnetic circuits and transformer-equivalent circuits. In all the chapters, it explains the concepts lucidly, like reactive power in time and phasor domains and negative wattmeter readings in three-phase circuits. It provides a comprehensive way to solve circuit problems. Overall, the course focuses on simple methods to solve different circuit problems, including transformer as a magnetic and electric circuit."
+}

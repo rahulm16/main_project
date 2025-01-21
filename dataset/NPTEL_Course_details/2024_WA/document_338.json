@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa97",
+    "Course-ID": "noc24-ee126",
+    "Discipline": "Electrical Engineering",
+    "Course-name": "Power Electronics with Wide Band Gap Devices",
+    "Course-instructor": "Prof. Moumita Das",
+    "Institute-name": "IIT Mandi",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee126/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108106480",
+    "content": "The major goal of this course is to familiarize the students with the properties of the wide bandgap devices and designing driver board to demonstrate the basic operating principles and their designing in PCB and thermal distribution for real world applications. Moreover, the modern designing challenges associated for high frequency power converter design by considering parasitic elements will also be presented, such as parasitic inductance and parasitic capacitance of the PCB. Power density advantages by using these devices for high power applications while operating at high operating frequency for emerging power applications are integral part of the course. Additionally, it will introduce methods of designing high frequency magnetics for high frequency operation of the power converters. Finally, the benefits of using the device in real life application will be discussed. In brief, the objective of this course is to provide a detailed understanding of wide bandgap devices and the state-of-the-art of design of power converters for real life application using these devices."
+}

@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be75d",
+    "question": "Find the odd one out: 36, 49, 64, 100, 121",
+    "options": [
+        "36",
+        "49",
+        "64",
+        "100"
+    ],
+    "correct_answer": "36",
+    "Type": "Logic"
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb7e",
+    "Course-ID": "noc24-ma93",
+    "Discipline": "Mathematics",
+    "Course-name": "Engineering Mathematics - I",
+    "Course-instructor": "Prof. Jitendra Kumar",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma93/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111105121",
+    "content": "This course is about the basic mathematics that is fundamental and essential component in all streams of undergraduate studies in sciences and engineering. The course consists of topics in differential calculus, integral calculus, linear algebra and differential equations with applications to various engineering problems. This course will cover the following main topics: Mean Value Theorems Indeterminate Forms Taylors and Maclaurins Theorems. Partial Derivatives Differentiability Taylors Expansion of Functions of Several Variables. Maxima and Minima Improper Integrals. Differentiation under Integral Sign (Leibnitz rule). Multiple Integrals and their Properties. Applications of Multiple Integrals System of Linear Equations. Vector Spaces; Basis and Dimension of a Vector Space. Rank of a Matrix and its Properties. Linear Transformation. Eigenvalues and Eigenvectors. Diagonalization First Order Differential Equations. Higher Order Differential Equations with Constant Coefficients. Cauchy-Euler Equations. System of Differential Equations"
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfaa1",
+    "Course-ID": "noc24-ee130",
+    "Discipline": "Electronics and Electrical Engineering",
+    "Course-name": "Power Electronics Applications in Power Systems",
+    "Course-instructor": "Prof. Sanjib Ganguly",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee130/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/117103488",
+    "content": "Electrical power system is growing very fast in a country like India. Thus, the operation of electrical power system becomes more and more complex. To enhance the reliability and to have faster control, there needs power electronics-based devices. There are various NPTEL courses to understand the basic electrical power systems. There are some advanced power system courses, as well. Similarly, there are few basic and advance power electronics courses. The Flexible AC Transmission Systems, popularly known with the acronym FACTS, provide the power electronics based solutions to enhance the capability of electrical power transmission systems. This course focuses the application of these power electronics based solutions in power systems. The course will start with the recapitulation of some basic concepts and modelling of electrical power transmission systems. Then, the mathematical modelling of various FACTS devices will be discussed. Then, the applicability of those devices in mitigating various problems of power transmission systems and in enhancing the performances of power transmission systems will be discussed in details"
+}

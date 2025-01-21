@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be78c",
+    "question": "If 5x = 20, what is the value of x?",
+    "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+    ],
+    "correct_answer": "4",
+    "Type": "Mathematical"
+}

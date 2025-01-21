@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa85",
+    "Course-ID": "noc24-ee95",
+    "Discipline": "Electrical and Electronics Engineering",
+    "Course-name": "An Introduction to Coding Theory",
+    "Course-instructor": "Prof. Adrish Banerjee",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee95/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108104092",
+    "content": "Error control coding is an indispensible part of any digital communication system. In this introductory course, we will discuss theory of linear block codes and convolutional codes, their encoding and decoding techniques as well as their applications in real world scenarios. Starting from simple repetition codes, we will discuss among other codes: Hamming codes, Reed Muller codes, low density parity check codes, and turbo codes. We will also study how from simple codes by concatenation we can build more powerful error correcting codes."
+}

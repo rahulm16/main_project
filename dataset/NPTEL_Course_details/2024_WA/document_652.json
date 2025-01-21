@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbd2",
+    "Course-ID": "noc24-mm25",
+    "Discipline": "Metallurgical and Materials Engineering",
+    "Course-name": "Fundamentals of Electronic Device Fabrication",
+    "Course-instructor": "Prof. Parasuraman Swaminathan",
+    "Institute-name": "IIT Madras",
+    "Duration": "4 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "August 16, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_mm25/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/113106062",
+    "content": "The course is intended to provide an understanding of the materials and devices used in the current semiconductor industry. It caters to undergraduate and graduate students with a diverse background in Chemical, Mechanical, Metallurgy, Materials Science, and Physics. The course provides the students with the basic physics behind semiconductor materials, types of semiconductors, and the reason for the dominance of silicon in the electronics industry. The course also covers the basics of devices with emphasis on their electronic characteristics. Optical devices like LEDs, lasers, solar cells, and their properties will also be explained."
+}
