@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf9b6",
+    "Course-ID": "noc24-ch76",
+    "Discipline": "Chemical Engineering",
+    "Course-name": "Mathematical Modelling and Simulation of Chemical Engineering Process",
+    "Course-instructor": "Prof. Sourav Mondal",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ch76/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/103105215",
+    "content": "The course is designed to enlighten you with different mathematical modelling approaches and strategies of chemical engineering process and design, both stochastic and deterministic. The course contents involved advanced theoretical framework of different types of transfer process related to heat, mass and fluid flow. The simulation techniques of these process are also covered. We also include dispersed phase modelling and modelling of molecular processes."
+}

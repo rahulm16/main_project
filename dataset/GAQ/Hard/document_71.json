@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be858",
+    "question": "What does the word 'Benevolent' mean?",
+    "options": [
+        "Hostile",
+        "Generous",
+        "Indifferent",
+        "Angry"
+    ],
+    "correct_answer": "Generous",
+    "Type": "Verbal"
+}

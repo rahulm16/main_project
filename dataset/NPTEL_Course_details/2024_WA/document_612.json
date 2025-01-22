@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbaa",
+    "Course-ID": "noc24-me131",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Computational Fluid Dynamics and Heat Transfer",
+    "Course-instructor": "Prof. Gautam Biswas",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me131/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112104302",
+    "content": "This course is an effort to cover a range of topics, - from elementary concepts for the uninitiated students to state-of-the-art algorithms useful for the practitioners. The contents begin with preliminaries, in which the basic principles and techniques of finite difference (FD), finite volume (FV) and finite element (FE) methods are described using detailed mathematical treatment. The methodologies are explained using step-by-step calculations. The popular CFD solvers, such as SIMPLE and MAC have been discussed in a detailed manner so that the learners can handle such programming paradigms with confidence."
+}

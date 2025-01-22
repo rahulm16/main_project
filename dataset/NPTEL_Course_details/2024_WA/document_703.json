@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfc05",
+    "Course-ID": "noc24-ph34",
+    "Discipline": "Physics",
+    "Course-name": "Accelerator Physics",
+    "Course-instructor": "Prof. Pitamber Singh\nProf. Rajni Pande\nProf. Amalendu Sharma",
+    "Institute-name": "IIT Bombay",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ph34/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/115101132",
+    "content": "Accelerators have an important role both in basic and applied research, eg., medical science, industry, national security, environmental science etc Electron accelerators are built for food irradiation etc and as Synchrotron Radiation Source for material science research. Depending on how particles are accelerated, accelerators are categorized as DC accelerators, Linear and Cyclic accelerators and Laser-Plasma Accelerators. Today, accelerators in the energy range of keV to TeV have been designed, built and used. In order to design, operate and utilise them efficiently, the physics of the accelerators should be well understood. In this course, physics of DC, Linear and Cyclic accelerators will be discussed and high energy accelerators will be briefly reviewed."
+}

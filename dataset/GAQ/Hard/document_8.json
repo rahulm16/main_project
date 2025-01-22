@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be819",
+    "question": "A cube has all its faces painted. It is then cut into smaller cubes of equal size. If 27 cubes are formed, how many of them have only one face painted?",
+    "options": [
+        "6",
+        "12",
+        "8",
+        "10"
+    ],
+    "correct_answer": "6",
+    "Type": "Logic"
+}

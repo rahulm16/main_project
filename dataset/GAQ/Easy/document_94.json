@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be7a9",
+    "question": "Choose the correctly spelled word.",
+    "options": [
+        "Embarrass",
+        "Embaras",
+        "Embarras",
+        "Embarass"
+    ],
+    "correct_answer": "Embarrass",
+    "Type": "Verbal"
+}

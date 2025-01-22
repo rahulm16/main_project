@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa9e",
+    "Course-ID": "noc24-ee81",
+    "Discipline": "Electronics and Communication Engineering/Electrical and Electronics Engineering",
+    "Course-name": "Analog Circuits and Systems",
+    "Course-instructor": "Prof. K Radhakrishna Rao",
+    "Institute-name": "IITM/ TI/ Freelancer",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee81/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/117108486",
+    "content": "The aim of the course \u2018Analog Circuits and Systems\u2019 is to design analog circuits and systems that perform signal processing functions, and signal generation using the devices including Op-Amps, amplifiers, multipliers and comparators.\nCourse Outcomes\nCO1 Understand the characteristics of linear one-port and two-port signal processing networks\nCO2 Model one-port devices including R, L, C and diodes, two-port networks, and active devices including amplifiers, Op Amps, comparators, multipliers, BJTs and FETs\nCO3 Understand how negative and positive feedback influence the behaviour of analog circuits\nCO4 Design VCVS, CCVS, VCCS, CCCS, and DC and SMPS voltage regulators\nCO5 Design analog filters\nCO6 Design waveform generators, phase followers and frequency followers"
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa1d",
+    "Course-ID": "noc24-cs80",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Introduction to Operating Systems",
+    "Course-instructor": "Prof. Chester Rebeiro",
+    "Institute-name": "IIT Madras",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs80/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106106144",
+    "content": "Operating systems (OS) provide the crucial interface between a computer's hardware and the applications that run on it. It allows us to write programs without bothering much about the hardware. It also ensures that the computer's resources such as its CPU, hard disk, and memory, are appropriately utilized. In this course, we dwell into how the OS manages to do all this in an efficient manner. This is an introductory course, for students with prior knowledge of computer organization. The course is based on an OS called xv6, which in many ways is similar to the Linux operating systems."
+}

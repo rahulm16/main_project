@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa47",
+    "Course-ID": "noc24-cs132",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Responsible & Safe AI Systems",
+    "Course-instructor": "Prof. Ponnurangam Kumaraguru\nProf. Balaraman Ravindran \nProf. Arun Rajkumar ",
+    "Institute-name": "IIIT Hyderabad and IIT Madras",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs132/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106106472",
+    "content": "There has been an exponential increase in the use of platforms / technologies like ChatGPT, Gemini, Llama, Sora, DALL-E, etc. in our day-to-day lives. There Language & Vision models have changed our way of living, and way we seek & create information. This course provides students with a comprehensive understanding of the ethical, social, and safety considerations essential for developing and deploying artificial intelligence (AI) systems. Uncover the intricacies of algorithmic transparency, fairness in machine (un)learning, interpretability, consistency and many more. The course encourages critical thinking and fosters a deep appreciation for the impact of AI on individuals and communities. Students who complete the course can: recognize possible harms that can be caused by modern AI capabilities; learn to reason about various perspectives on the trajectory of AI development and proliferation; learn about latest research agendas towards making AI systems safer."
+}

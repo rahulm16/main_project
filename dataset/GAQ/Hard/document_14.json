@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be81f",
+    "question": "If E is the brother of F, F is the sister of G, and G is the father of H, how is E related to H?",
+    "options": [
+        "Uncle",
+        "Father",
+        "Brother",
+        "Grandfather"
+    ],
+    "correct_answer": "Uncle",
+    "Type": "Logic"
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfc10",
+    "Course-ID": "noc24-ph41",
+    "Discipline": "Physics",
+    "Course-name": "Nuclear and Particle Physics",
+    "Course-instructor": "Prof. Poulose Poulose",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ph41/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/115103101",
+    "content": "The first part of the course will discuss nuclear physics. Properties of nuclei and details of popular nuclear models, properties of nuclear decays and nuclear reactions will be discussed in brief, but in a self-consistent manner. The second part will discuss the basics of particle physics. In this part, the fundamental forces and the dynamics of elementary particles under these forces will be considered. After introducing relativistic quantum mechanics, relativistic formulation of Maxwell Equations and quantum electrodynamics will be discussed. This will be developed into the weak and strong nuclear forces based on the principle of gauge symmetry. The course will also introduce the physical principles of particle accelerators and detectors, including a very brief picture of the modern day complex detectors."
+}

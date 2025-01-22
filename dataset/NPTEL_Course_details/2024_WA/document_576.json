@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb85",
+    "Course-ID": "noc24-ma81",
+    "Discipline": "Mathematics",
+    "Course-name": "Foundations of R Software (In Hindi Language)",
+    "Course-instructor": "Prof. Shalabh",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma81/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111104161",
+    "content": "Any scientific task without the knowledge of software is difficult to complete in the current scenario. R is free software that is capable of mathematical and statistical computing. It has its own programming language, built-in functions, and graphical capabilities to perform any specialized task in mathematics, statistics, and other areas. We intend to learn the fundamentals of R software in this course."
+}

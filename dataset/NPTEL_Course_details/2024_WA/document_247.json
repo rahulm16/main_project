@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa3c",
+    "Course-ID": "noc24-cs75",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Data Base Management System",
+    "Course-instructor": "Prof. Partha Pratim Das\nProf. Samiran Chattopadhyay",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs75/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106105175",
+    "content": "Databases form the backbone of all major applications today ?\u00c9?\u00ed?\u00c7\u00ac\u00a2?\u00c9\u00ac\u00a2?\u00a2\u201a\u00c7\u00a8?\u00b0?\u00c7\u00ac\u00a8?\u00c9\u00ac\u00a2?\u00a2\u201a\u00c4\u00f6\u00ac\u00a8?\u00d6\u201a\u00c4\u00fa tightly or loosely coupled, intranet or internet based, financial, social, administrative, and so on. Structured Database Management Systems (DBMS) based on relational and other models have long formed the basis for such databases. Consequently, Oracle, Microsoft SQL Server, Sybase etc. have emerged as leading commercial systems while MySQL, PostgreSQL etc. lead in open source and free domain. While DBMS?\u00c9?\u00ed?\u00c7\u00ac\u00a2?\u00c9\u00ac\u00a2?\u00a2\u201a\u00c7\u00a8?\u00b0?\u00c7\u00ac\u00a8?\u00c9\u00ac\u00a2?\u00a2\u201a\u00c7\u00a8?\u00e6?\u00c7\u00ac\u00a2s differ in the details, they share a common set of models, design paradigms and a Structured Query Language (SQL). In this background the course examines data structures, file organizations, concepts and principles of DBMS?\u00c9?\u00ed?\u00c7\u00ac\u00a2?\u00c9\u00ac\u00a2?\u00a2\u201a\u00c7\u00a8?\u00b0?\u00c7\u00ac\u00a8?\u00c9\u00ac\u00a2?\u00a2\u201a\u00c7\u00a8?\u00e6?\u00c7\u00ac\u00a2s, data analysis, database design, data modeling, database management, data & query optimization, and database implementation. More specifically, the course introduces relational data models; entity-relationship modeling, SQL, data normalization, and database design. Further it introduces query coding practices using MySQL (or any other open system) through various assignments. Design of simple multi-tier client / server architectures based and Web-based database applications is also introduced."
+}

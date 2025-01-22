@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfc11",
+    "Course-ID": "noc24-ph28",
+    "Discipline": "Physics",
+    "Course-name": "Concepts in Magnetism and Superconductivity",
+    "Course-instructor": "Prof. A Taraphder",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ph28/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/115105131",
+    "content": "The course aims to introduce and work through the underlying concepts behind magnetism and superconductivity. Starting from an electron in a magnetic field, the magnetic response of a collection of atoms in a solid are all worked out. Magnetization and susceptibility in para and diamagnetic cases, their applications and excitations are discussed. Superconductivity: zero resistance, Meissner effect, perfect diamagnetism; BCS theory, energy gap, isotope effect and tunneling experiments worked out. Josephson junctions and their applications, qubits and quantum chips discussed. Novel high-TC superconductor introduced. The emphasis is on working things out from very simple physical concepts."
+}

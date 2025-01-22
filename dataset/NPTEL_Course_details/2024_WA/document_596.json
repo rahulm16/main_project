@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb99",
+    "Course-ID": "noc24-me113",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Engineering Fracture Mechanics",
+    "Course-instructor": "Prof. K.Ramesh",
+    "Institute-name": "IIT Madras",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me113/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112106065",
+    "content": "The course covers the basic aspects of Engineering Fracture Mechanics. Spectacular failures that triggered the birth of fracture mechanics, Modes of loading, Classification as LEFM and EPFM, Crack growth and fracture mechanisms, Energy release rate, Resistance, Griffith Theory of fracture, Extension of Griffith Theory by Irwin and Orowan, R-Curve, Pop-in phenomena, Crack branching. Necessary and sufficient conditions for fracture, Stress and Displacement fields in the very near and near-tip fields, Westergaard, Williams and Generalised Westergaard solutions, Influence of the T-stress and higher order terms, Role of photoelasticity on the development of stress field equations in fracture mechanics, Equivalence between SIF and G, Various methods for evaluating Stress Intensity Factors, Modeling plastic zone at the crack-tip, Irwin and Dugdale models, Fracture toughness testing, Feddersos residual strength diagram, Paris law, J-integral, HRR field, Mixed-mode fracture, Crack arrest methodologies."
+}

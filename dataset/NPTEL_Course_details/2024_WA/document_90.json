@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf99f",
+    "Course-ID": "noc24-ch42",
+    "Discipline": "Chemical engineering",
+    "Course-name": "Rheology and Processing of Paints, Plastic, and Elastomer Based Composites",
+    "Course-instructor": "Prof. Santanu Chattopadhyay",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ch42/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/103105222",
+    "content": "A basic to intermediate level of learning on basic rheology and processing is embedded herein this course. Although the major focus goes with the elastomers/rubbers, the elementary rheology and processing of plastics, fibers and paints are also judiciously blended. The flavors on applied rheology and concepts of FEA based CFD for extrusion die design as a case study is also touched upon towards the end. Briefly followings contents covered through eight week lectures including numerical problem solving and practical sessions on rheometry and processing.Introduction to rheology, classification of complex fluid behavior, constitutive equations, and introduction to various fluid models. Application of shear stress-stain data to calculate volumetric flow rates and pressure drop. Flow between parallel plates and capillary with reference to wall slip, die swell and melt fracture. Basics onviscometry andrheometryare also included. Mixing in two roll, internal mixture as well as in kneaders, with machine details and standard operating procedural know- hows, extrusion, calendaring and molding will also be covered with reference to flow and deformation."
+}

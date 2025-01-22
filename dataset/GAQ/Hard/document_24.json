@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be829",
+    "question": "If a car travels 180 km in 3 hours, what is the average speed of the car?",
+    "options": [
+        "55 km/hr",
+        "60 km/hr",
+        "65 km/hr",
+        "70 km/hr"
+    ],
+    "correct_answer": "60 km/hr",
+    "Type": "Mathematical"
+}

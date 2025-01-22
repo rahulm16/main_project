@@ -816,11 +816,31 @@ def update_nptel_courses():
 @app.route('/learning')
 def learning():
     try:
-        # Trigger the update of NPTEL courses before rendering the page
-        update_nptel_courses()
+        user_email = session.get('user', {}).get('email')
+        
+        # First check if courses already exist for this user
+        existing_courses = mongo.db.nptel_matches.find_one({"user_email": user_email})
+        
+        if not existing_courses:
+            # If no courses exist, trigger the course search
+            mongo_uri = "mongodb://localhost:27017/"
+            nptel_db_name = "NPTEL_Course_details"
+            nptel_collection_name = "2024_WA"
+            career_db_name = "aicareer" 
+            career_collection_name = "career_suggestions"
+            
+            find_relevant_courses(
+                mongo_uri,
+                nptel_db_name,
+                nptel_collection_name,
+                career_db_name,
+                career_collection_name,
+                user_email,
+                save_to_db=True
+            )
 
         # Fetch all career suggestions from MongoDB
-        career_data = list(mongo.db.career_suggestions.find({"user_email": session.get('user', {}).get('email')}))
+        career_data = list(mongo.db.career_suggestions.find({"user_email": user_email}))
 
         # Initialize dictionaries for our data
         careers_courses = {}
@@ -832,7 +852,10 @@ def learning():
             career_name = career['career']
 
             # Fetch the saved NPTEL courses for this career
-            saved_nptel_courses = list(mongo.db.nptel_matches.find({"career": career_name}))
+            saved_nptel_courses = list(mongo.db.nptel_matches.find({
+                "career": career_name,
+                "user_email": user_email
+            }))
 
             # Convert ObjectId to string for each course
             for course in saved_nptel_courses:

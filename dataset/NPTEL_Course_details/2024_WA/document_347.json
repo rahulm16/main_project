@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfaa0",
+    "Course-ID": "noc24-ee93",
+    "Discipline": "Electronics and Electrical Engineering",
+    "Course-name": "VLSI Interconnects",
+    "Course-instructor": "Prof. Sarang Pendharker",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee93/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108105187",
+    "content": "Interconnects are the wired connections between various devices and components in an integrated circuit. As the clock frequency and operating frequency of the electronic devices is increasing, going up to several GHz, the effects of these wired connection cannot be ignored anymore. In fact, the interconnect effects which include delays, timing jitters and cross-talk are expected to become bottleneck in further increase in the speed of electronic circuits. In this course we will investigate origin of several interconnect effects and explore techniques for electromagnetic and circuit modeling of these interconnect effects. The course is of importance for anyone interested in the high frequency circuit design and signal integrity issues in electronics and telecommunication industries."
+}

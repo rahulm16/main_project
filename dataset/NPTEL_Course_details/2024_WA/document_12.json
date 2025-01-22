@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf951",
+    "Course-ID": "noc24-ae20",
+    "Discipline": "Aerospace Engineering",
+    "Course-name": "Space Flight Mechanics",
+    "Course-instructor": "Prof. Manoranjan Sinha",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ae20/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/101105083",
+    "content": "This course is designed to introduce orbital mechanics of satellite. The course will begin with central force motion and then proceed to the two- body and three-body dynamics under mutual gravitation acceleration. It will also introduce the concept of Lagrange Points and their stability. Moreover, the concept of general orbit perturbation will also be discussed. Earth as a non-spherical body and its effect on gravity will be elaborated. Preliminary orbit determination of the satellite will be discussed. Finally, orbit transfer will be elaborated."
+}

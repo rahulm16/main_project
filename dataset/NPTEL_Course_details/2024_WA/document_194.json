@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa07",
+    "Course-ID": "noc24-ce98",
+    "Discipline": "Civil Engineering/Geotechnical Engineering",
+    "Course-name": "Finite Element Analysis and Constitutive Modelling in Geomechanics",
+    "Course-instructor": "Prof. K Rajagopal",
+    "Institute-name": "IIT Madras",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ce98/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/105106222",
+    "content": "The course will introduce the students to both theoretical and practical aspects of finite element methods applicable to geotechnical engineering. The course will start from the fundamental aspects of matrix structural analysis and move into finite element techniques through variational principles. Special focus of this course will be on topics related to geotechnical problems like modelling of infinite soil media, construction and excavation sequences, jointed mass, and nonlinear analysis techniques. Fundamentals of different topics of isoparametric computations and nonlinear & elastic plastic analysis are explained through simple to use computer programs and detailed flow-charts."
+}

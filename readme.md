@@ -98,7 +98,22 @@ MONGO_URI="mongodb://localhost:27017/"
 
 Replace `your_mistralai_api_key` with your actual API key.
 
-### **3. Run the Flask Application**
+### **3. Dataset Import**
+
+#### **Import Dataset to MongoDB**
+The dataset needs to be added to MongoDB to provide the necessary data for the application. Use the provided script `import_dataset_to_mongodb.py` to import the dataset.
+
+#### **Run the Import Script**
+```bash
+python import_dataset_to_mongodb.py
+```
+
+#### **About dataset**
+- **GAQ**: Contains general aptitude questions categorized by difficulty levels (Easy, Medium, Hard).
+- **NPTEL_Course_details**: Contains details of NPTEL courses.
+  - **2024_WA**: Stores NPTEL courses for the year 2024.
+
+### **4. Run the Flask Application**
 
 #### **Run the Flask Application**
 Once the dependencies are installed, start the Flask server by running:
@@ -111,7 +126,7 @@ Visit `http://localhost:5000` in your browser to use the SavvyAI system.
 
 ---
 
-### **4. Integrating APIs**
+### **5. Integrating APIs**
 
 #### **Mistralai API**
 - Obtain an API key from Mistralai’s developer portal.

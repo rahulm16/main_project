@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be845",
+    "question": "What does the phrase 'Bite the bullet' mean?",
+    "options": [
+        "To avoid pain",
+        "To take a difficult decision",
+        "To escape a situation",
+        "To do something out of fear"
+    ],
+    "correct_answer": "To take a difficult decision",
+    "Type": "Verbal"
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf9e1",
+    "Course-ID": "noc24-ce88",
+    "Discipline": "Civil Engineering",
+    "Course-name": "Environmental Modeling and Simulation",
+    "Course-instructor": "Prof. Gargi Singh",
+    "Institute-name": "IIT Roorkee",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ce88/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/105107217",
+    "content": "Environmental Modeling and Simulation covers a variety of traditional models used by environmental engineers and scientists and then builds a foundation in nonlinear modeling to build new models and improve existing environmental models. Simulation methodologies including Monte Carlo simulation would be demonstrated on MATLAB and Octave."
+}

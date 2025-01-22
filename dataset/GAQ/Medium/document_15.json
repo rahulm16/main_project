@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759eb",
+    "question": "Choose the pair that best represents a similar relationship to the one expressed in the original pair of words. METAPHOR : SYMBOL",
+    "options": [
+        "rhythm : melody",
+        "nuance : song",
+        "slang : usage",
+        "analogy : comparison"
+    ],
+    "correct_answer": "analogy : comparison",
+    "Type": "Logic"
+}

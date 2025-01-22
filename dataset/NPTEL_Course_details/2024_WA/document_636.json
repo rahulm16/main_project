@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbc2",
+    "Course-ID": "noc24-me155",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Mechanism and Robot Kinematics",
+    "Course-instructor": "Prof. Anirvan Dasgupta",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "8 Weeks",
+    "Start-date": "August 19, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me155/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112105236",
+    "content": "This course will be a foundation course in analysis of mechanisms and robots. After a brief introduction to the subject matter and terms, the audience will be taken from kinematic analysis of planar closed-loop chains to open loop chains. Under spatial kinematic chains, the analysis will cover closed-loop mechanisms, serial manipulators, and parallel manipulators. The course will dwell upon coordinate frames, Denavit-Hartenberg parametrization, coordinate transformations, direct and inverse kinematics, velocity and acceleration analysis, kinematic motion planning, singularities in kinematic chains, principle of virtual work and force analysis. The course will demonstrate various concepts by working out problems and exercises relevant to real life applications involving innovative mechanisms and robotic chains. The course is expected to help students and researchers in their basic understanding and use of kinematic analysis. This course will also pave way for more advanced courses on mechanism and robot dynamics and design"
+}

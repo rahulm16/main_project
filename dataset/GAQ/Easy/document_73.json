@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be794",
+    "question": "Fill in the blank: The train is running _____ time.",
+    "options": [
+        "on",
+        "in",
+        "with",
+        "at"
+    ],
+    "correct_answer": "on",
+    "Type": "Verbal"
+}

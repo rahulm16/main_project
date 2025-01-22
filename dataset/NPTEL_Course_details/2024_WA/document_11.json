@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf950",
+    "Course-ID": "noc24-ae23",
+    "Discipline": "Aerospace Engineering",
+    "Course-name": "Applied Computational Fluid Dynamics",
+    "Course-instructor": "Prof. Rajesh Ranjan",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ae23/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/101104450",
+    "content": "The primary goal of this course is to familiarize faculty members, students and researchers with fundamental concepts of Computational Fluid Dynamics (CFD) and enable them to numerically solve fluid flows. This course will primarily cover the basics of compressible flow computations with emphasis on classification of partial differential equations, numerical discretization, stability and convergence of schemes, shock-capturing, and boundary conditions. Various approaches for simulating fluid flows including RANS, LES and DNS will be introduced, and basics of turbulence modeling will be discussed in detail."
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa1e",
+    "Course-ID": "noc24-cs117",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Parameterized Algorithms",
+    "Course-instructor": "Prof. Neeldhara Misra\nProf. Saket Saurabh",
+    "Institute-name": "IIT Gandhinagar and \nIMSc - The Institute of Mathematical Sciences",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs117/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106106230",
+    "content": "This is a first course on techniques in parameterized algorithms, a paradigm of algorithm design that analyzes running time in finer detail than classical complexity theory: instead of expressing the running time as a function of the input size only, dependence on one or more parameters of the input instance is taken into account. This is a fast-evolving field and a fundamental approach to coping with NP-hardness, alongside approximation and randomized algorithms. The course will be a natural follow-up to a first course in algorithms and data structures for theoretically-inclined students and those who are curious about approaches to dealing with the theoretical limitations that emerge from the theory of NP-completeness. Remark 1. A companion course might cover topics focused entirely on lower bounds (covering W-hardness, ETH and SETH-based hardness, hardness based on the UGC, and hardness of kernelization). A natural follow-up course might cover topics in the intersection of parameterized and approximation algorithms. Remark 2. Lecture videos indicative of the course content can be found at this playlist from a previous offering of this course at the Institute for Mathematical Sciences, Chennai"
+}

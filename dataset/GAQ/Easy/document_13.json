@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be758",
+    "question": "Which number will replace the question mark in the series? 7, 12, 19, 28, ?",
+    "options": [
+        "35",
+        "37",
+        "39",
+        "40"
+    ],
+    "correct_answer": "39",
+    "Type": "Logic"
+}

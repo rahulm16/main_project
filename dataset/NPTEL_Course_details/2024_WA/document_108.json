@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf9b1",
+    "Course-ID": "noc24-ch69",
+    "Discipline": "Chemical Engineering",
+    "Course-name": "Chemical Reaction Engineering-I",
+    "Course-instructor": "Prof. Bishnupada Mandal",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ch69/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/103103153",
+    "content": "This course will provide an overview of chemical kinetics and reactor design at basic to an intermediate level. Coverage will be relatively broad. This course applies the concepts of reaction rate, stoichiometry and equilibrium to the analysis of chemical and biological reacting systems such as derivation of rate expressions from reaction mechanisms and equilibrium or steady state assumptions and design of chemical and biochemical reactors via synthesis of chemical kinetics, and mass and energy balances. The goal is to provide students with the theoretical/analytical background to understand chemical kinetics and reactor design and to tackle the short of complex problems."
+}

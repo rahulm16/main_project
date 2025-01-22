@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759e2",
+    "question": "In these series, you will be looking at both the letter pattern and the number pattern. Fill the blank in the middle of the series or end of the series. QAR, RAS, SAT, TAU, _____",
+    "options": [
+        "UAV",
+        "UAT",
+        "TAS",
+        "TAT"
+    ],
+    "correct_answer": "UAV",
+    "Type": "Logic"
+}

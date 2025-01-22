@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa7c",
+    "Course-ID": "noc24-ee148",
+    "Discipline": "Electrical and Electronics Engineering",
+    "Course-name": "Smart Grid: Basics to Advanced Technologies",
+    "Course-instructor": "Prof. N. P. Padhy\nProf. Premalata Jena",
+    "Institute-name": "IIT Roorkee",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee148/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108107113",
+    "content": "This course covers the fundamental aspects of the smart grid and its application to the existing power system. It introduces state of the art smart grid technologies like electric vehicles, AC/DC microgrids, energy storage, phasor measurement unit and cyber security, etc. In addition, the course talks about the trends, modeling, planning, operation, and control of energy storage technologies. Further, it discusses the architecture, operation, and control strategy of AC, DC, and hybrid AC-DC microgrids. This course also emphasizes on renewable energy sources integration into present grid and microgrids, and further explores its operation, analysis, management, control, protection, and monitoring issues. The laboratory-scale demonstrations have been provided to validate a few concepts covered in this course."
+}

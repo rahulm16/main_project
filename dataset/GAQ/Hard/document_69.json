@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be856",
+    "question": "Which sentence uses the word 'Eloquent' correctly?",
+    "options": [
+        "Her eloquent speech impressed everyone.",
+        "The eloquent of the letter was high.",
+        "He was eloquent in solving problems.",
+        "She eloquent in her work."
+    ],
+    "correct_answer": "Her eloquent speech impressed everyone.",
+    "Type": "Verbal"
+}

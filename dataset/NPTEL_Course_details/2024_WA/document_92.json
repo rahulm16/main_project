@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf9a1",
+    "Course-ID": "noc24-ch38",
+    "Discipline": "Chemical Engineering",
+    "Course-name": "Equipment Design: Mechanical Aspects",
+    "Course-instructor": "Prof. Shabina Khanam",
+    "Institute-name": "IIT Roorkee",
+    "Duration": "4 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "August 16, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ch38/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/103107143",
+    "content": "Chemical process plants include a number of important equipment such as reactors, distillation columns, absorbers, heat exchangers, evaporators, crystallizers, etc. Design of such equipment should be carried out a priory to set-up a process plant and thus, it is basic step in a chemical process. Mechanical design of equipment addresses the stress and strain produced in different parts of the equipment such as shell, head, support, etc. due to operating conditions of the process. The success and failure of the process depends on how perfectly stress and strain are considered while designing. Thus, the present course enables one to learn about the mechanical design of chemical process equipment."
+}

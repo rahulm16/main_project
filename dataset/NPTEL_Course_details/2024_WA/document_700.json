@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfc02",
+    "Course-ID": "noc24-ph32",
+    "Discipline": "Physics",
+    "Course-name": "Physics of Functional Materials & Devices",
+    "Course-instructor": "Prof. Amreesh Chandra",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ph32/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/115105134",
+    "content": "The development of next generation smart and functional devices is directly linked with the ability to tailor novel materials ranging from ceramics, composites, polymers to glasses. The synthesis protocols for obtaining these materials have been extensively investigated over the last few decades. But, as the morphology and crystal structures changes, the physical response of the materials varies significantly. Therefore, it is imperative to understand in the detail the structure-property relation in materials before their end application can be envisaged. Once the materials are characterized, their response characteristics, under various conditions, must be understood in detail. Finally, the choice of material for a particular device in a non-trivial exercise. This can only be made by trained scientists/ engineers, who have the ability to understand the limitations of materials and devices alongwith the demands of the end users. These aspects will be covered in this course."
+}

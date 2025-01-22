@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbc7",
+    "Course-ID": "noc24-me105",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Finite Element Method: Variational Methods to Computer Programming",
+    "Course-instructor": "Prof. Atanu Banerjee, Prof. Arup Nandy",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me105/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112103295",
+    "content": "Finite Element Method (FEM) is one of the most popular numerical method to boundary and initial value problems. One distinct feature of FEM is that it can be generalized to the domains of any arbitrary geometry. Theory of FEM is developed on Variational methods. In this course, finite element formulations will be derived from the governing partial differential equation of different physical systems based on Variational methods. It will start with one-dimensional Bar, Beam, Truss, Frame elements; and will be extended to two-dimensional structural, and thermal problems. The framework of standard master element in both 1D and 2D will be followed, so that transformation for any arbitrary geometry is well understood. Two dimensional formulation will be represented in Tensorial framework, after building necessary background in Tensor calculus. Most importantly for every element, the basic code for computer implementation will be provided and explained with step-by-step clarification. We will also elaborately present how to prepare a generalized FEM code with first hand implementation."
+}

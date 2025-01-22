@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be789",
+    "question": "What is the average of the numbers: 10, 15, and 20?",
+    "options": [
+        "12",
+        "15",
+        "18",
+        "20"
+    ],
+    "correct_answer": "15",
+    "Type": "Mathematical"
+}

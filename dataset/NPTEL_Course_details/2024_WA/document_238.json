@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa33",
+    "Course-ID": "noc24-cs93",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Multi-Core Computer Architecture",
+    "Course-instructor": "Prof. John Jose",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs93/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106103184",
+    "content": "We are in the era of multi-core systems where even the simplest of handheld devices like a smart phone houses many processors in a single chip. The core counts are ever increasing from 8 to 10 in smart phones to over 100s in super computers. This course will introduce the students to the world of multi-core computer architectures. With the unprecedented growth of data science, on-chip storage systems and inter-core communication framework are getting equal attention as that of processors. This course will focus on delivering an in-depth exposure in memory-subsystems and interconnects of Tiled Chip Multi-Core Processors with few introductory sessions on advanced superscalar processors. The course concludes with pointers to current research standings and on-going research directions for motivating the students to explore further"
+}

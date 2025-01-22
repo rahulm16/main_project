@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa94",
+    "Course-ID": "noc24-ee121",
+    "Discipline": "Electrical Engineering",
+    "Course-name": "Modeling, Analysis and Estimation of Three Phase Unbalanced Power Network",
+    "Course-instructor": "Prof. Biswarup Das",
+    "Institute-name": "IIT Roorkee",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee121/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108107477",
+    "content": "Traditionally, due to aggregation of large number of loads, it has been assumed that the loads drawn from the transmission network are largely balanced. However, due to increasing adoption of electric mobility (AC electric railway, electric vehicles etc.), considerable level of unbalanced loads can be drawn from the transmission network. Therefore, the traditional balanced approach for analyzing a transmission network may not be very effective analyzing an unbalanced three phase power network. In this course, modeling, analysis and quasi-steady state estimation of an unbalanced three phase power network would be discussed."
+}

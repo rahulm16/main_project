@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e575a0e",
+    "question": "How much time will it take for an amount of Rs. 450 to yield Rs. 81 as interest at 4.5% per annum of simple interest?",
+    "options": [
+        "3.5 years",
+        "4 years",
+        "4.5 years ",
+        "5 years"
+    ],
+    "correct_answer": "4 years",
+    "Type": "Mathematical"
+}

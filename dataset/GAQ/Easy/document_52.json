@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be77f",
+    "question": "If 6 pencils cost \u20b930, what is the cost of 10 pencils?",
+    "options": [
+        "\u20b940",
+        "\u20b945",
+        "\u20b950",
+        "\u20b955"
+    ],
+    "correct_answer": "\u20b950",
+    "Type": "Mathematical"
+}

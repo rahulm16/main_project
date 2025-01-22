@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbfd",
+    "Course-ID": "noc24-oe04",
+    "Discipline": "Ocean Engineering",
+    "Course-name": "Dynamics of Ocean Structures",
+    "Course-instructor": "Prof. Srinivasan Chandrasekaran",
+    "Institute-name": "IIT Madras",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_oe04/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/114106038",
+    "content": "The course will give a brief overview of different types of ocean structures that are deployed in sea for exploiting oil, gas and minerals. While fundamentals of structural dynamics are discussed, detailed mathematical modeling of ocean structures and their dynamic analysis under waves, wind and current are highlighted with special emphasis to fluid-structure interaction. Introduction to stochastic dynamics of ocean structures is also discussed with lot of tutorials and sample papers that shall intuit self-learning through the course. Focus is on the explanation of fundamental concepts as addressed to graduate students."
+}

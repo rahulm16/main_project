@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb6f",
+    "Course-ID": "noc24-ma46",
+    "Discipline": "Mathematics",
+    "Course-name": "Non-Parametric Statistical Inference",
+    "Course-instructor": "Prof. Niladri Chatterjee",
+    "Institute-name": "IIT Delhi",
+    "Duration": "4 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "August 16, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma46/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111102143",
+    "content": "In this course we shall study Non-parameteric statistical inference. This is different from parametric Statistical Inference as here the underlying distribution is assumed to be unknown. Also, these work when the population is not Normally distributed. It has major applications in many practical situations. Also, is used in Data Science and Machine Learning."
+}

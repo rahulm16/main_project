@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa9d",
+    "Course-ID": "noc24-ee80",
+    "Discipline": "Electronics and Communication Engineering, Microelectronics and VLSI",
+    "Course-name": "Low Voltage CMOS Circuit Operation",
+    "Course-instructor": "Prof. Anand Bulusu",
+    "Institute-name": "IIT Roorkee",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee80/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/117107485",
+    "content": "This course would deal with the circuit design techniques in low voltage regime, where the PVT variations are malfunctioning the circuit performance. The understanding of MOSFET or/and FinFET operation in weak inversion region, followed by development of robust circuit designing techniques in Digital, Analog and Mixed-signal designs.\nObjective: To understand essential aspects of low voltage operation of MOSFETs and CMOS circuits comprehensively and to learn to design such circuits."
+}

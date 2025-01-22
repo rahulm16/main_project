@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa21",
+    "Course-ID": "noc24-cs73",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Introduction to Machine Learning (Tamil)",
+    "Course-instructor": "Prof. Arun Rajkumar",
+    "Institute-name": "IIT Madras",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs73/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106106236",
+    "content": "A short course introducing the main ideas and algorithms of Machine Learning. The goal of the course is to cover the topics at a high level so that it would act as a first course for a full fledged Machine Learning course. The course will be delivered in spoken Tamil while the technical terms discussed/exams/assignments will be in English."
+}

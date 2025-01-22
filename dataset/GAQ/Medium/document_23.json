@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759f3",
+    "question": "Read each sentence to find out whether there is any grammatical error in it. The error, if any will be in one part of the sentence. The letter of that part is the answer. If there is no error, the answer is 'E'. (Ignore the errors of punctuation, if any). (solve as per the direction given above)",
+    "options": [
+        "in order to",
+        "satisfy his ambition",
+        "and then went down his doom very quickly.",
+        "No error."
+    ],
+    "correct_answer": "and then met his doom very quickly",
+    "Type": "Verbal"
+}

@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e575a02",
+    "question": "In the questions below the sentences have been given in Active/Passive voice. From the given alternatives, choose the one which best expresses the given sentence in Passive/Active voice. After driving professor Kumar to the museum she dropped him at his hotel.",
+    "options": [
+        "After being driven to the museum, Professor Kumar was dropped at his hotel.",
+        "Professor Kumar was being driven dropped at his hotel.",
+        "After she had driven Professor Kumar to the museum she had dropped him at his hotel.",
+        "After she was driven Professor Kumar to the museum she had dropped him at his hotel."
+    ],
+    "correct_answer": "After being driven to the museum, Professor Kumar was dropped at his hotel.",
+    "Type": "Verbal"
+}

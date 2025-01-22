@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be75c",
+    "question": "In a row of girls, Shilpa is 9th from the left and 11th from the right. How many girls are there in the row?",
+    "options": [
+        "18",
+        "19",
+        "20",
+        "21"
+    ],
+    "correct_answer": "19",
+    "Type": "Logic"
+}

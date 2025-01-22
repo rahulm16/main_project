@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be77a",
+    "question": "Simplify: 25% of 200 + 50% of 300",
+    "options": [
+        "175",
+        "200",
+        "250",
+        "275"
+    ],
+    "correct_answer": "175",
+    "Type": "Mathematical"
+}

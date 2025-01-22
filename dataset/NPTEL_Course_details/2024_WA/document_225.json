@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa26",
+    "Course-ID": "noc24-cs74",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Foundations and Applications of Machine Learning (Bengali)",
+    "Course-instructor": "Prof. Adway Mitra",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs74/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106105247",
+    "content": "The course will cover basic concepts of Machine Learning ?\u00a2\u201a\u00c7\u00a8\u201a\u00c4\u00fa supervised and unsupervised learning, along with algorithms like K-nearest neighbors, Decision Trees, Perceptrons, Neural Networks, Linear Regression, K-means, Hierarchical Clustering etc. Each algorithm will be motivated by possible applications in different domains, especially text and images. The aim will be to convey the ideas and intuitions of the algorithms, avoiding mathematical details. The medium of instruction will be in Bengali."
+}

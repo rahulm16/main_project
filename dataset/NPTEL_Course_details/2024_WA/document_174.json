@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf9f3",
+    "Course-ID": "noc24-ce60",
+    "Discipline": "Civil Engineering",
+    "Course-name": "Remote Sensing and GIS",
+    "Course-instructor": "Prof. Rishikesh Bharti",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ce60/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/105103193",
+    "content": "This course will introduce the students to the state-of-the-art concepts and practices of remote sensing and GIS. It starts with the fundamentals of remote sensing and GIS and subsequently advanced methods will be covered. This course is designed to give comprehensive understanding on the application of remote sensing and GIS in solving the research problems. Upon completion, the participants should be able to use remote sensing (Satellite images and Field data) and GIS in their future research work."
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb76",
+    "Course-ID": "noc24-ma74",
+    "Discipline": "Mathematics",
+    "Course-name": "An Introduction to Point-Set-Topology Part-II",
+    "Course-instructor": "Prof. Anant R Shastri",
+    "Institute-name": "IIT Bombay",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma74/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111101160",
+    "content": "This course begin with the assumption that the audience has attended the part-I. We cover all important advances topics such as Various notions of compactness in metric spaces, Ascolii?\u00a2\u201a\u00c7\u00a8\u201a\u00d1\u00a2s theorem, paracompactness, compactifications, Urysohns Metrization theorem, Stone-Weiertrass theorem, totally disconnectedness, etc. Checking whether any of these topological properties in product invariant occupies a considerable amount of our time. A brief introduction to Topological Dimension Theory, discussion of function-space topologies and finally the Ordinal topology as a rich source of counter examples are the added features. The content of this course will be useful for any body who wishes to study deeper aspects of Analysis or topology or apply topological tools anywhere else in Mathematics or Physics, etc. It is certainly useful in the two course that I have offered on Algebraic Topology on NPTEL portal."
+}

@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be768",
+    "question": "Pointing to a photograph, a man said, 'I have no brothers and sisters, but that man's father is my father's son.' Whose photograph was it?",
+    "options": [
+        "His own",
+        "His son\u2019s",
+        "His father\u2019s",
+        "His uncle\u2019s"
+    ],
+    "correct_answer": "His son\u2019s",
+    "Type": "Logic"
+}

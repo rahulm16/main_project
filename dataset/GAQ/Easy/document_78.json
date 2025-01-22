@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be799",
+    "question": "Identify the correctly spelled word.",
+    "options": [
+        "Indipendent",
+        "Independent",
+        "Independant",
+        "Indepandent"
+    ],
+    "correct_answer": "Independent",
+    "Type": "Verbal"
+}

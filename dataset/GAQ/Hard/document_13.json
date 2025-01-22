@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be81e",
+    "question": "A word is represented by only one set of numbers. The set of numbers given in options are represented by two classes of alphabets, the first digit represents the row and the second digit represents the column. Identify the set for the word 'FLIP':",
+    "options": [
+        "31, 41, 42, 23",
+        "31, 42, 14, 51",
+        "41, 23, 31, 42",
+        "None of the above"
+    ],
+    "correct_answer": "31, 41, 42, 23",
+    "Type": "Logic"
+}

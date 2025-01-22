@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be83a",
+    "question": "What is the LCM of 12 and 18?",
+    "options": [
+        "24",
+        "36",
+        "72",
+        "54"
+    ],
+    "correct_answer": "36",
+    "Type": "Mathematical"
+}

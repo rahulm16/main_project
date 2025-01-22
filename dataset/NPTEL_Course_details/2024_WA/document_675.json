@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbe9",
+    "Course-ID": "noc24-ge46",
+    "Discipline": "Multidisciplinary",
+    "Course-name": "Numerical Methods for Engineers",
+    "Course-instructor": "Prof. Niket Kaisare",
+    "Institute-name": "IIT Madras",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ge46/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/127106019",
+    "content": "The development of fast, efficient and inexpensive computers has significantly increased the range of engineering problems that can be solved reliably. Numerical Methods use computers to solve problems by step-wise, repeated and iterative solution methods, which would otherwise be tedious or unsolvable by hand-calculations. This course is designed to give an overview of numerical methods of interest to scientists and engineers. However, the focus being on the techniques themselves, rather than specific applications, the contents should be relevant to varied fields such as engineering, management, economics, etc."
+}

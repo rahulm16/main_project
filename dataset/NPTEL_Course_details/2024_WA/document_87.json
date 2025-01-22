@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf99c",
+    "Course-ID": "noc24-ch51",
+    "Discipline": "Chemical Engineering",
+    "Course-name": "Chemical Engineering Thermodynamics",
+    "Course-instructor": "Prof. Jayant K. Singh",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ch51/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/103104151",
+    "content": "This course covers the foundation of classical thermodynamics in the form of postulates, and later their applications to open and close systems, criteria of stability and equilibria, the equation of states, properties of pure fluids and mixtures, theories and model of phase equilibrium, and chemical reaction equilibrium. The major focus in the first half of the course would be to build a strong foundation in the subject. The second part of the course will emphasis the application of the thermodynamics on chemical engineering problems related to phase equilibria."
+}

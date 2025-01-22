@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be7a6",
+    "question": "What is the synonym of 'Big'?",
+    "options": [
+        "Large",
+        "Small",
+        "Tiny",
+        "Narrow"
+    ],
+    "correct_answer": "Large",
+    "Type": "Verbal"
+}

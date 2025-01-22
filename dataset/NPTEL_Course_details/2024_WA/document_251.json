@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa40",
+    "Course-ID": "noc24-cs81",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Introduction To Machine Learning - IITKGP",
+    "Course-instructor": "Prof. Sudeshna Sarkar",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs81/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106105152",
+    "content": "This course provides a concise introduction to the fundamental concepts in machine learning and popular machine learning algorithms. We will cover the standard and most popular supervised learning algorithms including linear regression, logistic regression, decision trees, k-nearest neighbour, an introduction to Bayesian learning and the na?\u00c9?\u00ed?\u00c7\u00ac\u00d8ve Bayes algorithm, support vector machines and kernels and neural networks with an introduction to Deep Learning. We will also cover the basic clustering algorithms. Feature reduction methods will also be discussed. We will introduce the basics of computational learning theory. In the course we will discuss various issues related to the application of machine learning algorithms. We will discuss hypothesis space, overfitting, bias and variance, tradeoffs between representational power and learnability, evaluation strategies and cross-validation. The course will be accompanied by hands-on problem solving with programming in Python and some tutorial sessions."
+}

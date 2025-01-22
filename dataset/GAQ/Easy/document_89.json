@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be7a4",
+    "question": "Find the odd one out: Laugh, Cry, Smile, Eat.",
+    "options": [
+        "Laugh",
+        "Cry",
+        "Smile",
+        "Eat"
+    ],
+    "correct_answer": "Eat",
+    "Type": "Verbal"
+}

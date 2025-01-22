@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be79b",
+    "question": "Find the word that can replace 'intelligent' in this sentence: She is very intelligent.",
+    "options": [
+        "Bright",
+        "Lazy",
+        "Dull",
+        "Ignorant"
+    ],
+    "correct_answer": "Bright",
+    "Type": "Verbal"
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa38",
+    "Course-ID": "noc24-cs108",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Operating System Fundamentals",
+    "Course-instructor": "Prof. Santanu Chattopadhyay",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs108/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106105214",
+    "content": "Operating System is a computer software that manages the hardware components. It acts as an intermediary between the users and the hardware. It is responsible for managing the system resources and providing a smooth working environment for the users. The management includes the following - process management, processor management, memory management, storage management, user management, protection and security. As a subject, it is an amalgamation of the fields like computer architecture, algorithms, data structure and so on. A course on fundamentals of operating systems is essential to equip the students for taking up the challenges in understanding and designing of computer systems. This course will address all the fundamental points, starting from the foundations to the architectural issues to correlation with existing commercial operating systems. Being primarily targeted to a one-semester course for the undergraduate students, the course will follow the current GATE syllabus, enabling the students to prepare well for the same. It can also help all other participants looking for an introduction to the domain of operating systems."
+}

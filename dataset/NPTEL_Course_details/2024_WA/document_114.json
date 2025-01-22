@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf9b7",
+    "Course-ID": "noc24-ch61",
+    "Discipline": "Chemical Engineering",
+    "Course-name": "Enhanced Oil Recovery Techniques",
+    "Course-instructor": "Prof. Ajay Mandal",
+    "Institute-name": "IIT (ISM Dhanbad)",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ch61/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/103105460",
+    "content": "Enhanced Oil Recovery (EOR) methods aim to improve oil extraction efficiency. The mechanisms involve altering the mobility ratio, reducing interfacial tension, changing wettability, lowering oil viscosity, and forming oil banks. Chemical, Miscible, and Thermal are three main EOR methods widely used in petroleum industry. Recent advancements in EOR include low-salinity water flooding, nanotechnology utilization, microbial EOR, and carbonated water injection. These techniques are tailored to specific reservoir conditions and can significantly boost oil recovery from challenging fields. Ongoing research continues to explore innovative approaches for more efficient and sustainable oil production."
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa1a",
+    "Course-ID": "noc24-cs101",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Introduction to Machine Learning",
+    "Course-instructor": "Prof. Balaraman Ravindran",
+    "Institute-name": "IIT Madras",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs101/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106106139",
+    "content": "With the increased availability of data from varied sources there has been increasing attention paid to the various data driven disciplines such as analytics and machine learning. In this course we intend to introduce some of the basic concepts of machine learning from a mathematically well motivated perspective. We will cover the different learning paradigms and some of the more popular algorithms and architectures used in each of these paradigms."
+}

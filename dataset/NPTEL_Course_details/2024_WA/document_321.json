@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa86",
+    "Course-ID": "noc24-ee87",
+    "Discipline": "Electrical and Electronics Engineering",
+    "Course-name": "Dc Microgrid and Control System",
+    "Course-instructor": "Prof. Avik Bhattacharya",
+    "Institute-name": "IIT Roorkee",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee87/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108107143",
+    "content": "This course is suitable for PG students studying in power electronics, power system and system & control subjects. The course details the fundamental concepts of microgrid and its components, types of microgrids, advantages of microgrid compared to the central conventional grid. Particularly the course describes general concepts and application, control strategies and principle of operation of DC microgrid. The course is very applicable for students and researchers from power system, power electronics and control system area who to do research in fast growing and emerging renewable energy technology."
+}

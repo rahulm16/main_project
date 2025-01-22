@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb63",
+    "Course-ID": "noc24-ma86",
+    "Discipline": "Mathematics",
+    "Course-name": "Mathematical Methods and its Applications",
+    "Course-instructor": "Prof. P.N. Agarwal\n Prof. S. K. Gupta",
+    "Institute-name": "IIT Roorkee",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma86/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111107098",
+    "content": "This course is a basic course offered to UG student of Engineering/Science background. It contains ODE,PDE, Laplace transforms, Z-transforms, Fourier series and Fourier transforms. It plays an important role for solving various engineering sciences problems.Therefore, it has tremendous applications in diverse fields in engineering sciences."
+}

@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be828",
+    "question": "The area of a circle is 154 cm\u00b2. What is the radius of the circle?",
+    "options": [
+        "7 cm",
+        "5 cm",
+        "6 cm",
+        "8 cm"
+    ],
+    "correct_answer": "7 cm",
+    "Type": "Mathematical"
+}

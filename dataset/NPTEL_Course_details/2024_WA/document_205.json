@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa12",
+    "Course-ID": "noc24-cs71",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Theory of Computation",
+    "Course-instructor": "Prof. Raghunath Tewari",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs71/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106104148",
+    "content": "This is an introductory course on Theory of Computation intended for undergraduate students in computer science. In this course we will introduce various models of computation and study their power and limitations. We will also explore the properties of the corresponding language classes defined by these models and the relations between them. We will assume the student is comfortable in analytical reasoning and has preferably done a course on Data Structures and Algorithms."
+}

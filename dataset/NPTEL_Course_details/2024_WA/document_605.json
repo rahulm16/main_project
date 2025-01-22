@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfba2",
+    "Course-ID": "noc24-me83",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Principles of Vibration Control",
+    "Course-instructor": "Prof. Bishakh Bhattacharya",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "4 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "August 16, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me83/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112104211",
+    "content": "Vibration is undesirable in most engineering systems. The ill effects of vibration include fatigue failure, severe damages due to resonance, malfunctioning of sensitive instruments/systems, loss of accuracy of workpiece due to vibration of machine tools, etc. This course will give a brief overview about the various strategies to control such vibrations in systems and principle behind them."
+}

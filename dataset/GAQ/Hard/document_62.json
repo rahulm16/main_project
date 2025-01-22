@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be84f",
+    "question": "What is the meaning of the idiom 'A penny for your thoughts'?",
+    "options": [
+        "A thought is valuable",
+        "What are you thinking?",
+        "To pay for someone's thoughts",
+        "A trivial thought"
+    ],
+    "correct_answer": "What are you thinking?",
+    "Type": "Verbal"
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf94b",
+    "Course-ID": "noc24-ae15",
+    "Discipline": "Aerospace Engineering",
+    "Course-name": "UAV Design - Part II",
+    "Course-instructor": "Prof. Saderla Subrahmanyam",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ae15/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/101104083",
+    "content": "This course introduces the designing and sizing process (Simulation/Experimental) for fixed - wing UAV technology, integrated with its performance and stability analysis (Static & Dynamic) and prototype testing"
+}

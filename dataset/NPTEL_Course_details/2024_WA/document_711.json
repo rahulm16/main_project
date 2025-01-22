@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfc0d",
+    "Course-ID": "noc24-ph25",
+    "Discipline": "Physics",
+    "Course-name": "Quantum Hall Effects",
+    "Course-instructor": "Prof. Saurabh Basu",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ph25/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/115103134",
+    "content": "Quantum Hall effect is undoubtedly the greatest discovery in material science in the last century. The quantized Hall plateaus shows the occurrence of quantum effects at macroscopic scales and sets the standard of resistance from a lab experiment on a dirty two dimensional electron gas. The Hall effect is used in magnetic field sensors that are present in a large number of devices. It has already earned 3 noble prizes, one each of Integer Qauntum Hall effect (1985) , Fractional Quantum Hall effect (1998) and its connections with topology (2016). The course will introduce from the scratch the behavior of electrons at low temperatures and large magnetic fields, formation of Landau levels, Quantization of Hall plateaus from a physical perspective and hence derive Kubo formula. The connections with topology are shown via computing the Chern number. Moreover the fractional quantum Hall effect is introduced with a brief description of fractional statistics and Anyons. Finally the course introduces Spin Hall effect and its relevance to the field of spintronics."
+}

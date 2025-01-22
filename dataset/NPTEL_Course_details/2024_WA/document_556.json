@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb71",
+    "Course-ID": "noc24-ma88",
+    "Discipline": "Mathematics",
+    "Course-name": "Matrix Computation and its Applications",
+    "Course-instructor": "Prof. Mani Mehra\nProf. Vivek Kumar Aggarwal",
+    "Institute-name": "IIT Delhi",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma88/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111102152",
+    "content": "This course deals with applications of matrices to a wide range of areas of engineering and science. Initial some basics of linear algebra is discussed followed by matrix norms and sensitivity and condition number of the matrices."
+}

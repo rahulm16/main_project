@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be823",
+    "question": "What comes next in the series: 2, 6, 12, 20, 30, ...?",
+    "options": [
+        "36",
+        "42",
+        "45",
+        "50"
+    ],
+    "correct_answer": "42",
+    "Type": "Logic"
+}

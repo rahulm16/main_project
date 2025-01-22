@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa11",
+    "Course-ID": "noc24-cs70",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Introduction to Graph Algorithms",
+    "Course-instructor": "Prof. C Pandu Rangan",
+    "Institute-name": "IISc Bangalore",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs70/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106108468",
+    "content": "A Computer is basically an information processing system and this means it can be used for solving only abstract mathematical problems. That is why, solving a Real-World Problem (RWP) by using a computer, begins with a formulation of the RWP as a Mathematical problem in an appropriate mathematical domain. For example, privacy and security problems are formulated as cryptographic problems in Number Theory, Elliptic Curves and Linear Algebra.\n\nMathematical domains such as combinatorics, Geometry, Sets and Relations, Number Theory, Stringology and Graph Theory are among most frequently used domains to arrive at mathematical problems that are equivalent to the real-world problems.\n\nIn this course we focus on basic graph algorithms. Problems arising in communication networks, social networks and transportation networks are naturally modelled as problems on graphs. Graph algorithms are among the extensively investigated and applied topics in computer science."
+}

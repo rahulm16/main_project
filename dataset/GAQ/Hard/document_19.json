@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be824",
+    "question": "If 5 cats can catch 5 mice in 5 minutes, how many mice can 10 cats catch in 10 minutes?",
+    "options": [
+        "10",
+        "20",
+        "25",
+        "50"
+    ],
+    "correct_answer": "20",
+    "Type": "Logic"
+}

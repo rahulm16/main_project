@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be77c",
+    "question": "If a man earns \u20b91200 in 8 hours, how much will he earn in 12 hours?",
+    "options": [
+        "\u20b91500",
+        "\u20b91600",
+        "\u20b91800",
+        "\u20b92000"
+    ],
+    "correct_answer": "\u20b91800",
+    "Type": "Mathematical"
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa58",
+    "Course-ID": "noc24-ec13",
+    "Discipline": "Economic Sciences",
+    "Course-name": "Spatial Statistics and Spatial Econometrics",
+    "Course-instructor": "Prof. Gaurav Arora",
+    "Institute-name": "IIIT Delhi",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ec13/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/130106115",
+    "content": "The purpose of this course is to introduce the analytical framework for analyzing spatial data and its target audience are students from social sciences (specifically, economics, political science and cognitive psychology), engineers, earth and geosciences, and applied physics. In the past decade or so, much interest has grown in the area due to readily-available spatially-delineated data, particularly when in 2008 the U.S. Geological Survey stopped charging for its high-resolution LANDSAT archive. However, modeling spatial data and spatial relationships necessitate the use of analytic tools beyond the standard statistical methods such as the ordinary least squares. Characterisation of spatial autocorrelation in spatial datasets for the purpose of statistical inference and statistical prediction is a focus of this course. In addition, we will ask: how and why does spatial autocorrelation arise; how is it measured and understood; how does it relate to issues of spatial heterogeneity and spatial dependence; and how these factors inform the specification and estimation of regression models. Specific modeling techniques include spatial autocorrelation measures (Moran's I, Geary's C, Variogram and Kriging estiators) and spatial regression models."
+}

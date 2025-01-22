@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be782",
+    "question": "The perimeter of a square is 40 cm. What is the length of one side?",
+    "options": [
+        "8 cm",
+        "10 cm",
+        "12 cm",
+        "14 cm"
+    ],
+    "correct_answer": "10 cm",
+    "Type": "Mathematical"
+}

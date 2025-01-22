@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be755",
+    "question": "In a certain code, FLOWER is written as EKNVDQ. How is BUTTER written in that code?",
+    "options": [
+        "ATRSDQ",
+        "ASRQDQ",
+        "ATRSDP",
+        "ATRSDR"
+    ],
+    "correct_answer": "ATRSDQ",
+    "Type": "Logic"
+}

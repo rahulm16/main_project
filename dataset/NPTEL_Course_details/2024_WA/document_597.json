@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb9a",
+    "Course-ID": "noc24-me127",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Engineering Mechanics",
+    "Course-instructor": "Prof. K.Ramesh",
+    "Institute-name": "IIT Madras",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me127/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112106286",
+    "content": "This is a basic first level course to learn rigid body mechanics covering both statics and dynamics. Statics covers free body diagrams, equilibrium of rigid bodies, analysis of trusses and beams, discussion on friction, virtual work and stability. Dynamics deals with general plane motion of rigid bodies, use of translating and rotating frames of reference for analysis, plane kinetics and 3D kinematics."
+}

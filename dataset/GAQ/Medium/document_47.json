@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e575a0b",
+    "question": "Each of the questions given below consists of a question followed by three statements. You have to study the question and the statements and decide which of the statement(s) is/are necessary to answer the question. What is the speed of the train?\n\nI. The train crosses a signal pole in 18 seconds.\n\nII. The train crosses a platform of equal length in 36 seconds.\n\n III. Length of the train is 330 metres.",
+    "options": [
+        "I and II only",
+        "II and III only",
+        "I and III only",
+        "III and either I or II only"
+    ],
+    "correct_answer": "III and either I or II only",
+    "Type": "Mathematical"
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa2d",
+    "Course-ID": "noc24-cs106",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Computational Complexity",
+    "Course-instructor": "Prof. Subrahmanyam Kalyanasundaram",
+    "Institute-name": "IIT Hyderabad",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs106/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106106229",
+    "content": "This course is an introduction to the area of computational complexity theory. We will see different models of computations and computational complexity classes. The computational models measure various different aspects of computation, like time, space, randomness, number of gates, amount of communication etc."
+}

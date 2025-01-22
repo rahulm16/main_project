@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf95e",
+    "Course-ID": "noc24-me110",
+    "Discipline": "Applied Mechanics",
+    "Course-name": "Turbulence Modeling",
+    "Course-instructor": "Prof. Vagesh D Narasimhamurthy",
+    "Institute-name": "IIT Madras",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me110/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112106453",
+    "content": "Most fluid flows in industry and in nature are turbulent. For example, atmospheric and oceanic flows are turbulent, combustion in an aircraft or IC engine is turbulent, and even human breathing is turbulent. Laboratory experiments of turbulent flows are difficult, expensive and many times impossible! For example, how to measure airflow in a human lung or measure tomorrow\u2019s weather?! Modeling turbulence, therefore, is a pragmatic approach to solve industrial flow problems and understand physics of the fluid flow. This course aims at building fundamentals/theory of various turbulence modeling techniques (from statistical to eddy-resolving methods), their advantages and challenges while implementing them in a computer program or CFD application software."
+}

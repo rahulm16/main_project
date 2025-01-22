@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa17",
+    "Course-ID": "noc24-cs88",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Artificial Intelligence : Search Methods For Problem solving",
+    "Course-instructor": "Prof. Deepak Khemani",
+    "Institute-name": "IIT Madras",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs88/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106106226",
+    "content": "For an autonomous agent to behave in an intelligent manner it must be able to solve problems. This means it should be able to arrive at decisions that transform a given situation into a desired or goal situation. The agent should be able to imagine the consequence of its decisions to be able to identify the ones that work. In this first course on AI we study a wide variety of search methods that agents can employ for problem solving. In a follow up course - AI: Knowledge Representation and Reasoning - we will go into the details of how an agent can represent its world and reason with what it knows. These two courses should lay a strong foundation for artificial intelligence, which the student can build upon. A third short course - AI: Constraint Satisfaction Problems - presents a slightly different formalism for problem solving, one in which the search and reasoning processes mentioned above can operate together."
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb82",
+    "Course-ID": "noc24-ma62",
+    "Discipline": "Mathematics",
+    "Course-name": "EXCELing with Mathematical Modeling",
+    "Course-instructor": "Prof. Sandip Banerjee",
+    "Institute-name": "IIT Roorkee",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma62/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111107523",
+    "content": "Mathematical modeling is an important aspect of the study of science and engineering. Even social sciences involve mathematical modeling. The primary aim of the course is to create an awareness of the concepts involved in mathematical modeling so as to build a solid foundation in the subject. The objective of this course is to make a student learn and construct models of various systems and situations, including from experimental measurements, solving the models numerically using EXCEL and interpret the results on the context of given scenarios."
+}

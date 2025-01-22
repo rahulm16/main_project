@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa82",
+    "Course-ID": "noc24-ee86",
+    "Discipline": "Electrical and Electronics Engineering",
+    "Course-name": "Digital Switching - I",
+    "Course-instructor": "Prof. Y.N.Singh",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee86/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/117104128",
+    "content": "The course will introduce the learners to basics of digital telephony. It will start with crossbar switch and move to theory of switches. Towards end, packet switching basics will be looked into."
+}

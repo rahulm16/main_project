@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa8e",
+    "Course-ID": "noc24-ee124",
+    "Discipline": "Electrical and Electronics Engineering",
+    "Course-name": "Stochastic Control and Communication",
+    "Course-instructor": "Prof. Ankur A. Kulkarni",
+    "Institute-name": "IIT Bombay",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee124/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108101185",
+    "content": "The legacy of control is marked by a historic misconception that stochastic control problems could be solved using deterministic controllers superimposed with optimal state estimators and conventional communication protocols. Over time, we realized that this architecture is suboptimal and co-design of communication and control offers orders of magnitude of improvements. This applies to systems such as smart cities, transportation systems, power grids, gaming and financial markets. This complex subject requires simultaneous application of control theory and communication theory. At present these elements are taught separately in courses designed either exclusively for deterministic control theory, or exclusively for communication theory. This leaves behind a gap, namely blending insights from both disciplines to arrive at approaches for networked control problems. This course seeks to fill this gap. It will begin with centralized stochastic control, and then highlight open issues that arise in decentralization and the role of communication theory. Finally it will cover communication theory and establish viewpoints from which stochastic control and communication theory can be approached simultaneously."
+}

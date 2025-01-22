@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be767",
+    "question": "What comes next in the sequence? A, B, D, G, K, ?",
+    "options": [
+        "M",
+        "N",
+        "O",
+        "P"
+    ],
+    "correct_answer": "P",
+    "Type": "Logic"
+}

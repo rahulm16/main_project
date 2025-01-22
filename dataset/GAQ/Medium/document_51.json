@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e575a0f",
+    "question": "A person crosses a 600 m long street in 5 minutes. What is his speed in km per hour?",
+    "options": [
+        "3.6",
+        "7.2",
+        "8.4",
+        "10"
+    ],
+    "correct_answer": "7.2",
+    "Type": "Mathematical"
+}

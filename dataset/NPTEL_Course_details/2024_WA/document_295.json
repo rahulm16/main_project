@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa6c",
+    "Course-ID": "noc24-ee83",
+    "Discipline": "Electrical and Electronics Engineering",
+    "Course-name": "Sensor Technologies: Physics, Fabrication, and Circuits",
+    "Course-instructor": "Prof.Mitradip Bhattacharjee",
+    "Institute-name": "IISER Bhopal",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee83/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108106193",
+    "content": "Sensors are gaining attention day by day due to the advent of smart systems. Sensors are an integral part of almost all the modern electronic appliances. Hence, it is extremely important to learn different technologies associated with sensors. This course targets to cover almost the entire basic spectrum of sensor technologies from physics to fabrication and to circuits. In this course, one would get details regarding sensor physics of typical sensors, micro fabrication technologies associated with sensors, followed by the typical circuit details associated with sensor system design."
+}

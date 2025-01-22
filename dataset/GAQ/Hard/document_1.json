@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be812",
+    "question": "A family consists of six members: A, B, C, D, E, and F. A and B are a married couple, E is the only son of C, and D is the brother of E. F is the daughter of A. How is C related to F?",
+    "options": [
+        "Mother",
+        "Father",
+        "Brother",
+        "Sister"
+    ],
+    "correct_answer": "Mother",
+    "Type": "Logic"
+}

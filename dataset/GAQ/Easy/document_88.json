@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be7a3",
+    "question": "Choose the correct form: She _____ her keys and cannot open the door.",
+    "options": [
+        "lost",
+        "has lost",
+        "is losing",
+        "will lose"
+    ],
+    "correct_answer": "has lost",
+    "Type": "Verbal"
+}

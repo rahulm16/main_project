@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf9ef",
+    "Course-ID": "noc24-ce91",
+    "Discipline": "Civil Engineering",
+    "Course-name": "Reliability-Based Structural Design",
+    "Course-instructor": "Prof. Arunasis Chakarborty",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ce91/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/105103224",
+    "content": "The course introduces basic concepts of probability theory at the beginning, which is followed by the Level-2 reliability methods. The readers are then introduced to the intricacies of Monte-Carlo simulation and its advanced versions for variance reduction and subset simulation. The treatment of implicit limit states using RSM and recently developed SRSM techniques are explained separately with examples. With this knowledge of reliability analysis in hand, the course then aims to explain the applications of these methods for code calibrations and reliability analysis under multiple failure modes."
+}

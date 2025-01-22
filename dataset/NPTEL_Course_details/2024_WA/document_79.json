@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf994",
+    "Course-ID": "noc24-bt46",
+    "Discipline": "Biotechnology and Bioengineering",
+    "Course-name": "Introduction to Proteomics",
+    "Course-instructor": "Prof. Sanjeeva Srivastava",
+    "Institute-name": "IIT Bombay",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_bt46/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/102101055",
+    "content": "This course introduces to the basic biology of proteins and the new advanced science called as proteomics which aims to look into the protein properties from a global perspective, i.e., not undertaking one protein at a time, but an entire set of proteins in the milieu. The course will cover in detail the two major aspects of proteomics i.e., Gel-based proteomics and Mass spectrometry-based proteomics. The gel-based module will cover different techniques like SDS-PAGE, 2-DE, 2D-DIGE etc. These techniques had a major contribution in transition from protein chemistry to proteomics. Mass spectrometry, on the other hand, is an advanced analytical technique for accurate mass measurement. In this module, we will discuss the basics of mass spectrometry, sample preparations, liquid chromatography, hybrid mass spectrometers and quantitative proteomics techniques such as iTRAQ, SILAC and TMT using mass spectrometry. The course will also provide the basic knowledge about sample preparation, mass spectrometry workflow, different chromatography technologies and quantitative proteomics."
+}

@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be750",
+    "question": "In a certain code, TEACHER is written as VGCEJGT. How is STUDENT written in that code?",
+    "options": [
+        "UVWFGRV",
+        "UVVFGPV",
+        "UWVGFRU",
+        "VWFGUVR"
+    ],
+    "correct_answer": "UVVFGPV",
+    "Type": "Logic"
+}

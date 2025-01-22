@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e575a11",
+    "question": "A vendor bought toffees at 6 for a rupee. How many for a rupee must he sell to gain 20%?",
+    "options": [
+        "3",
+        "4",
+        "5",
+        "6"
+    ],
+    "correct_answer": "5",
+    "Type": "Mathematical"
+}

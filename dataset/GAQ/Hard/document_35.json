@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be834",
+    "question": "A person buys 120 kg of sugar for Rs. 4800 and sells it for Rs. 5400. What is the percentage profit?",
+    "options": [
+        "10%",
+        "12.5%",
+        "15%",
+        "20%"
+    ],
+    "correct_answer": "12.5%",
+    "Type": "Mathematical"
+}

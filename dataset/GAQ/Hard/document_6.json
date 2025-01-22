@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be817",
+    "question": "Pointing to a photograph, a woman says, 'This man's sister is my mother's only daughter.' How is the man related to the woman?",
+    "options": [
+        "Brother",
+        "Cousin",
+        "Uncle",
+        "Nephew"
+    ],
+    "correct_answer": "Brother",
+    "Type": "Logic"
+}

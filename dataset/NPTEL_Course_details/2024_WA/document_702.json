@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfc04",
+    "Course-ID": "noc24-ph30",
+    "Discipline": "Physics",
+    "Course-name": "Classical Motion of a Single Particle",
+    "Course-instructor": "Prof. Supratik Banerjee",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ph30/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/115104535",
+    "content": "This undergraduate level course is designed to offer a systematic development of the basic concepts of classical mechanics of a single particle. A special emphasis will be given on the vector formulation of the problems of dynamics which are appropriate for understanding and analyzing the motion of a particle in more than one dimensions. The notion of symmetry and conservation and their importance in classical dynamics will be discussed to pave the way for the motivated students to advance theories of physics. A separate section will be dedicated introducing the generalized coordinates, generalized velocities and the method of Lagrangian to solve constrained motions of a single particle. Finally, the phase space dynamics along with some introductory elements of nonlinear dynamics related to the motion of a single particle will be discussed."
+}

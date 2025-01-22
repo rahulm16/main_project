@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb79",
+    "Course-ID": "noc24-ma90",
+    "Discipline": "Mathematics",
+    "Course-name": "Introduction to Fourier Analysis",
+    "Course-instructor": "Prof. Parasar Mohanty",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma90/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111104519",
+    "content": "This course will cover the fundamental theory of Fourier series and Fourier integrals, as well as Fourier series for finite abelian groups. Some applications of Fourier series in differential equations, the isoperimetric problem, and number theory will be explored. Basic calculus and Riemann integrals will be required as prerequisites. The book \u201cIntroduction to Fourier Analysis\u201d by E. Stein and R. Shakarchi will serve as the basis for this course."
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf9aa",
+    "Course-ID": "noc24-ch67",
+    "Discipline": "Chemical Engineering",
+    "Course-name": "Transport Phenomena of Non-Newtonian Fluids",
+    "Course-instructor": "Prof. Nanda Kishore",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ch67/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/103103146",
+    "content": "Non-Newtonian fluids are often encountered in our daily life as well as in many industries. Some of the daily-life applications include personal care products such as cosmetics, gels, pastes; food stuffs such as sandwich spreads, ketchup, chocolate, soups, etc. Some of the industrial applications include processing of many polymers, paints and detergents, degassing of polymeric melts and glasses, use of non-Newtonian polymers in enhanced oil recovery, non-Newtonian fluidized beds, wastewater treatment, production of polymeric alloys and ceramics via liquid routes, pharmaceutical products wherein the polymer thickening agents are used to enhance their stability for extended shelf-life, pulp and paper industries, etc. Because of aforementioned overwhelming applications, it is required for both undergraduate and postgraduate students to acquire enough academic experience related to the momentum, heat and mass transfer phenomena associated with non-Newtonian fluids. Thus, in this course, details of types and mathematical models of non-Newtonian fluids, and their momentum, heat and mass transport phenomena are discussed along with the corresponding boundary layer flows. Problems would be discussed on the cases of engineering applications where combined momentum and heat transfer, combined momentum and mass transfer, combined mass and heat transfer, combined heat and mass transport along with homogenous and/or heterogeneous reactions are involved simultaneously."
+}

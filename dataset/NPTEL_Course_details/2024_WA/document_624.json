@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbb6",
+    "Course-ID": "noc24-me137",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Applied Thermodynamics for Engineers",
+    "Course-instructor": "Prof. Dipankar N. Basu",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me137/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112103275",
+    "content": "Thermodynamics is a subject of fundamental interest to Mechanical engineers and therefore is always taught in the 2nd or 3rd semester. Present course can be viewed as the next step, where the thermodynamic principles will be employed to discuss about different power producing & absorbing cycles. Properties of pure substance will be discussed, along with the thermodynamic property relations, thereby enabling the participants to estimate all relevant thermodynamic properties at any particular state point. Subsequently the gas & vapor power cycles will be analyzed, followed by the principles of cogeneration & combined cycles. Then the refrigeration cycles will be introduced, followed by a discussion on the selection of refrigerants. Subsequently the properties of gas mixtures and gas-vapor mixtures will be discussed, leading to psychrometry & psychrometric processes. The course will be completed with a brief introduction to the chemical equilibrium."
+}

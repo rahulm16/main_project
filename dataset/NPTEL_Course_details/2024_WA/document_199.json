@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa0c",
+    "Course-ID": "noc24-cs98",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Discrete Mathematics",
+    "Course-instructor": "Prof. Ashish Choudhury",
+    "Institute-name": "IIIT Bangalore",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs98/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106108227",
+    "content": "Discrete mathematics is the study of mathematical structures that are discrete in the sense that they assume only distinct, separate values, rather than in a range of values. It deals with the mathematical objects that are widely used in all most all fields of computer science, such as programming languages, data structures and algorithms, cryptography, operating systems, compilers, computer networks, artificial intelligence, image processing, computer vision, natural language processing, etc. The subject enables the students to formulate problems precisely, solve the problems, apply formal proof techniques and explain their reasoning clearly."
+}

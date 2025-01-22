@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb28",
+    "Course-ID": "noc24-mg80",
+    "Discipline": "Management",
+    "Course-name": "Econometric Modelling",
+    "Course-instructor": "Prof. Sujata Kar",
+    "Institute-name": "IIT Roorkee",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_mg80/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/110107153",
+    "content": "This course is designed to give the students an exposure to the basic concepts of econometrics. However, the basic content also attempts to cover parts of time series analysis. The course is structured to be primarily theoretical with an aim to provide an understanding of the mechanism, mathematics and economics behind the tools and techniques used. The concepts will be explained with examples using mostly MS Excel. The course will have the advantage of developing a strong theoretical background which would help the students to better understand applicability of various methods and tools in different economic contexts or scenarios."
+}

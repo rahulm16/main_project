@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa6b",
+    "Course-ID": "noc24-ee82",
+    "Discipline": "Electrical and Electronics Engineering",
+    "Course-name": "Fundamentals Of Wireless Communication (Hindi)",
+    "Course-instructor": "Prof. Vivek Bohara",
+    "Institute-name": "IIIT Delhi",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee82/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108106192",
+    "content": "This course will provide a basic introduction to a wireless communication system. Starting with the large scale propagation models, the students will study the modelling of wireless channel as a linear time varying filter, statistical multipath models and wireless Digital Modulation/ Digital Demodulation techniques. The performance of the digital modulation techniques in Rayleigh fading channel and additive white Gaussian noise (AWGN) will also be studied. This course will also introduce students to channel capacity in non-fading and fading channel conditions, multiple access techniques, cellular standards from 2G to 5G along with Wireless Local area networks (WLAN) standards from IEEE 802.11a to IEEE 802.11ax."
+}

@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be82a",
+    "question": "The cost of 12 pens is Rs. 72. What is the cost of 25 pens at the same rate?",
+    "options": [
+        "Rs. 120",
+        "Rs. 150",
+        "Rs. 200",
+        "Rs. 180"
+    ],
+    "correct_answer": "Rs. 150",
+    "Type": "Mathematical"
+}

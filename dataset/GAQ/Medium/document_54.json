@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e575a12",
+    "question": "Today is Monday. After 61 days, it will be:",
+    "options": [
+        "Wednesday",
+        "Saturday",
+        "Tuesday",
+        "Thursday"
+    ],
+    "correct_answer": "Saturday",
+    "Type": "Mathematical"
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf99d",
+    "Course-ID": "noc24-ch52",
+    "Discipline": "Chemical Engineering",
+    "Course-name": "Matlab-Based Programming Lab in Chemical Engineering",
+    "Course-instructor": "Prof. Parag A. Deshpande",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ch52/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/103105220",
+    "content": "This is computer lab course for the undergraduate students of chemical engineering. We will be using Matlab as the language for solving chemical engineering problems which the students encounter not only in their undergraduate curriculum but are also relevant and important in process industries. The course will impart the not only Matlab programming skills but also the skills on problem analysis, solution, interpretation and presentation of results."
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf9e3",
+    "Course-ID": "noc24-ce67",
+    "Discipline": "Civil Engineering",
+    "Course-name": "Advanced Geomatics Engineering",
+    "Course-instructor": "Prof. Pradeep Kumar Garg",
+    "Institute-name": "IIT Roorkee",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ce67/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/105107218",
+    "content": "Geomatics is one of the important tools that can help us to map and monitor the changes in the infrastructure, resources and environment on Earth. It is a multidisciplinary technology which involves the use of cartography, photogrammetry, Global Positioning System (GPS), remote sensing, Unmanned Aerial Vehicles (UAVs), Geographic Information System (GIS), geovisualization, spatial statistics, geostatistics, and other advanced tools & techniques. With the advancements in very high spatial resolution satellite images, GIS, LiDAR, UAV/Drones and other associated technologies in the recent years, applications of geospatial technology have increased in civil engg, natural resources management, disaster management, environment, geology, soil, forestry, agriculture, water management, urban, infrastructure development, smart city, 3D mapping, etc. The course contents will provide insight to understand the various tools for collection of geospatial data and emerging need of geospatial technology."
+}

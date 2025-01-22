@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be83e",
+    "question": "What is the area of a rectangle with length 18 cm and width 12 cm?",
+    "options": [
+        "144 cm\u00b2",
+        "132 cm\u00b2",
+        "108 cm\u00b2",
+        "156 cm\u00b2"
+    ],
+    "correct_answer": "216 cm\u00b2",
+    "Type": "Mathematical"
+}

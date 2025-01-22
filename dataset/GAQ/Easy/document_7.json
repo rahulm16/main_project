@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be752",
+    "question": "A is the son of B. B and C are sisters. D is the mother of C. How is D related to A?",
+    "options": [
+        "Grandmother",
+        "Mother",
+        "Aunt",
+        "Sister"
+    ],
+    "correct_answer": "Grandmother",
+    "Type": "Logic"
+}

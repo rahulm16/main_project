@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be791",
+    "question": "How many meters are there in 1.5 kilometers?",
+    "options": [
+        "1000 m",
+        "1500 m",
+        "2000 m",
+        "2500 m"
+    ],
+    "correct_answer": "1500 m",
+    "Type": "Mathematical"
+}

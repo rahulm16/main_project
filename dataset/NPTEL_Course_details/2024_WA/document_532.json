@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb59",
+    "Course-ID": "noc24-ma60",
+    "Discipline": "Mathematics",
+    "Course-name": "Complex Analysis",
+    "Course-instructor": "Prof. Pranav Haridas",
+    "Institute-name": "Kerala School of Mathematics",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma60/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111106141",
+    "content": "This is a first course in Complex Analysis focussing on holomorphic functions and its basic properties like Cauchy?\u00a2\u201a\u00c7\u00a8\u201a\u00d1\u00a2s theorem and residue theorems, the classification of singularities, and the maximum principle. We shall study the singularities of holomorphic functions. If time permits, we shall also study Branches of the complex logarithm through covering spaces and attempt proving Picard?\u00a2\u201a\u00c7\u00a8\u201a\u00d1\u00a2s theorem."
+}

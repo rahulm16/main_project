@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa62",
+    "Course-ID": "noc24-ee99",
+    "Discipline": "Electrical and Electronics Engineering",
+    "Course-name": "Introduction to Semiconductor Devices",
+    "Course-instructor": "Prof. Naresh Kumar Emani",
+    "Institute-name": "IIT Hyderabad",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee99/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108106181",
+    "content": "Semiconductor devices are at the heart of the present technological revolution, and they are increasingly prominent in our daily life. This course develops the basic concepts necessary to understand the fundamentals of semiconductor devices. We will apply these concepts to gain insight into the operation of various semiconductor devices such as pn junction diodes, MOSFETs, solar cells and LEDs. This course is primarily directed for undergraduate students pursuing ECE/EE or related programs"
+}

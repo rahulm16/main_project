@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb9d",
+    "Course-ID": "noc24-me92",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Mechanics and Control of Robotic Manipulators",
+    "Course-instructor": "Prof. Santhakumar Mohan",
+    "Institute-name": "IIT Palakkad",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me92/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112106304",
+    "content": "Learn algorithmic approaches, mathematical models, and computational and motion control methods applicable to robotic manipulator systems; Recognize and analyze the basic mechanical and electrical systems concerning robots; Analyze and design the basic robotic systems; Implement and investigate the performance of various control techniques to the robotic manipulators"
+}

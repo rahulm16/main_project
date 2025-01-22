@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759f2",
+    "question": "Each problem consists of three statements. Based on the first two statements, the third statement may be true, false, or uncertain. Four people witnessed a mugging. Each gave a different description of the mugger. Which description is probably right?",
+    "options": [
+        "He was average height, thin, and middle-aged.",
+        "He was tall, thin, and middle-aged",
+        "He was tall, thin, and young.",
+        "He was tall, of average weight, and middle-aged."
+    ],
+    "correct_answer": "He was tall, thin, and middle-aged.",
+    "Type": "Logic"
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa5c",
+    "Course-ID": "noc24-ee108",
+    "Discipline": "Electrical and Electronics Engineering",
+    "Course-name": "Fabrication Techniques for MEMs-Based Sensors : Clinical Perspective",
+    "Course-instructor": "Prof. Hardik Jeetendra Pandya",
+    "Institute-name": "IISc Bangalore",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee108/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108108113",
+    "content": "This course is designed with an aim of educating students in the area of microtechnology and its use to fabricate sensors and systems. The students will have an exposure to sensors and its importance in the real world. The students will also able to understand how to fabricate some of those sensors. Several examples of engineering devices used in clinical research will be also covered. Class 10000 non-conventional clean room and some equipment within it will also be shown. Below are some of the course outcomes. Ability to understand microfabrication process Understand sensors used in electronics and biomedical areas Understand Clean Room (Class 1 to Class 10000) Understand Microengineering Technology Design the process flow for fabricating microheater required in gas sensors. Design the process flow for fabricating forces sensors for biomedical application. Design microheater for gas sensors as per specifications. Design force sensors as per specifications. Understand fabrication of microfluidic platforms, micro-cantilevers, flexible force sensors, inter-digitated electrodes, polymer-glass bonding etc. for clinical research"
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf984",
+    "Course-ID": "noc24-bt45",
+    "Discipline": "Biotechnology and Bioengineering",
+    "Course-name": "Organ Printing",
+    "Course-instructor": "Prof. Falguni Pati",
+    "Institute-name": "IIT Hyderabad",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_bt45/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/102106095",
+    "content": "Printing of tissue analogs recapitulating the structure and function of native tissues are beneficial for many applications like tissue engineering, in vitro tissue modeling, cancer modeling, and for studying tissue/organ development process. Organ printing or 3D bioprinting uses a layer-by-layer manufacturing process with all the components of a tissue like cells, matrix materials and bioactive factors to produce artificial tissues. Various aspects of this technology will be described in this course starting from the fundamental of 3D Bioprinting, process parameters, bioinks used to organ-specific strategies for tissue printing. Moreover, the applications of this technology will be described with examples from recent literatures and reports."
+}

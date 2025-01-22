@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759fc",
+    "question": "Find the correctly spelt words. (solve as per the direction given above)",
+    "options": [
+        "Ommineous",
+        "Omineous",
+        "Ominous",
+        "Omenous"
+    ],
+    "correct_answer": "Ominous",
+    "Type": "Verbal"
+}

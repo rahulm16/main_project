@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa1b",
+    "Course-ID": "noc24-cs102",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Reinforcement Learning",
+    "Course-instructor": "Prof. Balaraman Ravindran",
+    "Institute-name": "IIT Madras",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs102/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106106143",
+    "content": "Reinforcement learning is a paradigm that aims to model the trial-and-error learning process that is needed in many problem situations where explicit instructive signals are not available. It has roots in operations research, behavioral psychology and AI. The goal of the course is to introduce the basic mathematical foundations of reinforcement learning, as well as highlight some of the recent directions of research."
+}

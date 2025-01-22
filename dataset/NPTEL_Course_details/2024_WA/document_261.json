@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa4a",
+    "Course-ID": "noc24-de18",
+    "Discipline": "Design Engineering",
+    "Course-name": "Control Systems",
+    "Course-instructor": "Prof. C.S.Shankar Ram",
+    "Institute-name": "IIT Madras",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_de18/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/107106081",
+    "content": "Course Objective: To provide a basic understanding of the concepts and techniques involved in designing control schemes for dynamic systems. Learning Outcomes: At the end of this course, one should possess in-depth knowledge of concepts from classical control theory, understand the concept of transfer function and use it for obtaining system response, analyze dynamic systems for their stability and performance, and design controllers (such as Proportional-Integral-Derivative) based on stability and performance requirements."
+}

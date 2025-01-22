@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa7e",
+    "Course-ID": "noc24-ee85",
+    "Discipline": "Electrical and Electronics Engineering",
+    "Course-name": "Concentration Inequalities",
+    "Course-instructor": "Prof. Aditya Gopalan\nProf. Himanshu tyagi",
+    "Institute-name": "IISc Bangalore",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee85/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108108181",
+    "content": "It is well-known that functions of large numbers of random quantities tend to behave rather predictably and less randomly than their constituents. For instance, the laws of large numbers tell us that the average of many independent random variables is asymptotically the expected value. higher-order refinements such as the central limit theorem and large deviations techniques uncover the asymptotic rate at which this reduction in randomness takes place. However, if one is interested in sharper estimates, for the probability of deviation from the typical value, for a fixed number of observations, for functions other than the average, or for functions of dependent random variables, one must take recourse to more specific measure concentration bounds. Perhaps the most basic, nontrivial examples in this regard are the Markov and Chebyshev inequalities, which are encountered in a first course on probability. This graduate-level course on concentration inequalities will cover the basic material on this classic topic as well as introduce several advanced topics and techniques. The utility of the inequalities derived will be illustrated by drawing on applications from electrical engineering, computer science and statistics. A tentative list of topics is given below. 1. Introduction & motivation: Limit results and concentration bounds 2. Chernoff bounds: Hoeffdings inequality, Bennetts inequality, Bernsteins inequality 3. Variance bounds: Efron-Stein inequality, Poincare inequality 4. The entropy method and log Sobolev inequality 5. The transportation method 6. Isoperimetric inequalities 7. Other special topics"
+}

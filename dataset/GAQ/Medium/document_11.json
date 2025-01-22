@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759e7",
+    "question": "Remember, you are looking for the word that does NOT belong in the same group as the others. Sometimes, all four words seem to fit in the same group. If so, look more closely to further narrow your classification. Which word does NOT belong with the others?",
+    "options": [
+        "aorta",
+        "heart ",
+        "liver ",
+        "stomach"
+    ],
+    "correct_answer": "aorta",
+    "Type": "Logic"
+}

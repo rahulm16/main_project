@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf9ac",
+    "Course-ID": "noc24-ch45",
+    "Discipline": "Chemical Engineering",
+    "Course-name": "Introduction to Polymer Physics - IITG",
+    "Course-instructor": "Prof. Amit Kumar",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ch45/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/103103139",
+    "content": "Polymer physics is important to understand the structure-property relation in polymers. An understanding of the structural features and interactions responsible for polymer properties can aid in tuning the desirable properties. This introductory course will discuss the models for ideal polymer chains, and thermodynamics of polymer solutions and blends, focusing on miscibility. The course will also cover the different methods to measure polymer molar mass, which has a strong effect on polymer properties. The physics of branching and network formation will be introduced with reference to branched polymers, dendrimers and cross-linked polymers. The course will also discuss mechanical properties of polymers with focus on viscoelasticity and rubber elasticity. Finally, a brief introduction to polymer dynamics will be provided."
+}

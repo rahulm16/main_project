@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfaa2",
+    "Course-ID": "noc24-ee142",
+    "Discipline": "Electronics and Electrical Engineering, Physics",
+    "Course-name": "Nanophotonics, Plasmonics, and Metamaterials",
+    "Course-instructor": "Prof. Debabrata Sikdar",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee142/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/117103150",
+    "content": "The course provides a detailed introduction to the three cornerstones of the future photonic technologies, viz., nanophotonics, plasmonics, and metamaterials, covering their fundamentals and latest advancements. The basics and applied aspects of nanophotonics i.e. controlling, guiding, and manipulating electromagnetic radiation at the nanoscale will be discussed. The course will first cover the principles of photonic crystals, metal optics, surface plasmon resonance and their applications. Later on, the course will focus on metamaterials and metasurfaces, covering their fundamentals and various applications such as tunable devices, absorbers, hyper lens, super lens, beam steering, and in cloaking and transformation optics. The course will also introduce new alternative materials for nanophotonics and summarize different techniques for fabrication of these nanophotonic devices."
+}

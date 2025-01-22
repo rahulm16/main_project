@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfc17",
+    "Course-ID": "noc24-ph46",
+    "Discipline": "Physics",
+    "Course-name": "Statistical Physics of Non-Interacting and Interacting Systems",
+    "Course-instructor": "Prof. Saurabh Basu",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ph46/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/115103538",
+    "content": "The course introduces the reason to study statistical mechanics when thermodynamics yields an equilibrium description of the systems. The basic concepts of the subject are explained from a formal viewpoint that deals with the concept of ensembles and ergodic hypothesis. Quantum statistical mechanics appears as an upgradation of the classical ideas that incorporates the indistinguishability of the particles, and thus is applicable to the \u2018microscopic world\u2019 of bosons and fermions. Several examples are discussed in this context, such as Bose-Einstein condensation, magnetism of fermionic systems. Besides, there are special topics, such as, Chandrasekhar limit, thermodynamics of black holes etc Further, as interacting systems are ubiquitous in nature, and hence require an introduction to the masters and the PhD students. Different examples of interacting systems are discussed through Ising model, Heisenberg model etc and specialized techniques such as Bethe ansatz are discussed."
+}

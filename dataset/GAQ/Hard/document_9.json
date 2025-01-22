@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be81a",
+    "question": "If 1 is written as '2', 2 as '3', 3 as '4', and so on, what will '5 + 3' be written as in the code?",
+    "options": [
+        "10",
+        "11",
+        "12",
+        "9"
+    ],
+    "correct_answer": "11",
+    "Type": "Logic"
+}

@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be78a",
+    "question": "If the radius of a circle is 7 cm, what is its circumference? (Take \u03c0 = 22/7)",
+    "options": [
+        "22 cm",
+        "44 cm",
+        "66 cm",
+        "77 cm"
+    ],
+    "correct_answer": "44 cm",
+    "Type": "Mathematical"
+}

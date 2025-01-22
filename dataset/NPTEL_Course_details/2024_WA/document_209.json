@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa16",
+    "Course-ID": "noc24-cs87",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Computational Arithmetic - Geometry for Algebraic Curves",
+    "Course-instructor": "Prof. Nitin Saxena",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs87/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106104469",
+    "content": "We want to count the number of roots of an algebraic system (over finite fields). This is a very difficult question in general (eg. #P-hard). However, there are fast algorithms known for special cases. In this course we will focus on the \"2-variable\"case, i.e. curves. This case already demands significant theory and has an amazing list of applications in computer science.We will cover some important aspects of this 20th century mathematics in a self-contained way, and see as many applications as time permits"
+}

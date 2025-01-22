@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfaa3",
+    "Course-ID": "noc24-ma61",
+    "Discipline": "Engineering & Science",
+    "Course-name": "Mathematics for Machine Learning",
+    "Course-instructor": "Prof. Debjani Chakraborty\nProf. Debashree Guha Adhya",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma61/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111105489",
+    "content": "This course will discuss the rich mathematical theory needed for developing efficient, accurate and robust machine learning algorithms. This course will focus on selected advanced topics from linear algebra, calculus, optimization, probability theory and statistics with strong linkage with machine learning. Applications of these topics will be introduced in ML with help of some real-life examples."
+}

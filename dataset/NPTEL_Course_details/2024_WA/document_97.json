@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf9a6",
+    "Course-ID": "noc24-ch44",
+    "Discipline": "Chemical Engineering",
+    "Course-name": "Chemical Process Control",
+    "Course-instructor": "Prof. Sujit Jogwar",
+    "Institute-name": "IIT Bombay",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ch44/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/103101142",
+    "content": "In this course, we will begin with the dynamic analysis of chemical engineering systems which will tell us how these systems behave. After knowing their behavior, we will move to controlling this behavior as per our choice with the help of a control system. Lastly, using advanced controller, we will see how this can be achieved in the most intelligent way."
+}

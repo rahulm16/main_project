@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb8a",
+    "Course-ID": "noc24-me85",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Introduction to Mechanical Vibration",
+    "Course-instructor": "Prof. Anil Kumar",
+    "Institute-name": "IIT Roorkee",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me85/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112107212",
+    "content": "Vibration is a common phenomenon occurring in a mechanical system. For example, vibration of a rotor due to unbalanced mass, vibration of a vehicle engine at varying speed. The study of a dedicated course is required to understand the fundamental and advance concepts of mechanical vibrations for engineers and designers. This course is of basic level. It introduces fundamentals of vibration, vibration of single Degree of Freedom (DoF) system, 2-DoF and multi-DoF systems, continuous systems such as bars and beams, and whirling of shafts."
+}

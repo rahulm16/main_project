@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be760",
+    "question": "If A + B means A is the father of B, A - B means A is the mother of B, A * B means A is the brother of B, and A / B means A is the sister of B, what does P - Q / R mean?",
+    "options": [
+        "P is the mother of R",
+        "P is the sister of R",
+        "P is the mother of Q and sister of R",
+        "P is the mother of Q and R"
+    ],
+    "correct_answer": "P is the mother of Q and sister of R",
+    "Type": "Logic"
+}

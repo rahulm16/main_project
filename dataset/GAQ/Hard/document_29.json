@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be82e",
+    "question": "The sum of the first 15 terms of an arithmetic progression is 900. If the first term is 20, what is the common difference?",
+    "options": [
+        "5",
+        "6",
+        "7",
+        "8"
+    ],
+    "correct_answer": "6",
+    "Type": "Mathematical"
+}

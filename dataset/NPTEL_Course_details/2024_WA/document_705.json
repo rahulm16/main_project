@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfc07",
+    "Course-ID": "noc24-ph36",
+    "Discipline": "Physics",
+    "Course-name": "Scientific Computing using Python",
+    "Course-instructor": "Prof. Mahendra K. Verma",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ph36/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/115104135",
+    "content": "Computation has become an essential tool in science and engineering. In this course, we introduce Python programming language, after which we will cover basics of computational methods. The students will be asked to the solution in Python, which the de facto language now. Topics to be discussed include interpolation, integration, differentiation, ODE and PDE solvers, basic linear algebra, and Monte Carlo techniques. These topics form essential computing tools for computational courses in science and engineering"
+}

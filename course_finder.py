@@ -16,8 +16,8 @@ def find_relevant_courses(mongo_uri, nptel_db_name, nptel_collection_name,
     
     # If save_to_db is True, we'll save matches to a new collection in the aicareer DB
     if save_to_db:
-        # Clear existing matches in the aicareer database
-        career_db.nptel_matches.drop()
+        # Remove existing matches for this user only
+        career_db.nptel_matches.delete_many({"user_email": user_email})
     
     # Fetch all documents from the career collection for the current user
     career_docs = list(career_collection.find({"user_email": user_email}))
@@ -101,4 +101,3 @@ if __name__ == "__main__":
     
     career_db_name = "aicareer"
     career_collection_name = "career_suggestions"
-    

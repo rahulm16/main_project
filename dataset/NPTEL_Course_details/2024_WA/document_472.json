@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb1d",
+    "Course-ID": "noc24-mg70",
+    "Discipline": "Management",
+    "Course-name": "Business Analytics & Data Mining Modeling using R Part II",
+    "Course-instructor": "Prof. Gaurav Dixit",
+    "Institute-name": "IIT Roorkee",
+    "Duration": "4 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "August 16, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_mg70/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/110107095",
+    "content": "Objective of this course is to impart knowledge on use of data mining techniques for deriving business intelligence to achieve organizational goals. Use of R (statistical computing software) to build, assess, and compare models based on real datasets and cases with an easy-to-follow learning curve."
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb83",
+    "Course-ID": "noc24-ma94",
+    "Discipline": "Mathematics",
+    "Course-name": "A Primer to Mathematical Optimization",
+    "Course-instructor": "Prof. Debdas Ghosh",
+    "Institute-name": "IIT(BHU) Varanasi",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma94/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111104165",
+    "content": "In this era of Machine Learning and Data Science, students often crave for learning the basic tools of optimization theory because machine learning ideas essentially exploit the power of Numerical Linear Algebra, Optimization, and Statistics. The primary aim of this course is to hand over a complete readymade package for beginners in mathematical optimization. 'Complete' in the sense of its mathematical orientation, geometrical explanation, problem-solution sheets, and tutorial sheets. After attending this course, students will get to know the standard methods, and basic and modern results in optimization. The concepts will be explained not only with mathematical rigor but also with geometrical essence so that students feel optimization is fun. The course covers mathematical foundation for optimization and basic techniques of unconstrained and constrained optimization problems."
+}

@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be825",
+    "question": "A man buys 6 dozen oranges for $36. He sells them at a profit of $0.50 per dozen. What is the selling price of each orange?",
+    "options": [
+        "$0.60",
+        "$0.70",
+        "$0.65",
+        "$0.75"
+    ],
+    "correct_answer": "$0.65",
+    "Type": "Logic"
+}

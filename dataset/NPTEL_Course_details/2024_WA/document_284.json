@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa61",
+    "Course-ID": "noc24-ee112",
+    "Discipline": "Electrical and Electronics Engineering",
+    "Course-name": "Basic Electrical Circuits",
+    "Course-instructor": "Prof. Gajendranath Chowdary",
+    "Institute-name": "IIT Hyderabad",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee112/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/117106108",
+    "content": "Electrical circuits are everywhere, from tiny ones in integrated circuits in mobile phones and music players, to giant ones that carry power to our homes. This course deals with analysis techniques that can be applied to all such circuits. We will first discuss electrical quantities-voltage and current-relevant to such circuits and learn about basic elements(R, L, C, controlled sources) and their properties. We will then move on to general analysis techniques that can be applied to arbitrary circuits. These will be first carried out for resistive circuits which obey algebraic equations and then extended to circuits with energy storage elements(C, L) which obey differential equations. Along the way, we will also discuss the rudiments of negative feedback circuit using the opamp. After taking this course, one should be able to analyze any linear circuit."
+}

@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be82f",
+    "question": "What is the value of log(100) to the base 10?",
+    "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+    ],
+    "correct_answer": "2",
+    "Type": "Mathematical"
+}

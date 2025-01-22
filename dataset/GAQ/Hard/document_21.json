@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be826",
+    "question": "The sum of three consecutive integers is 111. What is the value of the middle integer?",
+    "options": [
+        "37",
+        "36",
+        "35",
+        "34"
+    ],
+    "correct_answer": "36",
+    "Type": "Mathematical"
+}

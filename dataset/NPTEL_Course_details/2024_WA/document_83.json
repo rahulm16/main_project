@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf998",
+    "Course-ID": "noc24-ch49",
+    "Discipline": "Chemical Engineering",
+    "Course-name": "Transport Processes I: Heat and Mass Transfer",
+    "Course-instructor": "Prof. V. Kumaran",
+    "Institute-name": "IISc Bangalore",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ch49/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/103108123",
+    "content": "Physical and chemical transformations of raw materials to products are accomplished in unit operations which involve mixing, heating/cooling, reactions and flow. The efficiency of these processes is critically dependent on the transport of heat and mass carried along with flowing fluid, and across solid/fluid interfaces. The transport across interfaces is entirely due to molecular diffusion, which is the transport in a stationary fluid due to gradients in concentration or temperature. The combination of convection (transport by flowing fluids) and diffusion determine the rate of transport, and the overall efficiency, in unit operations. In this course, we will obtain a physical understanding of how the balance between convection and diffusion determines the overall transport rates in chemical processes, and gives rise to many of the empirical correlations used in chemical engineering design."
+}

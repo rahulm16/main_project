@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa95",
+    "Course-ID": "noc24-ee122",
+    "Discipline": "Electrical Engineering",
+    "Course-name": "Optimization Theory and Algorithms",
+    "Course-instructor": "Prof. Uday K Khankhoje",
+    "Institute-name": "IIT Madras",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee122/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108106478",
+    "content": "This course will introduce the student to the basics of unconstrained and constrained optimization that are commonly used in engineering problems. The focus of the course will be on contemporary algorithms in optimization. Sufficient the oretical grounding will be provided to help the student appreciate the algorithms better. Illustrative programming assignments will also be provided to deepen understanding of the subject matter."
+}

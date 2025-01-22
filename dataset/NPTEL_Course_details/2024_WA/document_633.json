@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbbf",
+    "Course-ID": "noc24-me139",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Automation in Manufacturing",
+    "Course-instructor": "Prof. Shrikrishna N. Joshi",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me139/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112103293",
+    "content": "Manufacturing industry contributes a major share in the GDP of our country. Application of automated systems is certainly improving the productivity of the manufacturing industry. In view of this, a course on Automation in Manufacturing is designed with the primary focus on the design and development of automated systems in the manufacturing. Initially the course introduces various automated systems being used in the manufacturing industry. Then the building blocks of a typical automated system are described. It presents a study on the principle of operation and construction details of sensors/transducers, actuators, drives and mechanisms, hydraulic and pneumatic systems. It also covers up the microprocessor technology, programming and CNC technology. The contents are lucidly presented with real-life examples. Case studies based on manufacturing industry applications are presented."
+}

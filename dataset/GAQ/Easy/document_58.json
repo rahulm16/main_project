@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be785",
+    "question": "A person spends \u20b91800, which is 40% of their monthly salary. What is their monthly salary?",
+    "options": [
+        "\u20b93000",
+        "\u20b94000",
+        "\u20b94500",
+        "\u20b95000"
+    ],
+    "correct_answer": "\u20b94500",
+    "Type": "Mathematical"
+}

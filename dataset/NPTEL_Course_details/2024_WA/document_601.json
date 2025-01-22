@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb9e",
+    "Course-ID": "noc24-me128",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Interfacial Fluid Mechanics",
+    "Course-instructor": "Prof. Harish Dixit",
+    "Institute-name": "IIT Hyderabad",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me128/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112106312",
+    "content": "This course will introduce the student to the wonderful and beautiful world of interfacial fluid dynamics. These are fluid systems dominated by surface or interfacial tension. First half of the course will deal with many examples of fluid systems dominated by surface tension followed by a detailed discussion of the relevant governing equations and boundary conditions. Static systems ?\u00a2\u201a\u00c7\u00a8\u201a\u00c4\u00fa shape of a meniscus, shape of a drop, etc will also be discussed. Second half of the course will focus on specific fluid systems, viz. thin films, shape of a falling jet, coating flows, well-known instabilities like the Rayleigh-Taylor and Rayleigh-Plateau instabilities, Marangoni effects, contact lines, etc. Throughout the course, theoretical concepts will be related to real-world examples."
+}

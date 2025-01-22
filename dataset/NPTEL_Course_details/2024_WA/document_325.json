@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa8a",
+    "Course-ID": "noc24-ee90",
+    "Discipline": "Electrical and Electronics Engineering",
+    "Course-name": "Advanced Linear Continuous Control Systems: Applications with MATLAB Programming and Simulink",
+    "Course-instructor": "Prof. Yogesh Vijay Hote",
+    "Institute-name": "IIT Roorkee",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee90/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108107115",
+    "content": "Today, there is an utmost need to understand advanced control engineering on account of its multidisplinary applications in various areas of engineering. The course on advanced linear control system design introduces the fundamental concepts, applications and understanding through Matlab programming and Simulink. This course is a core course for PG student and an elective course for UG. In this course, various methodology of modeling in state space, state transition matrix, and solution in state equation shall be studied. Further, the concept of controller design, observer design (Full order and minimum order), and optimal pole placement design through LQR and LQG will be discussed. The theory will be supported by a variety of numerical examples and practical examples. Software programs in MATLAB environment and Simulink will be studied for the better understanding of the advanced linear control techniques for continuous systems."
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa0e",
+    "Course-ID": "noc24-cs99",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Advanced Distributed Systems",
+    "Course-instructor": "Prof. Smruti Ranjan Sarangi",
+    "Institute-name": "IIT Delhi",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs99/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106102237",
+    "content": "This course is on Advanced Distributed Systems. It will start with epidemic and gossip based algorithms and then move on to peer-to-peer networks. The core focus in this part will be on distributed hash tables (DHTs). Then, the course will focus on theoretical aspects such as vector clocks, distributed leader election, the FLP result, and the CAP theorem. The last part of the course will focus on practical technologies such as the Paxos and RAFT consensus protocols, commit protocols, Bitcoin and blockchains, distributed file systems, and distributed programming languages."
+}

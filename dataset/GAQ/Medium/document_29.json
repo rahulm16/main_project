@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759f9",
+    "question": "Pick out the most effective word(s) from the given words to fill in the blank to make the sentence meaningfully complete. Catching the earlier train will give us the ...... to do some shopping.",
+    "options": [
+        "chance",
+        "luck",
+        "possibility",
+        "occasion"
+    ],
+    "correct_answer": "chance",
+    "Type": "Verbal"
+}

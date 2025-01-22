@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cf9b5",
+    "Course-ID": "noc24-ch71",
+    "Discipline": "Chemical Engineering",
+    "Course-name": "Aspen Plus\u00ae Simulation Software - A Basic Course For Beginners",
+    "Course-instructor": "Prof. Prabirkumar Saha",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ch71/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/103103209",
+    "content": "Aspen Plus is a process modeling tool used for process monitoring, optimization and conceptual design, especially by chemical process industries. This is a simple course on Aspen Plus Simulation engine that will teach one how to model the most common unit operations of a chemical plant. Basic unit operations such as Pump, Reactor, Valve, Heater, Distillation Column etc. will be demonstrated which would be helpful for students, teachers, engineers and researchers in the area of R&D and Plant Design/Operation. The course is didactic, with a lot of applied theory and case studies. At the end of the course one will be able to setup a simulation, run it, get design parameters, optimize and get results. This is highly recommended for those who are willing to take a career in simulation/modeling via software."
+}

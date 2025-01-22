@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa2a",
+    "Course-ID": "noc24-cs91",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Software Testing",
+    "Course-instructor": "Prof. Meenakshi D'souza",
+    "Institute-name": "IIIT Bangalore",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs91/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106101163",
+    "content": "This course will cover various techniques for test case design, as used for testing of software artifacts including requirements, design and code. We will discuss algorithms and techniques for test case design based on graphs, logic, syntax of programming languages and on inputs. Special techniques for testing object-oriented features and web applications will also be discussed. The course will end with symbolic testing techniques.These broadly will cover test cases for both white-box and black-box testing."
+}

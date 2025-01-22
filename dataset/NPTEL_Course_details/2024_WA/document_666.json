@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbe0",
+    "Course-ID": "noc24-mm27",
+    "Discipline": "Metallurgical and Materials Engineering",
+    "Course-name": "Electronic Properties of the Materials: Computational Approach",
+    "Course-instructor": "Prof. Somnath Bhowmick",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_mm27/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/113104106",
+    "content": "The course aims to explain the physics of electronic materials in detail, followed by a brief discussion on their applications. A student taking the course will learn about traditional metals, semiconductors, and ionic-conductors, as well as newly discovered low-dimensional materials. In addition to the theory part, students will also learn from simple in-silico experiments."
+}

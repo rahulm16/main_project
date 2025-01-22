@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa31",
+    "Course-ID": "noc24-cs114",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Deep Learning - IIT Ropar",
+    "Course-instructor": "Prof. Sudarshan Iyengar\nProf. Sukrit Gupta",
+    "Institute-name": "IIT Ropar",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs114/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106106184",
+    "content": "Deep Learning has received a lot of attention over the past few years and has been employed successfully by companies like Google, Microsoft, IBM, Facebook, Twitter etc. to solve a wide range of problems in Computer Vision and Natural Language Processing. In this course we will learn about the building blocks used in these Deep Learning based solutions. Specifically, we will learn about feedforward neural networks, convolutional neural networks, recurrent neural networks and attention mechanisms. We will also look at various optimization algorithms such as Gradient Descent, Nesterov Accelerated Gradient Descent, Adam, AdaGrad and RMSProp which are used for training such deep neural networks. At the end of this course students would have knowledge of deep architectures used for solving various Vision and NLP tasks"
+}

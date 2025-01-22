@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759e1",
+    "question": "In these series, you will be looking at both the letter pattern and the number pattern. Fill the blank in the middle of the series or end of the series. P5QR, P4QS, P3QT, _____, P1QV",
+    "options": [
+        "PQW",
+        "PQV2",
+        "P2QU",
+        "PQ3U"
+    ],
+    "correct_answer": "P2QU",
+    "Type": "Logic"
+}

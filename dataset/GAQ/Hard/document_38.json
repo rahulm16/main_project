@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be837",
+    "question": "What is the compound interest on Rs. 4000 at 10% per annum for 2 years, compounded annually?",
+    "options": [
+        "Rs. 800",
+        "Rs. 850",
+        "Rs. 840",
+        "Rs. 1000"
+    ],
+    "correct_answer": "Rs. 840",
+    "Type": "Mathematical"
+}

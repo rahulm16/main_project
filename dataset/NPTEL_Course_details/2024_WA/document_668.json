@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbe2",
+    "Course-ID": "noc24-mm44",
+    "Discipline": "Metallurgical and Materials Engineering",
+    "Course-name": "Thermodynamics and Kinetics of Materials",
+    "Course-instructor": "Prof. Saswata Bhattacharya",
+    "Institute-name": "IIT Hyderabad",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_mm44/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/113106109",
+    "content": "This course introduces the fundamental concepts of thermodynamics and kinetics to students of Metallurgy and Materials Engineering. Major topics covered by this course are laws of thermodynamics, thermodynamic potentials, principles of phase equilibria, theory of solutions, thermodynamics of chemical reactions, thermodynamics of surfaces, rates of reactions, principles of irreversible thermodynamics, phenomenology of diffusion and atomic mechanisms of diffusion in solids. At the end of this course, a student learns how to apply thermodynamic principles to assess the feasibility of processes, calculate phase equilibrium conditions in multicomponent, multiphase materials, construct phase diagrams, calculate thermodynamic driving force for phase change, understand the principles of kinetics of irreversible processes such as rates of reactions and diffusion processes in materials. The course also includes a virtual laboratory where the student learns to compute phase equilibria and phase diagrams of unary, binary, and ternary systems and perform simulations of diffusion using the free ThermoCalc education package and open source Pycalphad and FiPy."
+}

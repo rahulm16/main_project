@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be842",
+    "question": "Select the correct sentence from the options.",
+    "options": [
+        "She can sing well than her sister.",
+        "She can sing better than her sister.",
+        "She can sing more better than her sister.",
+        "She can sing best than her sister."
+    ],
+    "correct_answer": "She can sing better than her sister.",
+    "Type": "Verbal"
+}

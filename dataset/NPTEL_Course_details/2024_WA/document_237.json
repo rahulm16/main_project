@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa32",
+    "Course-ID": "noc24-cs121",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Cyber Security and Privacy",
+    "Course-instructor": "Prof. Saji K Mathew",
+    "Institute-name": "IIT Madras",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs121/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106106248",
+    "content": "This course introduces to management students the concepts, technologies, practices and challenges associated with cybersecurity as applied in organizations. Protection as well as disclosure of information pose unique challenges and also allude to economic and technological implications. The course takes a broad view of cyber security along with information privacy by analysing relevant organizational, human, legal and policy issues. Through this course, students will explore cyber security along with information privacy with a managerial focus. Students are expected to develop a wholesome understanding about cyber security and privacy risks to businesses covering governance, compliance and risk mitigation and closely study certain business domains."
+}

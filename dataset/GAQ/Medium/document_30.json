@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759fa",
+    "question": "In each question below a sentence broken into five or six parts. Join these parts to make a meaningful sentence. The correct order of parts is the answer. 1. left        2. the        3. house\n4. he        5. suddenly        ",
+    "options": [
+        "12435",
+        "21354",
+        "45123",
+        "24135"
+    ],
+    "correct_answer": "45123",
+    "Type": "Verbal"
+}

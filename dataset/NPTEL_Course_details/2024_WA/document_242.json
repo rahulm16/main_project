@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa37",
+    "Course-ID": "noc24-cs123",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Problem Solving Through Programming in C",
+    "Course-instructor": "Prof. Anupam Basu",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs123/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106105171",
+    "content": "This course is aimed at enabling the students to 1. Formulate simple algorithms for arithmetic and logical problems 2. Translate the algorithms to programs (in C language) 3. Test and execute the programs and correct syntax and logical errors 4. Implement conditional branching, iteration and recursion 5. Decompose a problem into functions and synthesize a complete program using divide and conquer approach 6. Use arrays, pointers and structures to formulate algorithms and programs 7. Apply programming to solve matrix addition and multiplication problems and searching and sorting problems 8. Apply programming to solve simple numerical method problems, namely rot finding of function, differentiation of function and simple integration"
+}

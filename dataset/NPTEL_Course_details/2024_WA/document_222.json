@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa23",
+    "Course-ID": "noc24-cs130",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Big Data Computing",
+    "Course-instructor": "Prof. Rajiv Misra",
+    "Institute-name": "IIT Patna",
+    "Duration": "8 Weeks",
+    "Start-date": "August 19, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs130/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106104189",
+    "content": "In todays fast-paced digital world , the incredible amount of data being generated every minute has grown tremendously from sensors used to gather climate information, posts to social media sites, digital pictures and videos, purchase transaction records, and GPS signals from cell phone to name a few. This amount of large data with different velocities and varieties is termed as big data and its analytics enables professionals to convert extensive data through statistical and quantitative analysis into powerful insights that can drive efficient decisions. This course provides an in-depth understanding of terminologies and the core concepts behind big data problems, applications, systems and the techniques, that underlie todays big data computing technologies. It provides an introduction to some of the most common frameworks such as Apache Spark, Hadoop, MapReduce, Large scale data storage technologies such as in-memory key/value storage systems, NoSQL distributed databases, Apache Cassandra, HBase and Big Data Streaming Platforms such as Apache Spark Streaming, Apache Kafka Streams that has made big data analysis easier and more accessible. And while discussing the concepts and techniques, we will also look at various applications of Big Data Analytics using Machine Learning, Deep Learning, Graph Processing and many others. The course is suitable for all UG/PG students and practicing engineers/ scientists from the diverse fields and interested in learning about the novel cutting edge techniques and applications of Big Data Computing."
+}

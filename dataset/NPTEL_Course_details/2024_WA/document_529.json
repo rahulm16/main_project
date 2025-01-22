@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb56",
+    "Course-ID": "noc24-ce107",
+    "Discipline": "Materials Science & Engineering",
+    "Course-name": "Artificial Intelligence and Machine Learning in Materials Engineering",
+    "Course-instructor": "Prof. Krishanu Biswas",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ce107/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/113104517",
+    "content": "Artificial intelligence (AI) has taken the center-stage of material development due to rapid increase of the computational power and speed. The use of AI is rapidly picking up for high throughput screening and decision making for materials chemistry, property estimation and optimization of properties. As the need of new materials with improved properties is felt across the discipline, the accelerated design and development has become a key aspect of material science and engineering. The the need for use of AI and machine learning has widely been felt to design new materials with better properties The course is intended to provide this some basics aspects of use of AI and ML in materials science and engineering. Starting with processing -structure-property correlation, the basic computational tools will be deliberated with application of machine learning and deep learning. The application of AI-ML will be discussed with some case studies and examples."
+}

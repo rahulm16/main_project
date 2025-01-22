@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb9c",
+    "Course-ID": "noc24-me114",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Computational Fluid Dynamics using Finite Volume Method",
+    "Course-instructor": "Prof. Kameswararao Anupindi",
+    "Institute-name": "IIT Madras",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me114/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112106294",
+    "content": "In this course, the discretization and solution of diffusion, convection-diffusion, and incompressible fluid flow equations are discussed. Finite volume method is used to discretize each of the equations. The discretization and solution methods are formulated on structured as well as unstructured meshes. This course involves hand-calculations on simple meshes as well as numerical programming of the algorithms discussed."
+}

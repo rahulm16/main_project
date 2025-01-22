@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa8f",
+    "Course-ID": "noc24-ee141",
+    "Discipline": "Electrical and Electronics Engineering",
+    "Course-name": "Economic Operations and Control of Power Systems",
+    "Course-instructor": "Prof. Gururaj Mirle Vishwanath\nProf. Narayana Prasad Padhy",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee141/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108104191",
+    "content": "The primary objective of this course is to analyze efficient and optimum operation of electric power generation system and to provide an overview about the control techniques adopted to ensure the economic operation of a power system. This course also introduces optimization methods and their application in practical power system operation problems. In this course, modern control system solution methods are employed for power generation system problems. This course provides application of modern numerical techniques and analytical methods for dealing with and solving operation-related problems in electric power systems. In addition, it further discusses some real-time practical power system problems and their solutions."
+}

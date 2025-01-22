@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e575a10",
+    "question": "The cost price of 20 articles is the same as the selling price of x articles. If the profit is 25%, then the value of x is:",
+    "options": [
+        "15",
+        "16",
+        "18",
+        "25"
+    ],
+    "correct_answer": "16",
+    "Type": "Mathematical"
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb62",
+    "Course-ID": "noc24-ma52",
+    "Discipline": "Mathematics",
+    "Course-name": "Calculus of Several Real Variables",
+    "Course-instructor": "Prof. Joydeep Dutta",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma52/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111104125",
+    "content": "This course introduces the very important subject called the calculus of several real variables, which has important applications in science and engineering. The modern world would have been impossible without it. We introduce and discuss the subject in a non-traditional way taking the vector approach in most places. We start with the basics of Vectors, study continuity and partial derivatives, study multiple integrals and their applications and end with the stokes Theorem and Gauss divergence theorem."
+}

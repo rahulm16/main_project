@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa83",
+    "Course-ID": "noc24-ee151",
+    "Discipline": "Electrical and Electronics Engineering",
+    "Course-name": "Principles of Modern CDMA/ MIMO/ OFDM Wireless Communications",
+    "Course-instructor": "Prof. Aditya K. Jagannatham",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "8 Weeks",
+    "Start-date": "August 19, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee151/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/117104115",
+    "content": "The field of wireless communications has witnessed revolutionary technology developments in the last decade. While previously there existed only 2G GSM based communication systems which supported a data rate of around 10 Kbps, several radical wireless technologies have been developed in the last 10 years to enable broadband wireless access with rates in excess of 100 Mbps. These have subsequently led to the development of 3G and 4G wireless technologies such as HSDPA (High Speed Downlink Packet Access), LTE (Long Term Evolution) and WiMAX (Worldwide Interoperability for Microwave Access). This has been made possible through breakthrough wireless technologies such as Code Division for Multiple Access (CDMA), Orthogonal Frequency Division Multiplexing (OFDM), Multiple Input Multiple Output (MIMO). These techniques form the basis of understanding the world of 3G/4G wireless communication systems. This course will present an elaborate introduction to the principles and performance of these fundamental 3G/ 4G wireless technologies"
+}

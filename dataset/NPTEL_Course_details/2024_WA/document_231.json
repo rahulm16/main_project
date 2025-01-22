@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa2c",
+    "Course-ID": "noc24-cs120",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Social Networks",
+    "Course-instructor": "Prof. Sudarshan Iyengar\nProf. Yayati Gupta",
+    "Institute-name": "IIT Ropar",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs120/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106106169",
+    "content": "The network of friendships on Facebook, road connections, terrorist networks and disease spreading networks are today available as a graph G(V,E). Social Network Analysis involves discerning this graph data and making sense out of it. The course will revolve around the study of some well-known theories of social and information networks and their applications on real world datasets."
+}

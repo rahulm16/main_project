@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be76e",
+    "question": "Which letter will come next in the series? A, D, G, J, ?",
+    "options": [
+        "K",
+        "L",
+        "M",
+        "N"
+    ],
+    "correct_answer": "M",
+    "Type": "Logic"
+}

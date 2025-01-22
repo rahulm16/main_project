@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be78e",
+    "question": "Find the HCF of 18 and 24.",
+    "options": [
+        "3",
+        "6",
+        "9",
+        "12"
+    ],
+    "correct_answer": "6",
+    "Type": "Mathematical"
+}

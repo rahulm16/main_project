@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa34",
+    "Course-ID": "noc24-cs122",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "C-Based VLSI Design",
+    "Course-instructor": "Prof. Chandan Karfa",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs122/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106103229",
+    "content": "This course discussed how a C code can be automatically translated into register transfer level (RTL) design using high-level synthesis (HLS). HLS is an active domain of research in recent times in the domain of electronic Design Automation (EDA) of VLSI. This course will help the student to (i) understand the overall HLS flow, (ii) how a C-code will be converted to its equivalent hardware, (iii) how to write c-code for efficient hardware generation and (iv) how the common software compiler optimization can help to improve the circuit performance. Also, advanced topics like HLS for FPGA targets, HLS for Security, optimizations at RTL level and verification challenges of HLS will be covered. This course will help the student to take up research in the domain of HLS. Also, this course will help the student to become proficient for EDA industries."
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb68",
+    "Course-ID": "noc24-ma68",
+    "Discipline": "Mathematics",
+    "Course-name": "Advanced Engineering Mathematics",
+    "Course-instructor": "Prof. P.N. Agarwal",
+    "Institute-name": "IIT Roorkee",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma68/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111107119",
+    "content": "This course is a basic course offered to UG/PG students of Engineering/Science background. It contains Analytic Functions, applications to the problems of potential flow, Harmonic functions, Harmonic conjugates, Milne?\u00a2\u201a\u00c7\u00a8\u201a\u00d1\u00a2s method, Complex integration, sequences and series, uniform convergence, power series, Hadamard?\u00a2\u201a\u00c7\u00a8\u201a\u00d1\u00a2s formula for the radius of convergence, Taylor and Laurent series, zeros and poles of a function, meromorphic function, the residue at a singularity, Residue theorem, the argument principle and Rouche?\u00a2\u201a\u00c7\u00a8\u201a\u00d1\u00a2s theorem, contour integration and its applications to evaluation of a real integral, integration through a branch cut, conformal mapping, application to potential theory, review of unilateral and bilateral Z-transforms and their properties, application of calculus of residues for the inversion formula of Z- transforms and Laplace transforms, review of Fourier integrals and Fourier transforms, Finite Fourier transforms, discrete Fourier transforms and applications, basic concepts of probability, Bayes theorem, probability networks, discrete and continuous probability distribution, joint distribution, correlation coefficient, applications to problems of reliability, queueing theory, service time for a customer in a facility and life testing, testing of hypotheses. This course has tremendous applications in diverse fields of Engineering and Sciences such as Signal processing, Potential theory, Bending of beams etc."
+}

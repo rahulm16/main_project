@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfba5",
+    "Course-ID": "noc24-me93",
+    "Discipline": "Mechanical Engineering",
+    "Course-name": "Basics of Finite Element Analysis - I",
+    "Course-instructor": "Prof. Nachiketa Tiwari",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_me93/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/112104193",
+    "content": "This course is intended for all those who want to learn FEA from an application standpoint. Currently, many users of FEA have limited understanding of theoretical foundation of this powerful method. The consequence is that quite often they use commercial codes inaccurately, and do not realize that their results may be flawed. The course is intended to address this limitation by making the student aware of the underlying mathematics in easy to understand format. The course is open to all engineering students who have at the minimum successfully completed two years of their B. Tech (or equivalent) degrees.\nThe course is also open to all professionals in industry who wish to learn fundamentals of FEA in a semi-formal but structured setting, and plan to use this knowledge in their workplace."
+}

@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa9f",
+    "Course-ID": "noc24-ee129",
+    "Discipline": "Electronics and Electrical Engineering",
+    "Course-name": "Photonic Crystals: Fundamentals & Applications",
+    "Course-instructor": "Prof. Debabrata Sikdar",
+    "Institute-name": "IIT Guwahati",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ee129/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/108103487",
+    "content": "The course provides a detailed introduction to the versatile photonic-crystal technology by covering its fundamentals and an overview of the latest advancements with examples. The properties of light propagation in simple to complex photonic crystals are discussed thoroughly with appropriate theoretical tools which would help undergraduate students and postgraduate/industrial researchers in developing intuitions about how photonic crystals need to be designed for a specific application. The course begins with fundamentals of electromagnetic theory of light in periodic dielectric media, and then discusses 1D, 2D, and 3D photonic crystals/slabs in details. Later on, the course will focus on designing photonic crystals for applications such as mirrors, waveguides, cavity, filters, splitters, sensors etc. needed for in modern high-speed communication systems. With simple pre-requisite of familiarity with macroscopic Maxwell\u2019s equations and eigenmodes, this course will provide a comprehensive platform with needed numerical and physical tools for designing photonic crystal devices for different applications."
+}

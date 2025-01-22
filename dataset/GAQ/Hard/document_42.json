@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be83b",
+    "question": "A car travels 120 km in 3 hours and 180 km in 5 hours. What is the average speed of the car?",
+    "options": [
+        "60 km/hr",
+        "72 km/hr",
+        "70 km/hr",
+        "65 km/hr"
+    ],
+    "correct_answer": "66 km/hr",
+    "Type": "Mathematical"
+}

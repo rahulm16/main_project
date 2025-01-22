@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be815",
+    "question": "A man starts walking east for 4 km, then turns right and walks 3 km. Again, he turns right and walks 4 km. Finally, he turns left and walks 2 km. How far is he from his starting point?",
+    "options": [
+        "2 km",
+        "3 km",
+        "5 km",
+        "6 km"
+    ],
+    "correct_answer": "5 km",
+    "Type": "Logic"
+}

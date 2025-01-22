@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb86",
+    "Course-ID": "noc24-ma63",
+    "Discipline": "Mathematics",
+    "Course-name": "Category Theory",
+    "Course-instructor": "Prof. Amit Kuber",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma63/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111104524",
+    "content": "Category theory is a foundation of mathematics that tries to study structures from an extrinsic viewpoint, i.e., in relation with other structures of similar kinds, just like a society! The internal structure of objects in a category (e.g., elements in a set) is irrelevant if it is not visible through morphisms. Most of the course will cover all standard concepts like (co)limits, adjunction, monads, and the Yoneda lemma, and we will look at introductions to different branches of category theory at the end. The course has been designed to emphasize on similarities and differences between different areas of mathematics and is also useful for people interested in type theory, functional programming (Computer Science) and quantum field theories (Theoretical Physics). I can ensure that this course will change your language and view towards mathematics!"
+}

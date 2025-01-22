@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be77b",
+    "question": "The ratio of two numbers is 2:3, and their sum is 30. What is the smaller number?",
+    "options": [
+        "10",
+        "12",
+        "14",
+        "15"
+    ],
+    "correct_answer": "12",
+    "Type": "Mathematical"
+}

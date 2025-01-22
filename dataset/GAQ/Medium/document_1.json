@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e5759dd",
+    "question": "In each series, look for the degree and direction of change between the numbers. In other words, do the numbers increase or decrease, and by how much Look at this series: 53, 53, 40, 40, 27, 27, ... What number should come next?",
+    "options": [
+        "12",
+        "14",
+        "27",
+        "53"
+    ],
+    "correct_answer": "14",
+    "Type": "Logic"
+}

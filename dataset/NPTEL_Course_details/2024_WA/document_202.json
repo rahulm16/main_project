@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfa0f",
+    "Course-ID": "noc24-cs85",
+    "Discipline": "Computer Science and Engineering",
+    "Course-name": "Practical Cyber Security for Cyber Security Practitioners",
+    "Course-instructor": "Prof. Sandeep K. Shukla",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_cs85/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/106104467",
+    "content": "As we interact with various industry and their needs for cyber security, they often complain that the courses at academic institutions provide students with the fundamentals of cyber security, but the students are often not familiar with the practical issues associated with running a cyber security operation in a real organization. Also, while a lot of the theses at master\u2019s level or dissertation at the PhD level are based on theoretical exploration of techniques, algorithms, or mathematical modeling of cyber security problems, there is a dearth of dissertation and thesis on the practical aspects of running cyber security operations. Having worked very closely with industry, we appreciate such concerns because there are very interesting problems to be solved for practical cyber security which also requires a great deal of fundamental thinking, reasoning, and concerns about human cognition of the inputs the operators and leaders receive from cyber security tools, dashboards, policy formulations but then in the crowd of details, fundamentals are lost, reasoning is replaced by ad hoc decisions. To change that, we need workforce, as well as academics who can abstract out the fundamentals from such practical problems are develop various practically oriented methods, methodologies, policy frameworks, and decision processes which would simplify cyber operations. This course is meant to be a first step towards that line of thinking, modeling, and methodology development."
+}

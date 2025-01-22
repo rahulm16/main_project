@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfbfe",
+    "Course-ID": "noc24-oe05",
+    "Discipline": "Ocean Engineering",
+    "Course-name": "Computer Methods of Structural Analysis of Offshore Structures",
+    "Course-instructor": "Prof. Srinivasan Chandrasekaran",
+    "Institute-name": "IIT Madras",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_oe05/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/114106045",
+    "content": "The course will give a brief overview of different types of offshore structures that are deployed in sea for exploiting oil, gas and minerals. Detailed analysis methods, as applicable to both 2d and 3d will be discussed. While fundamentals of advanced structural analysis are discussed, detailed mathematical modeling of problem formulation and solution using MATLAB coding will be discussed. Codes for numeric examples will be also provided in the lecture notes. Hands-on experience of using Matlab will also be discussed. Focus is on explanation of fundamental concepts of advanced structural analysis, with special emphasis to its application to offshore structures."
+}

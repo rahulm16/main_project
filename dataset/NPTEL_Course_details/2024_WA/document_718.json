@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfc14",
+    "Course-ID": "noc24-ph43",
+    "Discipline": "Physics",
+    "Course-name": "Solid State Physics",
+    "Course-instructor": "Prof. Amal Kumar Das",
+    "Institute-name": "IIT Kharagpur",
+    "Duration": "12 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "October 11, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ph43/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/115105099",
+    "content": "In universe, matter is observable in everyday life in four states: solid, liquid, gas and plasma. There are other states of mater known to exist only under extreme situations. Matter, whatever the states, is made of atoms. The states are defined in terms of interatomic distance, atomic arrangement and atomic ionization in matter. In solid state of matter, the arrangement of atoms forms different structure of materials. The structure of materials is the key deciding factor for different kind of properties, such as thermal, electrical, optical, magnetic, dielectric etc. In this course we will learn the structure of solid materials and their different physical properties along with underlying physics."
+}

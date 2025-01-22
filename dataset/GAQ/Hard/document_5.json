@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be816",
+    "question": "In a row of 40 students, A is 8th from the left and B is 11th from the right. How many students are sitting between A and B?",
+    "options": [
+        "19",
+        "21",
+        "20",
+        "18"
+    ],
+    "correct_answer": "20",
+    "Type": "Logic"
+}

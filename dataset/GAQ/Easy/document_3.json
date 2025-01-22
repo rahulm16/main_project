@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be74e",
+    "question": "Statements: All cats are dogs. Some dogs are rats. Conclusion: I. Some cats are rats. II. All dogs are cats.",
+    "options": [
+        "Only I follows",
+        "Only II follows",
+        "Both I and II follow",
+        "Neither I nor II follows"
+    ],
+    "correct_answer": "Neither I nor II follows",
+    "Type": "Logic"
+}

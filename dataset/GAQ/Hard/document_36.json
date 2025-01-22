@@ -1,0 +1,12 @@
+{
+    "_id": "673f5233e5e39997cd1be835",
+    "question": "A box contains 6 red, 4 blue, and 5 green balls. If one ball is randomly picked, what is the probability that it is a blue ball?",
+    "options": [
+        "4/15",
+        "4/10",
+        "1/3",
+        "2/5"
+    ],
+    "correct_answer": "4/15",
+    "Type": "Mathematical"
+}

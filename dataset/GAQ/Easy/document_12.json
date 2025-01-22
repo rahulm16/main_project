@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be757",
+    "question": "Pointing to a woman, a man said, 'Her mother is the only daughter of my mother.' How is the woman related to the man?",
+    "options": [
+        "Daughter",
+        "Sister",
+        "Mother",
+        "Niece"
+    ],
+    "correct_answer": "Daughter",
+    "Type": "Logic"
+}

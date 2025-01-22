@@ -1,0 +1,12 @@
+{
+    "_id": "675a77e5d73475ec3e575a17",
+    "question": "In a shower, 5 cm of rain falls. The volume of water that falls on 1.5 hectares of ground is:",
+    "options": [
+        "75 cu. m",
+        "750 cu. m",
+        "7500 cu. m",
+        "75000 cu. m"
+    ],
+    "correct_answer": "750 cu. m",
+    "Type": "Mathematical"
+}

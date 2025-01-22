@@ -1,0 +1,12 @@
+{
+    "_id": "673f4a73e5e39997cd1be7ac",
+    "question": "Fill in the blank: He is not _____ to lift this heavy box.",
+    "options": [
+        "able",
+        "ability",
+        "capable",
+        "enable"
+    ],
+    "correct_answer": "able",
+    "Type": "Verbal"
+}

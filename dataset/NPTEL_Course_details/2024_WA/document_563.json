@@ -1,0 +1,14 @@
+{
+    "_id": "67346881f6c94c3b1c0cfb78",
+    "Course-ID": "noc24-ma49",
+    "Discipline": "Mathematics",
+    "Course-name": "Measure Theoretic Probability 2",
+    "Course-instructor": "Prof. Suprio Bhar",
+    "Institute-name": "IIT Kanpur",
+    "Duration": "8 Weeks",
+    "Start-date": "July 22, 2024",
+    "End-date": "September 13, 2024",
+    "Course-link": "https://onlinecourses.nptel.ac.in/noc24_ma49/preview",
+    "NPTEL-URL": "https://nptel.ac.in/courses/111104168",
+    "content": "This course is aimed at the students who have already learnt about basic Probability distributions and Random variables, and are interested in learning about the Mathematical formulation of Probability. This is a follow-up of the NPTEL course ?\u00a2\u201a\u00c7\u00a8?\u00ecMeasure Theoretic Probability 1?\u00a2\u201a\u00c7\u00a8\u00ac\u00f9. Knowledge of measure theoretic integration will be assumed. PG/Ph.D students and senior UG students are welcome. We shall first discuss the various notions of convergence of random variables and and then focus on the Law of Large Numbers and the Central Limit Theorem."
+}
