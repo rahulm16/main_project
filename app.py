@@ -51,20 +51,51 @@ api_key = os.getenv("API_KEY")
 model = "mistral-large-latest"
 mistral_client = Mistral(api_key=api_key)
 
+def get_next_task(user_email):
+    """Determine the next task for the user based on their progress."""
+    if not mongo.db.user_data.find_one({"user_email": user_email}):
+        return 'profile'
+    if not mongo.db.gaq_answered.find_one({"user_email": user_email}):
+        return 'aptitude'
+    if not mongo.db.questions.find_one({"user_email": user_email}):
+        return 'chatbot'
+    if not mongo.db.answered.find_one({"user_email": user_email}):
+        return 'get_questions'
+    if not mongo.db.career_suggestions.find_one({"user_email": user_email}):
+        return 'results'
+    if not mongo.db.page_layout.find_one({"user_email": user_email}):
+        return 'show_suggestions'  # Changed from 'suggestions' to 'show_suggestions'
+    return 'profile_overview'
+
 @app.route('/login')
 def index():
     return render_template('login.html', user=session.get('user'))
 
 @app.route('/')
 def home():
+    if 'user' in session:
+        user_email = session['user'].get('email')
+        next_task = get_next_task(user_email)
+        if (next_task != 'profile_overview'):
+            return redirect(url_for(next_task))
     return render_template('home.html', user=session.get('user'))
 
 @app.route('/chatbot')
 def chatbot():
+    if 'user' in session:
+        user_email = session['user'].get('email')
+        next_task = get_next_task(user_email)
+        if (next_task != 'chatbot'):
+            return redirect(url_for(next_task))
     return render_template('chatbot.html', user=session.get('user'))
 
 @app.route('/profile')
 def profile():
+    if 'user' in session:
+        user_email = session['user'].get('email')
+        next_task = get_next_task(user_email)
+        if (next_task != 'profile'):
+            return redirect(url_for(next_task))
     return render_template('profile.html', user=session.get('user'))
 
 @app.route('/api/save_user_data', methods=['POST'])
@@ -124,10 +155,20 @@ def save_user_data():
 
 @app.route('/choices')
 def choices():
+    if 'user' in session:
+        user_email = session['user'].get('email')
+        next_task = get_next_task(user_email)
+        if (next_task != 'choices'):
+            return redirect(url_for(next_task))
     return render_template('choices.html', user=session.get('user'))
 
 @app.route('/aptitude', methods=['GET', 'POST'])
 def aptitude():
+    if 'user' in session:
+        user_email = session['user'].get('email')
+        next_task = get_next_task(user_email)
+        if (next_task != 'aptitude'):
+            return redirect(url_for(next_task))
     user_email = session.get('user', {}).get('email')
     user = mongo.db.user_data.find_one({"user_email": user_email})
     if not user:
@@ -384,7 +425,10 @@ def save_data():
     if 'careerPreferences' not in user_data or not isinstance(user_data['careerPreferences'], dict):
         return jsonify({'status': 'error', 'message': 'Invalid or missing career preferences.'}), 400
 
-    # Insert data into MongoDB
+    # Delete old document if it exists
+    mongo.db.user_responses.delete_many({"user_email": user_email})
+
+    # Insert new data into MongoDB
     user_data['user_email'] = user_email
     mongo.db.user_responses.insert_one(user_data)
 
@@ -396,7 +440,7 @@ def save_data():
 def clear_prompts_directory():
     """Clear all files in the prompts directory."""
     prompts_dir = os.path.join(os.getcwd(), 'prompts')
-    if os.path.exists(prompts_dir):
+    if (os.path.exists(prompts_dir)):
         for file in os.listdir(prompts_dir):
             file_path = os.path.join(prompts_dir, file)
             try:
@@ -773,8 +817,11 @@ def fetch_suggestions():
 
 @app.route('/suggestions', methods=['GET'])
 def show_suggestions():
-    user_email = session.get('user', {}).get('email')
-    # Retrieve suggestions from MongoDB
+    if 'user' in session:
+        user_email = session['user'].get('email')
+        next_task = get_next_task(user_email)
+        if (next_task != 'show_suggestions'):
+            return redirect(url_for(next_task))
     suggestions = mongo.db.career_suggestions.find({"user_email": user_email})
     suggestions_list = list(suggestions)  # Convert cursor to list
     return render_template('suggestions.html', show_hamburger_menu=True, suggestions=suggestions_list, user=session.get('user'))
